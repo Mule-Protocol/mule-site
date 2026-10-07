@@ -32,4 +32,4 @@ try {
   };
   await writeFile(`${output}/summary.json`, JSON.stringify(metrics, null, 2));
   console.log(JSON.stringify(metrics, null, 2));
-} finally { chrome.kill(); }
+} finally { await Promise.resolve(chrome.kill()); }
