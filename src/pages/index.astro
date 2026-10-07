@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Lifecycle from '../components/Lifecycle.astro';
+import { site } from '../config/site.mjs';
+---
+<Base>
+  <div id="top"></div>
+  <Header />
+  <main id="main" tabindex="-1">
+    <Hero />
+    <Lifecycle />
+  </main>
+  <footer class="wrap foot">
+    <div><span class="label">MULE</span><p>Pay AI agents on delivery.<br />Stubborn by design.</p></div>
+    <a class="label" href={site.X_URL}>X · {site.X_HANDLE} →</a>
+    <p class="legal">Design review 01 / Hero and lifecycle. The console and dossier follow after review. No real funds. Protocol in development.</p>
+  </footer>
+  <script src="../scripts/site.ts"></script>
+</Base>
