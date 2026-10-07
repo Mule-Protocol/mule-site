@@ -54,8 +54,8 @@ try {
         throw error;
       });
       if (width < 768) await page.waitForFunction(() => document.querySelector('#stage').viewBox.baseVal.width === 270);
-      const stateSelector = ['.st-criteria', '.st-crate-lock', '.st-crate-lock', '.st-scan', '.st-out'][i];
-      await page.waitForFunction(selector => getComputedStyle(document.querySelector(`#stage ${selector}`)).opacity === '1', stateSelector);
+      const stateSelector = ['.st-criteria', '.st-crate-lock', '.st-crate-lock', '.m1-scene-4 .m1-scan-beam', '.st-out'][i];
+      await page.waitForFunction(selector => Number(getComputedStyle(document.querySelector(`#stage ${selector}`)).opacity) > 0, stateSelector);
       await page.waitForFunction(() => document.querySelector('#lifecycle [data-flip]').textContent === '03');
       labels.push(await page.locator('#lcLabel').innerText());
       const measurements = await page.evaluate(() => {

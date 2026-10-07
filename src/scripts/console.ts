@@ -1,3 +1,5 @@
+import deliveredPatch from '../assets/mascot/patch-delivered.png?url';
+import refusedPatch from '../assets/mascot/patch-refuse.png?url';
 import { runMission, type Template, type Behavior } from '../lib/run-mission';
 import { missionId, parseMissionId } from '../data/mission.mjs';
 import { site } from '../config/site.mjs';
@@ -24,6 +26,9 @@ function stepDelay() {
 async function drawPatch(id: string) {
   const mission = parseMissionId(id)!;
   await document.fonts.ready;
+  const mascot = new Image();
+  mascot.src = mission.settled ? deliveredPatch : refusedPatch;
+  await mascot.decode();
   const ctx = canvas.getContext('2d'); if (!ctx) throw new Error('Canvas unavailable');
   ctx.clearRect(0, 0, 600, 660); ctx.save(); ctx.scale(3, 3);
   const polygon = (points: number[][], fill: string | null, stroke: string, width: number) => {
@@ -34,10 +39,8 @@ async function drawPatch(id: string) {
   ctx.setLineDash(mission.settled ? [] : [8,5]);
   polygon([[100,6],[192,58],[192,162],[100,214],[8,162],[8,58]],'#E9E8E3',signal,8);
   ctx.setLineDash([3,3]);polygon([[100,22],[178,66],[178,154],[100,198],[22,154],[22,66]],null,'#0E0E0E',1.5);
-  ctx.setLineDash([]); ctx.strokeStyle='#0E0E0E';ctx.lineWidth=3.5;
-  ctx.beginPath();ctx.moveTo(87,66);ctx.lineTo(81,51);ctx.moveTo(96,67);ctx.lineTo(99,50);ctx.stroke();
-  polygon([[82,66],[104,68],[128,92],[126,102],[114,104],[90,90]],null,'#0E0E0E',3.5);
-  for(const [x,y,r,color] of [[81,51,3,'#0E0E0E'],[99,50,3,'#0E0E0E'],[101,75,3.4,'#FF4F00']] as const){ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();}
+  ctx.setLineDash([]);
+  ctx.drawImage(mascot,64,36,72,72*270/260);
   ctx.textAlign='center';ctx.fillStyle='#0E0E0E';ctx.font='900 24px Doto';ctx.fillText(mission.mission,100,126);
   ctx.font='600 11px "Azeret Mono"';ctx.fillText(mission.settled?'SETTLED ✓':'RETURNED',100,141);
   ctx.font='400 7px "Azeret Mono"';ctx.fillText(mission.template.toUpperCase(),100,152);

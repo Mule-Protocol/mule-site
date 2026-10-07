@@ -51,7 +51,6 @@ button { font: inherit; }
 .motion-ready .lc-pin .lc-stage { display: block; }
 .motion-ready .lc-head { margin-bottom: 16px; }
 .lc-mobile-annotation { display: none; }
-.stage .st-scan line, .stage .st-scan rect { animation-timing-function: steps(10); }
 .hero__fig .scan { animation-timing-function: steps(20); }
 .error-page { min-height: 80vh; display: grid; align-content: center; gap: 24px; }
 .error-page h1 { font-size: clamp(44px, 8vw, 96px); }
