@@ -580,3 +580,146 @@ node scripts/lcp-visual.mjs https://6a8a3baf.mule-site.pages.dev artifacts/lcp/v
 node scripts/lcp-visual.mjs https://6e6ff294.mule-site.pages.dev artifacts/lcp/visual-after
 node scripts/lcp-compare.mjs artifacts/lcp/visual-before artifacts/lcp/visual-after artifacts/lcp/visual-comparison.json
 ```
+
+
+## Police : cache et accents
+
+### Version, commits et résultat
+
+Correction limitée au cache et au sous-ensemble Archivo. **Cache immuable confirmé, accents du test rendus uniquement par Archivo, 54 boîtes et leurs lignes inchangées, dix captures de page strictement identiques.** Les six passages Lighthouse restent sous 2 s, avec performance 99 et accessibilité 100.
+
+- Base : `0e1e6aace7a70c7303a4bb64a16aea1cf20945fb`, après la correction LCP validée. Référence visuelle avant : [6e6ff294](https://6e6ff294.mule-site.pages.dev/), mêmes fichiers exécutés.
+- Code : [792fc862d32f1a3e15175883063e47a2d86c2a4f](https://github.com/Mule-Protocol/mule-site/commit/792fc862d32f1a3e15175883063e47a2d86c2a4f), `fix: hash Archivo asset and extend static Latin coverage`.
+- **Préproduction immuable testée : [https://df9c3e57.mule-site.pages.dev/](https://df9c3e57.mule-site.pages.dev/)** ; [dossier](https://df9c3e57.mule-site.pages.dev/dossier/).
+- [CI code et déploiement 37640440826](https://github.com/Mule-Protocol/mule-site/actions/runs/37640440826), [CI PR 37640447294](https://github.com/Mule-Protocol/mule-site/actions/runs/37640447294) : succès. [Preuve des jobs](qa-font-cache/ci-code.json).
+- Rapport et preuves : commit documentaire suivant intitulé `docs: verify font cache accents and regression checks`. Il ne change pas le site exécuté. Les commits s'ajoutent sur `codex/pass-2`, PR #2 en brouillon, sans fusion ni réécriture.
+
+### Cache et identité de l'URL
+
+Le WOFF2 est désormais dans [src/assets/fonts/](../src/assets/fonts/archivo-125-800-latin.woff2). [Base.astro](../src/layouts/Base.astro) l'importe avec `?url` pour le preload et [site.css](../src/styles/site.css) emploie un chemin relatif vers le même fichier. Vite émet :
+
+```text
+/_astro/archivo-125-800-latin.C9uAnT0s.woff2
+```
+
+Les cinq HTML compilés et la déclaration `@font-face` pointent exactement vers cette même URL : [preuve de compilation](qa-font-cache/build-assets.json). Le contrôle réseau du navigateur observe **une seule requête Archivo pour chacune des dix pages/largeurs**, sans double téléchargement. La règle existante `/_astro/*` dans `_headers` suffit ; aucun en-tête de cache n'a été modifié et aucune règle longue durée n'a été ajoutée à un nom non haché.
+
+L'ancien WOFF2 public a été supprimé. Le générateur écrit au nouvel emplacement. La licence [src/assets/fonts/OFL.txt](../src/assets/fonts/OFL.txt) est à côté de la source et sa copie [public/brand/fonts/OFL.txt](../public/brand/fonts/OFL.txt) reste disponible, avec contenu identique.
+
+Commande et sortie intégrale :
+
+```text
+curl -I https://df9c3e57.mule-site.pages.dev/_astro/archivo-125-800-latin.C9uAnT0s.woff2
+HTTP/1.1 200 OK
+Date: Wed, 07 Oct 2026 14:55:05 GMT
+Content-Type: font/woff2
+Connection: keep-alive
+Cache-Control: public, max-age=31536000, immutable
+ETag: "1342c845832d4ecb212b5738732433f0"
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+content-security-policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+permissions-policy: camera=(), microphone=(), geolocation=(), payment=()
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-robots-tag: noindex, nofollow
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=vCYhn%2FXBl8aNiO3UTtqMt6aPIWhsqoJOmuaRe5kmuxPCYUQXRg%2FLv4I41cvq3L%2BFEDIDcKiPF3Pojh49d3df0BCXE%2BbqHQHVmhvGdanjcv1q4MlXrXrJaY2rDnGHnypQh7jYP8oVEUUF41eLcjzojhFCOSsmRRIe%2FvvJ"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Server: cloudflare
+CF-RAY: a46dbeacfe747240-CDG
+alt-svc: h3=":443"; ma=86400
+```
+
+[Sortie brute](qa-font-cache/font-headers.txt). La police téléchargée en HTTPS a aussi été comparée au binaire source : taille et SHA-256 identiques.
+
+### Sous-ensemble, empreintes et noms
+
+| Version | Taille | SHA-256 |
+| --- | ---: | --- |
+| Avant | 8 184 octets | `8aa4a2cc0df5861def922e3c403ef71e31eaa81962eadb8aac1472ab2da2f729` |
+| Après | **11 976 octets** | `7f32a57fea2ba5a145ff99fb3ac96e67fe77367be2e842de05bf6efe4059a921` |
+
+[Preuve des binaires et captures](qa-font-cache/binary-and-pixels.json). La limite de 25 Ko est respectée. Le fichier contient maintenant **201 caractères Unicode et 256 glyphes** ; `fvar`, `gvar`, `HVAR` et `avar` sont absentes, vérifié en rouvrant le WOFF2 enregistré.
+
+**97 caractères ajoutés** : U+00A1–U+00B6, U+00B8–U+00FF, U+0152 (`Œ`), U+0153 (`œ`), U+20AC (`€`). U+00A0 et U+00B7 étaient déjà présents ; le bloc Latin-1 U+00A0–U+00FF est donc intégralement couvert. L'apostrophe U+2019 (`’`) était déjà conservée. La [liste exhaustive avec chaque caractère et point Unicode](qa-font-cache/font.json) est fournie.
+
+**Absents du fichier latin source Fontsource utilisé : U+0178 (`Ÿ`) et U+2713 (`✓`).** Aucun glyphe n'a été inventé ni substitué. `Ÿ` est le seul caractère de la nouvelle chaîne d'assertion absent de cette source ; le script vérifie les caractères disponibles et déclare explicitement cette absence. Cela ne signifie pas que toute la famille Archivo soit dépourvue de ce glyphe : le constat porte sur le fichier latin source exact dont le SHA-256 figure dans la preuve. Un éventuel futur titre contenant `Ÿ` reste donc concerné par cette limite.
+
+Le [générateur](../scripts/build-title-font.py) conserve largeur 125, graisse 800, contours et hinting. Une comparaison binaire ciblée des 104 caractères communs confirme coordonnées/contours, métriques horizontales, programmes de hinting des glyphes et tables `fpgm`, `prep`, `cvt ` identiques : [preuve](qa-font-cache/contours.json).
+
+Noms corrigés via la table `name` : famille `Archivo`, sous-famille `Expanded ExtraBold`, nom complet `Archivo Expanded ExtraBold 125 800`, PostScript `Archivo-ExpandedExtraBold-125-800`. Copyright et version conservés ; aucun changement de dessin. L'écriture utilise l'API officielle [FontTools name.setName](https://fonttools.readthedocs.io/en/latest/ttLib/tables/_n_a_m_e.html).
+
+### Test navigateur des accents
+
+Le script [font-qa.mjs](../scripts/font-qa.mjs) ajoute temporairement un élément `.display` contenant `MENTIONS LÉGALES · ÉCHÉANCE ÇA ŒUVRE €`, interroge `CSS.getPlatformFontsForNode`, puis le retire. Cette phrase n'a pas été ajoutée au site. Le test s'exécute à 375 et 1440 px sur la préproduction immuable.
+
+Avant : Archivo SemiBold + Arial Black, cette dernière rendant six glyphes. Après, à chaque largeur :
+
+```json
+{"familyName":"Archivo","postScriptName":"Archivo-ExpandedExtraBold-125-800","isCustomFont":true}
+```
+
+**Une seule police retournée, aucune police système.** Chromium attribue 37 glyphes à 375 px et 38 à 1440 px à cette police. [Résultats CDP complets après](qa-font-cache/after/geometry.json) · [avant](qa-font-cache/before/geometry.json) · [capture du test 375](qa-font-cache/after/accent-probe-375.png) · [1440](qa-font-cache/after/accent-probe-1440.png). Méthode : [Chrome DevTools Protocol, CSS.getPlatformFontsForNode](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getPlatformFontsForNode).
+
+### Comparaison des boîtes et non-régression
+
+Tous les éléments rendus dont le style calculé utilise Archivo sont relevés avant et après sur cinq pages à 375 et 1440 px. Le contrôle compare exactement position et dimensions, propriétés typographiques, rectangles du texte et nombre de lignes. Les animations sont figées par les mouvements réduits et les polices attendues avant le relevé. Les éléments cachés ne sont pas comptés comme rendus.
+
+| Page | Éléments par largeur | 375 px | 1440 px |
+| --- | ---: | --- | --- |
+| `/` | 11 | Identiques | Identiques |
+| `/dossier/` | 12 | Identiques | Identiques |
+| `/legal/` | 1 | Identiques | Identiques |
+| `/privacy/` | 1 | Identiques | Identiques |
+| `/risks/` | 2 | Identiques | Identiques |
+
+**54 comparaisons d'éléments : aucune différence.** Textes des cinq pages, URL/type/ordre et SHA-256 de chaque bundle JavaScript également identiques. Aucun débordement ni erreur JavaScript. [Comparaison détaillée](qa-font-cache/comparison.json), réalisée par [font-compare.mjs](../scripts/font-compare.mjs).
+
+Les dix captures de page avant/après sont identiques octet par octet (le test accentué temporaire est capturé séparément) :
+
+| Page / largeur | Avant | Après |
+| --- | --- | --- |
+| home 375 | [PNG](qa-font-cache/before/home-375.png) | [PNG](qa-font-cache/after/home-375.png) |
+| home 1440 | [PNG](qa-font-cache/before/home-1440.png) | [PNG](qa-font-cache/after/home-1440.png) |
+| dossier 375 | [PNG](qa-font-cache/before/dossier-375.png) | [PNG](qa-font-cache/after/dossier-375.png) |
+| dossier 1440 | [PNG](qa-font-cache/before/dossier-1440.png) | [PNG](qa-font-cache/after/dossier-1440.png) |
+| legal 375 | [PNG](qa-font-cache/before/legal-375.png) | [PNG](qa-font-cache/after/legal-375.png) |
+| legal 1440 | [PNG](qa-font-cache/before/legal-1440.png) | [PNG](qa-font-cache/after/legal-1440.png) |
+| privacy 375 | [PNG](qa-font-cache/before/privacy-375.png) | [PNG](qa-font-cache/after/privacy-375.png) |
+| privacy 1440 | [PNG](qa-font-cache/before/privacy-1440.png) | [PNG](qa-font-cache/after/privacy-1440.png) |
+| risks 375 | [PNG](qa-font-cache/before/risks-375.png) | [PNG](qa-font-cache/after/risks-375.png) |
+| risks 1440 | [PNG](qa-font-cache/before/risks-1440.png) | [PNG](qa-font-cache/after/risks-1440.png) |
+
+### Lighthouse mobile après correction
+
+Six mesures successives sur `https://df9c3e57.mule-site.pages.dev`, avec `node scripts/lcp-series.mjs`, sans build ni autre test de navigateur en parallèle. Lighthouse 13.5.0 / Chromium 153, réseau réel jusqu'à Cloudflare, simulation mobile avec RTT 150 ms, débit 1 638,4 kbit/s, CPU ×4. Les dates exactes figurent dans les JSON.
+
+| Page | Passage | LCP (ms) | Performance /100 | Accessibilité /100 |
+| --- | ---: | ---: | ---: | ---: |
+| / | 1 | 1716.189 | 99 | 100 |
+| / | 2 | 1755.356 | 99 | 100 |
+| / | 3 | 1716.444 | 99 | 100 |
+| **/** | **Médiane** | **1716.444** | **99** | **100** |
+| /dossier/ | 1 | 1579.980 | 99 | 100 |
+| /dossier/ | 2 | 1654.272 | 99 | 100 |
+| /dossier/ | 3 | 1618.860 | 99 | 100 |
+| **/dossier/** | **Médiane** | **1618.860** | **99** | **100** |
+
+Chaque passage respecte les seuils ; aucune mesure n'est exclue. Médianes calculées séparément pour chaque métrique. [Mesures brutes et paramètres](qa-font-cache/lighthouse.json) · [six rapports complets JSON/HTML](qa-font-cache/lighthouse-reports.zip).
+
+### Vérifications et limites
+
+- 14 tests unitaires réussis ; build et contrôles de sortie réussis, 0 erreur, 0 avertissement, 0 hint ; CI code et déploiement réussie.
+- `LAUNCHED=false`, `CONTRACT_ADDRESS=null`, CSP sans `unsafe-inline` inchangée. Aucun changement de texte, script de site, Functions, workflow, DNS/domaine, production ou M-1.
+- `Ÿ` et `✓` ne sont pas disponibles dans le fichier latin source exact ; aucune couverture de ces glyphes n'est revendiquée.
+- Mesures Chromium automatisées ; Safari/iOS, Android physiques et réseaux autres que ceux de cette session non testés.
+- Le relevé porte sur le contenu rendu initialement, avec mouvements réduits ; les interactions et variantes de mission déjà validées ne sont pas réauditées pour ce changement de police.
+
+Reproduction des vérifications ciblées :
+
+```sh
+node scripts/font-qa.mjs https://6e6ff294.mule-site.pages.dev artifacts/font-cache/before
+node scripts/font-qa.mjs https://df9c3e57.mule-site.pages.dev artifacts/font-cache/after require-accents
+node scripts/font-compare.mjs artifacts/font-cache/before artifacts/font-cache/after artifacts/font-cache/comparison.json
+node scripts/lcp-series.mjs https://df9c3e57.mule-site.pages.dev artifacts/font-cache/lighthouse
+```

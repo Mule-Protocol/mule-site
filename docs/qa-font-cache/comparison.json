@@ -1,0 +1,96 @@
+{
+  "before": "https://6e6ff294.mule-site.pages.dev",
+  "after": "https://df9c3e57.mule-site.pages.dev",
+  "pages": [
+    {
+      "name": "home",
+      "width": 375,
+      "elements": 11,
+      "identicalGeometry": true,
+      "identicalLineBoxesAndCount": true,
+      "identicalText": true,
+      "identicalScriptBytesAndOrder": true
+    },
+    {
+      "name": "dossier",
+      "width": 375,
+      "elements": 12,
+      "identicalGeometry": true,
+      "identicalLineBoxesAndCount": true,
+      "identicalText": true,
+      "identicalScriptBytesAndOrder": true
+    },
+    {
+      "name": "legal",
+      "width": 375,
+      "elements": 1,
+      "identicalGeometry": true,
+      "identicalLineBoxesAndCount": true,
+      "identicalText": true,
+      "identicalScriptBytesAndOrder": true
+    },
+    {
+      "name": "privacy",
+      "width": 375,
+      "elements": 1,
+      "identicalGeometry": true,
+      "identicalLineBoxesAndCount": true,
+      "identicalText": true,
+      "identicalScriptBytesAndOrder": true
+    },
+    {
+      "name": "risks",
+      "width": 375,
+      "elements": 2,
+      "identicalGeometry": true,
+      "identicalLineBoxesAndCount": true,
+      "identicalText": true,
+      "identicalScriptBytesAndOrder": true
+    },
+    {
+      "name": "home",
+      "width": 1440,
+      "elements": 11,
+      "identicalGeometry": true,
+      "identicalLineBoxesAndCount": true,
+      "identicalText": true,
+      "identicalScriptBytesAndOrder": true
+    },
+    {
+      "name": "dossier",
+      "width": 1440,
+      "elements": 12,
+      "identicalGeometry": true,
+      "identicalLineBoxesAndCount": true,
+      "identicalText": true,
+      "identicalScriptBytesAndOrder": true
+    },
+    {
+      "name": "legal",
+      "width": 1440,
+      "elements": 1,
+      "identicalGeometry": true,
+      "identicalLineBoxesAndCount": true,
+      "identicalText": true,
+      "identicalScriptBytesAndOrder": true
+    },
+    {
+      "name": "privacy",
+      "width": 1440,
+      "elements": 1,
+      "identicalGeometry": true,
+      "identicalLineBoxesAndCount": true,
+      "identicalText": true,
+      "identicalScriptBytesAndOrder": true
+    },
+    {
+      "name": "risks",
+      "width": 1440,
+      "elements": 2,
+      "identicalGeometry": true,
+      "identicalLineBoxesAndCount": true,
+      "identicalText": true,
+      "identicalScriptBytesAndOrder": true
+    }
+  ]
+}

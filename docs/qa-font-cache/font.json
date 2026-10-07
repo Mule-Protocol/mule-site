@@ -1,0 +1,430 @@
+{
+  "source": "node_modules/@fontsource-variable/archivo/files/archivo-latin-standard-normal.woff2",
+  "output": "src/assets/fonts/archivo-125-800-latin.woff2",
+  "axes": {
+    "wght": 800,
+    "wdth": 125
+  },
+  "sourceBytes": 90104,
+  "outputBytes": 11976,
+  "sourceSha256": "e3a28eade21a900c7155a247757f4b2834c07bb7ef07ad7efa55cebaac1e8f5e",
+  "outputSha256": "7f32a57fea2ba5a145ff99fb3ac96e67fe77367be2e842de05bf6efe4059a921",
+  "glyphs": 256,
+  "unicodeCount": 201,
+  "addedCharacters": [
+    {
+      "code": "U+00A1",
+      "character": "¡"
+    },
+    {
+      "code": "U+00A2",
+      "character": "¢"
+    },
+    {
+      "code": "U+00A3",
+      "character": "£"
+    },
+    {
+      "code": "U+00A4",
+      "character": "¤"
+    },
+    {
+      "code": "U+00A5",
+      "character": "¥"
+    },
+    {
+      "code": "U+00A6",
+      "character": "¦"
+    },
+    {
+      "code": "U+00A7",
+      "character": "§"
+    },
+    {
+      "code": "U+00A8",
+      "character": "¨"
+    },
+    {
+      "code": "U+00A9",
+      "character": "©"
+    },
+    {
+      "code": "U+00AA",
+      "character": "ª"
+    },
+    {
+      "code": "U+00AB",
+      "character": "«"
+    },
+    {
+      "code": "U+00AC",
+      "character": "¬"
+    },
+    {
+      "code": "U+00AD",
+      "character": "­"
+    },
+    {
+      "code": "U+00AE",
+      "character": "®"
+    },
+    {
+      "code": "U+00AF",
+      "character": "¯"
+    },
+    {
+      "code": "U+00B0",
+      "character": "°"
+    },
+    {
+      "code": "U+00B1",
+      "character": "±"
+    },
+    {
+      "code": "U+00B2",
+      "character": "²"
+    },
+    {
+      "code": "U+00B3",
+      "character": "³"
+    },
+    {
+      "code": "U+00B4",
+      "character": "´"
+    },
+    {
+      "code": "U+00B5",
+      "character": "µ"
+    },
+    {
+      "code": "U+00B6",
+      "character": "¶"
+    },
+    {
+      "code": "U+00B8",
+      "character": "¸"
+    },
+    {
+      "code": "U+00B9",
+      "character": "¹"
+    },
+    {
+      "code": "U+00BA",
+      "character": "º"
+    },
+    {
+      "code": "U+00BB",
+      "character": "»"
+    },
+    {
+      "code": "U+00BC",
+      "character": "¼"
+    },
+    {
+      "code": "U+00BD",
+      "character": "½"
+    },
+    {
+      "code": "U+00BE",
+      "character": "¾"
+    },
+    {
+      "code": "U+00BF",
+      "character": "¿"
+    },
+    {
+      "code": "U+00C0",
+      "character": "À"
+    },
+    {
+      "code": "U+00C1",
+      "character": "Á"
+    },
+    {
+      "code": "U+00C2",
+      "character": "Â"
+    },
+    {
+      "code": "U+00C3",
+      "character": "Ã"
+    },
+    {
+      "code": "U+00C4",
+      "character": "Ä"
+    },
+    {
+      "code": "U+00C5",
+      "character": "Å"
+    },
+    {
+      "code": "U+00C6",
+      "character": "Æ"
+    },
+    {
+      "code": "U+00C7",
+      "character": "Ç"
+    },
+    {
+      "code": "U+00C8",
+      "character": "È"
+    },
+    {
+      "code": "U+00C9",
+      "character": "É"
+    },
+    {
+      "code": "U+00CA",
+      "character": "Ê"
+    },
+    {
+      "code": "U+00CB",
+      "character": "Ë"
+    },
+    {
+      "code": "U+00CC",
+      "character": "Ì"
+    },
+    {
+      "code": "U+00CD",
+      "character": "Í"
+    },
+    {
+      "code": "U+00CE",
+      "character": "Î"
+    },
+    {
+      "code": "U+00CF",
+      "character": "Ï"
+    },
+    {
+      "code": "U+00D0",
+      "character": "Ð"
+    },
+    {
+      "code": "U+00D1",
+      "character": "Ñ"
+    },
+    {
+      "code": "U+00D2",
+      "character": "Ò"
+    },
+    {
+      "code": "U+00D3",
+      "character": "Ó"
+    },
+    {
+      "code": "U+00D4",
+      "character": "Ô"
+    },
+    {
+      "code": "U+00D5",
+      "character": "Õ"
+    },
+    {
+      "code": "U+00D6",
+      "character": "Ö"
+    },
+    {
+      "code": "U+00D7",
+      "character": "×"
+    },
+    {
+      "code": "U+00D8",
+      "character": "Ø"
+    },
+    {
+      "code": "U+00D9",
+      "character": "Ù"
+    },
+    {
+      "code": "U+00DA",
+      "character": "Ú"
+    },
+    {
+      "code": "U+00DB",
+      "character": "Û"
+    },
+    {
+      "code": "U+00DC",
+      "character": "Ü"
+    },
+    {
+      "code": "U+00DD",
+      "character": "Ý"
+    },
+    {
+      "code": "U+00DE",
+      "character": "Þ"
+    },
+    {
+      "code": "U+00DF",
+      "character": "ß"
+    },
+    {
+      "code": "U+00E0",
+      "character": "à"
+    },
+    {
+      "code": "U+00E1",
+      "character": "á"
+    },
+    {
+      "code": "U+00E2",
+      "character": "â"
+    },
+    {
+      "code": "U+00E3",
+      "character": "ã"
+    },
+    {
+      "code": "U+00E4",
+      "character": "ä"
+    },
+    {
+      "code": "U+00E5",
+      "character": "å"
+    },
+    {
+      "code": "U+00E6",
+      "character": "æ"
+    },
+    {
+      "code": "U+00E7",
+      "character": "ç"
+    },
+    {
+      "code": "U+00E8",
+      "character": "è"
+    },
+    {
+      "code": "U+00E9",
+      "character": "é"
+    },
+    {
+      "code": "U+00EA",
+      "character": "ê"
+    },
+    {
+      "code": "U+00EB",
+      "character": "ë"
+    },
+    {
+      "code": "U+00EC",
+      "character": "ì"
+    },
+    {
+      "code": "U+00ED",
+      "character": "í"
+    },
+    {
+      "code": "U+00EE",
+      "character": "î"
+    },
+    {
+      "code": "U+00EF",
+      "character": "ï"
+    },
+    {
+      "code": "U+00F0",
+      "character": "ð"
+    },
+    {
+      "code": "U+00F1",
+      "character": "ñ"
+    },
+    {
+      "code": "U+00F2",
+      "character": "ò"
+    },
+    {
+      "code": "U+00F3",
+      "character": "ó"
+    },
+    {
+      "code": "U+00F4",
+      "character": "ô"
+    },
+    {
+      "code": "U+00F5",
+      "character": "õ"
+    },
+    {
+      "code": "U+00F6",
+      "character": "ö"
+    },
+    {
+      "code": "U+00F7",
+      "character": "÷"
+    },
+    {
+      "code": "U+00F8",
+      "character": "ø"
+    },
+    {
+      "code": "U+00F9",
+      "character": "ù"
+    },
+    {
+      "code": "U+00FA",
+      "character": "ú"
+    },
+    {
+      "code": "U+00FB",
+      "character": "û"
+    },
+    {
+      "code": "U+00FC",
+      "character": "ü"
+    },
+    {
+      "code": "U+00FD",
+      "character": "ý"
+    },
+    {
+      "code": "U+00FE",
+      "character": "þ"
+    },
+    {
+      "code": "U+00FF",
+      "character": "ÿ"
+    },
+    {
+      "code": "U+0152",
+      "character": "Œ"
+    },
+    {
+      "code": "U+0153",
+      "character": "œ"
+    },
+    {
+      "code": "U+20AC",
+      "character": "€"
+    }
+  ],
+  "notInOriginalFont": [
+    {
+      "code": "U+0178",
+      "character": "Ÿ"
+    },
+    {
+      "code": "U+2713",
+      "character": "✓"
+    }
+  ],
+  "requiredCharacters": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789$—’·ÀÂÆÇÉÈÊËÎÏÔŒÙÛÜŸàâæçéèêëîïôœùûüÿ€",
+  "missingRequiredCharacters": [
+    "Ÿ"
+  ],
+  "variationTables": [],
+  "names": {
+    "1": "Archivo",
+    "2": "Expanded ExtraBold",
+    "3": "2.001;OMNI;Archivo-ExpandedExtraBold-125-800",
+    "4": "Archivo Expanded ExtraBold 125 800",
+    "6": "Archivo-ExpandedExtraBold-125-800",
+    "16": "Archivo",
+    "17": "Expanded ExtraBold"
+  },
+  "copyrightPreserved": true,
+  "note": "Unavailable source characters are reported, never replaced by invented glyphs."
+}

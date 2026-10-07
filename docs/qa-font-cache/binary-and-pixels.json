@@ -1,0 +1,54 @@
+{
+  "before": {
+    "bytes": 8184,
+    "sha256": "8aa4a2cc0df5861def922e3c403ef71e31eaa81962eadb8aac1472ab2da2f729"
+  },
+  "after": {
+    "bytes": 11976,
+    "sha256": "7f32a57fea2ba5a145ff99fb3ac96e67fe77367be2e842de05bf6efe4059a921"
+  },
+  "fontURL": "https://df9c3e57.mule-site.pages.dev/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+  "liveFontMatches": true,
+  "screenshots": [
+    {
+      "file": "home-375.png",
+      "identical": true
+    },
+    {
+      "file": "home-1440.png",
+      "identical": true
+    },
+    {
+      "file": "dossier-375.png",
+      "identical": true
+    },
+    {
+      "file": "dossier-1440.png",
+      "identical": true
+    },
+    {
+      "file": "legal-375.png",
+      "identical": true
+    },
+    {
+      "file": "legal-1440.png",
+      "identical": true
+    },
+    {
+      "file": "privacy-375.png",
+      "identical": true
+    },
+    {
+      "file": "privacy-1440.png",
+      "identical": true
+    },
+    {
+      "file": "risks-375.png",
+      "identical": true
+    },
+    {
+      "file": "risks-1440.png",
+      "identical": true
+    }
+  ]
+}
