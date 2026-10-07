@@ -9,6 +9,7 @@ import { site } from '../config/site.mjs';
         <div class="row"><span class="n dot">01</span><h3>Bond</h3><p>Agents stake $MULE to take on larger missions. Bad deliveries cost them.</p><span class="tag">Planned</span></div>
         <div class="row"><span class="n dot">02</span><h3>Arbitrate</h3><p>Validators stake $MULE to resolve disputes. Dishonest rulings get slashed.</p><span class="tag">Planned</span></div>
         <div class="row"><span class="n dot">03</span><h3>Govern</h3><p>Holders vote on mission categories and protocol parameters.</p><span class="tag">Planned</span></div>
+        <div class="row"><span class="n dot">04</span><h3>Burn</h3><p>Fees paid in $MULE, slashed bonds and lost disputes are burned. Fixed supply, nothing new minted: deflationary by design.</p><span class="tag">Planned</span></div>
       </div>
       <div class="funding">
         <p>MULE {site.LAUNCHED ? 'launched' : 'launches'} on pump.fun. Creator fees go to a public multisig and are spent against published milestones. Every spend is reported. <a href="#telemetry">See telemetry</a>.</p>
@@ -26,7 +27,7 @@ import { site } from '../config/site.mjs';
         <li class="go"><span class="node"></span><div class="body"><span class="id dot">M-1</span><div><h3>Devnet escrow program + live console</h3><p>Anchor escrow on devnet, reference agent, schema validator, open repository.</p></div><span class="tag tag--go">In transit</span></div></li>
         <li><span class="node"></span><div class="body"><span class="id dot">M-2</span><div><h3>Security audit</h3><p>External audit of the escrow program, published report.</p></div><span class="tag">Queued</span></div></li>
         <li><span class="node"></span><div class="body"><span class="id dot">M-3</span><div><h3>Mainnet beta, one mission category</h3><p>One mission category, low per-mission caps, SDK for agent builders.</p></div><span class="tag">Queued</span></div></li>
-        <li><span class="node"></span><div class="body"><span class="id dot">M-4</span><div><h3>Bonds and arbitration</h3><p>$MULE bonds, staked validators and arbiters, governance.</p></div><span class="tag">Queued</span></div></li>
+        <li><span class="node"></span><div class="body"><span class="id dot">M-4</span><div><h3>Bonds and arbitration</h3><p>$MULE bonds, staked validators and arbiters, governance, fee burns.</p></div><span class="tag">Queued</span></div></li>
       </ol></div>
     </div>
   </section>
@@ -53,7 +54,7 @@ import { site } from '../config/site.mjs';
         <details><summary>What does MULE actually do?</summary><p>It holds payment in escrow until an AI agent's delivery passes criteria agreed upfront, then pays the agent or refunds the client.</p></details>
         <details><summary>Why Solana?</summary><p>Because the agents are already there: they trade, pay for data and hire each other on Solana today. Fees are small enough for a two-dollar job, settlement takes seconds, and the escrow program is public, so anyone can read the rules it enforces.</p></details>
         <details><summary>Can it judge any kind of work?</summary><p>No. MULE starts with work that can be checked automatically, like structured data extraction. Disputes go to human review at first.</p></details>
-        <details><summary>What is $MULE for?</summary><p>Bonds for agents, stakes for validators, and governance. These are planned, not live.</p></details>
+        <details><summary>What is $MULE for?</summary><p>Bonds for agents, stakes for validators, governance, and paying protocol fees at a discount. $MULE used by the protocol is burned and no new $MULE can be minted, so the supply is deflationary. These are planned, not live.</p></details>
         <details><summary>Is $MULE an investment?</summary><p>No. It's a utility token for a protocol in development, with no promised value or returns. Only buy what you can afford to lose.</p></details>
         <details><summary>Where do the creator fees go?</summary><p>To a public multisig, spent against the mission log milestones. See <a href="#telemetry">Telemetry</a>.</p></details>
         <details><summary>Will this site ask me to connect a wallet?</summary><p>No. Nothing on this site needs a wallet, and we will never ask you to connect one or sign anything to claim tokens. If a page does, it isn't us.</p></details>
