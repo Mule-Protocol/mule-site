@@ -1,0 +1,385 @@
+{
+  "capturedAt": "2026-10-07T16:25:49.128Z",
+  "url": "https://8e443e93.mule-site.pages.dev/",
+  "engine": "Chromium headless; not physical devices",
+  "results": [
+    {
+      "width": 360,
+      "horizontalOverflow": false,
+      "lifecycle": [
+        "LOAD",
+        "LOCK",
+        "TRANSIT",
+        "INSPECT",
+        "SETTLE"
+      ],
+      "transitions": [
+        {
+          "step": 1,
+          "pausedCardTop": 72.453125,
+          "resumedStep": 1
+        },
+        {
+          "step": 2,
+          "pausedCardTop": 72.140625,
+          "resumedStep": 2
+        },
+        {
+          "step": 3,
+          "pausedCardTop": 71.828125,
+          "resumedStep": 3
+        },
+        {
+          "step": 4,
+          "pausedCardTop": 71.515625,
+          "resumedStep": 4
+        },
+        {
+          "step": 5,
+          "pausedCardTop": 71.953125,
+          "resumedStep": 5
+        }
+      ],
+      "geometry": [
+        {
+          "stageWidth": 328,
+          "stageHeight": 240.53125,
+          "muleWidth": 224.01546050021145,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        },
+        {
+          "stageWidth": 328,
+          "stageHeight": 240.53125,
+          "muleWidth": 223.12287518653002,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        },
+        {
+          "stageWidth": 328,
+          "stageHeight": 240.53125,
+          "muleWidth": 226.801751945958,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        },
+        {
+          "stageWidth": 328,
+          "stageHeight": 240.53125,
+          "muleWidth": 256.51603993502533,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        },
+        {
+          "stageWidth": 328,
+          "stageHeight": 240.53125,
+          "muleWidth": 224.3671616911888,
+          "annotationHeight": 43,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        }
+      ],
+      "accessibleStepsExactlyOnce": true,
+      "externalRequests": [],
+      "errors": [],
+      "font": {
+        "family": "Archivo, \"Arial Black\", Arial, sans-serif",
+        "ready": true
+      }
+    },
+    {
+      "width": 375,
+      "horizontalOverflow": false,
+      "lifecycle": [
+        "LOAD",
+        "LOCK",
+        "TRANSIT",
+        "INSPECT",
+        "SETTLE"
+      ],
+      "transitions": [
+        {
+          "step": 1,
+          "pausedCardTop": 71.65625,
+          "resumedStep": 1
+        },
+        {
+          "step": 2,
+          "pausedCardTop": 72.265625,
+          "resumedStep": 2
+        },
+        {
+          "step": 3,
+          "pausedCardTop": 71.875,
+          "resumedStep": 3
+        },
+        {
+          "step": 4,
+          "pausedCardTop": 72.484375,
+          "resumedStep": 4
+        },
+        {
+          "step": 5,
+          "pausedCardTop": 71.84375,
+          "resumedStep": 5
+        }
+      ],
+      "geometry": [
+        {
+          "stageWidth": 343,
+          "stageHeight": 251.53125,
+          "muleWidth": 234.26015870679507,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        },
+        {
+          "stageWidth": 343,
+          "stageHeight": 251.53125,
+          "muleWidth": 233.32675358923996,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        },
+        {
+          "stageWidth": 343,
+          "stageHeight": 251.53125,
+          "muleWidth": 237.17387312108818,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        },
+        {
+          "stageWidth": 343,
+          "stageHeight": 251.53125,
+          "muleWidth": 268.2470580014315,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        },
+        {
+          "stageWidth": 343,
+          "stageHeight": 251.53125,
+          "muleWidth": 234.62794393301007,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        }
+      ],
+      "accessibleStepsExactlyOnce": true,
+      "externalRequests": [],
+      "errors": [],
+      "font": {
+        "family": "Archivo, \"Arial Black\", Arial, sans-serif",
+        "ready": true
+      }
+    },
+    {
+      "width": 768,
+      "horizontalOverflow": false,
+      "lifecycle": [
+        "LOAD",
+        "LOCK",
+        "TRANSIT",
+        "INSPECT",
+        "SETTLE"
+      ],
+      "transitions": [
+        {
+          "step": 1,
+          "pausedCardTop": 71.96875,
+          "resumedStep": 1
+        },
+        {
+          "step": 2,
+          "pausedCardTop": 71.78125,
+          "resumedStep": 2
+        },
+        {
+          "step": 3,
+          "pausedCardTop": 71.59375,
+          "resumedStep": 3
+        },
+        {
+          "step": 4,
+          "pausedCardTop": 72.40625,
+          "resumedStep": 4
+        },
+        {
+          "step": 5,
+          "pausedCardTop": 72.21875,
+          "resumedStep": 5
+        }
+      ],
+      "geometry": [
+        {
+          "stageWidth": 720,
+          "stageHeight": 225,
+          "muleWidth": 138.3034257888794,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 248.96875,
+          "overflow": false
+        },
+        {
+          "stageWidth": 720,
+          "stageHeight": 225,
+          "muleWidth": 137.75235843658447,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 248.96875,
+          "overflow": false
+        },
+        {
+          "stageWidth": 720,
+          "stageHeight": 225,
+          "muleWidth": 140.0236358642578,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 248.96875,
+          "overflow": false
+        },
+        {
+          "stageWidth": 720,
+          "stageHeight": 225,
+          "muleWidth": 158.36874389648438,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 248.96875,
+          "overflow": false
+        },
+        {
+          "stageWidth": 720,
+          "stageHeight": 225,
+          "muleWidth": 138.5205602645874,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 248.96875,
+          "overflow": false
+        }
+      ],
+      "accessibleStepsExactlyOnce": true,
+      "externalRequests": [],
+      "errors": [],
+      "font": {
+        "family": "Archivo, \"Arial Black\", Arial, sans-serif",
+        "ready": true
+      }
+    },
+    {
+      "width": 1440,
+      "horizontalOverflow": false,
+      "lifecycle": [
+        "LOAD",
+        "LOCK",
+        "TRANSIT",
+        "INSPECT",
+        "SETTLE"
+      ],
+      "transitions": [
+        {
+          "step": 1,
+          "pausedCardTop": 71.90625,
+          "resumedStep": 1
+        },
+        {
+          "step": 2,
+          "pausedCardTop": 71.71875,
+          "resumedStep": 2
+        },
+        {
+          "step": 3,
+          "pausedCardTop": 71.53125,
+          "resumedStep": 3
+        },
+        {
+          "step": 4,
+          "pausedCardTop": 72.34375,
+          "resumedStep": 4
+        },
+        {
+          "step": 5,
+          "pausedCardTop": 72.15625,
+          "resumedStep": 5
+        }
+      ],
+      "geometry": [
+        {
+          "stageWidth": 1200,
+          "stageHeight": 375,
+          "muleWidth": 230.50570964813232,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 173.25,
+          "overflow": false
+        },
+        {
+          "stageWidth": 1200,
+          "stageHeight": 375,
+          "muleWidth": 229.58726406097412,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 173.25,
+          "overflow": false
+        },
+        {
+          "stageWidth": 1200,
+          "stageHeight": 375,
+          "muleWidth": 233.3727264404297,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 173.25,
+          "overflow": false
+        },
+        {
+          "stageWidth": 1200,
+          "stageHeight": 375,
+          "muleWidth": 263.9479064941406,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 173.25,
+          "overflow": false
+        },
+        {
+          "stageWidth": 1200,
+          "stageHeight": 375,
+          "muleWidth": 230.867600440979,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 173.25,
+          "overflow": false
+        }
+      ],
+      "accessibleStepsExactlyOnce": true,
+      "externalRequests": [],
+      "errors": [],
+      "font": {
+        "family": "Archivo, \"Arial Black\", Arial, sans-serif",
+        "ready": true
+      }
+    },
+    {
+      "reducedMotion": true,
+      "pinned": false,
+      "runningAnimations": 0,
+      "keyboardSkipLink": true
+    },
+    {
+      "javaScriptDisabled": true,
+      "readableSteps": 5
+    }
+  ]
+}

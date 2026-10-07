@@ -64,7 +64,7 @@ async function initMotion(generation: number, restore: { step: number; y: number
     const x = 100 + step * 180 + movement * 180 - 112;
     mule.setAttribute('transform', `translate(${x.toFixed(1)} 95) scale(0.75)`);
     // A close camera follows the mule on small screens; desktop keeps the whole track.
-    stage.setAttribute('viewBox', mobileScene.matches ? `${(x - 5).toFixed(1)} 80 270 190` : '0 0 960 300');
+    stage.setAttribute('viewBox', mobileScene.matches ? `${(x - 5).toFixed(1)} 72 270 198` : '0 0 960 300');
     inner.classList.toggle('walking', step === 2 || (movement > 0 && movement < 1));
     if (lastStep === step) return;
     lastStep = step;

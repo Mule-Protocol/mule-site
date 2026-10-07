@@ -1,0 +1,54 @@
+{
+  "measuredAt": "2026-10-07T16:29:13.046Z",
+  "url": "https://8e443e93.mule-site.pages.dev/",
+  "environment": "Live Cloudflare Pages preview over the network, simulated mobile throttling; not a physical phone.",
+  "performance": 99,
+  "accessibility": 100,
+  "lcpMs": 1696.7085000000002,
+  "cls": 0.01505876315912688,
+  "transferredBytes": 79062,
+  "throttling": {
+    "rttMs": 150,
+    "throughputKbps": 1638.4,
+    "requestLatencyMs": 562.5,
+    "downloadThroughputKbps": 1474.5600000000002,
+    "uploadThroughputKbps": 675,
+    "cpuSlowdownMultiplier": 4
+  },
+  "failedAudits": [
+    {
+      "id": "first-contentful-paint",
+      "score": 0.95,
+      "title": "First Contentful Paint",
+      "displayValue": "1.5 s"
+    },
+    {
+      "id": "largest-contentful-paint",
+      "score": 0.99,
+      "title": "Largest Contentful Paint",
+      "displayValue": "1.7 s"
+    },
+    {
+      "id": "speed-index",
+      "score": 0.95,
+      "title": "Speed Index",
+      "displayValue": "2.9 s"
+    },
+    {
+      "id": "is-crawlable",
+      "score": 0,
+      "title": "Page is blocked from indexing"
+    },
+    {
+      "id": "network-dependency-tree-insight",
+      "score": 0,
+      "title": "Network dependency tree"
+    },
+    {
+      "id": "render-blocking-insight",
+      "score": 0,
+      "title": "Render-blocking requests",
+      "displayValue": "Est savings of 270 ms"
+    }
+  ]
+}

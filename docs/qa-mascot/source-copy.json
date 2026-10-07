@@ -1,0 +1,66 @@
+{
+  "source": "final/ fourni par le propriétaire",
+  "files": [
+    {
+      "name": "M1_planche-finale.png",
+      "sha256": "136a4a980c9ba45b71eff31ba8bc007d1155b469ebf7b11065cd8f4a88597aa9"
+    },
+    {
+      "name": "M1_unit-m1_2000px.png",
+      "sha256": "559e98b6ecd477bd9c432cc45813e4a0d88ec51671b3528ee0600588f73c50fd"
+    },
+    {
+      "name": "unit-m1-favicon.svg",
+      "sha256": "d26634b271e936620faf306f54ee5923095c418c334b673d869ca9b9f885578a"
+    },
+    {
+      "name": "unit-m1-head.svg",
+      "sha256": "0b63c7fb98f1881fee9ee3d232f41f2152776ccfd0df35733bf2b384b0110143"
+    },
+    {
+      "name": "unit-m1-pose-delivered.svg",
+      "sha256": "13dbd03b434709ccfc26b3152c35f7afb8a13fc1c31b78d059e4d40646e3a0c1"
+    },
+    {
+      "name": "unit-m1-pose-idle.svg",
+      "sha256": "5856e0b8c7a54109632b6bb39df6c7123422c5173fc48a725a093b575d7665c3"
+    },
+    {
+      "name": "unit-m1-pose-load.svg",
+      "sha256": "1a86f7dbebd680a342730236ef371e46b451e4453e74bf10bfb42ce91d92ed6a"
+    },
+    {
+      "name": "unit-m1-pose-locked.svg",
+      "sha256": "eaa7c9fc00db6b584ea4d76b585b719e3138f8097c3284663a7366466d83df2a"
+    },
+    {
+      "name": "unit-m1-pose-neutral.svg",
+      "sha256": "2a9f0f6ae54ddfccc2457b1323e3e61da88d4417393f580aa9a94819c51a2883"
+    },
+    {
+      "name": "unit-m1-pose-refuse.svg",
+      "sha256": "bc4e540d90a7cf7240b376dc3323fea9715cb225083961a70930c4706b7648d3"
+    },
+    {
+      "name": "unit-m1-pose-scan.svg",
+      "sha256": "c1462767c3a28c2a8c0ac2260fa9b681cfd0a6b44ff463c9ea75dbe4d0331180"
+    },
+    {
+      "name": "unit-m1-pose-walk.svg",
+      "sha256": "8270c2f9b1866a8c75d308153dbfc2f804091cded5e2685030dad57f9f095a6a"
+    },
+    {
+      "name": "unit-m1.svg",
+      "sha256": "d885b462fc4bf1789cc6fc81d856e8976702355f60901849e17b31ae2faf4c09"
+    },
+    {
+      "name": "source/build.js",
+      "sha256": "aefe460882e1d3f766dea9996de13c8f43300734b96880de7020cf2bd62e3f02"
+    },
+    {
+      "name": "source/m1.js",
+      "sha256": "222c626a65d883135ed7c259060e0668a5bb118f8064d7642e8bd322c2783b0c"
+    }
+  ],
+  "byteIdentical": true
+}

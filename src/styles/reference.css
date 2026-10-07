@@ -84,17 +84,7 @@ a { color: inherit; }
 @media (min-width: 900px) { .hero__fig { order: 0; } }
 .hero__fig svg { width: 100%; height: auto; display: block; overflow: visible; }
 
-/* Mule drawing parts */
-.mule .leg { transform-box: view-box; }
-.mule.walking .leg-a { animation: stride 0.9s ease-in-out infinite; }
-.mule.walking .leg-b { animation: stride 0.9s ease-in-out infinite; animation-delay: -0.45s; }
-.mule.walking .upper { animation: bob 0.45s ease-in-out infinite; }
-@keyframes stride { 0%, 100% { transform: rotate(8deg); } 50% { transform: rotate(-8deg); } }
-@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.6px); } }
-.mule .tip { animation: blink 1.6s steps(1) infinite; }
-.mule .tip + .tip { animation-delay: -0.8s; }
-.mule .eye { animation: eye 4s steps(1) infinite; transform-box: fill-box; transform-origin: center; }
-@keyframes eye { 0%, 92%, 100% { transform: scaleY(1); } 94% { transform: scaleY(0.15); } }
+/* Supplied mascot groups and pivots live in mascot.css. */
 .scan { animation: scan 3.6s cubic-bezier(.45,0,.55,1) infinite; }
 @keyframes scan { 0% { transform: translateY(8px); } 50% { transform: translateY(206px); } 100% { transform: translateY(8px); } }
 .callout path { stroke-dasharray: 160; stroke-dashoffset: 160; animation: draw 0.7s steps(10) forwards; }
@@ -106,7 +96,7 @@ a { color: inherit; }
 /* Ticker */
 .ticker { margin-top: 48px; display: flex; align-items: center; background: var(--ink); color: var(--surface); overflow: hidden; white-space: nowrap; padding: 9px 0; }
 .ticker__k { flex: none; position: relative; z-index: 1; background: var(--ink); padding: 0 14px; border-right: 1px solid var(--surface); margin-right: 14px; font-size: 10px; }
-.ticker__track { display: inline-block; font-family: var(--font-dot); font-weight: 700; font-size: 14px; animation: tick 34s linear infinite; }
+.ticker__track { display: inline-block; font-family: var(--font-dot); font-weight: 700; font-size: 14px; animation: tick 34s steps(120) infinite; }
 .ticker__track i { font-style: normal; padding: 0 14px; color: var(--signal); }
 .ticker__track b { font-weight: 700; color: var(--signal); }
 @keyframes tick { to { transform: translateX(-50%); } }
@@ -138,19 +128,14 @@ a { color: inherit; }
 .lc-rail span.on { color: var(--ink); }
 .lc-rail span.on::before { content: ""; position: absolute; top: -2px; left: 0; height: 3px; width: 100%; background: var(--ink); }
 .lc-rail span.cur::before { background: var(--signal); }
-.stage .st-crate-lock, .stage .st-criteria, .stage .st-scan, .stage .st-check, .stage .st-out { opacity: 0; transition: opacity 0.2s steps(2); }
+.stage .st-crate-lock, .stage .st-criteria, .stage .st-check, .stage .st-out { opacity: 0; transition: opacity 0.2s steps(2); }
 .stage[data-step="1"] .st-criteria, .stage[data-step="2"] .st-criteria, .stage[data-step="3"] .st-criteria, .stage[data-step="4"] .st-criteria { opacity: 1; }
 .stage[data-step="2"] .st-crate-lock, .stage[data-step="3"] .st-crate-lock, .stage[data-step="4"] .st-crate-lock, .stage[data-step="5"] .st-crate-lock { opacity: 1; }
-.stage[data-step="4"] .st-scan, .stage[data-step="4"] .st-check { opacity: 1; }
+.stage[data-step="4"] .st-check { opacity: 1; }
 .stage[data-step="5"] .st-out { opacity: 1; }
-.stage .st-scan line, .stage .st-scan rect { animation: scanx 1.2s ease-in-out infinite alternate; transform-box: view-box; }
-@keyframes scanx { from { transform: translateX(0); } to { transform: translateX(96px); } }
 .stage .station { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
 .stage .station.on { fill: var(--ink); }
 .stage .station.cur { fill: var(--signal); }
-.stage .st-lockstamp { transform-box: fill-box; transform-origin: center; }
-.stage[data-step="2"] .st-lockstamp { animation: stamp 0.35s steps(4) both; }
-@keyframes stamp { from { transform: scale(1.8) rotate(-8deg); } to { transform: scale(1) rotate(-8deg); } }
 
 /* Footer */
 .foot { border-top: 2px solid var(--ink); padding-block: 40px 56px; display: grid; gap: 32px; }
@@ -170,13 +155,5 @@ a { color: inherit; }
 }
 
 .ref-style-1 { margin:0 }
-
-.ref-style-2 { transform-origin:92px 140px }
-
-.ref-style-3 { transform-origin:106px 140px }
-
-.ref-style-4 { transform-origin:198px 140px }
-
-.ref-style-5 { transform-origin:212px 140px }
 
 .ref-style-6 { width:100% }

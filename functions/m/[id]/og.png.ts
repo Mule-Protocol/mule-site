@@ -11,7 +11,7 @@ export const onRequest = async ({ request, params }: { request: Request; params:
     const status=mission.settled?'SETTLED':'RETURNED';
     // Rendering-only styles never enter an HTML response. All text comes from the strict ID parser.
     const element={type:'div',props:{style:{display:'flex',width:1200,height:630,background:'#E9E8E3',color:'#0E0E0E',fontFamily:'MuleMono',padding:60,alignItems:'center',border:'3px solid #0E0E0E'},children:[
-      {type:'img',props:{width:340,height:374,src:`data:image/svg+xml;base64,${btoa(patchSilhouette().replaceAll('#FF4F00',mission.settled?'#FF4F00':'#5F5E59'))}`}},
+      {type:'img',props:{width:340,height:374,src:`data:image/svg+xml;base64,${btoa(patchSilhouette(mission.settled,true))}`}},
       {type:'div',props:{style:{display:'flex',flexDirection:'column',paddingLeft:50},children:[
         {type:'div',props:{style:{fontSize:22,color:'#A83200',marginBottom:38},children:'MULE / MISSION PATCH'}},
         {type:'div',props:{style:{fontSize:60},children:mission.mission}},
