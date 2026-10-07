@@ -1,0 +1,20 @@
+$ curl -sS --max-time 30 -I https://muleprotocol.com/risks/
+HTTP/1.1 404 Not Found
+Date: Wed, 07 Oct 2026 17:21:56 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=kDryxwAlRDVCxkPXEsgqAsoJInMXi07szl2li7cLQToX2%2BDqh%2FwiQ5pUQ%2BG8ZCMLfOGieOsLGwqcLW3e1OLGXwaS4dWKzPeNzzQMdO0DZIcdKP2J4rgI%2FnLkwmIzOBkI47b%2Bz05fcDVi1JbbHkym"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Cache-Control: no-store
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Robots-Tag: noindex, nofollow
+content-security-policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+permissions-policy: camera=(), microphone=(), geolocation=(), payment=()
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-frame-options: DENY
+Server: cloudflare
+cf-cache-status: DYNAMIC
+CF-RAY: a46e95ca5fc446a0-CDG
+alt-svc: h3=":443"; ma=86400
+

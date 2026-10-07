@@ -1,10 +1,45 @@
 {
   "zone": "muleprotocol.com",
   "zone_id": "e7ee9658588c6e5a90b950de4925d977",
-  "exportedAt": "2026-10-07T17:16:39.7317278Z",
-  "context": "Refreshed after the owner enabled Email Routing; before any agent mutation",
-  "totalCount": 5,
+  "exportedAt": "2026-10-07T17:21:11.1415638Z",
+  "totalCount": 8,
   "records": [
+    {
+      "id": "bc1a607e6583169533d26fa183169134",
+      "name": "muleprotocol.com",
+      "type": "CNAME",
+      "content": "mule-site.pages.dev",
+      "proxiable": true,
+      "proxied": true,
+      "ttl": 1,
+      "settings": {
+        "flatten_cname": false
+      },
+      "meta": {},
+      "comment": "MULE domain connection - 2026-10-07 - codex/domain",
+      "tags": [],
+      "created_on": "2026-10-07T17:17:51.45543Z",
+      "modified_on": "2026-10-07T17:17:51.45543Z",
+      "comment_modified_on": "2026-10-07T17:17:51.45543Z"
+    },
+    {
+      "id": "1421c8625fc5676a6e1793a01699e7a2",
+      "name": "www.muleprotocol.com",
+      "type": "CNAME",
+      "content": "mule-site.pages.dev",
+      "proxiable": true,
+      "proxied": true,
+      "ttl": 1,
+      "settings": {
+        "flatten_cname": false
+      },
+      "meta": {},
+      "comment": "MULE domain connection - 2026-10-07 - codex/domain",
+      "tags": [],
+      "created_on": "2026-10-07T17:17:51.833409Z",
+      "modified_on": "2026-10-07T17:17:51.833409Z",
+      "comment_modified_on": "2026-10-07T17:17:51.833409Z"
+    },
     {
       "id": "e559bf476e885983b6ff2f8a2d93315a",
       "name": "muleprotocol.com",
@@ -79,6 +114,22 @@
       "tags": [],
       "created_on": "2026-10-07T17:15:00.076129Z",
       "modified_on": "2026-10-07T17:15:00.076129Z"
+    },
+    {
+      "id": "3ea7825856f70ca1b696ecf487651726",
+      "name": "_dmarc.muleprotocol.com",
+      "type": "TXT",
+      "content": "v=DMARC1; p=reject; adkim=s; aspf=s",
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {},
+      "comment": "MULE domain connection - 2026-10-07 - codex/domain",
+      "tags": [],
+      "created_on": "2026-10-07T17:21:09.130412Z",
+      "modified_on": "2026-10-07T17:21:09.130412Z",
+      "comment_modified_on": "2026-10-07T17:21:09.130412Z"
     },
     {
       "id": "ebd8c999ed97d52ccda638cd20b59158",

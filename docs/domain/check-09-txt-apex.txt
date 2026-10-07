@@ -1,0 +1,40 @@
+$ Resolve-DnsName -Name muleprotocol.com -Type TXT -Server 1.1.1.1 -DnssecOk
+
+QueryType    : TXT
+Text         : {v=spf1 include:_spf.mx.cloudflare.net ~all}
+Strings      : {v=spf1 include:_spf.mx.cloudflare.net ~all}
+Name         : muleprotocol.com
+Type         : TXT
+CharacterSet : Unicode
+Section      : Answer
+DataLength   : 16
+TTL          : 300
+
+QueryType    : RRSIG
+Key          : 34505
+TypeCovered  : TXT
+Algorithm    : 13
+LabelCount   : 2
+OriginalTtl  : 300
+Expiration   : 08/10/2026 18:21:54
+Signed       : 06/10/2026 16:21:54
+KeyTag       : 34505
+Signer       : muleprotocol.com
+Signature    : {197, 161, 168, 88…}
+Name         : muleprotocol.com
+Type         : RRSIG
+CharacterSet : Unicode
+Section      : Answer
+DataLength   : 130
+TTL          : 300
+
+QueryType    : OPT
+Data         : {}
+Name         : .
+Type         : OPT
+CharacterSet : Unicode
+Section      : Additional
+DataLength   : 4
+TTL          : 32768
+
+

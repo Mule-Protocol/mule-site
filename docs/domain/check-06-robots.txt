@@ -1,0 +1,4 @@
+$ curl -sS --max-time 30 https://muleprotocol.com/robots.txt
+User-agent: *
+Allow: /
+Sitemap: https://muleprotocol.com/sitemap.xml

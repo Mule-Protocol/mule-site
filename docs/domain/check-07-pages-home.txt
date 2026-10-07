@@ -1,0 +1,20 @@
+$ curl -sS --max-time 30 -I https://mule-site.pages.dev/
+HTTP/1.1 200 OK
+Date: Wed, 07 Oct 2026 17:21:58 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Cache-Control: public, max-age=0, must-revalidate
+ETag: "be0bcaf14fbd1e8571c5ee1ff8db684b"
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+content-security-policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+permissions-policy: camera=(), microphone=(), geolocation=(), payment=()
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-robots-tag: noindex, nofollow
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2FxVg6tgiRY7ZLL8VEqV4%2BxDLYCgmrM2HUu5EPPoC%2FSa7%2BUHM3tzUGO%2B3azGRjuXad16sg%2Ff6y%2BqjbU4n7spTqFWDqeeCAMfNU6JBexnVMDoomh7m4f8Yqw8TCGj55Dg0xnO87gDGWsxNkQtyMHKGbrvS"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Server: cloudflare
+CF-RAY: a46e95d32de8d120-CDG
+alt-svc: h3=":443"; ma=86400
+

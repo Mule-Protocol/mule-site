@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-10-07T17:21:11.258Z",
+  "beforeCount": 5,
+  "afterCount": 8,
+  "preserved": [
+    {
+      "id": "e559bf476e885983b6ff2f8a2d93315a",
+      "type": "MX",
+      "name": "muleprotocol.com",
+      "preserved": true
+    },
+    {
+      "id": "c6e48a43127cac7ae747e8155fbab8f7",
+      "type": "MX",
+      "name": "muleprotocol.com",
+      "preserved": true
+    },
+    {
+      "id": "2c3b44fa3dcf33de4f68e8c0494ada6a",
+      "type": "MX",
+      "name": "muleprotocol.com",
+      "preserved": true
+    },
+    {
+      "id": "c7fda68e119c5ff0e2a7a02b4ff10075",
+      "type": "TXT",
+      "name": "cf2024-1._domainkey.muleprotocol.com",
+      "preserved": true
+    },
+    {
+      "id": "ebd8c999ed97d52ccda638cd20b59158",
+      "type": "TXT",
+      "name": "muleprotocol.com",
+      "preserved": true
+    }
+  ],
+  "created": [
+    {
+      "id": "bc1a607e6583169533d26fa183169134",
+      "type": "CNAME",
+      "name": "muleprotocol.com",
+      "content": "mule-site.pages.dev",
+      "proxied": true,
+      "createdByThisTask": true
+    },
+    {
+      "id": "1421c8625fc5676a6e1793a01699e7a2",
+      "type": "CNAME",
+      "name": "www.muleprotocol.com",
+      "content": "mule-site.pages.dev",
+      "proxied": true,
+      "createdByThisTask": true
+    },
+    {
+      "id": "3ea7825856f70ca1b696ecf487651726",
+      "type": "TXT",
+      "name": "_dmarc.muleprotocol.com",
+      "content": "v=DMARC1; p=reject; adkim=s; aspf=s",
+      "proxied": false,
+      "createdByThisTask": true
+    }
+  ],
+  "emailRouting": "Owner reported enabled and syncing; DNS confirms three MX and existing SPF/DKIM",
+  "spfDkimPolicy": "Existing SPF and DKIM preserved; only DMARC added"
+}

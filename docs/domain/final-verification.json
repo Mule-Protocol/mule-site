@@ -1,0 +1,60 @@
+{
+  "verifiedAt": "2026-10-07T17:24:41.709Z",
+  "productionCommit": "90bebbbfc070efccf8936140b4661806ea25c7b5",
+  "domainHtmlMatchesVerifiedProduction": true,
+  "domainHtmlSha256": "0dc0db1f7e597ccdbc90d239bd9e33a8afce874fbab116eeb962be40519e1a1d",
+  "domainsCheckedAt": "2026-10-07T17:20:16.2062120Z",
+  "domains": [
+    {
+      "name": "muleprotocol.com",
+      "status": "active",
+      "verification": "active",
+      "validation": "active",
+      "certificateAuthority": "google",
+      "createdOn": "2026-10-07T17:17:18.689126Z"
+    },
+    {
+      "name": "www.muleprotocol.com",
+      "status": "active",
+      "verification": "active",
+      "validation": "active",
+      "certificateAuthority": "google",
+      "createdOn": "2026-10-07T17:17:19.869402Z"
+    }
+  ],
+  "dnsBeforeCount": 5,
+  "dnsAfterCount": 8,
+  "dnssec": {
+    "authenticatedData": true,
+    "ds": [
+      {
+        "name": "muleprotocol.com",
+        "type": 43,
+        "TTL": 86400,
+        "data": "2371 13 2 6ad9c3c1cabcbd3fde054dbb7ef3dae6326c757f58331131341ed1af7172c4e7"
+      }
+    ]
+  },
+  "ogImages": [
+    {
+      "request": 1,
+      "width": 1200,
+      "height": 630,
+      "sha256": "cd4a1c55221e3a3e29d33775a721f577d38bac052fdc77554ecbe4d8e60374fc"
+    },
+    {
+      "request": 2,
+      "width": 1200,
+      "height": 630,
+      "sha256": "cd4a1c55221e3a3e29d33775a721f577d38bac052fdc77554ecbe4d8e60374fc"
+    },
+    {
+      "request": 3,
+      "width": 1200,
+      "height": 630,
+      "sha256": "cd4a1c55221e3a3e29d33775a721f577d38bac052fdc77554ecbe4d8e60374fc"
+    }
+  ],
+  "ogCacheCriterion": "PARTIAL: exact URL MISS then MISS with CF-Cache-Status MISS then HIT; query variant reports X-MULE-OG-Cache HIT",
+  "dnsTool": "Resolve-DnsName and Cloudflare DNS-over-HTTPS; dig not installed"
+}

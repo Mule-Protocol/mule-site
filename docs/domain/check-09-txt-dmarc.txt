@@ -1,0 +1,40 @@
+$ Resolve-DnsName -Name _dmarc.muleprotocol.com -Type TXT -Server 1.1.1.1 -DnssecOk
+
+QueryType    : TXT
+Text         : {v=DMARC1; p=reject; adkim=s; aspf=s}
+Strings      : {v=DMARC1; p=reject; adkim=s; aspf=s}
+Name         : _dmarc.muleprotocol.com
+Type         : TXT
+CharacterSet : Unicode
+Section      : Answer
+DataLength   : 16
+TTL          : 300
+
+QueryType    : RRSIG
+Key          : 34505
+TypeCovered  : TXT
+Algorithm    : 13
+LabelCount   : 3
+OriginalTtl  : 300
+Expiration   : 08/10/2026 18:21:54
+Signed       : 06/10/2026 16:21:54
+KeyTag       : 34505
+Signer       : muleprotocol.com
+Signature    : {125, 179, 134, 91…}
+Name         : _dmarc.muleprotocol.com
+Type         : RRSIG
+CharacterSet : Unicode
+Section      : Answer
+DataLength   : 130
+TTL          : 300
+
+QueryType    : OPT
+Data         : {}
+Name         : .
+Type         : OPT
+CharacterSet : Unicode
+Section      : Additional
+DataLength   : 4
+TTL          : 32768
+
+

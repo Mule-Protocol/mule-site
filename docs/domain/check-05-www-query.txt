@@ -1,0 +1,18 @@
+$ curl -sS --max-time 30 -I https://www.muleprotocol.com/dossier/?x=1
+HTTP/1.1 301 Moved Permanently
+Date: Wed, 07 Oct 2026 17:21:57 GMT
+Connection: keep-alive
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=SGhseiZa4qcbw00VXeK3bpWqAhHwiJg8jsdJVKG1bzabdw7sKZWOJ36fq%2FtVWgwb4X%2BNzZHJQo7HLFkwmQ8vwsOw2k2KqN1gyHgsFPkqeZ4i2hRr56D4O%2BTSYyIqt8Keo2T6PsBoxqF00c1nCtmRyaTKQA%3D%3D"}]}
+Location: https://muleprotocol.com/dossier/?x=1
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Server: cloudflare
+cf-cache-status: DYNAMIC
+CF-RAY: a46e95cf09d0341e-CDG
+alt-svc: h3=":443"; ma=86400
+

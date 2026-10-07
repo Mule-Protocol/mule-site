@@ -1,0 +1,37 @@
+$ curl -sS --max-time 30 -I -L https://www.muleprotocol.com/risks
+HTTP/1.1 301 Moved Permanently
+Date: Wed, 07 Oct 2026 17:21:56 GMT
+Connection: keep-alive
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=vkp1vhY7vx6dEmDB9w7oh%2F2j6EDYe8ABXvQCTgstCce4xlVdYpKM9ROHeROSsfiuw8qw7AXJYSdkAX72NQzImEIoh%2FdS%2FVP9lD8FLaUGTmSVISS1G8oPMON4SZ0lIc%2BTT%2BzGQGHwx3bcnbCC6rys44R6Sg%3D%3D"}]}
+Location: https://muleprotocol.com/risks
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Server: cloudflare
+cf-cache-status: DYNAMIC
+CF-RAY: a46e95c89a476f52-CDG
+alt-svc: h3=":443"; ma=86400
+
+HTTP/1.1 404 Not Found
+Date: Wed, 07 Oct 2026 17:21:56 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=IpNWg%2FzxH1xumcc9xoU20SO1eEErdaX%2F0LiqqGiV3aaAe7atKCdS%2BIin%2F5TtrCdpzJhA3BySy6Mq11%2FIjTV9LYheV8LC7xAK7lTp6snX7wPDPftZGfoZGWTzFoc9efUgZiFfOimuHioQqmPeP7aR"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Cache-Control: no-store
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Robots-Tag: noindex, nofollow
+content-security-policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+permissions-policy: camera=(), microphone=(), geolocation=(), payment=()
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-frame-options: DENY
+Server: cloudflare
+cf-cache-status: DYNAMIC
+CF-RAY: a46e95c94c8b9ea5-CDG
+alt-svc: h3=":443"; ma=86400
+

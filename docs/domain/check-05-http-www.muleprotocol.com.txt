@@ -1,0 +1,13 @@
+$ curl -sS --max-time 30 -I http://www.muleprotocol.com/
+HTTP/1.1 301 Moved Permanently
+Date: Wed, 07 Oct 2026 17:21:57 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Location: https://www.muleprotocol.com/
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=px5slSoRNc3peVh%2BG%2Fzh7uRoKVbejlmr7iwtpp3auen8Wu6c6WFFrj1CmWq65lnTuJNaiqe0a3SPRZLCXuroCiE6743H3a7s2y4EwgKIUuxXT2ofjLRSvIf8x5PcfNXf4OpjP59ZcAl6KkUBmUBdEiwSZQ%3D%3D"}]}
+Server: cloudflare
+cf-cache-status: DYNAMIC
+CF-RAY: a46e95d0586e9eb0-CDG
+alt-svc: h3=":443"; ma=86400
+
