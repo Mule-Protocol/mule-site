@@ -130,7 +130,7 @@ a { color: inherit; }
 .lc-rail span.cur::before { background: var(--signal); }
 .stage .st-crate-lock, .stage .st-criteria, .stage .st-check, .stage .st-out { opacity: 0; transition: opacity 0.2s steps(2); }
 .stage[data-step="1"] .st-criteria, .stage[data-step="2"] .st-criteria, .stage[data-step="3"] .st-criteria, .stage[data-step="4"] .st-criteria { opacity: 1; }
-.stage[data-step="2"] .st-crate-lock, .stage[data-step="3"] .st-crate-lock, .stage[data-step="4"] .st-crate-lock, .stage[data-step="5"] .st-crate-lock { opacity: 1; }
+.stage[data-step="2"] .st-crate-lock, .stage[data-step="3"] .st-crate-lock, .stage[data-step="4"] .st-crate-lock { opacity: 1; }
 .stage[data-step="4"] .st-check { opacity: 1; }
 .stage[data-step="5"] .st-out { opacity: 1; }
 .stage .station { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }

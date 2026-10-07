@@ -1,0 +1,106 @@
+[
+  {
+    "file": "animated-step-2-1440.png",
+    "width": 1440,
+    "height": 844,
+    "differentPixels": 0,
+    "changedBounds": null
+  },
+  {
+    "file": "animated-step-2-375.png",
+    "width": 375,
+    "height": 576,
+    "differentPixels": 0,
+    "changedBounds": null
+  },
+  {
+    "file": "animated-step-4-1440.png",
+    "width": 1440,
+    "height": 844,
+    "differentPixels": 0,
+    "changedBounds": null
+  },
+  {
+    "file": "animated-step-4-375.png",
+    "width": 375,
+    "height": 597,
+    "differentPixels": 0,
+    "changedBounds": null
+  },
+  {
+    "file": "animated-step-5-1440.png",
+    "width": 1440,
+    "height": 844,
+    "differentPixels": 227,
+    "changedBounds": {
+      "minX": 1122,
+      "minY": 546,
+      "maxX": 1158,
+      "maxY": 553
+    }
+  },
+  {
+    "file": "animated-step-5-375.png",
+    "width": 375,
+    "height": 597,
+    "differentPixels": 0,
+    "changedBounds": null
+  },
+  {
+    "file": "no-js-step-5-1440.png",
+    "width": 1248,
+    "height": 334,
+    "differentPixels": 168,
+    "changedBounds": {
+      "minX": 999,
+      "minY": 142,
+      "maxX": 1029,
+      "maxY": 147
+    }
+  },
+  {
+    "file": "no-js-step-5-375.png",
+    "width": 375,
+    "height": 459,
+    "differentPixels": 0,
+    "changedBounds": null
+  },
+  {
+    "file": "paused-step-5-1440.png",
+    "width": 1248,
+    "height": 334,
+    "differentPixels": 166,
+    "changedBounds": {
+      "minX": 999,
+      "minY": 142,
+      "maxX": 1029,
+      "maxY": 147
+    }
+  },
+  {
+    "file": "paused-step-5-375.png",
+    "width": 375,
+    "height": 459,
+    "differentPixels": 0,
+    "changedBounds": null
+  },
+  {
+    "file": "reduced-step-5-1440.png",
+    "width": 1248,
+    "height": 334,
+    "differentPixels": 166,
+    "changedBounds": {
+      "minX": 999,
+      "minY": 142,
+      "maxX": 1029,
+      "maxY": 147
+    }
+  },
+  {
+    "file": "reduced-step-5-375.png",
+    "width": 375,
+    "height": 459,
+    "differentPixels": 0,
+    "changedBounds": null
+  }
+]
