@@ -22,7 +22,7 @@ export async function applyResponsePolicy(request, next, { legalPublished = site
     url.port = '';
     return new Response(null, { status: 301, headers: { ...securityHeaders, Location: url.href } });
   }
-  const legalPath = /^\/(legal|privacy|risks)\/?$/.test(url.pathname);
+  const legalPath = /^\/(legal|privacy|risks)(\/.*)?$/.test(url.pathname);
   const hidden = url.hostname === site.DOMAIN && legalPath && !legalPublished;
   const original = hidden ? await notFound() : await next();
   const response = new Response(request.method === 'HEAD' ? null : original.body, {

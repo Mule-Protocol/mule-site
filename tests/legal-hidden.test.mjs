@@ -94,10 +94,24 @@ test('www redirects before any asset lookup, including draft routes', async () =
 });
 
 test('the gate does not intercept other site routes', async () => {
-  for (const path of ['/', '/dossier/', '/legal-example/', '/privacy-policy/', '/risks-and-limits/']) {
+  for (const path of ['/', '/dossier/', '/legalese', '/legal-example/', '/privacy-policy/', '/risks-and-limits/']) {
     const response = await applyResponsePolicy(new Request(`https://muleprotocol.com${path}`),
       () => new Response('Public page'), { notFound: forbidden });
     assert.equal(response.status, 200);
     assert.equal(response.headers.get('X-Robots-Tag'), null);
   }
 });
+
+for (const path of ['/legal//', '/legal/x', '/privacy//', '/risks/index.html', '/legal/?a=1']) {
+  test(`unpublished legal prefix variant ${path} is hidden and noindex on the apex`, async () => {
+    for (const method of ['GET', 'HEAD']) {
+      const response = await applyResponsePolicy(new Request(`https://muleprotocol.com${path}`, { method }),
+        forbidden, { legalPublished: false, notFound });
+      assert.equal(response.status, 404);
+      assert.equal(response.headers.get('X-Robots-Tag'), 'noindex, nofollow');
+      assert.equal(response.headers.get('Cache-Control'), 'no-store');
+      assert.equal(await response.text(), method === 'HEAD' ? '' : errorHtml);
+      assertSecurity(response);
+    }
+  });
+}
