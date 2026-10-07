@@ -1,16 +1,17 @@
 # MULE — revue de la première passe
 
-État vérifié le 7 octobre 2026. Portage local du héros et du cycle de mission. **Aucun déploiement distant effectué.**
+État vérifié le 7 octobre 2026. Héros et cycle de mission portés et **déployés en préproduction sur Cloudflare Pages**. Première passe en attente de revue ; aucune production publiée.
 
 Le brief impose une première passe limitée aux sections 5.1 et 5.3, une URL de préproduction, puis une revue du propriétaire avant la suite : `reference/MULE_site_prompt.md`, section 1. L'architecture statique sans adaptateur a été validée par le propriétaire et figure dans les deux documents de référence actualisés.
 
 ## Résultat et accès
 
 - Prévisualisation locale : http://127.0.0.1:4321/ (machine de développement uniquement).
-- URL de préproduction Cloudflare : **non créée**.
+- Préproduction Cloudflare : déploiement de `codex/pass-1` réussi par GitHub Actions ; URL remise au propriétaire pour revue.
 - Production : `https://muleprotocol.com` est la cible, **pas une mise en ligne vérifiée**.
 - Dépôt : `https://github.com/Mule-Protocol/mule-site`, créé puis rendu public par le propriétaire le 7 octobre pour disposer des protections de branche gratuites. Le code et l'historique ont été vérifiés avant leur envoi ; aucun secret détecté.
-- Secrets `CLOUDFLARE_API_TOKEN` et `CLOUDFLARE_ACCOUNT_ID` enregistrés dans GitHub Actions, jamais dans le code. Règle `main` : PR obligatoire, aucun contournement administrateur, force push et suppression interdits. Exécution du workflow distant en préparation.
+- Secrets `CLOUDFLARE_API_TOKEN` et `CLOUDFLARE_ACCOUNT_ID` enregistrés dans GitHub Actions, jamais dans le code. Règle `main` active : PR obligatoire, contrôle `Validate` requis et branche à jour, aucun contournement administrateur, force push et suppression interdits.
+- Première exécution distante réussie : [GitHub Actions, run 37553373564](https://github.com/Mule-Protocol/mule-site/actions/runs/37553373564), commit `9f913166ede9f665bce4e9ce54ea921dcc9b676f`. Validation, build et déploiement réussis.
 - Cloudflare : projet Pages `mule-site` créé, branche de production `main`. Aucun changement DNS ou registrar effectué.
 
 ## Mesures locales
@@ -40,8 +41,9 @@ Le dernier ajustement après la mesure Lighthouse concerne le mode d'indexation 
 - **Fait localement** : compilation de préproduction ; `robots.txt` interdit l'indexation et la balise robots est `noindex, nofollow`.
 - **Fait localement** : `/404` porte `noindex` dans les deux modes. Le contrôle des fichiers générés est exécuté par `scripts/check-build.mjs`, y compris en CI.
 - **Fait localement** : Wrangler a compilé `functions/_middleware.ts` et reconnu les quatre règles de `_headers`. Requêtes sur le simulateur officiel avec les noms d'hôte apex, www et preview : 301 www conservant chemin et query ; sécurité sur 200/404 ; `X-Robots-Tag` sur les previews, absent de l'apex. Sorties curl brutes : `artifacts/pass-1/curl-local-pages.txt`.
+- **Fait sur la préproduction déployée** : HTTPS 200, `X-Robots-Tag: noindex, nofollow`, balise robots concordante, `robots.txt` avec `Disallow: /`, CSP, HSTS et autres en-têtes attendus présents. Héros et cycle visibles ; aucun avertissement ou erreur relevé dans la console du navigateur. Preuves : `artifacts/pass-1/curl-preview.txt`, `robots-preview.txt` et `deployed-check.json`.
 - **Fait** : `LAUNCHED=false`, adresse de contrat et liens de trading absents ; aucune connexion de wallet, police distante ou requête vers un tiers observée pendant la QA.
-- **Non fait** : attachement des deux domaines, validation des certificats, capture de Custom domains et `curl -I` sur le domaine réel. Dépend du dépôt accessible, de la préproduction et des revues prévues par le brief.
+- **Non fait** : attachement des deux domaines, validation des certificats, capture de Custom domains et `curl -I` sur le domaine réel. Attend les revues et la fin du site prévues par le brief.
 - **Non fait** : SPF/DMARC/DKIM. L'état Email Routing sera contrôlé avant toute création. Aucun enregistrement existant modifié.
 - **Export DNS préalable disponible** : `artifacts/dns-before.json`, export complet à 2026-10-06T23:44:24Z, zéro enregistrement à cet instant. Ce n'est pas l'export final après déploiement.
 - **Non fait** : activation de Cloudflare Web Analytics. Aucun identifiant analytics inventé.
@@ -56,8 +58,8 @@ Le dernier ajustement après la mesure Lighthouse concerne le mode d'indexation 
 | Lighthouse mobile ≥ 90 sur `/` et `/dossier` | **Non fait intégralement** | `/` : 99/100 local. `/dossier` n'est pas encore porté, conformément à la première passe. |
 | Aucun défaut d'encodage ; UTF-8 | **Fait pour les pages livrées** | Contrôle du HTML généré ; aucune séquence « Â », « â€ » ou caractère de remplacement. Reste à vérifier les futures pages. |
 | Console : 2 comportements × 3 modèles, écusson, partage X | **Non fait** | Deuxième passe, après revue. |
-| Liens externes corrects, aucun placeholder en production | **Non fait intégralement** | Aucun placeholder visible introduit dans le portage. X reprend l'adresse fournie. Aucun site en production ; GitHub cible actuellement inaccessible. CTA console/dossier désactivés pendant cette revue. |
-| Cartes de partage dans un brouillon X | **Non fait** | Pas d'URL déployée ; aucun accès X demandé. Cartes PNG fournies intégrées aux fichiers locaux. |
+| Liens externes corrects, aucun placeholder en production | **Non fait intégralement** | Aucun placeholder visible introduit dans le portage. X reprend l'adresse fournie ; dépôt GitHub public accessible. Aucun site en production. CTA console/dossier désactivés pendant cette revue. |
+| Cartes de partage dans un brouillon X | **Non fait** | Contrôle à effectuer par le propriétaire dans X ; aucun accès X demandé. Cartes PNG fournies intégrées à la préproduction. |
 
 ## Captures et enregistrement
 
@@ -74,6 +76,6 @@ Le SVG du prototype reste la mascotte en attendant les assets définitifs. Les l
 
 Les boutons console et dossier sont désactivés pendant la première passe. Ils seront reliés à leurs destinations dans la deuxième. Les métadonnées, icônes, la page 404, les en-têtes et le workflow sont préparés maintenant car nécessaires à une préproduction vérifiable.
 
-Prochaine étape : déployer cette branche en préproduction par GitHub Actions et soumettre la première passe à la revue. Après validation : construire les autres sections, `/dossier`, les écussons et images dans `functions/m/[id].ts`, puis les pages légales, confidentialité et risques à faire rédiger ou revoir par le conseil indiqué dans le brief. L'API M-1 future ira dans `functions/api/`.
+Prochaine étape : revue du héros et du cycle sur la préproduction déployée. Après validation : construire les autres sections, `/dossier`, les écussons et images dans `functions/m/[id].ts`, puis les pages légales, confidentialité et risques à faire rédiger ou revoir par le conseil indiqué dans le brief. L'API M-1 future ira dans `functions/api/`.
 
 La vérification des comptes/2FA, du second propriétaire et des textes juridiques revient au propriétaire selon le brief. Registrar, DNSSEC et domaine de secours sont hors du travail demandé. Aucun post X, changement de contrat ou lancement de token n'a été effectué.
