@@ -39,7 +39,7 @@ try {
     assert.equal(font.ready, true);
     await page.screenshot({ path: `${output}/hero-${width}.png` });
     if (width < 768) {
-      const firstButton = await page.locator('.hero__ctas button').first().boundingBox();
+      const firstButton = await page.locator('.hero__ctas a').first().boundingBox();
       assert.ok(firstButton.y + firstButton.height <= 812, 'First hero CTA fits on the initial mobile screen');
     }
     await checkAccessibleSteps(page, 'animated', width);
@@ -56,7 +56,7 @@ try {
       if (width < 768) await page.waitForFunction(() => document.querySelector('#stage').viewBox.baseVal.width === 270);
       const stateSelector = ['.st-criteria', '.st-crate-lock', '.st-crate-lock', '.st-scan', '.st-out'][i];
       await page.waitForFunction(selector => getComputedStyle(document.querySelector(`#stage ${selector}`)).opacity === '1', stateSelector);
-      await page.waitForFunction(() => document.querySelector('[data-flip]').textContent === '03');
+      await page.waitForFunction(() => document.querySelector('#lifecycle [data-flip]').textContent === '03');
       labels.push(await page.locator('#lcLabel').innerText());
       const measurements = await page.evaluate(() => {
         const stage = document.querySelector('#stage').getBoundingClientRect();
@@ -113,6 +113,11 @@ try {
     assert.equal(await page.locator('.lifecycle-static li').count(), 5);
     assert.equal(await page.locator('.lifecycle-static').isVisible(), true);
     assert.equal(await page.locator('#trail').isVisible(), false);
+    // A manual scroll while paused must select the card with its top nearest 72px.
+    await page.locator('#lifecycle-step-4').evaluate(el => scrollTo(0,scrollY+el.getBoundingClientRect().top-110));
+    await toggleMotion(page);
+    await page.waitForFunction(()=>document.querySelector('#lifecycle').dataset.animated==='true' && document.querySelector('#stage').dataset.step==='4');
+    await toggleMotion(page);
     if (width < 900) {
       await page.getByRole('button', { name: 'Open navigation menu' }).click();
       assert.equal(await page.locator('#mobileMenu').isVisible(), true);

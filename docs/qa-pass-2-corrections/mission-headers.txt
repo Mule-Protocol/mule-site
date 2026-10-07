@@ -1,0 +1,18 @@
+HTTP/1.1 200 OK
+Date: Wed, 07 Oct 2026 02:53:53 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Cache-Control: public, max-age=3600
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Robots-Tag: noindex, nofollow
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=iC5Ix6mU16CsalCi8TFbu5rmoOnYCVt1TC5%2Fq9MCN%2BS7MeUZFzhaeZIPW9TWbZpmn5SeRAGcd1zu4OE5R8aPqdaaODp6zfyTkSiOsSCPnSUIKjlOMoCI%2FE%2B9rD%2Fp3VoYGNv6M93KOtCutaMZXHJQyQVvurgsyw4saHQnTVXKfw%3D%3D"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Server: cloudflare
+CF-RAY: a4699e387c694e30-CDG
+alt-svc: h3=":443"; ma=86400
+

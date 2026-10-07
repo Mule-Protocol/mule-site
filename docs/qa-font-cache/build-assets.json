@@ -1,0 +1,32 @@
+[
+  {
+    "page": "index.html",
+    "preload": "/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+    "fontFace": "/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+    "identical": true
+  },
+  {
+    "page": "dossier/index.html",
+    "preload": "/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+    "fontFace": "/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+    "identical": true
+  },
+  {
+    "page": "legal/index.html",
+    "preload": "/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+    "fontFace": "/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+    "identical": true
+  },
+  {
+    "page": "privacy/index.html",
+    "preload": "/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+    "fontFace": "/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+    "identical": true
+  },
+  {
+    "page": "risks/index.html",
+    "preload": "/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+    "fontFace": "/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+    "identical": true
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "source": "node_modules/@fontsource-variable/archivo/files/archivo-latin-standard-normal.woff2",
+  "output": "public/brand/fonts/archivo-125-800-latin.woff2",
+  "axes": {
+    "wght": 800,
+    "wdth": 125
+  },
+  "beforeBytes": 90104,
+  "afterBytes": 8184,
+  "sourceSha256": "e3a28eade21a900c7155a247757f4b2834c07bb7ef07ad7efa55cebaac1e8f5e",
+  "outputSha256": "8aa4a2cc0df5861def922e3c403ef71e31eaa81962eadb8aac1472ab2da2f729",
+  "glyphs": 148,
+  "unicodeCount": 104,
+  "notInOriginalFont": [
+    "U+2713"
+  ],
+  "static": true,
+  "note": "A character absent from the original Archivo retains the existing CSS fallback; no substitute glyph is invented."
+}

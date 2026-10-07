@@ -5,5 +5,6 @@ export default defineConfig({
   site: site.origin,
   output: 'static',
   build: { inlineStylesheets: 'never' },
-  vite: { build: { assetsInlineLimit: 0 } },
+  // One cached external stylesheet avoids a second render-blocking round trip on mobile.
+  vite: { build: { assetsInlineLimit: 0, cssCodeSplit: false } },
 });

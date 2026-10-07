@@ -1,6 +1,7 @@
 import { lifecycle } from '../data/lifecycle';
 
 const root = document.documentElement;
+root.dataset.js = 'true';
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const motionButton = document.querySelector<HTMLButtonElement>('#motionToggle')!;
 let paused = reduced.matches;
@@ -8,8 +9,8 @@ let cleanupMotion: (() => void) | undefined;
 let motionGeneration = 0;
 let motionObserver: IntersectionObserver | undefined;
 let cleanupTrail: (() => void) | undefined;
-const section = document.querySelector<HTMLElement>('#lifecycle')!;
-const staticSteps = document.querySelector<HTMLOListElement>('.lifecycle-static')!;
+const section = document.querySelector<HTMLElement>('#lifecycle');
+const staticSteps = document.querySelector<HTMLOListElement>('.lifecycle-static');
 const mobileScene = matchMedia('(max-width: 767px)');
 let currentStep = 0;
 let pausedAnchor: { step: number; y: number } | null = null;
@@ -41,6 +42,7 @@ addEventListener('scroll', updateProgress, { passive: true });
 addEventListener('resize', updateProgress);
 
 async function initMotion(generation: number, restore: { step: number; y: number } | null = null) {
+  if (!section) return;
   const [{ gsap }, { ScrollTrigger }] = await Promise.all([import('gsap'), import('gsap/ScrollTrigger')]);
   if (generation !== motionGeneration || paused || reduced.matches) return;
   const readingY = scrollY;
@@ -89,31 +91,12 @@ async function initMotion(generation: number, restore: { step: number; y: number
   const updateCamera = () => render(scrollTrigger.progress);
   mobileScene.addEventListener('change', updateCamera);
   render(scrollTrigger.progress);
-  const timers = new Set<ReturnType<typeof setInterval>>();
-  const flipObserver = new IntersectionObserver(entries => {
-    for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      const el = entry.target;
-      const value = el.textContent;
-      let count = 0;
-      const timer = setInterval(() => {
-        if (++count > 6 || paused) { el.textContent = value; clearInterval(timer); timers.delete(timer); }
-        else el.textContent = String(Math.floor(Math.random() * 90) + 10);
-      }, 45);
-      timers.add(timer);
-      flipObserver.unobserve(el);
-    }
-  }, { threshold: 0.6 });
-  document.querySelectorAll('[data-flip]').forEach(el => flipObserver.observe(el));
   cleanupMotion = () => {
     disposed = true;
     // The layout is CSS sticky, so do not let GSAP restore an old scroll position.
     scrollTrigger.kill(false);
     delete section.dataset.animated;
     mobileScene.removeEventListener('change', updateCamera);
-    flipObserver.disconnect();
-    timers.forEach(clearInterval);
-    document.querySelectorAll('[data-flip]').forEach(el => { el.textContent = '03'; });
     root.classList.remove('motion-ready');
     inner.classList.remove('walking');
     updateProgress();
@@ -130,14 +113,15 @@ async function initMotion(generation: number, restore: { step: number; y: number
 }
 
 function readingStep(): number | null {
+  if (!section || !staticSteps) return null;
   const bounds = section.getBoundingClientRect();
   if (bounds.top >= innerHeight || bounds.bottom <= 72) return null;
   if (root.classList.contains('motion-ready')) return currentStep;
   // Near the document end the browser may clamp scrollY before the last card reaches the top.
   if (pausedAnchor && Math.abs(scrollY - pausedAnchor.y) < 2) return pausedAnchor.step;
   // On resume, respect any reading/scrolling done in the static list while paused.
-  const index = Array.from(staticSteps.children).findIndex(item => item.getBoundingClientRect().bottom > 72);
-  return index < 0 ? null : index;
+  const cards = Array.from(staticSteps.children);
+  return cards.reduce((best, card, index) => Math.abs(card.getBoundingClientRect().top - 72) < Math.abs(cards[best].getBoundingClientRect().top - 72) ? index : best, 0);
 }
 
 function setMotion(preservePosition = true) {
@@ -152,10 +136,11 @@ function setMotion(preservePosition = true) {
   root.dataset.motion = off ? 'off' : 'on';
   motionButton.setAttribute('aria-pressed', String(off));
   motionButton.disabled = reduced.matches;
-  root.classList.toggle('motion-ready', !off);
-  staticSteps.classList.toggle('sr-only', !off);
+  root.classList.toggle('motion-ready', !off && !!section);
+  staticSteps?.classList.toggle('sr-only', !off);
+  document.dispatchEvent(new CustomEvent('mule:motion', { detail: { off } }));
   let restore: { step: number; y: number } | null = null;
-  if (anchor !== null) {
+  if (anchor !== null && section && staticSteps) {
     currentStep = anchor;
     if (off) {
       const item = staticSteps.children[anchor];
@@ -177,7 +162,7 @@ function setMotion(preservePosition = true) {
       motionObserver?.disconnect();
       void initMotion(generation, restore).catch(() => { paused = true; setMotion(); });
     });
-    motionObserver.observe(document.querySelector('#lifecycle')!);
+    if (section) motionObserver.observe(section);
   }
   updateProgress();
 }

@@ -2,11 +2,12 @@
   font-family: 'Archivo';
   font-style: normal;
   font-display: swap;
-  font-weight: 100 900;
-  font-stretch: 62% 125%;
-  src: url('@fontsource-variable/archivo/files/archivo-latin-standard-normal.woff2') format('woff2');
+  font-weight: 800;
+  font-stretch: 125%;
+  src: url('../assets/fonts/archivo-125-800-latin.woff2') format('woff2');
 }
 /* Small accessibility/layout fixes, retaining the reference's visual design. */
+[hidden] { display:none !important; }
 :focus-visible { outline: 2px solid var(--signal); outline-offset: 4px; }
 html { scroll-padding-top: 72px; }
 button { font: inherit; }
@@ -91,3 +92,9 @@ button { font: inherit; }
 html[data-motion="off"] *, html[data-motion="off"] *::before, html[data-motion="off"] *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 html[data-motion="off"] .callout path { stroke-dashoffset: 0; }
 html[data-motion="off"] #trail { display: none; }
+.legal-page { padding-block:48px 80px; max-width:1000px; }
+.legal-page h1 { font-size:clamp(34px,6vw,72px); margin-block:32px; }
+.legal-page section { padding-block:20px; }
+.legal-page p { overflow-wrap:anywhere; max-width:72ch; }
+.draft-banner { border:2px solid var(--signal); padding:16px; width:fit-content; }
+.foot ul { list-style:none; margin:0; padding:0; }

@@ -1,0 +1,392 @@
+{
+  "before": "https://6a8a3baf.mule-site.pages.dev",
+  "after": "https://6e6ff294.mule-site.pages.dev",
+  "pages": [
+    {
+      "name": "home",
+      "width": 375,
+      "identicalTitleGeometry": true,
+      "identicalText": true,
+      "identicalScriptsAndOrder": true,
+      "images": [
+        {
+          "name": "home-375",
+          "changedPixels": 49,
+          "visiblePixels": 24,
+          "maxDelta": 41,
+          "pixels": 337500
+        },
+        {
+          "name": "home-375-title-0",
+          "changedPixels": 49,
+          "visiblePixels": 24,
+          "maxDelta": 41,
+          "pixels": 43218
+        },
+        {
+          "name": "home-375-title-1",
+          "changedPixels": 331,
+          "visiblePixels": 235,
+          "maxDelta": 48,
+          "pixels": 63112
+        },
+        {
+          "name": "home-375-title-2",
+          "changedPixels": 360,
+          "visiblePixels": 299,
+          "maxDelta": 89,
+          "pixels": 19894
+        },
+        {
+          "name": "home-375-title-3",
+          "changedPixels": 29,
+          "visiblePixels": 12,
+          "maxDelta": 20,
+          "pixels": 19894
+        },
+        {
+          "name": "home-375-title-4",
+          "changedPixels": 229,
+          "visiblePixels": 188,
+          "maxDelta": 89,
+          "pixels": 19894
+        },
+        {
+          "name": "home-375-title-5",
+          "changedPixels": 9,
+          "visiblePixels": 1,
+          "maxDelta": 20,
+          "pixels": 10323
+        },
+        {
+          "name": "home-375-title-6",
+          "changedPixels": 0,
+          "visiblePixels": 0,
+          "maxDelta": 0,
+          "pixels": 10323
+        },
+        {
+          "name": "home-375-title-7",
+          "changedPixels": 0,
+          "visiblePixels": 0,
+          "maxDelta": 0,
+          "pixels": 10323
+        },
+        {
+          "name": "home-375-title-8",
+          "changedPixels": 69,
+          "visiblePixels": 57,
+          "maxDelta": 20,
+          "pixels": 29841
+        },
+        {
+          "name": "home-375-title-9",
+          "changedPixels": 36,
+          "visiblePixels": 23,
+          "maxDelta": 20,
+          "pixels": 19894
+        },
+        {
+          "name": "home-375-title-10",
+          "changedPixels": 41,
+          "visiblePixels": 34,
+          "maxDelta": 20,
+          "pixels": 19894
+        }
+      ]
+    },
+    {
+      "name": "dossier",
+      "width": 375,
+      "identicalTitleGeometry": true,
+      "identicalText": true,
+      "identicalScriptsAndOrder": true,
+      "images": [
+        {
+          "name": "dossier-375",
+          "changedPixels": 16,
+          "visiblePixels": 1,
+          "maxDelta": 20,
+          "pixels": 337500
+        },
+        {
+          "name": "dossier-375-title-0",
+          "changedPixels": 16,
+          "visiblePixels": 1,
+          "maxDelta": 20,
+          "pixels": 39445
+        },
+        {
+          "name": "dossier-375-title-1",
+          "changedPixels": 46,
+          "visiblePixels": 28,
+          "maxDelta": 48,
+          "pixels": 25725
+        },
+        {
+          "name": "dossier-375-title-2",
+          "changedPixels": 85,
+          "visiblePixels": 54,
+          "maxDelta": 48,
+          "pixels": 34300
+        },
+        {
+          "name": "dossier-375-title-3",
+          "changedPixels": 26,
+          "visiblePixels": 20,
+          "maxDelta": 46,
+          "pixels": 17493
+        },
+        {
+          "name": "dossier-375-title-4",
+          "changedPixels": 169,
+          "visiblePixels": 152,
+          "maxDelta": 89,
+          "pixels": 25725
+        },
+        {
+          "name": "dossier-375-title-5",
+          "changedPixels": 314,
+          "visiblePixels": 253,
+          "maxDelta": 89,
+          "pixels": 34300
+        },
+        {
+          "name": "dossier-375-title-6",
+          "changedPixels": 202,
+          "visiblePixels": 186,
+          "maxDelta": 82,
+          "pixels": 25725
+        },
+        {
+          "name": "dossier-375-title-7",
+          "changedPixels": 32,
+          "visiblePixels": 16,
+          "maxDelta": 48,
+          "pixels": 17493
+        },
+        {
+          "name": "dossier-375-title-8",
+          "changedPixels": 28,
+          "visiblePixels": 16,
+          "maxDelta": 41,
+          "pixels": 25725
+        },
+        {
+          "name": "dossier-375-title-9",
+          "changedPixels": 24,
+          "visiblePixels": 20,
+          "maxDelta": 45,
+          "pixels": 25725
+        },
+        {
+          "name": "dossier-375-title-10",
+          "changedPixels": 20,
+          "visiblePixels": 8,
+          "maxDelta": 40,
+          "pixels": 17493
+        },
+        {
+          "name": "dossier-375-title-11",
+          "changedPixels": 12,
+          "visiblePixels": 8,
+          "maxDelta": 40,
+          "pixels": 8575
+        }
+      ]
+    },
+    {
+      "name": "home",
+      "width": 1440,
+      "identicalTitleGeometry": true,
+      "identicalText": true,
+      "identicalScriptsAndOrder": true,
+      "images": [
+        {
+          "name": "home-1440",
+          "changedPixels": 455,
+          "visiblePixels": 197,
+          "maxDelta": 45,
+          "pixels": 1296000
+        },
+        {
+          "name": "home-1440-title-0",
+          "changedPixels": 455,
+          "visiblePixels": 197,
+          "maxDelta": 45,
+          "pixels": 265440
+        },
+        {
+          "name": "home-1440-title-1",
+          "changedPixels": 1048,
+          "visiblePixels": 464,
+          "maxDelta": 71,
+          "pixels": 324714
+        },
+        {
+          "name": "home-1440-title-2",
+          "changedPixels": 870,
+          "visiblePixels": 503,
+          "maxDelta": 58,
+          "pixels": 108336
+        },
+        {
+          "name": "home-1440-title-3",
+          "changedPixels": 208,
+          "visiblePixels": 37,
+          "maxDelta": 54,
+          "pixels": 54046
+        },
+        {
+          "name": "home-1440-title-4",
+          "changedPixels": 1049,
+          "visiblePixels": 503,
+          "maxDelta": 81,
+          "pixels": 147600
+        },
+        {
+          "name": "home-1440-title-5",
+          "changedPixels": 9,
+          "visiblePixels": 1,
+          "maxDelta": 18,
+          "pixels": 8140
+        },
+        {
+          "name": "home-1440-title-6",
+          "changedPixels": 0,
+          "visiblePixels": 0,
+          "maxDelta": 0,
+          "pixels": 8140
+        },
+        {
+          "name": "home-1440-title-7",
+          "changedPixels": 0,
+          "visiblePixels": 0,
+          "maxDelta": 0,
+          "pixels": 8140
+        },
+        {
+          "name": "home-1440-title-8",
+          "changedPixels": 331,
+          "visiblePixels": 163,
+          "maxDelta": 46,
+          "pixels": 146400
+        },
+        {
+          "name": "home-1440-title-9",
+          "changedPixels": 834,
+          "visiblePixels": 544,
+          "maxDelta": 72,
+          "pixels": 74400
+        },
+        {
+          "name": "home-1440-title-10",
+          "changedPixels": 251,
+          "visiblePixels": 98,
+          "maxDelta": 54,
+          "pixels": 73200
+        }
+      ]
+    },
+    {
+      "name": "dossier",
+      "width": 1440,
+      "identicalTitleGeometry": true,
+      "identicalText": true,
+      "identicalScriptsAndOrder": true,
+      "images": [
+        {
+          "name": "dossier-1440",
+          "changedPixels": 475,
+          "visiblePixels": 282,
+          "maxDelta": 60,
+          "pixels": 1296000
+        },
+        {
+          "name": "dossier-1440-title-0",
+          "changedPixels": 475,
+          "visiblePixels": 282,
+          "maxDelta": 60,
+          "pixels": 226920
+        },
+        {
+          "name": "dossier-1440-title-1",
+          "changedPixels": 40,
+          "visiblePixels": 2,
+          "maxDelta": 21,
+          "pixels": 58520
+        },
+        {
+          "name": "dossier-1440-title-2",
+          "changedPixels": 352,
+          "visiblePixels": 254,
+          "maxDelta": 48,
+          "pixels": 87400
+        },
+        {
+          "name": "dossier-1440-title-3",
+          "changedPixels": 9,
+          "visiblePixels": 0,
+          "maxDelta": 14,
+          "pixels": 29640
+        },
+        {
+          "name": "dossier-1440-title-4",
+          "changedPixels": 213,
+          "visiblePixels": 177,
+          "maxDelta": 89,
+          "pixels": 58520
+        },
+        {
+          "name": "dossier-1440-title-5",
+          "changedPixels": 564,
+          "visiblePixels": 440,
+          "maxDelta": 82,
+          "pixels": 87400
+        },
+        {
+          "name": "dossier-1440-title-6",
+          "changedPixels": 30,
+          "visiblePixels": 11,
+          "maxDelta": 21,
+          "pixels": 58520
+        },
+        {
+          "name": "dossier-1440-title-7",
+          "changedPixels": 45,
+          "visiblePixels": 1,
+          "maxDelta": 21,
+          "pixels": 58520
+        },
+        {
+          "name": "dossier-1440-title-8",
+          "changedPixels": 75,
+          "visiblePixels": 23,
+          "maxDelta": 21,
+          "pixels": 58520
+        },
+        {
+          "name": "dossier-1440-title-9",
+          "changedPixels": 20,
+          "visiblePixels": 1,
+          "maxDelta": 21,
+          "pixels": 58520
+        },
+        {
+          "name": "dossier-1440-title-10",
+          "changedPixels": 242,
+          "visiblePixels": 178,
+          "maxDelta": 89,
+          "pixels": 29640
+        },
+        {
+          "name": "dossier-1440-title-11",
+          "changedPixels": 11,
+          "visiblePixels": 1,
+          "maxDelta": 21,
+          "pixels": 29640
+        }
+      ]
+    }
+  ]
+}

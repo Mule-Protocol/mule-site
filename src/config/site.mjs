@@ -10,8 +10,7 @@ export const site = Object.freeze({
   DEXSCREENER_URL: null,
   GITHUB_URL: 'https://github.com/mule-protocol/mule-site',
   TREASURY_MULTISIG: null,
-  // The brief requires review of the hero and lifecycle before pass 2.
-  REVIEW_PASS: 1,
+  REVIEW_PASS: 2,
 });
 
 // Token launch and search indexing are deliberately independent.

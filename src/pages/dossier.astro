@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import content from '../content/dossier.html?raw';
+import '../styles/dossier.css';
+---
+<Base title="MULE — Dossier" description="The MULE protocol dossier: escrow, acceptance criteria, settlement, funding, milestones and risks." image="/images/dossier.png" imageAlt="MULE protocol dossier">
+  <Header />
+  <div class="dossier-document" set:html={content} />
+  <Footer />
+  <script src="../scripts/site.ts"></script>
+  <script src="../scripts/dossier.ts"></script>
+</Base>

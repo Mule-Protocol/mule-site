@@ -22,3 +22,9 @@ test('apex stays public; Pages hosts and errors are noindex with security header
     }
   }
 });
+test('draft legal documents and every mission path remain noindex on the production host', async () => {
+  for (const path of ['/legal','/legal/','/privacy','/risks/','/m','/m/0042-s-inv-20261007','/m/0042-s-inv-20261007/og.png','/m/unknown/nested/path']) {
+    const response=await applyResponsePolicy(new Request(`https://muleprotocol.com${path}`),()=>new Response('Draft'));
+    assert.equal(response.headers.get('X-Robots-Tag'),'noindex, nofollow');
+  }
+});
