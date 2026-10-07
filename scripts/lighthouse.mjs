@@ -21,7 +21,7 @@ try {
   const metrics = {
     measuredAt: result.lhr.fetchTime,
     url: result.lhr.finalDisplayedUrl,
-    environment: 'Local preview, simulated mobile throttling; not a live domain or physical phone.',
+    environment: `${new URL(target).hostname.endsWith('.pages.dev') ? 'Live Cloudflare Pages preview over the network' : 'Local preview'}, simulated mobile throttling; not a physical phone.`,
     performance: Math.round(categories.performance.score * 100),
     accessibility: Math.round(categories.accessibility.score * 100),
     lcpMs: audits['largest-contentful-paint'].numericValue,

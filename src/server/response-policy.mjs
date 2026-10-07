@@ -21,6 +21,6 @@ export async function applyResponsePolicy(request, next) {
   const response = new Response(original.body, original);
   response.headers.delete('Access-Control-Allow-Origin');
   for (const [key, value] of Object.entries(securityHeaders)) response.headers.set(key, value);
-  if (url.hostname !== site.DOMAIN || /^\/(legal|privacy|risks)\/?$/.test(url.pathname)) response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  if (url.hostname !== site.DOMAIN || /^\/(legal|privacy|risks)\/?$/.test(url.pathname) || /^\/m(?:\/|$)/.test(url.pathname)) response.headers.set('X-Robots-Tag', 'noindex, nofollow');
   return response;
 }

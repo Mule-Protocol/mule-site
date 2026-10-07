@@ -10,6 +10,7 @@ export function parseMissionId(value) {
   const match = /^([0-9]{4})-(s|r)-(inv|con|adr)-([0-9]{4})([0-9]{2})([0-9]{2})$/.exec(value);
   if (!match) return null;
   const [, number, status, code, year, month, day] = match;
+  if (Number(year) < 2026 || Number(year) > 2099) return null;
   const date = `${year}-${month}-${day}`;
   const parsed = new Date(`${date}T00:00:00.000Z`);
   if (!Number.isFinite(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== date) return null;
@@ -18,7 +19,7 @@ export function parseMissionId(value) {
 }
 
 export function missionId(number, settled, template, date = new Date()) {
-  const day = date.toISOString().slice(0, 10).replaceAll('-', '');
+  const day = `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}`;
   const id = `${String(number).padStart(4, '0')}-${settled ? 's' : 'r'}-${templates[template]?.code}-${day}`;
   if (!parseMissionId(id)) throw new RangeError('Invalid mission identifier');
   return id;

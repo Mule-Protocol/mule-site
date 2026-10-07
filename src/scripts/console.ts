@@ -38,10 +38,12 @@ async function drawPatch(id: string) {
   ctx.beginPath();ctx.moveTo(87,66);ctx.lineTo(81,51);ctx.moveTo(96,67);ctx.lineTo(99,50);ctx.stroke();
   polygon([[82,66],[104,68],[128,92],[126,102],[114,104],[90,90]],null,'#0E0E0E',3.5);
   for(const [x,y,r,color] of [[81,51,3,'#0E0E0E'],[99,50,3,'#0E0E0E'],[101,75,3.4,'#FF4F00']] as const){ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();}
-  ctx.textAlign='center';ctx.fillStyle='#0E0E0E';ctx.font='900 24px Doto';ctx.fillText(mission.mission,100,132);
-  ctx.font='600 11px "Azeret Mono"';ctx.fillText(mission.settled?'SETTLED ✓':'RETURNED',100,151);
-  ctx.font='400 7px "Azeret Mono"';ctx.fillText(mission.template.toUpperCase(),100,165);
-  ctx.fillStyle='#5F5E59';ctx.fillText(mission.date,100,178);ctx.fillText('SIMULATION · NO REAL FUNDS',100,189);ctx.restore();
+  ctx.textAlign='center';ctx.fillStyle='#0E0E0E';ctx.font='900 24px Doto';ctx.fillText(mission.mission,100,126);
+  ctx.font='600 11px "Azeret Mono"';ctx.fillText(mission.settled?'SETTLED ✓':'RETURNED',100,141);
+  ctx.font='400 7px "Azeret Mono"';ctx.fillText(mission.template.toUpperCase(),100,152);
+  // The longer notice sits above the date, where the inner hexagon is wider.
+  ctx.fillStyle='#5F5E59';ctx.font='400 5.5px "Azeret Mono"';ctx.fillText('SIMULATION · NO REAL FUNDS',100,162);
+  ctx.font='400 7px "Azeret Mono"';ctx.fillText(mission.date,100,175);ctx.restore();
   canvas.setAttribute('aria-label',`${mission.mission}, ${mission.settled?'settled':'returned'}, ${mission.template}, ${mission.date}. Simulation, no real funds.`);
 }
 

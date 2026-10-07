@@ -143,4 +143,5 @@ fieldset { margin: 0; padding: 0; border: 0; min-width: 0; display: grid; gap: 2
 .mission-log-track .mlog__fill { height: calc(100% - 16px); transform: scaleY(1); transform-origin: top; transition: transform .1s steps(2); }
 html:not([data-js]) .strike::after { transform: scaleX(1); }
 @media (min-width:768px) and (max-width:1023px) { .row { grid-template-columns: 40px 150px minmax(0,1fr) 80px; gap:12px; } }
-@media (max-width:767px) { .motion-ready .lifecycle { margin-bottom: -180px; } .motion-ready .lc-pin { height: calc(100svh - 236px); min-height: 570px; } }
+/* Fit the sticky scene to its content so it leaves the viewport before the console. */
+@media (max-width:767px) { .motion-ready .lc-pin { height: auto; min-height: 0; } }
