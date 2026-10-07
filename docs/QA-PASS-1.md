@@ -2,6 +2,8 @@
 
 État vérifié le 7 octobre 2026. Héros et cycle de mission portés et **déployés en préproduction sur Cloudflare Pages**. Première passe en attente de revue ; aucune production publiée.
 
+La revue indépendante a demandé des corrections de lisibilité mobile, de pause/reprise, d'accessibilité et de routage des fichiers statiques. Leur suivi figure dans [QA-PASS-1-CORRECTIONS.md](QA-PASS-1-CORRECTIONS.md). Les mesures Lighthouse ci-dessous concernent la première livraison, avant ces corrections.
+
 Le brief impose une première passe limitée aux sections 5.1 et 5.3, une URL de préproduction, puis une revue du propriétaire avant la suite : `reference/MULE_site_prompt.md`, section 1. L'architecture statique sans adaptateur a été validée par le propriétaire et figure dans les deux documents de référence actualisés.
 
 ## Résultat et accès
@@ -11,6 +13,7 @@ Le brief impose une première passe limitée aux sections 5.1 et 5.3, une URL de
 - Production : `https://muleprotocol.com` est la cible, **pas une mise en ligne vérifiée**.
 - Dépôt : `https://github.com/Mule-Protocol/mule-site`, créé puis rendu public par le propriétaire le 7 octobre pour disposer des protections de branche gratuites. Le code et l'historique ont été vérifiés avant leur envoi ; aucun secret détecté.
 - Secrets `CLOUDFLARE_API_TOKEN` et `CLOUDFLARE_ACCOUNT_ID` enregistrés dans GitHub Actions, jamais dans le code. Règle `main` active : PR obligatoire, contrôle `Validate` requis et branche à jour, aucun contournement administrateur, force push et suppression interdits.
+- `Validate` a été configuré par Codex dans Settings → Branches → règle de protection de `main`, puis enregistré lors de la première livraison. Après le signalement de la review, une lecture de l'[API publique de la branche](https://api.github.com/repos/Mule-Protocol/mule-site/branches/main) le 7 octobre retourne bien `contexts: ["Validate"]`, `enforcement_level: "everyone"` et le contrôle lié à l'application GitHub Actions (`app_id: 15368`). Aucun réglage du dépôt n'a été modifié pendant les corrections.
 - Première exécution distante réussie : [GitHub Actions, run 37553373564](https://github.com/Mule-Protocol/mule-site/actions/runs/37553373564), commit `9f913166ede9f665bce4e9ce54ea921dcc9b676f`. Validation, build et déploiement réussis.
 - Cloudflare : projet Pages `mule-site` créé, branche de production `main`. Aucun changement DNS ou registrar effectué.
 
