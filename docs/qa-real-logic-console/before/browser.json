@@ -1,0 +1,1331 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-07T23:42:11.120Z",
+  "mode": "baseline",
+  "url": "http://127.0.0.1:4331/",
+  "passed": true,
+  "expectedReportsSource": "Mule-Protocol/mule ecfb8350e6ede380eb2ad83174576ef6580562e1, docs/testing/CONSOLE-5a/console-differential/summary.json",
+  "method": {
+    "requests": "Chrome DevTools Protocol Network.requestWillBeSent, including cache and failures; wallTime mapped to performance.timeOrigin",
+    "successfulResources": "PerformanceResourceTiming startTime/responseEnd and encodedBodySize/transferSize",
+    "boundaries": "Capture-phase Launch click; MutationObserver first journal [01]; terminal state + visible patch + enabled controls",
+    "application": "Native form clicks run the original application; no replacement of its code, network APIs, clock or CSP",
+    "localCspDifference": "Only upgrade-insecure-requests is removed by the loopback HTTP QA server"
+  },
+  "pages": [
+    {
+      "width": 375,
+      "height": 812,
+      "reducedMotion": "reduce",
+      "csp": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+      "initialCoreRequests": [],
+      "initialCorePreloads": [],
+      "errors": [],
+      "cspViolations": [],
+      "runs": [
+        {
+          "template": "invoice",
+          "behavior": "honest",
+          "warm": false,
+          "offline": false,
+          "status": "Settled",
+          "validatorMessage": "6/6 FIELDS VALID",
+          "timing": {
+            "startedAt": 1685.6000000014901,
+            "submittedAt": 1700.7999999970198,
+            "firstStationAt": 1733.8999999985099,
+            "completedAt": 1928.1000000014901,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 1733.8999999985099,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_9e36356d"
+              },
+              {
+                "station": "[02]",
+                "at": 1737,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+              },
+              {
+                "station": "[03]",
+                "at": 1737,
+                "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_64c2e183"
+              },
+              {
+                "station": "[04]",
+                "at": 1738.3999999985099,
+                "text": "INSPECTION · 6/6 FIELDS VALID"
+              },
+              {
+                "station": "[05]",
+                "at": 1738.5,
+                "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · FAKE_TX_SIM_719b58eb"
+              }
+            ]
+          },
+          "durationMs": 242.5,
+          "requestAttempts": [
+            {
+              "url": "/_astro/patch-delivered.COvbNfuh.png",
+              "method": "GET",
+              "type": "Image",
+              "startTime": 1800.729736328125,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            }
+          ],
+          "requestsDuringInstructions": [
+            {
+              "url": "/_astro/patch-delivered.COvbNfuh.png",
+              "method": "GET",
+              "type": "Image",
+              "startTime": 1800.729736328125,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            }
+          ],
+          "resources": [
+            {
+              "name": "/_astro/patch-delivered.COvbNfuh.png",
+              "initiatorType": "img",
+              "startTime": 1800.7999999970198,
+              "responseEnd": 1805.6000000014901,
+              "transferSize": 18140,
+              "encodedBodySize": 17840,
+              "decodedBodySize": 19173
+            }
+          ],
+          "resourcesDuringInstructions": [
+            {
+              "name": "/_astro/patch-delivered.COvbNfuh.png",
+              "initiatorType": "img",
+              "startTime": 1800.7999999970198,
+              "responseEnd": 1805.6000000014901,
+              "transferSize": 18140,
+              "encodedBodySize": 17840,
+              "decodedBodySize": 19173
+            }
+          ],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_9e36356d"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_64c2e183"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 6/6 FIELDS VALID"
+            },
+            {
+              "station": "[05]",
+              "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · FAKE_TX_SIM_719b58eb"
+            }
+          ],
+          "inspection": null
+        },
+        {
+          "template": "invoice",
+          "behavior": "dishonest",
+          "warm": true,
+          "offline": false,
+          "status": "Returned",
+          "validatorMessage": "5/6 · MISSING: total_amount",
+          "timing": {
+            "startedAt": 2315.2999999970198,
+            "submittedAt": 2315.2999999970198,
+            "firstStationAt": 2316.39999999851,
+            "completedAt": 2339.2000000029802,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 2316.39999999851,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_cb4fff9c"
+              },
+              {
+                "station": "[02]",
+                "at": 2316.5,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+              },
+              {
+                "station": "[03]",
+                "at": 2316.5,
+                "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_f9da1805"
+              },
+              {
+                "station": "[04]",
+                "at": 2316.5,
+                "text": "INSPECTION · 5/6 · MISSING: total_amount"
+              },
+              {
+                "station": "[05]",
+                "at": 2316.5,
+                "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · FAKE_TX_SIM_d69f2272"
+              }
+            ]
+          },
+          "durationMs": 23.900000005960464,
+          "requestAttempts": [
+            {
+              "url": "/_astro/patch-refuse.OST8lJl6.png",
+              "method": "GET",
+              "type": "Image",
+              "startTime": 2318.4560546875,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            }
+          ],
+          "requestsDuringInstructions": [
+            {
+              "url": "/_astro/patch-refuse.OST8lJl6.png",
+              "method": "GET",
+              "type": "Image",
+              "startTime": 2318.4560546875,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            }
+          ],
+          "resources": [
+            {
+              "name": "/_astro/patch-refuse.OST8lJl6.png",
+              "initiatorType": "img",
+              "startTime": 2318.60000000149,
+              "responseEnd": 2336.7000000029802,
+              "transferSize": 27486,
+              "encodedBodySize": 27186,
+              "decodedBodySize": 27928
+            }
+          ],
+          "resourcesDuringInstructions": [
+            {
+              "name": "/_astro/patch-refuse.OST8lJl6.png",
+              "initiatorType": "img",
+              "startTime": 2318.60000000149,
+              "responseEnd": 2336.7000000029802,
+              "transferSize": 27486,
+              "encodedBodySize": 27186,
+              "decodedBodySize": 27928
+            }
+          ],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_cb4fff9c"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_f9da1805"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 5/6 · MISSING: total_amount"
+            },
+            {
+              "station": "[05]",
+              "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · FAKE_TX_SIM_d69f2272"
+            }
+          ],
+          "inspection": null
+        },
+        {
+          "template": "contract",
+          "behavior": "honest",
+          "warm": true,
+          "offline": false,
+          "status": "Settled",
+          "validatorMessage": "5/5 FIELDS VALID",
+          "timing": {
+            "startedAt": 2530.5,
+            "submittedAt": 2530.5,
+            "firstStationAt": 2531.5,
+            "completedAt": 2536.60000000149,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 2531.5,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_826c9cc3"
+              },
+              {
+                "station": "[02]",
+                "at": 2531.60000000149,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · CONTRACT SUMMARY"
+              },
+              {
+                "station": "[03]",
+                "at": 2531.60000000149,
+                "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_ea6a4539"
+              },
+              {
+                "station": "[04]",
+                "at": 2531.60000000149,
+                "text": "INSPECTION · 5/5 FIELDS VALID"
+              },
+              {
+                "station": "[05]",
+                "at": 2531.60000000149,
+                "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · FAKE_TX_SIM_dfcf57ec"
+              }
+            ]
+          },
+          "durationMs": 6.100000001490116,
+          "requestAttempts": [],
+          "requestsDuringInstructions": [],
+          "resources": [],
+          "resourcesDuringInstructions": [],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_826c9cc3"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · CONTRACT SUMMARY"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_ea6a4539"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 5/5 FIELDS VALID"
+            },
+            {
+              "station": "[05]",
+              "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · FAKE_TX_SIM_dfcf57ec"
+            }
+          ],
+          "inspection": null
+        },
+        {
+          "template": "contract",
+          "behavior": "dishonest",
+          "warm": true,
+          "offline": false,
+          "status": "Returned",
+          "validatorMessage": "4/5 · MISSING: governing_law",
+          "timing": {
+            "startedAt": 2646.10000000149,
+            "submittedAt": 2646.10000000149,
+            "firstStationAt": 2648.5,
+            "completedAt": 2651.5,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 2648.5,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_860a29a5"
+              },
+              {
+                "station": "[02]",
+                "at": 2648.5,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · CONTRACT SUMMARY"
+              },
+              {
+                "station": "[03]",
+                "at": 2648.5,
+                "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_c653f43c"
+              },
+              {
+                "station": "[04]",
+                "at": 2648.5,
+                "text": "INSPECTION · 4/5 · MISSING: governing_law"
+              },
+              {
+                "station": "[05]",
+                "at": 2648.60000000149,
+                "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · FAKE_TX_SIM_9cbed63b"
+              }
+            ]
+          },
+          "durationMs": 5.399999998509884,
+          "requestAttempts": [],
+          "requestsDuringInstructions": [],
+          "resources": [],
+          "resourcesDuringInstructions": [],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_860a29a5"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · CONTRACT SUMMARY"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_c653f43c"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 4/5 · MISSING: governing_law"
+            },
+            {
+              "station": "[05]",
+              "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · FAKE_TX_SIM_9cbed63b"
+            }
+          ],
+          "inspection": null
+        },
+        {
+          "template": "address",
+          "behavior": "honest",
+          "warm": true,
+          "offline": false,
+          "status": "Settled",
+          "validatorMessage": "12/12 ROWS VALID",
+          "timing": {
+            "startedAt": 2762.10000000149,
+            "submittedAt": 2762.2000000029802,
+            "firstStationAt": 2762.7000000029802,
+            "completedAt": 2765.2999999970198,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 2762.7000000029802,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_80092c00"
+              },
+              {
+                "station": "[02]",
+                "at": 2762.7000000029802,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · ADDRESS NORMALIZATION"
+              },
+              {
+                "station": "[03]",
+                "at": 2762.7999999970198,
+                "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_ff8ba8d5"
+              },
+              {
+                "station": "[04]",
+                "at": 2762.7999999970198,
+                "text": "INSPECTION · 12/12 ROWS VALID"
+              },
+              {
+                "station": "[05]",
+                "at": 2762.7999999970198,
+                "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · FAKE_TX_SIM_373b6437"
+              }
+            ]
+          },
+          "durationMs": 3.1999999955296516,
+          "requestAttempts": [],
+          "requestsDuringInstructions": [],
+          "resources": [],
+          "resourcesDuringInstructions": [],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_80092c00"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · ADDRESS NORMALIZATION"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_ff8ba8d5"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 12/12 ROWS VALID"
+            },
+            {
+              "station": "[05]",
+              "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · FAKE_TX_SIM_373b6437"
+            }
+          ],
+          "inspection": null
+        },
+        {
+          "template": "address",
+          "behavior": "dishonest",
+          "warm": true,
+          "offline": false,
+          "status": "Returned",
+          "validatorMessage": "11/12 · INVALID POSTCODE, ROW 7",
+          "timing": {
+            "startedAt": 2846.60000000149,
+            "submittedAt": 2846.7000000029802,
+            "firstStationAt": 2847.5,
+            "completedAt": 2850.2999999970198,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 2847.5,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_78407e59"
+              },
+              {
+                "station": "[02]",
+                "at": 2847.60000000149,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · ADDRESS NORMALIZATION"
+              },
+              {
+                "station": "[03]",
+                "at": 2847.60000000149,
+                "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_2f55fd06"
+              },
+              {
+                "station": "[04]",
+                "at": 2847.60000000149,
+                "text": "INSPECTION · 11/12 · INVALID POSTCODE, ROW 7"
+              },
+              {
+                "station": "[05]",
+                "at": 2847.7000000029802,
+                "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · FAKE_TX_SIM_f77df29c"
+              }
+            ]
+          },
+          "durationMs": 3.6999999955296516,
+          "requestAttempts": [],
+          "requestsDuringInstructions": [],
+          "resources": [],
+          "resourcesDuringInstructions": [],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_78407e59"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · ADDRESS NORMALIZATION"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_2f55fd06"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 11/12 · INVALID POSTCODE, ROW 7"
+            },
+            {
+              "station": "[05]",
+              "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · FAKE_TX_SIM_f77df29c"
+            }
+          ],
+          "inspection": null
+        }
+      ],
+      "allRequests": [
+        {
+          "url": "/",
+          "method": "GET",
+          "type": "Document",
+          "startTime": 22.682861328125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 289.224853515625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/azeret-mono-latin-400-normal.BqmUdsta.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 289.421875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/style.YriIEtY4.css",
+          "method": "GET",
+          "type": "Stylesheet",
+          "startTime": 289.48779296875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/brand/mule-lockup-ink.svg",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 289.548828125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_0_lang.i05fMZxI.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 289.61083984375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_1_lang.Df569IW8.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 289.660888671875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_2_lang.BjdcgzbZ.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 289.698974609375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/site.BJth7APR.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 340.076904296875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/doto-latin-900-normal.4WJMlB6x.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 354.0439453125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/azeret-mono-latin-600-normal.CqVsP0JD.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 368.060791015625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/doto-latin-700-normal.5ZNn4yVk.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 368.465087890625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/patch-delivered.COvbNfuh.png",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 1800.729736328125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/patch-refuse.OST8lJl6.png",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 2318.4560546875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 960,
+      "reducedMotion": "reduce",
+      "csp": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+      "initialCoreRequests": [],
+      "initialCorePreloads": [],
+      "errors": [],
+      "cspViolations": [],
+      "runs": [
+        {
+          "template": "invoice",
+          "behavior": "honest",
+          "warm": false,
+          "offline": false,
+          "status": "Settled",
+          "validatorMessage": "6/6 FIELDS VALID",
+          "timing": {
+            "startedAt": 950.6000000014901,
+            "submittedAt": 950.8000000044703,
+            "firstStationAt": 952.6000000014901,
+            "completedAt": 981.3000000044703,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 952.6000000014901,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_841a786f"
+              },
+              {
+                "station": "[02]",
+                "at": 952.6000000014901,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+              },
+              {
+                "station": "[03]",
+                "at": 952.7000000029802,
+                "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_9ddc08ef"
+              },
+              {
+                "station": "[04]",
+                "at": 952.7000000029802,
+                "text": "INSPECTION · 6/6 FIELDS VALID"
+              },
+              {
+                "station": "[05]",
+                "at": 952.8000000044703,
+                "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · FAKE_TX_SIM_f95bc4f4"
+              }
+            ]
+          },
+          "durationMs": 30.700000002980232,
+          "requestAttempts": [
+            {
+              "url": "/_astro/patch-delivered.COvbNfuh.png",
+              "method": "GET",
+              "type": "Image",
+              "startTime": 970.7900390625,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            }
+          ],
+          "requestsDuringInstructions": [
+            {
+              "url": "/_astro/patch-delivered.COvbNfuh.png",
+              "method": "GET",
+              "type": "Image",
+              "startTime": 970.7900390625,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            }
+          ],
+          "resources": [
+            {
+              "name": "/_astro/patch-delivered.COvbNfuh.png",
+              "initiatorType": "img",
+              "startTime": 970.8000000044703,
+              "responseEnd": 974.3999999985099,
+              "transferSize": 18140,
+              "encodedBodySize": 17840,
+              "decodedBodySize": 19173
+            }
+          ],
+          "resourcesDuringInstructions": [
+            {
+              "name": "/_astro/patch-delivered.COvbNfuh.png",
+              "initiatorType": "img",
+              "startTime": 970.8000000044703,
+              "responseEnd": 974.3999999985099,
+              "transferSize": 18140,
+              "encodedBodySize": 17840,
+              "decodedBodySize": 19173
+            }
+          ],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_841a786f"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_9ddc08ef"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 6/6 FIELDS VALID"
+            },
+            {
+              "station": "[05]",
+              "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · FAKE_TX_SIM_f95bc4f4"
+            }
+          ],
+          "inspection": null
+        },
+        {
+          "template": "invoice",
+          "behavior": "dishonest",
+          "warm": true,
+          "offline": false,
+          "status": "Returned",
+          "validatorMessage": "5/6 · MISSING: total_amount",
+          "timing": {
+            "startedAt": 1200,
+            "submittedAt": 1200.1000000014901,
+            "firstStationAt": 1201,
+            "completedAt": 1218.8000000044703,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 1201,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_466efa00"
+              },
+              {
+                "station": "[02]",
+                "at": 1201.1000000014901,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+              },
+              {
+                "station": "[03]",
+                "at": 1201.2000000029802,
+                "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_60b68ab7"
+              },
+              {
+                "station": "[04]",
+                "at": 1201.2000000029802,
+                "text": "INSPECTION · 5/6 · MISSING: total_amount"
+              },
+              {
+                "station": "[05]",
+                "at": 1201.3000000044703,
+                "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · FAKE_TX_SIM_d2801a5e"
+              }
+            ]
+          },
+          "durationMs": 18.80000000447035,
+          "requestAttempts": [
+            {
+              "url": "/_astro/patch-refuse.OST8lJl6.png",
+              "method": "GET",
+              "type": "Image",
+              "startTime": 1203.593017578125,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            }
+          ],
+          "requestsDuringInstructions": [
+            {
+              "url": "/_astro/patch-refuse.OST8lJl6.png",
+              "method": "GET",
+              "type": "Image",
+              "startTime": 1203.593017578125,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            }
+          ],
+          "resources": [
+            {
+              "name": "/_astro/patch-refuse.OST8lJl6.png",
+              "initiatorType": "img",
+              "startTime": 1203.6000000014901,
+              "responseEnd": 1208,
+              "transferSize": 27486,
+              "encodedBodySize": 27186,
+              "decodedBodySize": 27928
+            }
+          ],
+          "resourcesDuringInstructions": [
+            {
+              "name": "/_astro/patch-refuse.OST8lJl6.png",
+              "initiatorType": "img",
+              "startTime": 1203.6000000014901,
+              "responseEnd": 1208,
+              "transferSize": 27486,
+              "encodedBodySize": 27186,
+              "decodedBodySize": 27928
+            }
+          ],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_466efa00"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_60b68ab7"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 5/6 · MISSING: total_amount"
+            },
+            {
+              "station": "[05]",
+              "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · FAKE_TX_SIM_d2801a5e"
+            }
+          ],
+          "inspection": null
+        }
+      ],
+      "allRequests": [
+        {
+          "url": "/",
+          "method": "GET",
+          "type": "Document",
+          "startTime": 0.128173828125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 9.724853515625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/azeret-mono-latin-400-normal.BqmUdsta.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 9.901123046875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/style.YriIEtY4.css",
+          "method": "GET",
+          "type": "Stylesheet",
+          "startTime": 9.969970703125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/brand/mule-lockup-ink.svg",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 10.0498046875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_0_lang.i05fMZxI.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 10.11083984375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_1_lang.Df569IW8.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 10.162841796875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_2_lang.BjdcgzbZ.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 10.223876953125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/site.BJth7APR.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 22.14697265625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/doto-latin-900-normal.4WJMlB6x.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 30.885986328125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/azeret-mono-latin-600-normal.CqVsP0JD.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 37.470947265625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/doto-latin-700-normal.5ZNn4yVk.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 37.7109375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/patch-delivered.COvbNfuh.png",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 970.7900390625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/patch-refuse.OST8lJl6.png",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 1203.593017578125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        }
+      ]
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "reducedMotion": "no-preference",
+      "csp": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+      "initialCoreRequests": [],
+      "initialCorePreloads": [],
+      "errors": [],
+      "cspViolations": [],
+      "runs": [
+        {
+          "template": "invoice",
+          "behavior": "honest",
+          "warm": false,
+          "offline": false,
+          "status": "Settled",
+          "validatorMessage": "6/6 FIELDS VALID",
+          "timing": {
+            "startedAt": 1004.2000000029802,
+            "submittedAt": 1004.2000000029802,
+            "firstStationAt": 1005.6000000014901,
+            "completedAt": 5056.60000000149,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 1005.6000000014901,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_571df07d"
+              },
+              {
+                "station": "[02]",
+                "at": 1820.8999999985099,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+              },
+              {
+                "station": "[03]",
+                "at": 2622.2000000029802,
+                "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_9ff30b76"
+              },
+              {
+                "station": "[04]",
+                "at": 3422.8000000044703,
+                "text": "INSPECTION · 6/6 FIELDS VALID"
+              },
+              {
+                "station": "[05]",
+                "at": 4223.5,
+                "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · FAKE_TX_SIM_a6a006c0"
+              }
+            ]
+          },
+          "durationMs": 4052.39999999851,
+          "requestAttempts": [
+            {
+              "url": "/_astro/patch-delivered.COvbNfuh.png",
+              "method": "GET",
+              "type": "Image",
+              "startTime": 5043.072021484375,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            }
+          ],
+          "requestsDuringInstructions": [
+            {
+              "url": "/_astro/patch-delivered.COvbNfuh.png",
+              "method": "GET",
+              "type": "Image",
+              "startTime": 5043.072021484375,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            }
+          ],
+          "resources": [
+            {
+              "name": "/_astro/patch-delivered.COvbNfuh.png",
+              "initiatorType": "img",
+              "startTime": 5043.10000000149,
+              "responseEnd": 5047.39999999851,
+              "transferSize": 18140,
+              "encodedBodySize": 17840,
+              "decodedBodySize": 19173
+            }
+          ],
+          "resourcesDuringInstructions": [
+            {
+              "name": "/_astro/patch-delivered.COvbNfuh.png",
+              "initiatorType": "img",
+              "startTime": 5043.10000000149,
+              "responseEnd": 5047.39999999851,
+              "transferSize": 18140,
+              "encodedBodySize": 17840,
+              "decodedBodySize": 19173
+            }
+          ],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · FAKE_TX_SIM_571df07d"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · FAKE_HASH_SIM_9ff30b76"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 6/6 FIELDS VALID"
+            },
+            {
+              "station": "[05]",
+              "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · FAKE_TX_SIM_a6a006c0"
+            }
+          ],
+          "inspection": null
+        }
+      ],
+      "allRequests": [
+        {
+          "url": "/",
+          "method": "GET",
+          "type": "Document",
+          "startTime": 0.10498046875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 10.427978515625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/azeret-mono-latin-400-normal.BqmUdsta.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 10.656005859375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/style.YriIEtY4.css",
+          "method": "GET",
+          "type": "Stylesheet",
+          "startTime": 10.72802734375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/brand/mule-lockup-ink.svg",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 10.798095703125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_0_lang.i05fMZxI.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 10.865966796875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_1_lang.Df569IW8.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 10.934814453125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_2_lang.BjdcgzbZ.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 10.995849609375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/site.BJth7APR.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 24.575927734375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/doto-latin-900-normal.4WJMlB6x.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 123.631103515625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/azeret-mono-latin-600-normal.CqVsP0JD.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 131.572998046875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/doto-latin-700-normal.5ZNn4yVk.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 131.966796875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/gsap.DLHyXJrb.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 885.221923828125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/ScrollTrigger.CIzi40EK.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 885.449951171875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/patch-delivered.COvbNfuh.png",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 5043.072021484375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        }
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "width": 375,
+      "height": 812,
+      "template": "invoice",
+      "behavior": "honest",
+      "journal": "invoice-honest-375-journal.png",
+      "inspection": null,
+      "inspectionAbsent": true,
+      "note": "Inspection report absent in the baseline; journal captured instead."
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "template": "invoice",
+      "behavior": "dishonest",
+      "journal": "invoice-dishonest-375-journal.png",
+      "inspection": null,
+      "inspectionAbsent": true,
+      "note": "Inspection report absent in the baseline; journal captured instead."
+    },
+    {
+      "width": 1440,
+      "height": 960,
+      "template": "invoice",
+      "behavior": "honest",
+      "journal": "invoice-honest-1440-journal.png",
+      "inspection": null,
+      "inspectionAbsent": true,
+      "note": "Inspection report absent in the baseline; journal captured instead."
+    },
+    {
+      "width": 1440,
+      "height": 960,
+      "template": "invoice",
+      "behavior": "dishonest",
+      "journal": "invoice-dishonest-1440-journal.png",
+      "inspection": null,
+      "inspectionAbsent": true,
+      "note": "Inspection report absent in the baseline; journal captured instead."
+    }
+  ],
+  "reportLayout": [],
+  "offline": null,
+  "normalMotion": {
+    "passed": true,
+    "stationIntervalsMs": [
+      815.2999999970198,
+      801.3000000044703,
+      800.6000000014901,
+      800.6999999955297
+    ],
+    "firstStationToCompletionMs": 4051
+  },
+  "engine": "Chromium 153.0.8010.12 headless; desktop emulation, not physical devices"
+}
