@@ -21,6 +21,10 @@ http.createServer(async (req, res) => {
       const assetHeaders = { 'Content-Type': types[path.extname(file)] || 'application/octet-stream' };
       if (url.pathname.startsWith('/_astro/')) assetHeaders['Cache-Control'] = 'public, max-age=31536000, immutable';
       return new Response(await readFile(file), { status, headers: assetHeaders });
+    }, {
+      notFound: async () => new Response(await readFile(path.join(root, '404.html')), {
+        headers: { 'Content-Type': types['.html'] },
+      }),
     });
     const headers = Object.fromEntries(response.headers);
     // HTTPS upgrade only applies to the real hosting; QA uses loopback HTTP.
