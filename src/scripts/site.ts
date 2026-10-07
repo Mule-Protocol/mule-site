@@ -8,12 +8,22 @@ let cleanupMotion: (() => void) | undefined;
 let motionGeneration = 0;
 let motionObserver: IntersectionObserver | undefined;
 let cleanupTrail: (() => void) | undefined;
+const section = document.querySelector<HTMLElement>('#lifecycle')!;
+const staticSteps = document.querySelector<HTMLOListElement>('.lifecycle-static')!;
+const mobileScene = matchMedia('(max-width: 767px)');
+let currentStep = 0;
+let pausedAnchor: { step: number; y: number } | null = null;
 
 const menu = document.querySelector<HTMLDialogElement>('#mobileMenu')!;
 const openMenu = document.querySelector<HTMLButtonElement>('#menuOpen')!;
 openMenu.addEventListener('click', () => { menu.showModal(); openMenu.setAttribute('aria-expanded', 'true'); });
-document.querySelector('#menuClose')?.addEventListener('click', () => menu.close());
-menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => menu.close()));
+function closeMenu() {
+  openMenu.setAttribute('aria-expanded', 'false');
+  menu.close();
+}
+document.querySelector('#menuClose')?.addEventListener('click', closeMenu);
+menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+menu.addEventListener('cancel', event => { event.preventDefault(); closeMenu(); });
 menu.addEventListener('close', () => openMenu.setAttribute('aria-expanded', 'false'));
 
 const progress = document.querySelector<HTMLElement>('#progress')!;
@@ -30,31 +40,38 @@ function updateProgress() {
 addEventListener('scroll', updateProgress, { passive: true });
 addEventListener('resize', updateProgress);
 
-async function initMotion(generation: number) {
+async function initMotion(generation: number, restore: { step: number; y: number } | null = null) {
   const [{ gsap }, { ScrollTrigger }] = await Promise.all([import('gsap'), import('gsap/ScrollTrigger')]);
   if (generation !== motionGeneration || paused || reduced.matches) return;
+  const readingY = scrollY;
+  const restoreStep = restore && Math.abs(readingY - restore.y) < 2 ? restore.step : null;
   gsap.registerPlugin(ScrollTrigger);
   root.classList.add('motion-ready');
-  const section = document.querySelector<HTMLElement>('#lifecycle')!;
   const stage = document.querySelector<SVGElement>('#stage')!;
   const mule = document.querySelector<SVGElement>('#lcMule')!;
   const inner = document.querySelector<SVGElement>('#lcMuleInner')!;
   const rail = document.querySelector('#lcRail')!.children;
   const stations = document.querySelector('#stations')!.children;
   let lastStep = -1;
+  let disposed = false;
   function render(p: number) {
+    if (disposed) return;
     const step = Math.min(4, Math.floor(p * 5));
     const local = p * 5 - step;
     const movement = step < 4 ? Math.max(0, (local - 0.55) / 0.45) : 0;
     const x = 100 + step * 180 + movement * 180 - 112;
     mule.setAttribute('transform', `translate(${x.toFixed(1)} 95) scale(0.75)`);
+    // A close camera follows the mule on small screens; desktop keeps the whole track.
+    stage.setAttribute('viewBox', mobileScene.matches ? `${(x - 5).toFixed(1)} 80 270 190` : '0 0 960 300');
     inner.classList.toggle('walking', step === 2 || (movement > 0 && movement < 1));
     if (lastStep === step) return;
     lastStep = step;
+    currentStep = step;
     stage.dataset.step = String(step + 1);
     document.querySelector('#lcNum')!.textContent = `0${step + 1}`;
     document.querySelector('#lcLabel')!.textContent = lifecycle[step].label;
     document.querySelector('#lcText')!.textContent = lifecycle[step].caption;
+    document.querySelector('#lcAnnotation')!.textContent = lifecycle[step].annotation;
     Array.from(rail).forEach((item, i) => {
       item.className = i <= step ? (i === step ? 'on cur' : 'on') : '';
       if (i === step) item.setAttribute('aria-current', 'step');
@@ -69,6 +86,8 @@ async function initMotion(generation: number) {
     onUpdate: self => render(self.progress),
     onRefresh: self => render(self.progress),
   });
+  const updateCamera = () => render(scrollTrigger.progress);
+  mobileScene.addEventListener('change', updateCamera);
   render(scrollTrigger.progress);
   const timers = new Set<ReturnType<typeof setInterval>>();
   const flipObserver = new IntersectionObserver(entries => {
@@ -87,7 +106,11 @@ async function initMotion(generation: number) {
   }, { threshold: 0.6 });
   document.querySelectorAll('[data-flip]').forEach(el => flipObserver.observe(el));
   cleanupMotion = () => {
-    scrollTrigger.kill();
+    disposed = true;
+    // The layout is CSS sticky, so do not let GSAP restore an old scroll position.
+    scrollTrigger.kill(false);
+    delete section.dataset.animated;
+    mobileScene.removeEventListener('change', updateCamera);
     flipObserver.disconnect();
     timers.forEach(clearInterval);
     document.querySelectorAll('[data-flip]').forEach(el => { el.textContent = '03'; });
@@ -96,10 +119,30 @@ async function initMotion(generation: number) {
     updateProgress();
   };
   ScrollTrigger.refresh();
+  if (restoreStep !== null) {
+    const p = (restoreStep + 0.25) / 5;
+    scrollTrigger.scroll(scrollTrigger.start + (scrollTrigger.end - scrollTrigger.start) * p);
+  } else scrollTrigger.scroll(readingY);
+  ScrollTrigger.update();
+  render(scrollTrigger.progress);
+  section.dataset.animated = 'true';
   updateProgress();
 }
 
-function setMotion() {
+function readingStep(): number | null {
+  const bounds = section.getBoundingClientRect();
+  if (bounds.top >= innerHeight || bounds.bottom <= 72) return null;
+  if (root.classList.contains('motion-ready')) return currentStep;
+  // Near the document end the browser may clamp scrollY before the last card reaches the top.
+  if (pausedAnchor && Math.abs(scrollY - pausedAnchor.y) < 2) return pausedAnchor.step;
+  // On resume, respect any reading/scrolling done in the static list while paused.
+  const index = Array.from(staticSteps.children).findIndex(item => item.getBoundingClientRect().bottom > 72);
+  return index < 0 ? null : index;
+}
+
+function setMotion(preservePosition = true) {
+  const anchor = preservePosition ? readingStep() : null;
+  pausedAnchor = null;
   motionGeneration++;
   motionObserver?.disconnect();
   cleanupTrail?.();
@@ -108,9 +151,23 @@ function setMotion() {
   const off = paused || reduced.matches;
   root.dataset.motion = off ? 'off' : 'on';
   motionButton.setAttribute('aria-pressed', String(off));
-  motionButton.setAttribute('aria-label', off ? 'Enable animations' : 'Pause animations');
   motionButton.disabled = reduced.matches;
   root.classList.toggle('motion-ready', !off);
+  staticSteps.classList.toggle('sr-only', !off);
+  let restore: { step: number; y: number } | null = null;
+  if (anchor !== null) {
+    currentStep = anchor;
+    if (off) {
+      const item = staticSteps.children[anchor];
+      scrollTo({ top: scrollY + item.getBoundingClientRect().top - 72, behavior: 'instant' });
+      pausedAnchor = { step: anchor, y: scrollY };
+    } else {
+      const start = scrollY + section.getBoundingClientRect().top - 56;
+      const span = section.offsetHeight - innerHeight + 56;
+      scrollTo({ top: start + span * ((anchor + 0.25) / 5), behavior: 'instant' });
+      restore = { step: anchor, y: scrollY };
+    }
+  }
   if (!off) {
     cleanupTrail = initTrail();
     const generation = motionGeneration;
@@ -118,7 +175,7 @@ function setMotion() {
     motionObserver = new IntersectionObserver(entries => {
       if (!entries.some(entry => entry.isIntersecting)) return;
       motionObserver?.disconnect();
-      void initMotion(generation).catch(() => root.classList.remove('motion-ready'));
+      void initMotion(generation, restore).catch(() => { paused = true; setMotion(); });
     });
     motionObserver.observe(document.querySelector('#lifecycle')!);
   }
@@ -196,4 +253,4 @@ function initTrail(): () => void {
   };
 }
 
-setMotion();
+setMotion(false);

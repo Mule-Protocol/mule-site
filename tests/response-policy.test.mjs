@@ -13,9 +13,10 @@ test('www redirects with 301 and preserves the path and query', async () => {
 test('apex stays public; Pages hosts and errors are noindex with security headers', async () => {
   for (const host of ['muleprotocol.com', 'mule.pages.dev', 'review.mule.pages.dev']) {
     for (const status of [200, 404]) {
-      const response = await applyResponsePolicy(new Request(`https://${host}/`), async () => new Response('page', { status }));
+      const response = await applyResponsePolicy(new Request(`https://${host}/`), async () => new Response('page', { status, headers: { 'Access-Control-Allow-Origin': '*' } }));
       assert.equal(response.status, status);
       assert.equal(await response.text(), 'page');
+      assert.equal(response.headers.get('access-control-allow-origin'), null);
       assert.equal(response.headers.get('x-robots-tag'), host === 'muleprotocol.com' ? null : 'noindex, nofollow');
       for (const [name, value] of Object.entries(securityHeaders)) assert.equal(response.headers.get(name), value);
     }

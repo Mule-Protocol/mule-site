@@ -7,12 +7,13 @@ import { lifecycle as steps } from '../data/lifecycle';
         <div class="sec-label label"><span class="n" data-flip>03</span><span>/ Lifecycle</span></div>
         <div class="lc-head">
           <h2 class="display">Five stations. No shortcuts.</h2>
-          <div class="lc-caption" aria-live="off">
+          <div class="lc-caption" aria-hidden="true">
             <span class="num dot" id="lcNum">01</span>
             <div><span class="label" id="lcLabel">Load</span><p id="lcText">Define the job and the acceptance criteria.</p></div>
           </div>
         </div>
-        <div class="lc-stage">
+        <div class="lc-stage" aria-hidden="true">
+          <p class="lc-mobile-annotation" id="lcAnnotation">{steps[0].annotation}</p>
           <svg class="stage" id="stage" data-step="1" viewBox="0 0 960 300" role="img" aria-label="Unit M-1 carrying a crate along a track through five stations">
             <line x1="60" y1="252" x2="900" y2="252" stroke="#0E0E0E" stroke-width="1.5"/>
             <g id="stations">
@@ -22,7 +23,7 @@ import { lifecycle as steps } from '../data/lifecycle';
               <rect class="station" x="634" y="246" width="12" height="12" transform="rotate(45 640 252)"/>
               <rect class="station" x="814" y="246" width="12" height="12" transform="rotate(45 820 252)"/>
             </g>
-            <g font-family="Azeret Mono, monospace" font-size="11" font-weight="600" fill="#0E0E0E" letter-spacing="0.8" text-anchor="middle">
+            <g class="station-labels" font-family="Azeret Mono, monospace" font-size="11" font-weight="600" fill="#0E0E0E" letter-spacing="0.8" text-anchor="middle">
               <text x="100" y="284">01 LOAD</text><text x="280" y="284">02 LOCK</text><text x="460" y="284">03 TRANSIT</text><text x="640" y="284">04 INSPECT</text><text x="820" y="284">05 SETTLE</text>
             </g>
             <g class="st-out" font-family="Azeret Mono, monospace" font-weight="600">
@@ -55,11 +56,12 @@ import { lifecycle as steps } from '../data/lifecycle';
       </div>
     </div>
 
-  <ol class="lifecycle-static">
+  <ol class="lifecycle-static" role="list" aria-label="Five mission steps">
     {steps.map((step, i) => (
-      <li class="wrap">
+      <li class="wrap" id={`lifecycle-step-${i + 1}`}>
         <div class="static-caption"><span class="dot static-number">0{i + 1}</span><div><h3 class="label">{step.label}</h3><p>{step.caption}</p></div></div>
-        <svg viewBox="0 0 390 290" class="stage" data-step={String(i + 1)} role="img" aria-label={`Unit M-1: ${step.label}`}><g transform="translate(20 60) scale(0.9)">
+        <p class="lc-mobile-annotation" aria-hidden="true">{step.annotation}</p>
+        <svg viewBox="0 0 390 290" class="stage" data-step={String(i + 1)} aria-hidden="true"><g transform="translate(20 60) scale(0.9)">
               <g class="mule">
                 <g class="leg leg-a ref-style-2"><path d="M92 140L82 174L94 207" fill="none" stroke="#0E0E0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="82" cy="174" r="4.5" fill="#0E0E0E"/><rect x="88" y="205" width="12" height="5" fill="#0E0E0E"/></g>
                 <g class="leg leg-b ref-style-3"><path d="M106 140L100 176L112 207" fill="none" stroke="#0E0E0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="100" cy="176" r="4.5" fill="#0E0E0E"/><rect x="106" y="205" width="12" height="5" fill="#0E0E0E"/></g>
@@ -80,7 +82,7 @@ import { lifecycle as steps } from '../data/lifecycle';
               <g class="st-check" font-family="Azeret Mono, monospace" font-size="15" font-weight="600" fill="#0E0E0E"><path d="M192 60L222 18H360" stroke="#0E0E0E" stroke-width="1.5" fill="none"/><text x="226" y="10">6/6 FIELDS ✓</text></g>
             </g>
           </svg>
-        {i === 4 && <p class="static-outcomes label">PASS: SETTLED ✓ · FAIL: RETURNED</p>}
+        {i === 4 && <p class="static-outcomes label" aria-hidden="true">PASS: SETTLED ✓ · FAIL: RETURNED</p>}
       </li>
     ))}
   </ol>
