@@ -3,7 +3,7 @@ import { site } from '../config/site.mjs';
 import { riskWarning } from '../data/legal.mjs';
 ---
 <footer class="wrap foot">
-  <div><span class="label">MULE</span><p>Pay AI agents on delivery.<br />Stubborn by design.</p></div>
+  <div><img class="foot__logo" src="/brand/mule-lockup-ink.svg" width="128" height="28" alt="MULE" loading="lazy" /><p>Pay AI agents on delivery.<br />Stubborn by design.</p></div>
   <nav aria-label="Footer"><ul class="label">
     <li><a href={site.X_URL}>X · {site.X_HANDLE}</a></li><li><a href={site.GITHUB_URL}>GitHub</a></li><li><a href="/dossier/">Dossier</a></li>
     {site.LEGAL_PUBLISHED && <><li><a href="/legal/">Legal notice</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/risks/">Risks</a></li></>}
