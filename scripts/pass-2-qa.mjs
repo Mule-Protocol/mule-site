@@ -4,19 +4,24 @@ import fs from 'node:fs/promises';
 import sharp from 'sharp';
 const base=process.env.QA_BASE_URL||'http://127.0.0.1:8788';
 const out=process.env.QA_OUTPUT||'artifacts/pass-2/browser';await fs.mkdir(out,{recursive:true});
-const browser=await chromium.launch({headless:true});const report={base,measuredAt:new Date().toISOString(),widths:[],errors:[],checks:[]};
+const browser=await chromium.launch({headless:true});const report={base,measuredAt:new Date().toISOString(),widths:[],errors:[],imageViewerCspWarnings:[],checks:[]};
 const source=await fs.readFile('reference/mule-dossier.html','utf8');
 async function overflow(page){assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,`Overflow: ${page.url()}`);}
 try{
   for(const width of [360,375,768,1440]){
     const context=await browser.newContext({viewport:{width,height:900},reducedMotion:'reduce',acceptDownloads:true});const page=await context.newPage();
-    page.on('pageerror',e=>report.errors.push(e.message));page.on('console',m=>{if(m.type()==='error' && !m.text().includes('404'))report.errors.push(m.text());});
+    page.on('pageerror',e=>report.errors.push(e.message));page.on('console',m=>{if(m.type()==='error' && !m.text().includes('404')){
+      // Chromium's own top-level PNG viewer injects styles. The image response correctly
+      // rejects them under the same strict CSP. Keep these separate from application errors.
+      if(page.url().endsWith('/og.png') && m.text().startsWith('Applying inline style violates'))report.imageViewerCspWarnings.push({url:page.url(),message:m.text()});
+      else report.errors.push(m.text());
+    }});
     await page.goto(base);await page.locator('#missionControls').waitFor();await page.waitForFunction(()=>!document.getElementById('missionControls').disabled);await overflow(page);
     assert.equal(await page.locator('#motionToggle').getAttribute('aria-pressed'),'true');
     let count=0;
     for(const template of ['invoice','contract','address'])for(const behavior of ['honest','dishonest']){
       await page.locator('#tpl').selectOption(template);await page.locator(`#${behavior==='honest'?'behHonest':'behBad'}`).press('Space');
-      await page.locator('#launch').click();await page.waitForFunction(()=>!document.getElementById('patch').hidden);count++;
+      await page.locator('#launch').press('Enter');await page.waitForFunction(()=>!document.getElementById('patch').hidden);count++;
       assert.equal(await page.locator('#log li').count(),5);assert.equal(await page.locator('#stamp').textContent(),behavior==='honest'?'SETTLED ✓':'RETURNED');
       assert.match(await page.locator('#log').innerText(),/FAKE_TX/);assert.equal(await page.locator('#log a').count(),0);assert.equal(await page.locator('#teleRuns').textContent(),String(count).padStart(4,'0'));
       const share=new URL(await page.locator('#shareX').getAttribute('href'));assert.equal(share.origin,'https://x.com');assert.match(share.searchParams.get('text'),/@mule_protocol/);assert.match(share.searchParams.get('text'),/\/m\/\d{4}-[sr]-(inv|con|adr)-\d{8}/);
@@ -25,7 +30,8 @@ try{
         await page.locator('#patch').screenshot({path:`${out}/patch-${behavior}-${width}.png`});
       }
     }
-    const downloadPromise=page.waitForEvent('download');await page.locator('#downloadPatch').click();const download=await downloadPromise;await download.saveAs(`${out}/download-${width}.png`);const meta=await sharp(`${out}/download-${width}.png`).metadata();assert.equal(meta.width,600);assert.equal(meta.height,660);
+    await page.locator('#shareX').focus();assert.notEqual(await page.locator('#shareX').evaluate(el=>getComputedStyle(el).outlineStyle),'none');
+    const downloadPromise=page.waitForEvent('download');await page.locator('#downloadPatch').press('Enter');const download=await downloadPromise;await download.saveAs(`${out}/download-${width}.png`);const meta=await sharp(`${out}/download-${width}.png`).metadata();assert.equal(meta.width,600);assert.equal(meta.height,660);
     const faq=page.getByText('Will this site ask me to connect a wallet?',{exact:true});await faq.focus();await page.keyboard.press('Enter');assert.equal(await faq.evaluate(el=>el.parentElement.open),true);assert.notEqual(await faq.evaluate(el=>getComputedStyle(el).outlineStyle),'none');
     await page.goto(`${base}/dossier`);await overflow(page);
     const equality=await page.evaluate(source=>{const original=new DOMParser().parseFromString(source.slice(source.indexOf('<header'),source.indexOf('<script>')),'text/html');const norm=s=>s.replace(/\s+/g,' ').trim();return norm(original.body.textContent)===norm(document.querySelector('.dossier-document').textContent);},source);assert.equal(equality,true,'Dossier copy differs');

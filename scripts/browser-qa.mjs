@@ -56,7 +56,7 @@ try {
       if (width < 768) await page.waitForFunction(() => document.querySelector('#stage').viewBox.baseVal.width === 270);
       const stateSelector = ['.st-criteria', '.st-crate-lock', '.st-crate-lock', '.st-scan', '.st-out'][i];
       await page.waitForFunction(selector => getComputedStyle(document.querySelector(`#stage ${selector}`)).opacity === '1', stateSelector);
-      await page.waitForFunction(() => document.querySelector('[data-flip]').textContent === '03');
+      await page.waitForFunction(() => document.querySelector('#lifecycle [data-flip]').textContent === '03');
       labels.push(await page.locator('#lcLabel').innerText());
       const measurements = await page.evaluate(() => {
         const stage = document.querySelector('#stage').getBoundingClientRect();
