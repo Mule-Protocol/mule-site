@@ -1,0 +1,427 @@
+{
+  "base": "https://8e443e93.mule-site.pages.dev",
+  "measuredAt": "2026-10-07T16:26:31.572Z",
+  "arrivals": [
+    {
+      "width": 360,
+      "height": 740,
+      "hero": {
+        "scrollY": 5453,
+        "railBottom": 71.953125,
+        "pinBottom": 71.953125,
+        "consoleLabelTop": 143.953125,
+        "gap": 72,
+        "overlap": 0,
+        "overflow": false,
+        "step": "5"
+      },
+      "menu": {
+        "scrollY": 5453,
+        "railBottom": 71.953125,
+        "pinBottom": 71.953125,
+        "consoleLabelTop": 143.953125,
+        "gap": 72,
+        "overlap": 0,
+        "overflow": false,
+        "step": "5"
+      },
+      "continuous": {
+        "samples": 112,
+        "maxOverlap": 0
+      }
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "hero": {
+        "scrollY": 5786,
+        "railBottom": 71.546875,
+        "pinBottom": 71.546875,
+        "consoleLabelTop": 143.546875,
+        "gap": 72,
+        "overlap": 0,
+        "overflow": false,
+        "step": "5"
+      },
+      "menu": {
+        "scrollY": 5786,
+        "railBottom": 71.546875,
+        "pinBottom": 71.546875,
+        "consoleLabelTop": 143.546875,
+        "gap": 72,
+        "overlap": 0,
+        "overflow": false,
+        "step": "5"
+      },
+      "continuous": {
+        "samples": 121,
+        "maxOverlap": 0
+      }
+    },
+    {
+      "width": 768,
+      "height": 960,
+      "hero": {
+        "scrollY": 6784,
+        "railBottom": -121.46875,
+        "pinBottom": 71.5,
+        "consoleLabelTop": 143.5,
+        "gap": 264.96875,
+        "overlap": 0,
+        "overflow": false,
+        "step": "5"
+      },
+      "menu": null,
+      "continuous": {
+        "samples": 139,
+        "maxOverlap": 0
+      }
+    },
+    {
+      "width": 1440,
+      "height": 960,
+      "hero": {
+        "scrollY": 6739,
+        "railBottom": -45.25,
+        "pinBottom": 72.015625,
+        "consoleLabelTop": 192.015625,
+        "gap": 237.265625,
+        "overlap": 0,
+        "overflow": false,
+        "step": "5"
+      },
+      "menu": null,
+      "continuous": {
+        "samples": 139,
+        "maxOverlap": 0
+      }
+    }
+  ],
+  "patches": [
+    {
+      "template": "invoice",
+      "behavior": "honest",
+      "file": "patch-invoice-honest.png",
+      "width": 600,
+      "height": 660,
+      "margins": [
+        {
+          "text": "MSN-0001",
+          "font": "900 24px Doto",
+          "left": 41.4000244140625,
+          "right": 156.19998168945312,
+          "top": 109,
+          "bottom": 126,
+          "margin": 18.6500244140625
+        },
+        {
+          "text": "SETTLED ✓",
+          "font": "600 11px \"Azeret Mono\"",
+          "left": 67.2803955078125,
+          "right": 133.4803466796875,
+          "top": 132,
+          "bottom": 142,
+          "margin": 31.575190524048175
+        },
+        {
+          "text": "INVOICE TO JSON",
+          "font": "7px \"Azeret Mono\"",
+          "left": 65.87509155273438,
+          "right": 134.57492065429688,
+          "top": 147,
+          "bottom": 152,
+          "margin": 22.327618462229033
+        },
+        {
+          "text": "SIMULATION · NO REAL FUNDS",
+          "font": "5.5px \"Azeret Mono\"",
+          "left": 53.52503967285156,
+          "right": 146.89996337890625,
+          "top": 158,
+          "bottom": 162,
+          "margin": 7.562279164358177
+        },
+        {
+          "text": "2026-10-07",
+          "font": "7px \"Azeret Mono\"",
+          "left": 77.25006103515625,
+          "right": 123.199951171875,
+          "top": 170,
+          "bottom": 175,
+          "margin": 7.883877211559417
+        }
+      ]
+    },
+    {
+      "template": "invoice",
+      "behavior": "dishonest",
+      "file": "patch-invoice-dishonest.png",
+      "width": 600,
+      "height": 660,
+      "margins": [
+        {
+          "text": "MSN-0002",
+          "font": "900 24px Doto",
+          "left": 41.4000244140625,
+          "right": 156.19998168945312,
+          "top": 109,
+          "bottom": 126,
+          "margin": 18.6500244140625
+        },
+        {
+          "text": "RETURNED",
+          "font": "600 11px \"Azeret Mono\"",
+          "left": 71.4000244140625,
+          "right": 129.44998168945312,
+          "top": 133,
+          "bottom": 142,
+          "margin": 33.55539423481894
+        },
+        {
+          "text": "INVOICE TO JSON",
+          "font": "7px \"Azeret Mono\"",
+          "left": 65.87509155273438,
+          "right": 134.57492065429688,
+          "top": 147,
+          "bottom": 152,
+          "margin": 22.327618462229033
+        },
+        {
+          "text": "SIMULATION · NO REAL FUNDS",
+          "font": "5.5px \"Azeret Mono\"",
+          "left": 53.52503967285156,
+          "right": 146.89996337890625,
+          "top": 158,
+          "bottom": 162,
+          "margin": 7.562279164358177
+        },
+        {
+          "text": "2026-10-07",
+          "font": "7px \"Azeret Mono\"",
+          "left": 77.25006103515625,
+          "right": 123.199951171875,
+          "top": 170,
+          "bottom": 175,
+          "margin": 7.883877211559417
+        }
+      ]
+    },
+    {
+      "template": "contract",
+      "behavior": "honest",
+      "file": "patch-contract-honest.png",
+      "width": 600,
+      "height": 660,
+      "margins": [
+        {
+          "text": "MSN-0003",
+          "font": "900 24px Doto",
+          "left": 41.4000244140625,
+          "right": 156.19998168945312,
+          "top": 109,
+          "bottom": 126,
+          "margin": 18.6500244140625
+        },
+        {
+          "text": "SETTLED ✓",
+          "font": "600 11px \"Azeret Mono\"",
+          "left": 67.2803955078125,
+          "right": 133.4803466796875,
+          "top": 132,
+          "bottom": 142,
+          "margin": 31.575190524048175
+        },
+        {
+          "text": "CONTRACT SUMMARY",
+          "font": "7px \"Azeret Mono\"",
+          "left": 63.60009765625,
+          "right": 136.84991455078125,
+          "top": 147,
+          "bottom": 152,
+          "margin": 21.20986576074548
+        },
+        {
+          "text": "SIMULATION · NO REAL FUNDS",
+          "font": "5.5px \"Azeret Mono\"",
+          "left": 53.52503967285156,
+          "right": 146.89996337890625,
+          "top": 158,
+          "bottom": 162,
+          "margin": 7.562279164358177
+        },
+        {
+          "text": "2026-10-07",
+          "font": "7px \"Azeret Mono\"",
+          "left": 77.25006103515625,
+          "right": 123.199951171875,
+          "top": 170,
+          "bottom": 175,
+          "margin": 7.883877211559417
+        }
+      ]
+    },
+    {
+      "template": "contract",
+      "behavior": "dishonest",
+      "file": "patch-contract-dishonest.png",
+      "width": 600,
+      "height": 660,
+      "margins": [
+        {
+          "text": "MSN-0004",
+          "font": "900 24px Doto",
+          "left": 41.4000244140625,
+          "right": 156.19998168945312,
+          "top": 109,
+          "bottom": 126,
+          "margin": 18.6500244140625
+        },
+        {
+          "text": "RETURNED",
+          "font": "600 11px \"Azeret Mono\"",
+          "left": 71.4000244140625,
+          "right": 129.44998168945312,
+          "top": 133,
+          "bottom": 142,
+          "margin": 33.55539423481894
+        },
+        {
+          "text": "CONTRACT SUMMARY",
+          "font": "7px \"Azeret Mono\"",
+          "left": 63.60009765625,
+          "right": 136.84991455078125,
+          "top": 147,
+          "bottom": 152,
+          "margin": 21.20986576074548
+        },
+        {
+          "text": "SIMULATION · NO REAL FUNDS",
+          "font": "5.5px \"Azeret Mono\"",
+          "left": 53.52503967285156,
+          "right": 146.89996337890625,
+          "top": 158,
+          "bottom": 162,
+          "margin": 7.562279164358177
+        },
+        {
+          "text": "2026-10-07",
+          "font": "7px \"Azeret Mono\"",
+          "left": 77.25006103515625,
+          "right": 123.199951171875,
+          "top": 170,
+          "bottom": 175,
+          "margin": 7.883877211559417
+        }
+      ]
+    },
+    {
+      "template": "address",
+      "behavior": "honest",
+      "file": "patch-address-honest.png",
+      "width": 600,
+      "height": 660,
+      "margins": [
+        {
+          "text": "MSN-0005",
+          "font": "900 24px Doto",
+          "left": 41.4000244140625,
+          "right": 156.19998168945312,
+          "top": 109,
+          "bottom": 126,
+          "margin": 18.6500244140625
+        },
+        {
+          "text": "SETTLED ✓",
+          "font": "600 11px \"Azeret Mono\"",
+          "left": 67.2803955078125,
+          "right": 133.4803466796875,
+          "top": 132,
+          "bottom": 142,
+          "margin": 31.575190524048175
+        },
+        {
+          "text": "ADDRESS NORMALIZATION",
+          "font": "7px \"Azeret Mono\"",
+          "left": 51.225128173828125,
+          "right": 148.22488403320312,
+          "top": 147,
+          "bottom": 152,
+          "margin": 15.350881598088257
+        },
+        {
+          "text": "SIMULATION · NO REAL FUNDS",
+          "font": "5.5px \"Azeret Mono\"",
+          "left": 53.52503967285156,
+          "right": 146.89996337890625,
+          "top": 158,
+          "bottom": 162,
+          "margin": 7.562279164358177
+        },
+        {
+          "text": "2026-10-07",
+          "font": "7px \"Azeret Mono\"",
+          "left": 77.25006103515625,
+          "right": 123.199951171875,
+          "top": 170,
+          "bottom": 175,
+          "margin": 7.883877211559417
+        }
+      ]
+    },
+    {
+      "template": "address",
+      "behavior": "dishonest",
+      "file": "patch-address-dishonest.png",
+      "width": 600,
+      "height": 660,
+      "margins": [
+        {
+          "text": "MSN-0006",
+          "font": "900 24px Doto",
+          "left": 41.4000244140625,
+          "right": 156.19998168945312,
+          "top": 109,
+          "bottom": 126,
+          "margin": 18.6500244140625
+        },
+        {
+          "text": "RETURNED",
+          "font": "600 11px \"Azeret Mono\"",
+          "left": 71.4000244140625,
+          "right": 129.44998168945312,
+          "top": 133,
+          "bottom": 142,
+          "margin": 33.55539423481894
+        },
+        {
+          "text": "ADDRESS NORMALIZATION",
+          "font": "7px \"Azeret Mono\"",
+          "left": 51.225128173828125,
+          "right": 148.22488403320312,
+          "top": 147,
+          "bottom": 152,
+          "margin": 15.350881598088257
+        },
+        {
+          "text": "SIMULATION · NO REAL FUNDS",
+          "font": "5.5px \"Azeret Mono\"",
+          "left": 53.52503967285156,
+          "right": 146.89996337890625,
+          "top": 158,
+          "bottom": 162,
+          "margin": 7.562279164358177
+        },
+        {
+          "text": "2026-10-07",
+          "font": "7px \"Azeret Mono\"",
+          "left": 77.25006103515625,
+          "right": 123.199951171875,
+          "top": 170,
+          "bottom": 175,
+          "margin": 7.883877211559417
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,18 @@
+HTTP/1.1 404 Not Found
+Date: Wed, 07 Oct 2026 16:25:48 GMT
+Content-Type: text/plain; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-store
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Robots-Tag: noindex, nofollow
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=B0jRc5L3V40mJBzuk3vznjCJzgnNIuC8YDZaBdUia2zBER9wLU1z1qE6KLQ2czXT7pjqPS6JWKamez0RT9cFMgFM6C8b22mYTcnfGY23B9EbSqUCDn%2BYk3FXStij3h0QXym095%2F5srQX0bl6fY5kZ%2Fxc6hq4WAAHTQ6u"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Server: cloudflare
+CF-RAY: a46e4390380f5d26-CDG
+alt-svc: h3=":443"; ma=86400
+

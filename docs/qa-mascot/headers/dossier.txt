@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Date: Wed, 07 Oct 2026 16:25:49 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Cache-Control: public, max-age=0, must-revalidate
+ETag: "ba8a9a6f3f4752fdb7c7e59d1f5915ab"
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+content-security-policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+permissions-policy: camera=(), microphone=(), geolocation=(), payment=()
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-robots-tag: noindex, nofollow
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=q7e%2Bv8Rp7yBvJvNEAOP18FNyAXCRXfyNiKixVaNuDHu7K0APhqRzR6ca7tKoIb5gRgK9MSJa2sZIWMom2ufzjnCKi93Dim7yxKA3VeqOmTZJ%2FyucJmTOoywMEE7%2F3EAqSO41FZn7vtxku2h%2Fr63YBqf23xBb5%2BVGnBnu"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Server: cloudflare
+CF-RAY: a46e4390f8e8d0c0-CDG
+alt-svc: h3=":443"; ma=86400
+

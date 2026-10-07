@@ -21,6 +21,7 @@ try {
   }
   await page.goto(`${base}/dossier/`);await page.evaluate(()=>document.fonts.ready);report.texts[`dossier-${width}`]=await page.locator('body').innerText();await page.screenshot({path:`${out}/dossier-${width}.png`});
   await page.goto(`${base}/m/0042-s-inv-20261007`);await page.evaluate(()=>document.fonts.ready);await page.screenshot({path:`${out}/mission-${width}.png`,fullPage:true});
+  await page.goto(`${base}/m/0042-s-inv-20261007/og.png`);await page.screenshot({path:`${out}/mission-og-${width}.png`});
   await page.goto(base);await page.evaluate(()=>document.fonts.ready);report.texts[`home-${width}`]=await page.locator('body').innerText();await page.close();report.captures.push({width,complete:true});console.log(`Captured ${width}`);
  }
  for(const [name,path] of [['mission-og','/m/0042-s-inv-20261007/og.png'],['favicon','/brand/icon-512.png'],['site-card','/images/site.png'],['dossier-card','/images/dossier.png']]){
