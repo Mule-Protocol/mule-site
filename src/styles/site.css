@@ -4,7 +4,7 @@
   font-display: swap;
   font-weight: 800;
   font-stretch: 125%;
-  src: url('/brand/fonts/archivo-125-800-latin.woff2') format('woff2');
+  src: url('../assets/fonts/archivo-125-800-latin.woff2') format('woff2');
 }
 /* Small accessibility/layout fixes, retaining the reference's visual design. */
 [hidden] { display:none !important; }
