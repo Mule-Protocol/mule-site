@@ -1,5 +1,6 @@
 /* Problem */
 .problem h2 { font-size: clamp(32px, 6vw, 76px); max-width: 15ch; }
+.problem__lead { max-width: 62ch; margin: 24px 0 0; font-size: 18px; line-height: 1.6; }
 .split { display: grid; gap: 0; margin-top: 48px; border-top: 1px solid var(--ink); }
 @media (min-width: 768px) { .split { grid-template-columns: 1fr 1fr; } }
 .split > div { padding: 20px 0; border-bottom: 1px solid var(--line); }

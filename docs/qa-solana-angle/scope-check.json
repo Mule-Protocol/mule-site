@@ -1,0 +1,136 @@
+{
+  "baselineCommit": "cd57efadebb2a0d88ea4c90e7d880c32bc825f40",
+  "changedSourceFiles": [
+    "src/components/Hero.astro",
+    "src/components/HomeSections.astro",
+    "src/components/Problem.astro",
+    "src/layouts/Base.astro"
+  ],
+  "unchangedBuiltAssets": [
+    {
+      "file": "404.astro_astro_type_script_index_0_lang.i05fMZxI.js",
+      "before": "70abf3203bb2a0c717188014ab1883dfdaed223eca989ddeca014bdb65a4c272",
+      "after": "70abf3203bb2a0c717188014ab1883dfdaed223eca989ddeca014bdb65a4c272"
+    },
+    {
+      "file": "archivo-125-800-latin.C9uAnT0s.woff2",
+      "before": "7f32a57fea2ba5a145ff99fb3ac96e67fe77367be2e842de05bf6efe4059a921",
+      "after": "7f32a57fea2ba5a145ff99fb3ac96e67fe77367be2e842de05bf6efe4059a921"
+    },
+    {
+      "file": "azeret-mono-latin-400-normal.BqmUdsta.woff2",
+      "before": "83f738bd44f3d7542f2adf6c78d2285b85c55fd349a44ded40f844fbcfbe1d81",
+      "after": "83f738bd44f3d7542f2adf6c78d2285b85c55fd349a44ded40f844fbcfbe1d81"
+    },
+    {
+      "file": "azeret-mono-latin-400-normal.BRS1Zqm5.woff",
+      "before": "67fbc1f3a6377543d991e314f86926a5ac3b57af3a3ab09ff1bd23909b4f5bb3",
+      "after": "67fbc1f3a6377543d991e314f86926a5ac3b57af3a3ab09ff1bd23909b4f5bb3"
+    },
+    {
+      "file": "azeret-mono-latin-600-normal.CqVsP0JD.woff2",
+      "before": "0193889b0ce9843b60ffe30c0324e62fad09c8da4f1bf09cd31aaceaa421084a",
+      "after": "0193889b0ce9843b60ffe30c0324e62fad09c8da4f1bf09cd31aaceaa421084a"
+    },
+    {
+      "file": "azeret-mono-latin-600-normal.DGYASQR8.woff",
+      "before": "a54749035c0700590acb6a257b74dc7cae8ea85b81643b72db16ba517f0dee26",
+      "after": "a54749035c0700590acb6a257b74dc7cae8ea85b81643b72db16ba517f0dee26"
+    },
+    {
+      "file": "dossier.astro_astro_type_script_index_0_lang.i05fMZxI.js",
+      "before": "70abf3203bb2a0c717188014ab1883dfdaed223eca989ddeca014bdb65a4c272",
+      "after": "70abf3203bb2a0c717188014ab1883dfdaed223eca989ddeca014bdb65a4c272"
+    },
+    {
+      "file": "dossier.astro_astro_type_script_index_1_lang.Br23aBvw.js",
+      "before": "9a2ddff9d60d2c04709be5c28eeddafb3cc761a6d0b5fcd2676014f614a4ced3",
+      "after": "9a2ddff9d60d2c04709be5c28eeddafb3cc761a6d0b5fcd2676014f614a4ced3"
+    },
+    {
+      "file": "doto-latin-700-normal.5ZNn4yVk.woff2",
+      "before": "2a4172c50d322f9d1f7c900fa93bad86a591e9626f4048ade721c97ef150c2b6",
+      "after": "2a4172c50d322f9d1f7c900fa93bad86a591e9626f4048ade721c97ef150c2b6"
+    },
+    {
+      "file": "doto-latin-700-normal.B677g5ff.woff",
+      "before": "3752182265cea687a37062ba65f3a57cbd33ce153bd808122ed4992517fb1a7a",
+      "after": "3752182265cea687a37062ba65f3a57cbd33ce153bd808122ed4992517fb1a7a"
+    },
+    {
+      "file": "doto-latin-900-normal.4WJMlB6x.woff2",
+      "before": "4024ace9622b6ccad4a110594f76d0e49202137e531827aa215a4cab46af7242",
+      "after": "4024ace9622b6ccad4a110594f76d0e49202137e531827aa215a4cab46af7242"
+    },
+    {
+      "file": "doto-latin-900-normal.D1bF_x6I.woff",
+      "before": "5411703296d8d4e15c3169ac9b5afd3b341c12c3631d9baf73095ea0e5934814",
+      "after": "5411703296d8d4e15c3169ac9b5afd3b341c12c3631d9baf73095ea0e5934814"
+    },
+    {
+      "file": "gsap.DLHyXJrb.js",
+      "before": "ddbcbfc49e2b51b51fa83568b97e88aa786dfe7d7b3c24b62f08b251ba8589bc",
+      "after": "ddbcbfc49e2b51b51fa83568b97e88aa786dfe7d7b3c24b62f08b251ba8589bc"
+    },
+    {
+      "file": "index.astro_astro_type_script_index_0_lang.i05fMZxI.js",
+      "before": "70abf3203bb2a0c717188014ab1883dfdaed223eca989ddeca014bdb65a4c272",
+      "after": "70abf3203bb2a0c717188014ab1883dfdaed223eca989ddeca014bdb65a4c272"
+    },
+    {
+      "file": "index.astro_astro_type_script_index_1_lang.Df569IW8.js",
+      "before": "a843371309347d44c4220bf53caf16990f2b2dfc40e51aa2bb7e8abecafe1625",
+      "after": "a843371309347d44c4220bf53caf16990f2b2dfc40e51aa2bb7e8abecafe1625"
+    },
+    {
+      "file": "index.astro_astro_type_script_index_2_lang.BjdcgzbZ.js",
+      "before": "4f523cc4667e73c27d055f628f4e1b530a853304ad3941a178935df67fdfa77b",
+      "after": "4f523cc4667e73c27d055f628f4e1b530a853304ad3941a178935df67fdfa77b"
+    },
+    {
+      "file": "Legal.astro_astro_type_script_index_0_lang.i05fMZxI.js",
+      "before": "70abf3203bb2a0c717188014ab1883dfdaed223eca989ddeca014bdb65a4c272",
+      "after": "70abf3203bb2a0c717188014ab1883dfdaed223eca989ddeca014bdb65a4c272"
+    },
+    {
+      "file": "patch-delivered.COvbNfuh.png",
+      "before": "c795490f336ebdda3c2fe923d9756c6afd21bfb68d4cca2857bafe26dc766fe7",
+      "after": "c795490f336ebdda3c2fe923d9756c6afd21bfb68d4cca2857bafe26dc766fe7"
+    },
+    {
+      "file": "patch-refuse.OST8lJl6.png",
+      "before": "13b6a0e7ab172cfdbf27c63780ed213bdc43ce65cf925513c6fe304b7f7530d7",
+      "after": "13b6a0e7ab172cfdbf27c63780ed213bdc43ce65cf925513c6fe304b7f7530d7"
+    },
+    {
+      "file": "ScrollTrigger.CIzi40EK.js",
+      "before": "caf214a7c7963dc9e211b7044ac1709f070ff492be5f35b8717fb8e8f11accfe",
+      "after": "caf214a7c7963dc9e211b7044ac1709f070ff492be5f35b8717fb8e8f11accfe"
+    },
+    {
+      "file": "site.BJth7APR.js",
+      "before": "116a323d8ea5e09bc47ec27fea5a49f6073631a9024e6f337f2d2ddee6155e7c",
+      "after": "116a323d8ea5e09bc47ec27fea5a49f6073631a9024e6f337f2d2ddee6155e7c"
+    },
+    {
+      "file": "style.KmZNBvtd.css",
+      "before": "1ab6fb8e1e2af7190dfec5cd671292a2eb447a90d0f25871fe2d1d375d106305",
+      "after": "1ab6fb8e1e2af7190dfec5cd671292a2eb447a90d0f25871fe2d1d375d106305"
+    }
+  ],
+  "unchangedDossierAndOg": [
+    {
+      "file": "dossier/index.html",
+      "before": "e4622606b1a8946e1a3dc0a02bb638040b0b7a161559d1171fb7d24569f19dd0",
+      "after": "e4622606b1a8946e1a3dc0a02bb638040b0b7a161559d1171fb7d24569f19dd0"
+    },
+    {
+      "file": "images/site.png",
+      "before": "28df4f5a6d45d9f72dec2722b558562a32400e7d6caa5b0d42d8c674ac66ef85",
+      "after": "28df4f5a6d45d9f72dec2722b558562a32400e7d6caa5b0d42d8c674ac66ef85"
+    }
+  ],
+  "configUnchanged": true,
+  "testsPassed": 39,
+  "buildPassed": true
+}
