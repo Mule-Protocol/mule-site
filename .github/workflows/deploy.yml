@@ -31,11 +31,37 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
-      - run: npm run build
+      - name: Build with outbound networking blocked in Node
+        run: npm run build
+        env:
+          NODE_OPTIONS: --import=./scripts/offline-build-guard.mjs
+      - name: Install the browser test dependency
+        run: npx playwright install --with-deps chromium
+      - name: Six real console missions under the existing CSP
+        env:
+          QA_PORT: '4332'
+          QA_BASE_URL: http://127.0.0.1:4332
+          QA_OUTPUT: artifacts/real-logic-console/ci
+        run: |
+          node scripts/qa-server.mjs > /tmp/mule-console-qa.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          node scripts/real-logic-console-qa.mjs
+      - name: Publish browser evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: real-logic-console-browser
+          path: |
+            artifacts/real-logic-console/ci/*.json
+            artifacts/real-logic-console/ci/*.png
+          if-no-files-found: error
+          retention-days: 30
 
   deploy:
     name: Deploy Pages
-    if: github.event_name != 'pull_request'
+    # This review branch must never create a Cloudflare deployment.
+    if: github.event_name != 'pull_request' && github.ref != 'refs/heads/codex/real-logic-console'
     needs: validate
     runs-on: ubuntu-latest
     permissions:
