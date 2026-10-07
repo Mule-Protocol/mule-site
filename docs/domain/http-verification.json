@@ -1,0 +1,287 @@
+{
+  "checkedAt": "2026-10-07T17:21:54.530Z",
+  "checks": [
+    {
+      "name": "01 homepage 200",
+      "passed": true,
+      "file": "check-01-home-head.txt"
+    },
+    {
+      "name": "01 homepage no X-Robots-Tag",
+      "passed": true
+    },
+    {
+      "name": "01 Content-Security-Policy",
+      "passed": true
+    },
+    {
+      "name": "01 Strict-Transport-Security",
+      "passed": true
+    },
+    {
+      "name": "01 X-Frame-Options",
+      "passed": true
+    },
+    {
+      "name": "01 X-Content-Type-Options",
+      "passed": true
+    },
+    {
+      "name": "01 Referrer-Policy",
+      "passed": true
+    },
+    {
+      "name": "01 Permissions-Policy",
+      "passed": true
+    },
+    {
+      "name": "01 CSP no unsafe-inline",
+      "passed": true
+    },
+    {
+      "name": "02 / index follow",
+      "passed": true,
+      "file": "check-02-home-source.txt"
+    },
+    {
+      "name": "02 / canonical",
+      "passed": true
+    },
+    {
+      "name": "02 / no draft links",
+      "passed": true
+    },
+    {
+      "name": "02 / og:image present",
+      "passed": true
+    },
+    {
+      "name": "02 / og:image PNG 200",
+      "passed": true,
+      "file": "check-02-home-og-image.txt",
+      "url": "https://muleprotocol.com/images/site.png"
+    },
+    {
+      "name": "02 / twitter:image present",
+      "passed": true
+    },
+    {
+      "name": "02 / twitter:image PNG 200",
+      "passed": true,
+      "file": "check-02-home-twitter-image.txt",
+      "url": "https://muleprotocol.com/images/site.png"
+    },
+    {
+      "name": "02 /dossier/ index follow",
+      "passed": true,
+      "file": "check-02-dossier-source.txt"
+    },
+    {
+      "name": "02 /dossier/ canonical",
+      "passed": true
+    },
+    {
+      "name": "02 /dossier/ no draft links",
+      "passed": true
+    },
+    {
+      "name": "02 /dossier/ og:image present",
+      "passed": true
+    },
+    {
+      "name": "02 /dossier/ og:image PNG 200",
+      "passed": true,
+      "file": "check-02-dossier-og-image.txt",
+      "url": "https://muleprotocol.com/images/dossier.png"
+    },
+    {
+      "name": "02 /dossier/ twitter:image present",
+      "passed": true
+    },
+    {
+      "name": "02 /dossier/ twitter:image PNG 200",
+      "passed": true,
+      "file": "check-02-dossier-twitter-image.txt",
+      "url": "https://muleprotocol.com/images/dossier.png"
+    },
+    {
+      "name": "03 apex /legal",
+      "passed": true,
+      "file": "check-03-apex-1.txt"
+    },
+    {
+      "name": "03 www /legal",
+      "passed": true,
+      "file": "check-03-www-1.txt",
+      "chain": [
+        301,
+        404
+      ]
+    },
+    {
+      "name": "03 apex /legal/",
+      "passed": true,
+      "file": "check-03-apex-2.txt"
+    },
+    {
+      "name": "03 www /legal/",
+      "passed": true,
+      "file": "check-03-www-2.txt",
+      "chain": [
+        301,
+        404
+      ]
+    },
+    {
+      "name": "03 apex /privacy",
+      "passed": true,
+      "file": "check-03-apex-3.txt"
+    },
+    {
+      "name": "03 www /privacy",
+      "passed": true,
+      "file": "check-03-www-3.txt",
+      "chain": [
+        301,
+        404
+      ]
+    },
+    {
+      "name": "03 apex /privacy/",
+      "passed": true,
+      "file": "check-03-apex-4.txt"
+    },
+    {
+      "name": "03 www /privacy/",
+      "passed": true,
+      "file": "check-03-www-4.txt",
+      "chain": [
+        301,
+        404
+      ]
+    },
+    {
+      "name": "03 apex /risks",
+      "passed": true,
+      "file": "check-03-apex-5.txt"
+    },
+    {
+      "name": "03 www /risks",
+      "passed": true,
+      "file": "check-03-www-5.txt",
+      "chain": [
+        301,
+        404
+      ]
+    },
+    {
+      "name": "03 apex /risks/",
+      "passed": true,
+      "file": "check-03-apex-6.txt"
+    },
+    {
+      "name": "03 www /risks/",
+      "passed": true,
+      "file": "check-03-www-6.txt",
+      "chain": [
+        301,
+        404
+      ]
+    },
+    {
+      "name": "03 Pages legal remains 200 noindex",
+      "passed": true,
+      "file": "check-03-pages-legal.txt"
+    },
+    {
+      "name": "04 mission noindex",
+      "passed": true,
+      "file": "check-04-mission.txt"
+    },
+    {
+      "name": "05 www path and query preserved",
+      "passed": true,
+      "file": "check-05-www-query.txt"
+    },
+    {
+      "name": "05 HTTPS redirect muleprotocol.com",
+      "passed": true,
+      "file": "check-05-http-muleprotocol.com.txt"
+    },
+    {
+      "name": "05 HTTPS redirect www.muleprotocol.com",
+      "passed": true,
+      "file": "check-05-http-www.muleprotocol.com.txt"
+    },
+    {
+      "name": "06 robots crawl and sitemap",
+      "passed": true,
+      "file": "check-06-robots.txt"
+    },
+    {
+      "name": "06 sitemap exactly home and dossier",
+      "passed": true,
+      "file": "check-06-sitemap.txt",
+      "locations": [
+        "https://muleprotocol.com/",
+        "https://muleprotocol.com/dossier/"
+      ]
+    },
+    {
+      "name": "07 Pages homepage noindex",
+      "passed": true,
+      "file": "check-07-pages-home.txt"
+    },
+    {
+      "name": "08 OG 1 PNG 1200x630",
+      "passed": true,
+      "headersFile": "check-08-og-1-headers.txt",
+      "imageFile": "check-08-og-1.png",
+      "dimensions": {
+        "width": 1200,
+        "height": 630
+      }
+    },
+    {
+      "name": "08 OG 1 MISS",
+      "passed": true,
+      "cache": "MISS"
+    },
+    {
+      "name": "08 OG 2 PNG 1200x630",
+      "passed": true,
+      "headersFile": "check-08-og-2-headers.txt",
+      "imageFile": "check-08-og-2.png",
+      "dimensions": {
+        "width": 1200,
+        "height": 630
+      }
+    },
+    {
+      "name": "08 OG 2 HIT",
+      "passed": false,
+      "cache": "MISS"
+    },
+    {
+      "name": "10 no pump.fun or DexScreener link",
+      "passed": true
+    },
+    {
+      "name": "10 no BUY button",
+      "passed": true
+    },
+    {
+      "name": "10 launch configuration locked",
+      "passed": true
+    },
+    {
+      "name": "10 no contract-like address in visible text",
+      "passed": true,
+      "addressCandidates": []
+    }
+  ],
+  "failures": [
+    "08 OG 2 HIT"
+  ],
+  "ownerActions": []
+}

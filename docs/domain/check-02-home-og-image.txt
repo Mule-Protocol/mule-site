@@ -1,0 +1,22 @@
+$ curl -sS --max-time 30 -I https://muleprotocol.com/images/site.png
+HTTP/1.1 200 OK
+Date: Wed, 07 Oct 2026 17:21:53 GMT
+Content-Type: image/png
+Content-Length: 60673
+Connection: keep-alive
+x-frame-options: DENY
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=s4IqJbNt9NInsd1efFjvlPWqL8QBAs3N%2FebtyXi2vCF06r8KrR%2BZbBpl%2BRcW8T7DmLihpWZrEMmoRVsQoTmJERbqNU3ktJSd1%2BxoO4Iypw%2FwAKg4lXeUTkiDvvUt61BDW%2Bct7pPnOO5EpHuCbaC%2F"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Cache-Control: public, max-age=14400, must-revalidate
+ETag: "5e44c47a477b29f69642c052c64eb338"
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+content-security-policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+permissions-policy: camera=(), microphone=(), geolocation=(), payment=()
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+Server: cloudflare
+Accept-Ranges: bytes
+cf-cache-status: MISS
+CF-RAY: a46e95b5acae1310-CDG
+alt-svc: h3=":443"; ma=86400
+

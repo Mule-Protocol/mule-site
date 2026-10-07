@@ -1,0 +1,19 @@
+{
+  "httpStatus": 200,
+  "method": "Get",
+  "path": "accounts/70ac1a070379d4218dfd12de4a5e1e33/pages/projects/mule-site/domains",
+  "checkedAt": "2026-10-07T17:16:41.4075865Z",
+  "data": {
+    "result": [],
+    "success": true,
+    "errors": [],
+    "messages": [],
+    "result_info": {
+      "page": 1,
+      "per_page": 20,
+      "count": 0,
+      "total_count": 0,
+      "total_pages": 0
+    }
+  }
+}

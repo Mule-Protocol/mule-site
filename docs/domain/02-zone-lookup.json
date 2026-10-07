@@ -1,0 +1,29 @@
+{
+  "httpStatus": 200,
+  "method": "Get",
+  "path": "zones?name=muleprotocol.com",
+  "checkedAt": "2026-10-07T17:11:37.0797746Z",
+  "data": {
+    "result": [
+      {
+        "id": "e7ee9658588c6e5a90b950de4925d977",
+        "name": "muleprotocol.com",
+        "status": "active",
+        "account": {
+          "id": "70ac1a070379d4218dfd12de4a5e1e33"
+        }
+      }
+    ],
+    "result_info": {
+      "page": 1,
+      "per_page": 20,
+      "total_pages": 1,
+      "count": 1,
+      "total_count": 1
+    },
+    "success": true,
+    "errors": [],
+    "messages": []
+  },
+  "note": "Only zone identity and status retained; personal account metadata omitted."
+}

@@ -1,0 +1,86 @@
+{
+  "httpStatus": 200,
+  "checkedAt": "2026-10-07T17:16:40.6206609Z",
+  "name": "mule-site",
+  "subdomain": "mule-site.pages.dev",
+  "production_branch": "main",
+  "domains": [
+    "mule-site.pages.dev"
+  ],
+  "canonical_deployment": {
+    "id": "c3a1bd0d-baec-499f-96a0-55c0c90bd945",
+    "short_id": "c3a1bd0d",
+    "project_id": "5f9ff78b-90fd-4d85-a6eb-4352c3a576ca",
+    "project_name": "mule-site",
+    "environment": "production",
+    "url": "https://c3a1bd0d.mule-site.pages.dev",
+    "created_on": "2026-10-07T17:05:25.844793Z",
+    "modified_on": "2026-10-07T17:05:28.801812Z",
+    "latest_stage": {
+      "name": "deploy",
+      "started_on": null,
+      "ended_on": "2026-10-07T17:05:28.801812Z",
+      "status": "success"
+    },
+    "deployment_trigger": {
+      "type": "ad_hoc",
+      "metadata": {
+        "branch": "main",
+        "commit_hash": "90bebbbfc070efccf8936140b4661806ea25c7b5",
+        "commit_message": "Merge pull request #4 from Mule-Protocol/codex/mascot\r\n\r\nIntégrer la mascotte finale Unit M-1 sur toutes les surfaces du site",
+        "commit_dirty": false
+      }
+    },
+    "stages": [
+      {
+        "name": "queued",
+        "started_on": "2026-10-07T17:05:25.844793Z",
+        "ended_on": null,
+        "status": "active"
+      },
+      {
+        "name": "initialize",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "clone_repo",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "build",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "deploy",
+        "started_on": null,
+        "ended_on": "2026-10-07T17:05:28.801812Z",
+        "status": "success"
+      }
+    ],
+    "build_config": {
+      "build_command": null,
+      "destination_dir": "dist",
+      "build_caching": null,
+      "root_dir": null,
+      "web_analytics_tag": null,
+      "web_analytics_token": null
+    },
+    "env_vars": {},
+    "compatibility_date": "2026-10-07",
+    "compatibility_flags": [
+      "nodejs_compat"
+    ],
+    "build_image_major_version": 3,
+    "usage_model": "bundled",
+    "aliases": null,
+    "is_skipped": false,
+    "production_branch": "main",
+    "uses_functions": true
+  }
+}

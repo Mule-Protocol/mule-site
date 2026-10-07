@@ -1,0 +1,44 @@
+$ Resolve-DnsName -Name muleprotocol.com -Type DS -Server 1.1.1.1 -DnssecOk
+
+QueryType    : DS
+Key          : 2371
+DigestType   : 2
+KeyTag       : 2371
+Algorithm    : 13
+DType        : 2
+Digest       : {106, 217, 195, 193…}
+Name         : muleprotocol.com
+Type         : DS
+CharacterSet : Unicode
+Section      : Answer
+DataLength   : 40
+TTL          : 86400
+
+QueryType    : RRSIG
+Key          : 41446
+TypeCovered  : DS
+Algorithm    : 13
+LabelCount   : 2
+OriginalTtl  : 86400
+Expiration   : 13/10/2026 23:55:04
+Signed       : 06/10/2026 22:45:04
+KeyTag       : 41446
+Signer       : com
+Signature    : {44, 115, 121, 255…}
+Name         : muleprotocol.com
+Type         : RRSIG
+CharacterSet : Unicode
+Section      : Answer
+DataLength   : 104
+TTL          : 86400
+
+QueryType    : OPT
+Data         : {}
+Name         : .
+Type         : OPT
+CharacterSet : Unicode
+Section      : Additional
+DataLength   : 4
+TTL          : 32768
+
+

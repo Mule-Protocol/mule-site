@@ -1,0 +1,1 @@
+$ curl -sS --max-time 30 -D docs/domain/check-08-og-1-headers.txt -o docs/domain/check-08-og-1.png https://muleprotocol.com/m/0042-s-inv-20261007/og.png

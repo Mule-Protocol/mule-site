@@ -1,0 +1,27 @@
+{
+  "httpStatus": 200,
+  "method": "Post",
+  "path": "accounts/70ac1a070379d4218dfd12de4a5e1e33/pages/projects/mule-site/domains",
+  "checkedAt": "2026-10-07T17:17:20.5753298Z",
+  "data": {
+    "result": {
+      "id": "88b08b7d-8493-4516-a90d-23950ec385d2",
+      "domain_id": "88b08b7d-8493-4516-a90d-23950ec385d2",
+      "name": "muleprotocol.com",
+      "status": "initializing",
+      "verification_data": {
+        "status": "pending"
+      },
+      "validation_data": {
+        "status": "initializing",
+        "method": "http"
+      },
+      "certificate_authority": "google",
+      "zone_tag": "e7ee9658588c6e5a90b950de4925d977",
+      "created_on": "2026-10-07T17:17:18.689126Z"
+    },
+    "success": true,
+    "errors": [],
+    "messages": []
+  }
+}

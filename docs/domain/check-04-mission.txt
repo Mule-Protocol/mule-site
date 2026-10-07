@@ -1,0 +1,20 @@
+$ curl -sS --max-time 30 -I https://muleprotocol.com/m/0042-s-inv-20261007
+HTTP/1.1 200 OK
+Date: Wed, 07 Oct 2026 17:21:57 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=8KMjU4vf0Bg%2FX8pKHpOrtcXHT%2B9sf4LdbzsKEX95QgI%2FVvO3Aun3Q1AvgNjVhGo6WRXV%2FoT0hOWQF2hBRxcUhsQgmiwAg3KGYUQ%2BRemgfo%2Bw5XeaR%2FDXnLvQNdIV4uZz2HQabrjTlxE7imCmV3Ya"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Cache-Control: public, max-age=3600
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Robots-Tag: noindex, nofollow
+Server: cloudflare
+cf-cache-status: DYNAMIC
+CF-RAY: a46e95ce1b662a79-CDG
+alt-svc: h3=":443"; ma=86400
+
