@@ -1,6 +1,7 @@
 export const site = Object.freeze({
   THEME: 'LIGHT',
   LAUNCHED: false,
+  LEGAL_PUBLISHED: false, // passer à true après validation par le conseil du propriétaire
   CONTRACT_ADDRESS: null,
   DOMAIN: 'muleprotocol.com',
   origin: 'https://muleprotocol.com',

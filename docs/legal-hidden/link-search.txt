@@ -1,0 +1,11 @@
+README.md:62:After pass 1 approval: `/dossier`, console simulation, `functions/m/[id].ts` and dynamic share image, remaining landing sections, legal/privacy/risk pages, full browser QA and deployment evidence. Future M-1 APIs belong in `functions/api/`; they are not part of this marketing-site pass.
+scripts/font-qa.mjs:11: for(const width of [375,1440])for(const [name,path] of [['home','/'],['dossier','/dossier/'],['legal','/legal/'],['privacy','/privacy/'],['risks','/risks/']]){
+src/components/Footer.astro:3:import { riskWarning } from '../data/legal.mjs';
+src/components/Footer.astro:9:    {site.LEGAL_PUBLISHED && <><li><a href="/legal/">Legal notice</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/risks/">Risks</a></li></>}
+src/pages/risks.astro:3:import { riskWarning } from '../data/legal.mjs';
+src/pages/risks.astro:4:import risks from '../content/risks.html?raw';
+tests/footer.test.mjs:7:import { riskWarning } from '../src/data/legal.mjs';
+tests/footer.test.mjs:37:  assert.deepEqual(hrefs, [site.X_URL, site.GITHUB_URL, '/dossier/', '/legal/', '/privacy/', '/risks/']);
+tests/legal-hidden.test.mjs:6:const paths = ['/legal', '/legal/', '/privacy', '/privacy/', '/risks', '/risks/'];
+tests/legal-hidden.test.mjs:66:      request: new Request('https://muleprotocol.com/legal/?x=1', {
+tests/legal-hidden.test.mjs:97:  for (const path of ['/', '/dossier/', '/legal-example/', '/privacy-policy/', '/risks-and-limits/']) {

@@ -1,0 +1,968 @@
+{
+  "measuredAt": "2026-10-07T16:21:22.934Z",
+  "runtime": "Wrangler Pages dev 4.148.0",
+  "base": "http://127.0.0.1:8793",
+  "build": "CF_PAGES=1 CF_PAGES_BRANCH=main (local only)",
+  "checks": [
+    {
+      "host": "muleprotocol.com",
+      "path": "/legal",
+      "method": "GET",
+      "chain": [
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:22 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": true,
+      "bodySha256": "8e8558c01e5745878aade5de3015b1d4c85de9f8935a0e0a783e003ea14cc193"
+    },
+    {
+      "host": "muleprotocol.com",
+      "path": "/legal",
+      "method": "HEAD",
+      "chain": [
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:22 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": null,
+      "bodySha256": null
+    },
+    {
+      "host": "muleprotocol.com",
+      "path": "/legal/",
+      "method": "GET",
+      "chain": [
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:22 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": true,
+      "bodySha256": "8e8558c01e5745878aade5de3015b1d4c85de9f8935a0e0a783e003ea14cc193"
+    },
+    {
+      "host": "muleprotocol.com",
+      "path": "/legal/",
+      "method": "HEAD",
+      "chain": [
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:22 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": null,
+      "bodySha256": null
+    },
+    {
+      "host": "muleprotocol.com",
+      "path": "/privacy",
+      "method": "GET",
+      "chain": [
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": true,
+      "bodySha256": "8e8558c01e5745878aade5de3015b1d4c85de9f8935a0e0a783e003ea14cc193"
+    },
+    {
+      "host": "muleprotocol.com",
+      "path": "/privacy",
+      "method": "HEAD",
+      "chain": [
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": null,
+      "bodySha256": null
+    },
+    {
+      "host": "muleprotocol.com",
+      "path": "/privacy/",
+      "method": "GET",
+      "chain": [
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": true,
+      "bodySha256": "8e8558c01e5745878aade5de3015b1d4c85de9f8935a0e0a783e003ea14cc193"
+    },
+    {
+      "host": "muleprotocol.com",
+      "path": "/privacy/",
+      "method": "HEAD",
+      "chain": [
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": null,
+      "bodySha256": null
+    },
+    {
+      "host": "muleprotocol.com",
+      "path": "/risks",
+      "method": "GET",
+      "chain": [
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": true,
+      "bodySha256": "8e8558c01e5745878aade5de3015b1d4c85de9f8935a0e0a783e003ea14cc193"
+    },
+    {
+      "host": "muleprotocol.com",
+      "path": "/risks",
+      "method": "HEAD",
+      "chain": [
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": null,
+      "bodySha256": null
+    },
+    {
+      "host": "muleprotocol.com",
+      "path": "/risks/",
+      "method": "GET",
+      "chain": [
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": true,
+      "bodySha256": "8e8558c01e5745878aade5de3015b1d4c85de9f8935a0e0a783e003ea14cc193"
+    },
+    {
+      "host": "muleprotocol.com",
+      "path": "/risks/",
+      "method": "HEAD",
+      "chain": [
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": null,
+      "bodySha256": null
+    },
+    {
+      "host": "www.muleprotocol.com",
+      "path": "/legal",
+      "method": "GET",
+      "chain": [
+        {
+          "status": 301,
+          "headers": {
+            "content-length": "0",
+            "location": "https://muleprotocol.com/legal?review=1",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY"
+          }
+        },
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": true,
+      "bodySha256": "8e8558c01e5745878aade5de3015b1d4c85de9f8935a0e0a783e003ea14cc193"
+    },
+    {
+      "host": "www.muleprotocol.com",
+      "path": "/legal",
+      "method": "HEAD",
+      "chain": [
+        {
+          "status": 301,
+          "headers": {
+            "location": "https://muleprotocol.com/legal?review=1",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY"
+          }
+        },
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": null,
+      "bodySha256": null
+    },
+    {
+      "host": "www.muleprotocol.com",
+      "path": "/legal/",
+      "method": "GET",
+      "chain": [
+        {
+          "status": 301,
+          "headers": {
+            "content-length": "0",
+            "location": "https://muleprotocol.com/legal/?review=1",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY"
+          }
+        },
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": true,
+      "bodySha256": "8e8558c01e5745878aade5de3015b1d4c85de9f8935a0e0a783e003ea14cc193"
+    },
+    {
+      "host": "www.muleprotocol.com",
+      "path": "/legal/",
+      "method": "HEAD",
+      "chain": [
+        {
+          "status": 301,
+          "headers": {
+            "location": "https://muleprotocol.com/legal/?review=1",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY"
+          }
+        },
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": null,
+      "bodySha256": null
+    },
+    {
+      "host": "www.muleprotocol.com",
+      "path": "/privacy",
+      "method": "GET",
+      "chain": [
+        {
+          "status": 301,
+          "headers": {
+            "content-length": "0",
+            "location": "https://muleprotocol.com/privacy?review=1",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY"
+          }
+        },
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": true,
+      "bodySha256": "8e8558c01e5745878aade5de3015b1d4c85de9f8935a0e0a783e003ea14cc193"
+    },
+    {
+      "host": "www.muleprotocol.com",
+      "path": "/privacy",
+      "method": "HEAD",
+      "chain": [
+        {
+          "status": 301,
+          "headers": {
+            "location": "https://muleprotocol.com/privacy?review=1",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY"
+          }
+        },
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": null,
+      "bodySha256": null
+    },
+    {
+      "host": "www.muleprotocol.com",
+      "path": "/privacy/",
+      "method": "GET",
+      "chain": [
+        {
+          "status": 301,
+          "headers": {
+            "content-length": "0",
+            "location": "https://muleprotocol.com/privacy/?review=1",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY"
+          }
+        },
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": true,
+      "bodySha256": "8e8558c01e5745878aade5de3015b1d4c85de9f8935a0e0a783e003ea14cc193"
+    },
+    {
+      "host": "www.muleprotocol.com",
+      "path": "/privacy/",
+      "method": "HEAD",
+      "chain": [
+        {
+          "status": 301,
+          "headers": {
+            "location": "https://muleprotocol.com/privacy/?review=1",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY"
+          }
+        },
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": null,
+      "bodySha256": null
+    },
+    {
+      "host": "www.muleprotocol.com",
+      "path": "/risks",
+      "method": "GET",
+      "chain": [
+        {
+          "status": 301,
+          "headers": {
+            "content-length": "0",
+            "location": "https://muleprotocol.com/risks?review=1",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY"
+          }
+        },
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": true,
+      "bodySha256": "8e8558c01e5745878aade5de3015b1d4c85de9f8935a0e0a783e003ea14cc193"
+    },
+    {
+      "host": "www.muleprotocol.com",
+      "path": "/risks",
+      "method": "HEAD",
+      "chain": [
+        {
+          "status": 301,
+          "headers": {
+            "location": "https://muleprotocol.com/risks?review=1",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY"
+          }
+        },
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": null,
+      "bodySha256": null
+    },
+    {
+      "host": "www.muleprotocol.com",
+      "path": "/risks/",
+      "method": "GET",
+      "chain": [
+        {
+          "status": 301,
+          "headers": {
+            "content-length": "0",
+            "location": "https://muleprotocol.com/risks/?review=1",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY"
+          }
+        },
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": true,
+      "bodySha256": "8e8558c01e5745878aade5de3015b1d4c85de9f8935a0e0a783e003ea14cc193"
+    },
+    {
+      "host": "www.muleprotocol.com",
+      "path": "/risks/",
+      "method": "HEAD",
+      "chain": [
+        {
+          "status": 301,
+          "headers": {
+            "location": "https://muleprotocol.com/risks/?review=1",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY"
+          }
+        },
+        {
+          "status": 404,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "no-store",
+            "etag": "\"c53b15d88e0d1483a47c65acd55af723\"",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "x-robots-tag": "noindex, nofollow",
+            "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "DENY",
+            "x-server-env": "dev"
+          }
+        }
+      ],
+      "bodyEqualsExisting404": null,
+      "bodySha256": null
+    },
+    {
+      "host": "mule-site.pages.dev",
+      "path": "/legal/",
+      "status": 200,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "etag": "\"6f1a6f5efcde828bc5f6c6bd3342f054\"",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-robots-tag": "noindex, nofollow",
+        "x-server-env": "dev"
+      }
+    },
+    {
+      "host": "mule-site.pages.dev",
+      "path": "/privacy/",
+      "status": 200,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "etag": "\"4a81059b5dcfe35dac1e62f5cc6b48ff\"",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-robots-tag": "noindex, nofollow",
+        "x-server-env": "dev"
+      }
+    },
+    {
+      "host": "mule-site.pages.dev",
+      "path": "/risks/",
+      "status": 200,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "etag": "\"e575ca69a8145faf09902119bf8a4ee5\"",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-robots-tag": "noindex, nofollow",
+        "x-server-env": "dev"
+      }
+    },
+    {
+      "host": "abc12345.mule-site.pages.dev",
+      "path": "/legal/",
+      "status": 200,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "etag": "\"6f1a6f5efcde828bc5f6c6bd3342f054\"",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-robots-tag": "noindex, nofollow",
+        "x-server-env": "dev"
+      }
+    },
+    {
+      "host": "abc12345.mule-site.pages.dev",
+      "path": "/privacy/",
+      "status": 200,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "etag": "\"4a81059b5dcfe35dac1e62f5cc6b48ff\"",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-robots-tag": "noindex, nofollow",
+        "x-server-env": "dev"
+      }
+    },
+    {
+      "host": "abc12345.mule-site.pages.dev",
+      "path": "/risks/",
+      "status": 200,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "etag": "\"e575ca69a8145faf09902119bf8a4ee5\"",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-robots-tag": "noindex, nofollow",
+        "x-server-env": "dev"
+      }
+    },
+    {
+      "host": "muleprotocol.com",
+      "path": "/",
+      "status": 200,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "etag": "\"ad6734249a80704f860944b4de56e4ee\"",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-server-env": "dev"
+      },
+      "indexable": true,
+      "noDraftLinks": true
+    },
+    {
+      "host": "muleprotocol.com",
+      "path": "/dossier/",
+      "status": 200,
+      "headers": {
+        "transfer-encoding": "chunked",
+        "date": "Wed, 07 Oct 2026 16:21:23 GMT",
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "etag": "\"b714aeba1ef53978efe00f699bed3e45\"",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "content-security-policy": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-server-env": "dev"
+      },
+      "indexable": true,
+      "noDraftLinks": true
+    }
+  ]
+}

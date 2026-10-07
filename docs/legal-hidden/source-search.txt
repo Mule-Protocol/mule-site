@@ -1,0 +1,25 @@
+src\server\response-policy.mjs:15: * @param {{ legalPublished?: boolean, notFound?: () => Response | Promise<Response> }} [options]
+src\server\response-policy.mjs:17:export async function applyResponsePolicy(request, next, { legalPublished = site.LEGAL_PUBLISHED, notFound } = {}) {
+src\server\response-policy.mjs:25:  const legalPath = /^\/(legal|privacy|risks)\/?$/.test(url.pathname);
+src\server\response-policy.mjs:26:  const hidden = url.hostname === site.DOMAIN && legalPath && !legalPublished;
+src\server\response-policy.mjs:36:  if (url.hostname !== site.DOMAIN || legalPath || /^\/m(?:\/|$)/.test(url.pathname)) response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+src\components\Footer.astro:3:import { riskWarning } from '../data/legal.mjs';
+src\components\Footer.astro:9:    {site.LEGAL_PUBLISHED && <><li><a href="/legal/">Legal notice</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/risks/">Risks</a></li></>}
+src\components\Footer.astro:11:  <p class="legal">{riskWarning}</p>
+src\layouts\Legal.astro:10:  <main id="main" class="wrap legal-page" tabindex="-1">
+src\content\risks.html:4:        <p>MULE proves what was agreed and how it settled, not that the work was good beyond its criteria. These are the risks we know about, and what we do about them.</p>
+src\content\dossier.html:47:          <li><a href="#risks"><span class="d-n">10</span><span>Limits and risks</span></a></li>
+src\content\dossier.html:48:          <li><a href="#legal"><span class="d-n">11</span><span>Legal notice</span></a></li>
+src\content\dossier.html:195:          <li><strong>Monthly mission report.</strong> Fees received, spending by category (development, audit, infrastructure, design, legal), balance and progress.</li>
+src\content\dossier.html:216:      <section id="risks">
+src\content\dossier.html:219:        <p>MULE proves what was agreed and how it settled, not that the work was good beyond its criteria. These are the risks we know about, and what we do about them.</p>
+src\content\dossier.html:237:      <section id="legal">
+src\content\dossier.html:240:        <p>This dossier describes a protocol in development. It is not a prospectus, an offer to sell or a solicitation to buy any asset, and nothing in it is financial, legal or tax advice.</p>
+src\pages\privacy.astro:4:<Legal title="Privacy" description="Draft MULE privacy notice: no cookies, no wallet connection, and a browser-only mission simulation.">
+src\pages\privacy.astro:6:  <section><h2>Console and mission patches</h2><p>The simulation, its counter and the downloadable mission patches run in your browser. The counter stays in the current page and resets when you reload. No mission data is submitted to a server.</p><p>Opening a shared patch requests a page and image containing only the mission number, outcome, template and date encoded in its URL. Sharing on X opens X, which applies its own privacy policy.</p></section>
+src\pages\privacy.astro:8:  <section><h2>Hosting and contact</h2><p>Cloudflare delivers the site. Its handling of technical connection data must be confirmed during legal review: [À COMPLÉTER].</p><p>Privacy contact: [À COMPLÉTER]</p></section>
+src\pages\risks.astro:3:import { riskWarning } from '../data/legal.mjs';
+src\pages\risks.astro:4:import risks from '../content/risks.html?raw';
+src\pages\risks.astro:8:  <div class="dossier-document"><section set:html={risks} /></div>
+src\pages\legal.astro:4:<Legal title="Legal notice" description="Draft publisher and hosting details for MULE, pending legal review.">
+src\pages\dossier.astro:8:<Base title="MULE — Dossier" description="The MULE protocol dossier: escrow, acceptance criteria, settlement, funding, milestones and risks." image="/images/dossier.png" imageAlt="MULE protocol dossier">

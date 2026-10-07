@@ -1,0 +1,42 @@
+{
+  "run": {
+    "id": 37651583468,
+    "event": "push",
+    "head_sha": "e74cd74d92e5005fc9f3f3a982057bef02188eca",
+    "head_branch": "codex/legal-hidden",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/Mule-Protocol/mule-site/actions/runs/37651583468",
+    "created_at": "2026-10-07T16:23:06Z",
+    "updated_at": "2026-10-07T16:24:20Z"
+  },
+  "jobs": [
+    {
+      "id": 112895989636,
+      "name": "Validate",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/Mule-Protocol/mule-site/actions/runs/37651583468/job/112895989636",
+      "started_at": "2026-10-07T16:23:08Z",
+      "completed_at": "2026-10-07T16:23:36Z"
+    },
+    {
+      "id": 112896230490,
+      "name": "Deploy Pages",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/Mule-Protocol/mule-site/actions/runs/37651583468/job/112896230490",
+      "started_at": "2026-10-07T16:23:38Z",
+      "completed_at": "2026-10-07T16:24:19Z"
+    }
+  ],
+  "pullRequestRun": {
+    "id": 37651591744,
+    "event": "pull_request",
+    "head_sha": "e74cd74d92e5005fc9f3f3a982057bef02188eca",
+    "head_branch": "codex/legal-hidden",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/Mule-Protocol/mule-site/actions/runs/37651591744"
+  }
+}

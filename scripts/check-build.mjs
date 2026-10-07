@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { isProduction, robotsText } from '../src/config/site.mjs';
+import { site, isProduction, robotsText } from '../src/config/site.mjs';
 
 const directory = process.argv[2] || 'dist';
 const html = await readFile(`${directory}/index.html`, 'utf8');
@@ -20,4 +20,16 @@ for (const page of ['', 'dossier', 'legal', 'privacy', 'risks']) {
   if(['legal','privacy','risks'].includes(page)) assert.ok(content.includes('name="robots" content="noindex, nofollow"'));
   else assert.ok(!content.includes('[À COMPLÉTER]'),`Placeholder on /${page}`);
 }
+
+const legalLink = /(?:href|src)=["'][^"']*\/(?:legal|privacy|risks)(?:[/?#"'])/i;
+if (!site.LEGAL_PUBLISHED) {
+  for (const page of ['index.html', 'dossier/index.html']) {
+    assert.doesNotMatch(await readFile(`${directory}/${page}`, 'utf8'), legalLink, `Draft legal link in ${page}`);
+  }
+}
+const sitemap = await readFile(`${directory}/sitemap.xml`, 'utf8');
+assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]), [
+  `${site.origin}/`, `${site.origin}/dossier/`,
+]);
+
 console.log(JSON.stringify({ directory, indexable, robotsMeta: expectedMeta, robotsTxtMatches: true, utf8: true, errorsNoindex: true }));
