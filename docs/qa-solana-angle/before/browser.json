@@ -1,0 +1,164 @@
+{
+  "phase": "before",
+  "base": "http://127.0.0.1:4321/",
+  "measuredAt": "2026-10-07T20:36:02.991Z",
+  "motion": "reduced for reproducible screenshots",
+  "pages": [
+    {
+      "width": 375,
+      "faqOpen": "What does MULE actually do?",
+      "viewport": 375,
+      "documentWidth": 375,
+      "overflow": [],
+      "heroTextMascotIntersections": [],
+      "figure": {
+        "left": 16,
+        "right": 359,
+        "top": -8717,
+        "bottom": -8537,
+        "width": 343,
+        "height": 180
+      },
+      "heroTitle": {
+        "left": 16,
+        "right": 359,
+        "top": -8488.703125,
+        "bottom": -8363.3125,
+        "width": 343,
+        "height": 125.390625
+      },
+      "descriptions": [
+        {
+          "selector": "meta[name=\"description\"]",
+          "content": "Stubborn by design. MULE is an escrow protocol in development: funds stay locked until an AI agent’s work checks out."
+        },
+        {
+          "selector": "meta[property=\"og:description\"]",
+          "content": "Stubborn by design. MULE is an escrow protocol in development: funds stay locked until an AI agent’s work checks out."
+        },
+        {
+          "selector": "meta[name=\"twitter:description\"]",
+          "content": "Stubborn by design. MULE is an escrow protocol in development: funds stay locked until an AI agent’s work checks out."
+        }
+      ],
+      "faqQuestions": [
+        "Is MULE live?",
+        "What does MULE actually do?",
+        "Can it judge any kind of work?",
+        "What is $MULE for?",
+        "Is $MULE an investment?",
+        "Where do the creator fees go?",
+        "Will this site ask me to connect a wallet?",
+        "How do I avoid scams?"
+      ],
+      "inlineStyles": 2,
+      "inlineScripts": 0,
+      "errors": [],
+      "csp": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'"
+    },
+    {
+      "width": 768,
+      "faqOpen": "What does MULE actually do?",
+      "viewport": 768,
+      "documentWidth": 768,
+      "overflow": [],
+      "heroTextMascotIntersections": [],
+      "figure": {
+        "left": 24,
+        "right": 744,
+        "top": -6754,
+        "bottom": -6178,
+        "width": 720,
+        "height": 576
+      },
+      "heroTitle": {
+        "left": 24,
+        "right": 744,
+        "top": -6120.40625,
+        "bottom": -6015.34375,
+        "width": 720,
+        "height": 105.0625
+      },
+      "descriptions": [
+        {
+          "selector": "meta[name=\"description\"]",
+          "content": "Stubborn by design. MULE is an escrow protocol in development: funds stay locked until an AI agent’s work checks out."
+        },
+        {
+          "selector": "meta[property=\"og:description\"]",
+          "content": "Stubborn by design. MULE is an escrow protocol in development: funds stay locked until an AI agent’s work checks out."
+        },
+        {
+          "selector": "meta[name=\"twitter:description\"]",
+          "content": "Stubborn by design. MULE is an escrow protocol in development: funds stay locked until an AI agent’s work checks out."
+        }
+      ],
+      "faqQuestions": [
+        "Is MULE live?",
+        "What does MULE actually do?",
+        "Can it judge any kind of work?",
+        "What is $MULE for?",
+        "Is $MULE an investment?",
+        "Where do the creator fees go?",
+        "Will this site ask me to connect a wallet?",
+        "How do I avoid scams?"
+      ],
+      "inlineStyles": 2,
+      "inlineScripts": 0,
+      "errors": [],
+      "csp": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'"
+    },
+    {
+      "width": 1440,
+      "faqOpen": "What does MULE actually do?",
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "overflow": [],
+      "heroTextMascotIntersections": [],
+      "figure": {
+        "left": 840,
+        "right": 1320,
+        "top": -6411.34375,
+        "bottom": -6027.34375,
+        "width": 480,
+        "height": 384
+      },
+      "heroTitle": {
+        "left": 120,
+        "right": 792,
+        "top": -6652.40625,
+        "bottom": -6258.40625,
+        "width": 672,
+        "height": 394
+      },
+      "descriptions": [
+        {
+          "selector": "meta[name=\"description\"]",
+          "content": "Stubborn by design. MULE is an escrow protocol in development: funds stay locked until an AI agent’s work checks out."
+        },
+        {
+          "selector": "meta[property=\"og:description\"]",
+          "content": "Stubborn by design. MULE is an escrow protocol in development: funds stay locked until an AI agent’s work checks out."
+        },
+        {
+          "selector": "meta[name=\"twitter:description\"]",
+          "content": "Stubborn by design. MULE is an escrow protocol in development: funds stay locked until an AI agent’s work checks out."
+        }
+      ],
+      "faqQuestions": [
+        "Is MULE live?",
+        "What does MULE actually do?",
+        "Can it judge any kind of work?",
+        "What is $MULE for?",
+        "Is $MULE an investment?",
+        "Where do the creator fees go?",
+        "Will this site ask me to connect a wallet?",
+        "How do I avoid scams?"
+      ],
+      "inlineStyles": 2,
+      "inlineScripts": 0,
+      "errors": [],
+      "csp": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'"
+    }
+  ]
+}
