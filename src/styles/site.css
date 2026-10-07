@@ -52,7 +52,10 @@ button { font: inherit; }
 .motion-ready .lc-head { margin-bottom: 16px; }
 .lc-mobile-annotation { display: none; }
 .hero__fig .scan { animation-timing-function: steps(20); }
-.error-page { min-height: 80vh; display: grid; align-content: center; gap: 24px; }
+.error-page { min-height: 70vh; display: grid; align-content: center; align-items: center; gap: 40px; padding-block: 48px; }
+.error-page > div { display: grid; gap: 24px; }
+.error-mule { width: 100%; max-width: 440px; height: auto; justify-self: center; }
+@media (min-width: 900px) { .error-page { grid-template-columns: 1fr 1fr; } }
 .error-page h1 { font-size: clamp(44px, 8vw, 96px); }
 .error-page .btn { justify-self: start; }
 .foot { margin-top: 56px; }
@@ -96,4 +99,3 @@ html[data-motion="off"] #trail { display: none; }
 .legal-page section { padding-block:20px; }
 .legal-page p { overflow-wrap:anywhere; max-width:72ch; }
 .draft-banner { border:2px solid var(--signal); padding:16px; width:fit-content; }
-.foot ul { list-style:none; margin:0; padding:0; }

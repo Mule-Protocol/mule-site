@@ -1,11 +1,23 @@
 ---
 import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { mascotInner } from '../lib/mascot.mjs';
 ---
 <Base title="404 — MULE" noindex>
-  <main class="wrap error-page" id="main">
-    <p class="label">404 / Payload not found</p>
-    <h1 class="display">Wrong station.</h1>
-    <p>This page does not exist.</p>
-    <a class="btn" href="/">Return to base →</a>
+  <Header />
+  <main class="wrap error-page" id="main" tabindex="-1">
+    <div>
+      <p class="label">404 / Payload not found</p>
+      <h1 class="display">Wrong station.</h1>
+      <p>This page does not exist.</p>
+      <a class="btn" href="/">Return to base →</a>
+    </div>
+    <svg class="error-mule" viewBox="30 70 270 180" role="img" aria-label="Unit M-1, the robot mule, lying down and waiting">
+      <line x1="30" y1="212" x2="296" y2="212" stroke="#0E0E0E" stroke-dasharray="2 4" />
+      <g class="m1-art" set:html={mascotInner('idle', 'e404')} />
+    </svg>
   </main>
+  <Footer />
+  <script src="../scripts/site.ts"></script>
 </Base>
