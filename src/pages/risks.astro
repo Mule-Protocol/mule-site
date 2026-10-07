@@ -1,0 +1,9 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { riskWarning } from '../data/legal.mjs';
+import risks from '../content/risks.html?raw';
+---
+<Legal title="Risks" description="Draft MULE risk disclosure and the limits described in the protocol dossier.">
+  <p>{riskWarning}</p>
+  <div class="dossier-document"><section set:html={risks} /></div>
+</Legal>

@@ -1,0 +1,48 @@
+<section class="sec" id="console">
+    <div class="wrap">
+      <div class="sec-label label"><span class="n" data-flip>04</span><span>/ Console</span></div>
+      <div class="console">
+        <form class="con-form" id="conForm">
+          <h2 class="display">Mission console.</h2>
+          <div class="sim-note label"><span class="light" aria-hidden="true"></span><span>Simulation · no real funds · devnet version in development</span></div>
+          <fieldset id="missionControls" disabled><legend class="sr-only">Configure your simulated mission</legend><div class="field">
+            <label class="label" for="tpl">Mission template</label>
+            <select id="tpl">
+              <option value="invoice">Extract an invoice to JSON</option>
+              <option value="contract">Summarize a contract into 5 fields</option>
+              <option value="address">Normalize a list of addresses</option>
+            </select>
+          </div>
+          <div class="field">
+            <span class="label" id="behLabel">Agent behavior</span>
+            <div class="toggle label" role="radiogroup" aria-labelledby="behLabel">
+              <input type="radio" name="beh" id="behHonest" value="honest" checked><label for="behHonest">Honest</label>
+              <input type="radio" name="beh" id="behBad" value="dishonest"><label for="behBad">Dishonest</label>
+            </div>
+          </div>
+          <button class="btn btn--signal" type="submit" id="launch">Launch mission · 5.00 dUSDC <span aria-hidden="true">→</span></button>
+          </fieldset>
+          <noscript><p class="console-explanation">JavaScript is required to run this simulation. No wallet or funds are needed.</p></noscript>
+        </form>
+        <div class="con-out" id="conOut">
+          <div class="con-out__head label"><span id="msnId">MSN-0000</span><span id="msnState">Idle</span></div>
+          <ol class="log" id="log" aria-live="polite" aria-relevant="additions" aria-label="Mission journal">
+            <li class="idle">Waiting for a mission. Pick a template and an agent, then launch. <span class="cursor" aria-hidden="true"></span></li>
+          </ol>
+          <div class="stampbox"><span class="stampbig" id="stamp"></span></div>
+          <a class="btn get-patch" id="getPatch" href="#patch" hidden>Get your mission patch →</a>
+          <div class="con-foot label"><span>FAKE HASHES · NO ON-CHAIN TRANSACTIONS</span><span id="runs">0 missions run on this page</span></div>
+        </div>
+      </div>
+
+      <div class="patch" id="patch" hidden aria-labelledby="patchTitle">
+        <canvas id="patchCanvas" width="600" height="660" role="img" aria-label="Your simulated mission patch"></canvas>
+        <div>
+          <span class="label">Mission patch</span>
+          <h3 class="display ported-1" id="patchTitle">Mission settled.</h3>
+          <p class="muted ported-2" id="patchText"></p>
+          <div class="ctas"><a class="btn" id="shareX" href="#" target="_blank" rel="noopener">Share on X <span aria-hidden="true">→</span></a><button type="button" class="btn" id="downloadPatch">Download PNG</button><a class="btn" id="patchPage" href="#">View patch</a></div>
+        </div>
+      </div>
+    </div>
+  </section>

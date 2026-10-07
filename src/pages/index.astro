@@ -3,19 +3,24 @@ import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import Lifecycle from '../components/Lifecycle.astro';
-import { site } from '../config/site.mjs';
+import Problem from '../components/Problem.astro';
+import Console from '../components/Console.astro';
+import HomeSections from '../components/HomeSections.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/pass-2.css';
 ---
 <Base>
   <div id="top"></div>
   <Header />
   <main id="main" tabindex="-1">
     <Hero />
+    <Problem />
     <Lifecycle />
+    <Console />
+    <HomeSections />
   </main>
-  <footer class="wrap foot">
-    <div><span class="label">MULE</span><p>Pay AI agents on delivery.<br />Stubborn by design.</p></div>
-    <a class="label" href={site.X_URL}>X · {site.X_HANDLE} →</a>
-    <p class="legal">Design review 01 / Hero and lifecycle. The console and dossier follow after review. No real funds. Protocol in development.</p>
-  </footer>
+  <Footer />
   <script src="../scripts/site.ts"></script>
+  <script src="../scripts/console.ts"></script>
+  <script src="../scripts/section-motion.ts"></script>
 </Base>

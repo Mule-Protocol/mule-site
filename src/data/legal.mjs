@@ -1,0 +1,1 @@
+export const riskWarning = '$MULE is a utility token for the MULE protocol, currently in development. Nothing on this site is financial advice, an offer, or a promise of value or returns. The console is a simulation. Crypto-assets are volatile and you may lose everything you put in.';

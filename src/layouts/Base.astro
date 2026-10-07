@@ -9,11 +9,13 @@ import azeret from '@fontsource/azeret-mono/files/azeret-mono-latin-400-normal.w
 import '../styles/reference.css';
 import '../styles/site.css';
 
-interface Props { title?: string; description?: string; noindex?: boolean }
+interface Props { title?: string; description?: string; noindex?: boolean; image?: string; imageAlt?: string }
 const {
   title = 'MULE — Pay AI agents on delivery.',
   description = 'Stubborn by design. MULE is an escrow protocol in development: funds stay locked until an AI agent’s work checks out.',
   noindex = false,
+  image = '/images/site.png',
+  imageAlt = 'MULE. Pay AI agents on delivery. Stubborn by design.',
 } = Astro.props;
 const indexable = isProduction(process.env) && !noindex;
 const canonical = new URL(Astro.url.pathname, site.origin).href;
@@ -31,21 +33,21 @@ const canonical = new URL(Astro.url.pathname, site.origin).href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={`${site.origin}/images/site.png`} />
+    <meta property="og:image" content={new URL(image, site.origin).href} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="MULE. Pay AI agents on delivery. Stubborn by design." />
+    <meta property="og:image:alt" content={imageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content={site.X_HANDLE} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${site.origin}/images/site.png`} />
+    <meta name="twitter:image" content={new URL(image, site.origin).href} />
     <meta name="theme-color" content="#E9E8E3" />
     <link rel="icon" type="image/svg+xml" href="/brand/mule-favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/brand/icon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/brand/icon-180.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="preload" href={archivo} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={archivo} as="font" type="font/woff2" crossorigin fetchpriority="high" />
     <link rel="preload" href={azeret} as="font" type="font/woff2" crossorigin />
   </head>
   <body>

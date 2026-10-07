@@ -1,0 +1,17 @@
+---
+import Base from './Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/dossier.css';
+const { title, description } = Astro.props;
+---
+<Base title={`MULE — ${title}`} description={description} noindex>
+  <Header />
+  <main id="main" class="wrap legal-page" tabindex="-1">
+    <p class="draft-banner label">DRAFT · PENDING LEGAL REVIEW</p>
+    <h1 class="display">{title}</h1>
+    <slot />
+  </main>
+  <Footer />
+  <script src="../scripts/site.ts"></script>
+</Base>
