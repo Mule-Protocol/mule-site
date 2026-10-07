@@ -1,0 +1,43 @@
+{
+  "pullRequests": [
+    {
+      "number": 3,
+      "merged": true,
+      "merged_at": "2026-10-07T17:02:19Z",
+      "merge_commit_sha": "f3fb242aeb1d538095f18072f4fc64e6c9f66587",
+      "html_url": "https://github.com/Mule-Protocol/mule-site/pull/3"
+    },
+    {
+      "number": 4,
+      "merged": true,
+      "merged_at": "2026-10-07T17:04:05Z",
+      "merge_commit_sha": "90bebbbfc070efccf8936140b4661806ea25c7b5",
+      "html_url": "https://github.com/Mule-Protocol/mule-site/pull/4"
+    }
+  ],
+  "productionRun": {
+    "id": 37656135623,
+    "event": "push",
+    "head_branch": "main",
+    "head_sha": "90bebbbfc070efccf8936140b4661806ea25c7b5",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/Mule-Protocol/mule-site/actions/runs/37656135623"
+  },
+  "jobs": [
+    {
+      "id": 112911441901,
+      "name": "Validate",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/Mule-Protocol/mule-site/actions/runs/37656135623/job/112911441901"
+    },
+    {
+      "id": 112911809246,
+      "name": "Deploy Pages",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/Mule-Protocol/mule-site/actions/runs/37656135623/job/112911809246"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "httpStatus": 200,
+  "method": "Get",
+  "path": "zones/e7ee9658588c6e5a90b950de4925d977/dns_records?per_page=100&page=1",
+  "checkedAt": "2026-10-07T17:12:16.6509038Z",
+  "data": {
+    "result": [],
+    "success": true,
+    "errors": [],
+    "messages": [],
+    "result_info": {
+      "page": 1,
+      "per_page": 100,
+      "count": 0,
+      "total_count": 0,
+      "total_pages": 1
+    }
+  }
+}
