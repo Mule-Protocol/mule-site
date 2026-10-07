@@ -4,6 +4,7 @@ import { site, isProduction, robotsText } from '../src/config/site.mjs';
 
 test('production is indexable while the contract stays absent', () => {
   assert.equal(site.LAUNCHED, false);
+  assert.equal(site.LEGAL_PUBLISHED, false);
   assert.equal(site.CONTRACT_ADDRESS, null);
   const production = { CF_PAGES: '1', CF_PAGES_BRANCH: 'main' };
   assert.equal(isProduction(production), true);

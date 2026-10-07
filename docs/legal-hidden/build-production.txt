@@ -1,0 +1,37 @@
+
+> mule-protocol-site@0.1.0 build
+> astro check && astro build && node scripts/check-build.mjs
+
+18:19:49 [types] Generated 231ms
+18:19:49 [check] Getting diagnostics for Astro files in C:\Users\mootc\.codex\worktrees\legal-hidden\Mule Protocol...
+Result (56 files): 
+- 0 errors
+- 0 warnings
+- 0 hints
+
+18:20:03 [types] Generated 103ms
+18:20:03 [build] output: "static"
+18:20:03 [build] mode: "static"
+18:20:03 [build] directory: C:\Users\mootc\.codex\worktrees\legal-hidden\Mule Protocol\dist\
+18:20:03 [build] Collecting build info...
+18:20:03 [build] ✓ Completed in 154ms.
+18:20:03 [build] Building static entrypoints...
+18:20:03 [vite] ✓ built in 650ms
+18:20:03 [vite] ✓ built in 114ms
+18:20:03 [build] Rearranging server assets...
+
+ generating static routes 
+18:20:04   ├─ /404.html (+26ms) 
+18:20:04   ├─ /dossier/index.html (+11ms) 
+18:20:04   ├─ /legal/index.html (+23ms) 
+18:20:04   ├─ /privacy/index.html (+4ms) 
+18:20:04   ├─ /risks/index.html (+5ms) 
+18:20:04   ├─ /robots.txt (+4ms) 
+18:20:04   ├─ /sitemap.xml (+3ms) 
+18:20:04   ├─ /index.html (+5ms) 
+18:20:04 ✓ Completed in 213ms.
+
+18:20:04 [build] ✓ Completed in 1.08s.
+18:20:04 [build] 6 page(s) built in 1.26s
+18:20:04 [build] Complete!
+{"directory":"dist","indexable":true,"robotsMeta":"index, follow","robotsTxtMatches":true,"utf8":true,"errorsNoindex":true}
