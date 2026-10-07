@@ -1,0 +1,385 @@
+{
+  "capturedAt": "2026-10-07T02:49:33.514Z",
+  "url": "http://127.0.0.1:4321/",
+  "engine": "Chromium headless; not physical devices",
+  "results": [
+    {
+      "width": 360,
+      "horizontalOverflow": false,
+      "lifecycle": [
+        "LOAD",
+        "LOCK",
+        "TRANSIT",
+        "INSPECT",
+        "SETTLE"
+      ],
+      "transitions": [
+        {
+          "step": 1,
+          "pausedCardTop": 72.453125,
+          "resumedStep": 1
+        },
+        {
+          "step": 2,
+          "pausedCardTop": 72.140625,
+          "resumedStep": 2
+        },
+        {
+          "step": 3,
+          "pausedCardTop": 71.828125,
+          "resumedStep": 3
+        },
+        {
+          "step": 4,
+          "pausedCardTop": 71.515625,
+          "resumedStep": 4
+        },
+        {
+          "step": 5,
+          "pausedCardTop": 71.953125,
+          "resumedStep": 5
+        }
+      ],
+      "geometry": [
+        {
+          "stageWidth": 328,
+          "stageHeight": 230.8125,
+          "muleWidth": 209.5534539473684,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        },
+        {
+          "stageWidth": 328,
+          "stageHeight": 230.8125,
+          "muleWidth": 209.5534539473684,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        },
+        {
+          "stageWidth": 328,
+          "stageHeight": 230.8125,
+          "muleWidth": 209.5534539473684,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        },
+        {
+          "stageWidth": 328,
+          "stageHeight": 230.8125,
+          "muleWidth": 209.5534539473684,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        },
+        {
+          "stageWidth": 328,
+          "stageHeight": 230.8125,
+          "muleWidth": 209.5534539473684,
+          "annotationHeight": 43,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        }
+      ],
+      "accessibleStepsExactlyOnce": true,
+      "externalRequests": [],
+      "errors": [],
+      "font": {
+        "family": "Archivo, \"Arial Black\", Arial, sans-serif",
+        "ready": true
+      }
+    },
+    {
+      "width": 375,
+      "horizontalOverflow": false,
+      "lifecycle": [
+        "LOAD",
+        "LOCK",
+        "TRANSIT",
+        "INSPECT",
+        "SETTLE"
+      ],
+      "transitions": [
+        {
+          "step": 1,
+          "pausedCardTop": 71.65625,
+          "resumedStep": 1
+        },
+        {
+          "step": 2,
+          "pausedCardTop": 72.265625,
+          "resumedStep": 2
+        },
+        {
+          "step": 3,
+          "pausedCardTop": 71.875,
+          "resumedStep": 3
+        },
+        {
+          "step": 4,
+          "pausedCardTop": 72.484375,
+          "resumedStep": 4
+        },
+        {
+          "step": 5,
+          "pausedCardTop": 71.84375,
+          "resumedStep": 5
+        }
+      ],
+      "geometry": [
+        {
+          "stageWidth": 343,
+          "stageHeight": 241.359375,
+          "muleWidth": 219.12890624999997,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        },
+        {
+          "stageWidth": 343,
+          "stageHeight": 241.359375,
+          "muleWidth": 219.12890624999997,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        },
+        {
+          "stageWidth": 343,
+          "stageHeight": 241.359375,
+          "muleWidth": 219.12890624999997,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        },
+        {
+          "stageWidth": 343,
+          "stageHeight": 241.359375,
+          "muleWidth": 219.12890624999997,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        },
+        {
+          "stageWidth": 343,
+          "stageHeight": 241.359375,
+          "muleWidth": 219.12890624999997,
+          "annotationHeight": 19,
+          "labelDisplay": "none",
+          "sectionLabelTop": 80,
+          "overflow": false
+        }
+      ],
+      "accessibleStepsExactlyOnce": true,
+      "externalRequests": [],
+      "errors": [],
+      "font": {
+        "family": "Archivo, \"Arial Black\", Arial, sans-serif",
+        "ready": true
+      }
+    },
+    {
+      "width": 768,
+      "horizontalOverflow": false,
+      "lifecycle": [
+        "LOAD",
+        "LOCK",
+        "TRANSIT",
+        "INSPECT",
+        "SETTLE"
+      ],
+      "transitions": [
+        {
+          "step": 1,
+          "pausedCardTop": 71.96875,
+          "resumedStep": 1
+        },
+        {
+          "step": 2,
+          "pausedCardTop": 71.78125,
+          "resumedStep": 2
+        },
+        {
+          "step": 3,
+          "pausedCardTop": 71.59375,
+          "resumedStep": 3
+        },
+        {
+          "step": 4,
+          "pausedCardTop": 72.40625,
+          "resumedStep": 4
+        },
+        {
+          "step": 5,
+          "pausedCardTop": 72.21875,
+          "resumedStep": 5
+        }
+      ],
+      "geometry": [
+        {
+          "stageWidth": 720,
+          "stageHeight": 225,
+          "muleWidth": 129.375,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 248.96875,
+          "overflow": false
+        },
+        {
+          "stageWidth": 720,
+          "stageHeight": 225,
+          "muleWidth": 129.375,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 248.96875,
+          "overflow": false
+        },
+        {
+          "stageWidth": 720,
+          "stageHeight": 225,
+          "muleWidth": 129.375,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 248.96875,
+          "overflow": false
+        },
+        {
+          "stageWidth": 720,
+          "stageHeight": 225,
+          "muleWidth": 129.375,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 248.96875,
+          "overflow": false
+        },
+        {
+          "stageWidth": 720,
+          "stageHeight": 225,
+          "muleWidth": 129.375,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 248.96875,
+          "overflow": false
+        }
+      ],
+      "accessibleStepsExactlyOnce": true,
+      "externalRequests": [],
+      "errors": [],
+      "font": {
+        "family": "Archivo, \"Arial Black\", Arial, sans-serif",
+        "ready": true
+      }
+    },
+    {
+      "width": 1440,
+      "horizontalOverflow": false,
+      "lifecycle": [
+        "LOAD",
+        "LOCK",
+        "TRANSIT",
+        "INSPECT",
+        "SETTLE"
+      ],
+      "transitions": [
+        {
+          "step": 1,
+          "pausedCardTop": 71.90625,
+          "resumedStep": 1
+        },
+        {
+          "step": 2,
+          "pausedCardTop": 71.71875,
+          "resumedStep": 2
+        },
+        {
+          "step": 3,
+          "pausedCardTop": 71.53125,
+          "resumedStep": 3
+        },
+        {
+          "step": 4,
+          "pausedCardTop": 72.34375,
+          "resumedStep": 4
+        },
+        {
+          "step": 5,
+          "pausedCardTop": 72.15625,
+          "resumedStep": 5
+        }
+      ],
+      "geometry": [
+        {
+          "stageWidth": 1200,
+          "stageHeight": 375,
+          "muleWidth": 215.625,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 173.25,
+          "overflow": false
+        },
+        {
+          "stageWidth": 1200,
+          "stageHeight": 375,
+          "muleWidth": 215.625,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 173.25,
+          "overflow": false
+        },
+        {
+          "stageWidth": 1200,
+          "stageHeight": 375,
+          "muleWidth": 215.625,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 173.25,
+          "overflow": false
+        },
+        {
+          "stageWidth": 1200,
+          "stageHeight": 375,
+          "muleWidth": 215.625,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 173.25,
+          "overflow": false
+        },
+        {
+          "stageWidth": 1200,
+          "stageHeight": 375,
+          "muleWidth": 215.625,
+          "annotationHeight": 0,
+          "labelDisplay": "inline",
+          "sectionLabelTop": 173.25,
+          "overflow": false
+        }
+      ],
+      "accessibleStepsExactlyOnce": true,
+      "externalRequests": [],
+      "errors": [],
+      "font": {
+        "family": "Archivo, \"Arial Black\", Arial, sans-serif",
+        "ready": true
+      }
+    },
+    {
+      "reducedMotion": true,
+      "pinned": false,
+      "runningAnimations": 0,
+      "keyboardSkipLink": true
+    },
+    {
+      "javaScriptDisabled": true,
+      "readableSteps": 5
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+curl -I https://codex-pass-2.mule-site.pages.dev/m/5817-s-adr-20261007/og.png?review=1
+HTTP/1.1 200 OK
+Date: Wed, 07 Oct 2026 02:53:53 GMT
+Content-Type: image/png
+Connection: keep-alive
+Cache-Control: public, max-age=86400, s-maxage=604800
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-MULE-OG-Cache: MISS
+X-Robots-Tag: noindex, nofollow
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=z8ClgZl6%2F6yuOhsSYXwMeIJfjm9v9EAliHxj5o8Wvml3x5pIIpEUDWHuq%2B6GMyo36iBDBwwWEVzXy1Fy3xYzU6s%2Bmr8DVJ7Uko93W9ZIxYDvhJsLV3JdYab5sGSzDOeHz0DZVewMRdndtWCPv%2BqCU9QBoaGu%2FwXR%2BlSgh%2Fez3Q%3D%3D"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Server: cloudflare
+CF-RAY: a4699e39dece97ce-CDG
+alt-svc: h3=":443"; ma=86400
+
+time_starttransfer=0.397371

@@ -244,3 +244,241 @@ alt-svc: h3=":443"; ma=86400
 
 
 ```
+
+
+## Corrections de review
+
+Cette section complète la QA initiale ci-dessus et décrit la version corrigée. Les résultats locaux de la première livraison ne remplacent pas les mesures réseau ci-dessous.
+
+### Version et périmètre
+
+- Nouveau commit de code : [a7fa8731346b34e550656ff7f90912220ad08a1a](https://github.com/Mule-Protocol/mule-site/commit/a7fa8731346b34e550656ff7f90912220ad08a1a), ajouté après affd901, sans réécriture de l'historique.
+- PR #2 maintenue en brouillon sur codex/pass-2. Aucun changement de main, de production, de DNS ou de domaine. Aucun développement M-1.
+- LAUNCHED = false et CONTRACT_ADDRESS = null. Textes, silhouette et couleurs validés conservés, hormis les changements explicitement demandés : retrait de la barre du dossier et ajout du téléphone de l'hébergeur.
+
+### Corrections et améliorations
+
+| Point | État et résultat | Fichiers du commit a7fa873 |
+| --- | --- | --- |
+| 1. Cycle mobile / console | Fait. Suppression de la marge négative ; hauteur de la zone collée adaptée à son contenu. Le rail termine réellement avant la console. | src/styles/pass-2.css |
+| 2. Écussons | Fait. Numéro, statut, modèle, mention et date replacés ; mention à 5,5 unités. Marge minimale mesurée sur les six exports : 7,56 unités, après soustraction du demi-trait intérieur (0,75). Aucun texte modifié. | src/scripts/console.ts |
+| 3. URL canoniques | Fait. Sitemap /dossier/ ; liens directs avec barre finale vers dossier, legal, privacy et risks. | src/pages/sitemap.xml.ts, src/components/Header.astro, Hero.astro, Footer.astro, src/server/mission-page.mjs |
+| 4. noindex /m/* | Fait. En-tête et méta robots noindex, y compris sur l'apex ; le middleware couvre aussi les chemins /m/ non reconnus. OG et Twitter conservés. | src/server/mission-page.mjs, response-policy.mjs ; tests/mission.test.mjs, response-policy.test.mjs |
+| 5. Cache OG | Fait. caches.default, clé GET construite à partir de l'origine et du chemin validé, sans paramètres ; HEAD et GET partagent la même entrée. Diagnostic X-MULE-OG-Cache: MISS / HIT. Écriture terminée avant la réponse. | functions/m/[id]/og.png.ts, src/server/og-cache.mjs, tests/og-cache.test.mjs |
+| 6. Dates | Fait. Années 2026–2099 incluses ; date locale du visiteur pour les nouveaux écussons. Les dates du début de ce rapport étaient UTC dans la version initiale, elles ne le sont plus. | src/data/mission.mjs, tests/mission.test.mjs |
+| 7. Téléphone | Fait. +1 (650) 319-8930, avec lien tel:. | src/pages/legal.astro |
+| 8. Dossier | Fait. Retrait du seul header d-bar et de ses styles ; STATUS DRAFT conservé dans les métadonnées. Le test compare toujours tout le texte restant au prototype. | src/content/dossier.html, src/styles/dossier.css, scripts/pass-2-qa.mjs |
+
+Aucune amélioration recommandée laissée de côté.
+
+Téléphone et adresse vérifiés le 7 octobre 2026 sur la [page officielle Cloudflare, encadré « Have Questions? » et section 15](https://www.cloudflare.com/website-terms/).
+
+Le cache évite un nouveau rendu OG en cas de HIT. Il est local au centre de données Cloudflare et ne supprime pas l'exécution de la Function ni son décompte de requêtes. Source : [documentation officielle Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/). Aucun changement de plan, de quota ou de configuration du compte.
+
+### Tests et preuves
+
+- 14 tests unitaires réussis (10 auparavant), dont les bornes 2026 et 2099, les années 0000/9999 rejetées, Paris à 00 h 30 et Los Angeles avant minuit, le noindex sur l'apex, le cache HEAD/GET, les paramètres ignorés, l'isolation par mission/hôte et le non-stockage des erreurs.
+- Build Astro et contrôle du HTML compilé réussis : 0 erreur, 0 avertissement, 0 hint ; CSP stricte, absence de scripts/styles inline, UTF-8 et noindex des préproductions contrôlés.
+- Régression locale du cycle aux largeurs 360, 375, 768 et 1440 : cinq étapes, 20 bascules pause/reprise plus défilement pendant la pause, mule cadrée, contenu accessible, mouvements réduits et sans JavaScript. [Résultat JSON](qa-pass-2-corrections/lifecycle-local.json).
+
+
+- [CI de déploiement réussie](https://github.com/Mule-Protocol/mule-site/actions/runs/37563976319), [validation PR](https://github.com/Mule-Protocol/mule-site/actions/runs/37563980898). [Preuve CI](qa-pass-2-corrections/ci-deploy.json), [déploiement](qa-pass-2-corrections/deployment.json).
+- [Préproduction de branche mise à jour](https://codex-pass-2.mule-site.pages.dev/), [version immuable testée](https://6a8a3baf.mule-site.pages.dev/).
+- Contrôles sur la préproduction : arrivées par héros et menu à 360×740 et 375×812, plus 233 positions de défilement mobile (pas de 8 px), sans chevauchement. Vide rail → bord supérieur du label console : **72 px** dans les deux tailles. Les largeurs 768 et 1440 restent sans chevauchement. [Mesures géométriques et six écussons](qa-pass-2-corrections/browser/report.json).
+- Les boîtes réelles des glyphes canvas, avec les polices chargées, sont comparées aux six côtés du polygone intérieur ; la distance est perpendiculaire au trait, pas seulement horizontale. Les fichiers téléchargés font tous 600×660 et ont aussi été inspectés visuellement.
+- Régression sur la préproduction : 24 simulations, téléchargement au clavier, focus, FAQ, texte du dossier identique hors barre supprimée, TOC, absence de débordement, pages légales, mission HTML, image 1200×630, 404, pause et sans JavaScript. [Résultat JSON](qa-pass-2-corrections/regression-preview.json). Zéro erreur applicative ; les avertissements CSP de la visionneuse PNG interne de Chromium restent séparés, comme lors de la première livraison.
+
+### Captures de la préproduction
+
+| Taille | Héros → console | Menu → console | Défilement continu |
+| --- | --- | --- | --- |
+| 360×740 | [Capture](qa-pass-2-corrections/browser/console-hero-360.png) | [Capture](qa-pass-2-corrections/browser/console-menu-360.png) | [Capture](qa-pass-2-corrections/browser/console-scroll-360.png) |
+| 375×812 | [Capture](qa-pass-2-corrections/browser/console-hero-375.png) | [Capture](qa-pass-2-corrections/browser/console-menu-375.png) | [Capture](qa-pass-2-corrections/browser/console-scroll-375.png) |
+
+[Dossier avec une seule barre et STATUS DRAFT conservé](qa-pass-2-corrections/browser/dossier-header-375.png).
+
+### Six PNG téléchargés, sans retouche
+
+| Modèle | SETTLED | RETURNED |
+| --- | --- | --- |
+| Invoice to JSON | ![Invoice settled](qa-pass-2-corrections/browser/patch-invoice-honest.png) | ![Invoice returned](qa-pass-2-corrections/browser/patch-invoice-dishonest.png) |
+| Contract summary | ![Contract settled](qa-pass-2-corrections/browser/patch-contract-honest.png) | ![Contract returned](qa-pass-2-corrections/browser/patch-contract-dishonest.png) |
+| Address normalization | ![Address settled](qa-pass-2-corrections/browser/patch-address-honest.png) | ![Address returned](qa-pass-2-corrections/browser/patch-address-dishonest.png) |
+
+### HTTP et preuve du cache
+
+Requêtes du 7 octobre 2026, exécutées sur la préproduction. Aucun appel ne modifie la production. Dossier, sitemap, mission et image répondent 200 ; le sitemap contient seulement l'accueil et l'URL canonique /dossier/. Les deux appels OG successifs utilisent des paramètres différents pour vérifier qu'ils ne créent pas de nouvelles entrées : **MISS → HIT**. TTFB mesuré : **397 ms → 93 ms**, même centre de données CDG. Il s'agit d'un relevé ponctuel, pas d'une garantie de latence.
+
+<details>
+<summary>Dossier — curl -I</summary>
+
+```text
+curl -I https://codex-pass-2.mule-site.pages.dev/dossier/
+HTTP/1.1 200 OK
+Date: Wed, 07 Oct 2026 02:53:52 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Cache-Control: public, max-age=0, must-revalidate
+ETag: "8d79c00aaabd24f97e92d2ecd0f9e2aa"
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+content-security-policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+permissions-policy: camera=(), microphone=(), geolocation=(), payment=()
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-robots-tag: noindex, nofollow
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=aOX846Vv4IewzsReHwOyMTWoSIL4pg4JHnKSwLSbApZwE2xIQKd4m9yuyLZc9AHCSj7Ga9vpl3iPm8aRXolPTVZ%2FruBajVjGUvakSPO%2FBMNlUgqt0sXlx5OAm3VfoViWljfUiJuLoKgcpVPfH7Wr0m0qhJVzAX0f2ppxwd6jkQ%3D%3D"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Server: cloudflare
+CF-RAY: a4699e356abe6f94-CDG
+alt-svc: h3=":443"; ma=86400
+```
+
+</details>
+
+<details>
+<summary>Sitemap — curl -I</summary>
+
+```text
+curl -I https://codex-pass-2.mule-site.pages.dev/sitemap.xml
+HTTP/1.1 200 OK
+Date: Wed, 07 Oct 2026 02:53:53 GMT
+Content-Type: application/xml
+Connection: keep-alive
+Cache-Control: public, max-age=0, must-revalidate
+ETag: "d8c9a6e0de039da193e78051b08d885f"
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+content-security-policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+permissions-policy: camera=(), microphone=(), geolocation=(), payment=()
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-robots-tag: noindex, nofollow
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=d6Hcz1OoaA5OTVlP3o8JH2tlGsduWQLmWMHQ9pT7HMLnrVjHlvklXv9qh6pKO8Sf2BWFHTRaXtJ9SPIprJDDwE2wfhVY%2B%2FXIjAb36yOTm4rgeKPSYKq0UlYvO2awpoK9W6K3zY1qi0K3xVd1GbE6On52BlCS24LM1fx0l%2Bkw6Q%3D%3D"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Server: cloudflare
+CF-RAY: a4699e36be1fd7e7-CDG
+alt-svc: h3=":443"; ma=86400
+```
+
+</details>
+
+<details>
+<summary>Mission valide — curl -I</summary>
+
+```text
+curl -I https://codex-pass-2.mule-site.pages.dev/m/5817-s-adr-20261007
+HTTP/1.1 200 OK
+Date: Wed, 07 Oct 2026 02:53:53 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Cache-Control: public, max-age=3600
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Robots-Tag: noindex, nofollow
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=iC5Ix6mU16CsalCi8TFbu5rmoOnYCVt1TC5%2Fq9MCN%2BS7MeUZFzhaeZIPW9TWbZpmn5SeRAGcd1zu4OE5R8aPqdaaODp6zfyTkSiOsSCPnSUIKjlOMoCI%2FE%2B9rD%2Fp3VoYGNv6M93KOtCutaMZXHJQyQVvurgsyw4saHQnTVXKfw%3D%3D"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Server: cloudflare
+CF-RAY: a4699e387c694e30-CDG
+alt-svc: h3=":443"; ma=86400
+```
+
+</details>
+
+<details>
+<summary>Image OG, premier appel — curl -I</summary>
+
+```text
+curl -I https://codex-pass-2.mule-site.pages.dev/m/5817-s-adr-20261007/og.png?review=1
+HTTP/1.1 200 OK
+Date: Wed, 07 Oct 2026 02:53:53 GMT
+Content-Type: image/png
+Connection: keep-alive
+Cache-Control: public, max-age=86400, s-maxage=604800
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-MULE-OG-Cache: MISS
+X-Robots-Tag: noindex, nofollow
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=z8ClgZl6%2F6yuOhsSYXwMeIJfjm9v9EAliHxj5o8Wvml3x5pIIpEUDWHuq%2B6GMyo36iBDBwwWEVzXy1Fy3xYzU6s%2Bmr8DVJ7Uko93W9ZIxYDvhJsLV3JdYab5sGSzDOeHz0DZVewMRdndtWCPv%2BqCU9QBoaGu%2FwXR%2BlSgh%2Fez3Q%3D%3D"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Server: cloudflare
+CF-RAY: a4699e39dece97ce-CDG
+alt-svc: h3=":443"; ma=86400
+
+time_starttransfer=0.397371
+```
+
+</details>
+
+<details>
+<summary>Image OG, second appel — curl -I</summary>
+
+```text
+curl -I https://codex-pass-2.mule-site.pages.dev/m/5817-s-adr-20261007/og.png?review=2
+HTTP/1.1 200 OK
+Date: Wed, 07 Oct 2026 02:53:54 GMT
+Content-Type: image/png
+Content-Length: 42126
+Connection: keep-alive
+CF-Ray: a4699e3cb99bad3a-CDG
+CF-Cache-Status: HIT
+Accept-Ranges: bytes
+Age: 0
+Cache-Control: public, max-age=86400, s-maxage=604800
+Last-Modified: Wed, 07 Oct 2026 02:53:53 GMT
+Server: cloudflare
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+Referrer-Policy: strict-origin-when-cross-origin
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-MULE-OG-Cache: HIT
+X-Robots-Tag: noindex, nofollow
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=MR87emdtzX8pg2S0GzPFMcr9pfXIfNs62GSva3i4iflpUjX8dV5eptSrK8p5pZi%2BjtpmXNb%2FqM7KZKg45ZJZChNSOGp2wjGjF5Ajk3zt5vK%2BU9Z%2BxtYmoj21eab9CgKelCW5ii3IJi1HMKOTo1rV8CZKgWUNpsDDp3yAwVrwBQ%3D%3D"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+alt-svc: h3=":443"; ma=86400
+
+time_starttransfer=0.092780
+```
+
+</details>
+
+Contenu du sitemap :
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://muleprotocol.com/</loc></url><url><loc>https://muleprotocol.com/dossier/</loc></url></urlset>
+```
+
+
+### Lighthouse mobile sur la préproduction réelle
+
+Mesures uniques successives, navigateur isolé et sans autre suite de tests en parallèle, le 7 octobre 2026 à 02:55 et 02:56 UTC. URL de branche HTTPS, réseau réel jusqu'à Cloudflare ; simulation mobile Lighthouse avec RTT 150 ms, débit 1 638,4 kbit/s et CPU ×4. Ce ne sont ni des résultats localhost ni des mesures sur téléphone physique.
+
+| URL | Performance | Accessibilité | LCP | CLS | Critères |
+| --- | ---: | ---: | ---: | ---: | --- |
+| https://codex-pass-2.mule-site.pages.dev/ | 98 | 100 | 2 275 ms | 0,0151 | ≥90 atteint ; LCP <2 s non atteint |
+| https://codex-pass-2.mule-site.pages.dev/dossier/ | 97 | 100 | 2 295 ms | 0,00037 | ≥90 atteint ; LCP <2 s non atteint |
+
+[Résultat accueil](qa-pass-2-corrections/lighthouse-home.json) · [Résultat dossier](qa-pass-2-corrections/lighthouse-dossier.json).
+
+Le LCP réseau confirme l'ordre de grandeur de 2,3 s relevé par la review. La cible initiale <2 s reste donc **non validée** ; les chiffres locaux de la livraison initiale ne doivent pas être employés pour la déclarer atteinte. Cette passe corrige les défauts demandés et fournit la mesure réseau, sans lancer une refonte de performance hors périmètre. L'échec de l'audit d'indexabilité est attendu sur la préproduction noindex.
+
+### Limites et éléments à fournir
+
+- Mesures de géométrie et de clavier sur Chromium automatisé ; Safari/iOS et Android physiques non vérifiés dans cette passe.
+- Cache MISS/HIT observé au centre de données CDG. Aucun test de saturation ou de quota ; aucune garantie de cache déjà chaud dans un autre centre.
+- noindex de l'apex vérifié par tests unitaires du middleware et des réponses HTML. Ces corrections ne sont pas encore déployées en production ; la vérification HTTP porte uniquement sur la préproduction.
+- Aucun message publié sur X ; intent web et image OG vérifiés, mais récupération par le robot X non testée.
+- Champs restant à fournir dans /legal/ : identité/raison sociale, adresse, forme juridique/immatriculation/capital si applicable, directeur de publication, contact éditeur. Les brouillons restent soumis au conseil du propriétaire.
+- Aucun test n'est déclaré réussi sans exécution ; l'écart LCP ci-dessus reste explicite.
+
+Les preuves et le présent complément sont ajoutés dans le commit documentaire suivant le commit de code a7fa873, sur la même PR en brouillon.
