@@ -1,0 +1,200 @@
+
+> mule-protocol-site@0.1.0 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: production is indexable while the contract stays absent
+ok 1 - production is indexable while the contract stays absent
+  ---
+  duration_ms: 1.3044
+  type: 'test'
+  ...
+# Subtest: previews and local builds cannot be indexed
+ok 2 - previews and local builds cannot be indexed
+  ---
+  duration_ms: 0.2333
+  type: 'test'
+  ...
+# Subtest: unpublished footer omits draft links and retains X, GitHub, Dossier and the full warning
+ok 3 - unpublished footer omits draft links and retains X, GitHub, Dossier and the full warning
+  ---
+  duration_ms: 67.5332
+  type: 'test'
+  ...
+# Subtest: published footer restores the three legal links without changing the warning
+ok 4 - published footer restores the three legal links without changing the warning
+  ---
+  duration_ms: 9.4628
+  type: 'test'
+  ...
+# Subtest: unpublished /legal: apex 404; www 301 then the same 404
+ok 5 - unpublished /legal: apex 404; www 301 then the same 404
+  ---
+  duration_ms: 46.4792
+  type: 'test'
+  ...
+# Subtest: /legal: preview 200 and published apex 200 remain noindex
+ok 6 - /legal: preview 200 and published apex 200 remain noindex
+  ---
+  duration_ms: 4.4955
+  type: 'test'
+  ...
+# Subtest: unpublished /legal/: apex 404; www 301 then the same 404
+ok 7 - unpublished /legal/: apex 404; www 301 then the same 404
+  ---
+  duration_ms: 2.1388
+  type: 'test'
+  ...
+# Subtest: /legal/: preview 200 and published apex 200 remain noindex
+ok 8 - /legal/: preview 200 and published apex 200 remain noindex
+  ---
+  duration_ms: 2.1237
+  type: 'test'
+  ...
+# Subtest: unpublished /privacy: apex 404; www 301 then the same 404
+ok 9 - unpublished /privacy: apex 404; www 301 then the same 404
+  ---
+  duration_ms: 4.0129
+  type: 'test'
+  ...
+# Subtest: /privacy: preview 200 and published apex 200 remain noindex
+ok 10 - /privacy: preview 200 and published apex 200 remain noindex
+  ---
+  duration_ms: 3.2872
+  type: 'test'
+  ...
+# Subtest: unpublished /privacy/: apex 404; www 301 then the same 404
+ok 11 - unpublished /privacy/: apex 404; www 301 then the same 404
+  ---
+  duration_ms: 1.7493
+  type: 'test'
+  ...
+# Subtest: /privacy/: preview 200 and published apex 200 remain noindex
+ok 12 - /privacy/: preview 200 and published apex 200 remain noindex
+  ---
+  duration_ms: 1.954
+  type: 'test'
+  ...
+# Subtest: unpublished /risks: apex 404; www 301 then the same 404
+ok 13 - unpublished /risks: apex 404; www 301 then the same 404
+  ---
+  duration_ms: 2.0952
+  type: 'test'
+  ...
+# Subtest: /risks: preview 200 and published apex 200 remain noindex
+ok 14 - /risks: preview 200 and published apex 200 remain noindex
+  ---
+  duration_ms: 2.5001
+  type: 'test'
+  ...
+# Subtest: unpublished /risks/: apex 404; www 301 then the same 404
+ok 15 - unpublished /risks/: apex 404; www 301 then the same 404
+  ---
+  duration_ms: 2.2917
+  type: 'test'
+  ...
+# Subtest: /risks/: preview 200 and published apex 200 remain noindex
+ok 16 - /risks/: preview 200 and published apex 200 remain noindex
+  ---
+  duration_ms: 3.6751
+  type: 'test'
+  ...
+# Subtest: middleware loads the existing 404 asset with a fresh unconditional GET
+ok 17 - middleware loads the existing 404 asset with a fresh unconditional GET
+  ---
+  duration_ms: 1.7517
+  type: 'test'
+  ...
+# Subtest: www redirects before any asset lookup, including draft routes
+ok 18 - www redirects before any asset lookup, including draft routes
+  ---
+  duration_ms: 0.5567
+  type: 'test'
+  ...
+# Subtest: the gate does not intercept other site routes
+ok 19 - the gate does not intercept other site routes
+  ---
+  duration_ms: 0.9923
+  type: 'test'
+  ...
+# Subtest: all six allowlisted outcomes and templates, leap dates and bounds
+ok 20 - all six allowlisted outcomes and templates, leap dates and bounds
+  ---
+  duration_ms: 3.8005
+  type: 'test'
+  ...
+# Subtest: only years 2026–2099 are accepted, including both boundary dates
+ok 21 - only years 2026–2099 are accepted, including both boundary dates
+  ---
+  duration_ms: 0.2867
+  type: 'test'
+  ...
+# Subtest: browser IDs use the visitor local date around midnight, not UTC
+ok 22 - browser IDs use the visitor local date around midnight, not UTC
+  ---
+  duration_ms: 226.999
+  type: 'test'
+  ...
+# Subtest: reject malformed identifiers, real calendar errors, Unicode and injection attempts
+ok 23 - reject malformed identifiers, real calendar errors, Unicode and injection attempts
+  ---
+  duration_ms: 0.4679
+  type: 'test'
+  ...
+# Subtest: HTML route ignores query input, has exact metadata, no inline styles/scripts, preview noindex
+ok 24 - HTML route ignores query input, has exact metadata, no inline styles/scripts, preview noindex
+  ---
+  duration_ms: 39.6884
+  type: 'test'
+  ...
+# Subtest: 404 is constant and secure; never reflects rejected path or query
+ok 25 - 404 is constant and secure; never reflects rejected path or query
+  ---
+  duration_ms: 1.2102
+  type: 'test'
+  ...
+# Subtest: OG cache renders once across HEAD/GET and query variants; retains image and security headers
+ok 26 - OG cache renders once across HEAD/GET and query variants; retains image and security headers
+  ---
+  duration_ms: 56.5725
+  type: 'test'
+  ...
+# Subtest: different missions and hosts cannot share an OG cache entry; errors are never cached
+ok 27 - different missions and hosts cannot share an OG cache entry; errors are never cached
+  ---
+  duration_ms: 6.0844
+  type: 'test'
+  ...
+# Subtest: www redirects with 301 and preserves the path and query
+ok 28 - www redirects with 301 and preserves the path and query
+  ---
+  duration_ms: 44.107
+  type: 'test'
+  ...
+# Subtest: apex stays public; Pages hosts and errors are noindex with security headers
+ok 29 - apex stays public; Pages hosts and errors are noindex with security headers
+  ---
+  duration_ms: 19.1441
+  type: 'test'
+  ...
+# Subtest: every mission path remains noindex on the production host
+ok 30 - every mission path remains noindex on the production host
+  ---
+  duration_ms: 2.6982
+  type: 'test'
+  ...
+# Subtest: all three templates settle honest deliveries and refund dishonest deliveries without networking
+ok 31 - all three templates settle honest deliveries and refund dishonest deliveries without networking
+  ---
+  duration_ms: 6.599
+  type: 'test'
+  ...
+1..31
+# tests 31
+# suites 0
+# pass 31
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 838.3516
