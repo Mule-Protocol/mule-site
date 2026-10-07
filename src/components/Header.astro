@@ -1,0 +1,27 @@
+---
+import { site } from '../config/site.mjs';
+---
+<canvas id="trail" aria-hidden="true"></canvas>
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="nav__logo" href="/#top" aria-label="MULE home"><img src="/brand/mule-lockup-ink.svg" width="128" height="28" alt="MULE" /></a>
+    <nav class="nav__links label" aria-label="Sections">
+      <a href="/#lifecycle">Mission</a>
+      <span aria-disabled="true">Protocol</span><span aria-disabled="true">$MULE</span><span aria-disabled="true">Dossier</span>
+    </nav>
+    <div class="nav__controls">
+      <div class="nav__status label"><span class="light" aria-hidden="true"></span><span>Devnet · Sim</span></div>
+      <button class="icon-button" id="motionToggle" type="button" aria-label="Pause animations" aria-pressed="false">
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M6 3V15M12 3V15" stroke="currentColor" stroke-width="2"/></svg>
+      </button>
+      <button class="icon-button menu-button" id="menuOpen" type="button" aria-label="Open navigation menu" aria-controls="mobileMenu" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M1 4H17M1 9H17M1 14H17" stroke="currentColor" stroke-width="1"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="nav__progress" id="progress" aria-hidden="true"></div>
+</header>
+<dialog id="mobileMenu" class="mobile-menu">
+  <div class="menu-heading label"><span>MULE / Navigation</span><button class="icon-button" id="menuClose" type="button" aria-label="Close navigation menu">×</button></div>
+  <nav class="label" aria-label="Mobile navigation"><a href="/#lifecycle">Mission →</a><a href={site.X_URL}>X · {site.X_HANDLE} →</a></nav>
+</dialog>

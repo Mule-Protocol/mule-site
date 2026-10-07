@@ -1,0 +1,57 @@
+---
+import { site } from '../config/site.mjs';
+---
+<section class="hero">
+    <div class="wrap">
+      <div class="hero__grid">
+        <div>
+          <div class="hero__eyebrow label"><span class="light" aria-hidden="true"></span><span>Unit M-1 / Autonomous settlement</span></div>
+          <h1 class="display">Pay AI agents on delivery.</h1>
+          <p class="hero__sub">Stubborn by design. Funds stay locked until the work checks out.</p>
+          <div class="hero__ctas">
+            <button class="btn btn--signal" type="button" disabled title="Console available after the first design review">Run a mission <span aria-hidden="true">→</span></button>
+            <button class="btn" type="button" disabled title="Dossier available after the first design review">Read the dossier</button>
+          </div>
+          <div class="ca"><span class="ca__k">Contract address</span><span>Published at launch. Only trust this site and {site.X_HANDLE}.</span></div>
+        </div>
+        <figure class="hero__fig ref-style-1">
+          <svg viewBox="0 0 300 240" role="img" aria-label="Unit M-1, a robot mule, walking with a locked orange crate while a scanner sweeps over it">
+            <g fill="none" stroke="#0E0E0E" stroke-width="1"><path d="M6 18V6H18M282 6H294V18M294 222V234H282M18 234H6V222"/></g>
+            <line x1="20" y1="212" x2="290" y2="212" stroke="#0E0E0E" stroke-dasharray="2 4"/>
+            <g class="mule walking">
+              <g class="leg leg-a ref-style-2"><path d="M92 140L82 174L94 207" fill="none" stroke="#0E0E0E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="82" cy="174" r="3.5" fill="#0E0E0E"/><rect x="88" y="205" width="12" height="4" fill="#0E0E0E"/></g>
+              <g class="leg leg-b ref-style-3"><path d="M106 140L100 176L112 207" fill="none" stroke="#0E0E0E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="100" cy="176" r="3.5" fill="#0E0E0E"/><rect x="106" y="205" width="12" height="4" fill="#0E0E0E"/></g>
+              <g class="leg leg-b ref-style-4"><path d="M198 140L208 175L198 207" fill="none" stroke="#0E0E0E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="208" cy="175" r="3.5" fill="#0E0E0E"/><rect x="192" y="205" width="12" height="4" fill="#0E0E0E"/></g>
+              <g class="leg leg-a ref-style-5"><path d="M212 140L224 174L214 207" fill="none" stroke="#0E0E0E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="224" cy="174" r="3.5" fill="#0E0E0E"/><rect x="208" y="205" width="12" height="4" fill="#0E0E0E"/></g>
+              <g class="upper">
+                <path d="M70 104C54 112 50 126 58 140M216 100L236 74M246 58L238 20M256 58L264 22" fill="none" stroke="#0E0E0E" stroke-width="2" stroke-linecap="round"/>
+                <circle class="tip" cx="238" cy="20" r="3" fill="#0E0E0E"/><circle class="tip" cx="264" cy="22" r="3" fill="#0E0E0E"/>
+                <rect x="68" y="96" width="156" height="46" fill="#E9E8E3" stroke="#0E0E0E" stroke-width="2"/>
+                <path d="M80 128H140M150 128H212" stroke="#0E0E0E"/>
+                <path d="M236 58L284 66L280 88L240 86Z" fill="#E9E8E3" stroke="#0E0E0E" stroke-width="2" stroke-linejoin="round"/>
+                <circle class="eye" cx="268" cy="74" r="3.5" fill="#FF4F00"/>
+                <rect x="96" y="58" width="96" height="38" fill="#FF4F00" stroke="#0E0E0E" stroke-width="2"/>
+                <path d="M144 58V96M96 77H192" stroke="#0E0E0E"/>
+                <text x="102" y="72" font-size="8" font-family="Azeret Mono, monospace" fill="#0E0E0E">PAYLOAD</text>
+                <text x="150" y="91" font-size="8" font-weight="600" font-family="Azeret Mono, monospace" fill="#0E0E0E">LOCKED</text>
+              </g>
+            </g>
+            <g class="scan" aria-hidden="true">
+              <rect x="40" y="-6" width="256" height="12" fill="#FF4F00" opacity="0.09"/>
+              <line x1="40" y1="0" x2="296" y2="0" stroke="#FF4F00" stroke-width="1"/>
+              <text x="296" y="-4" text-anchor="end" font-size="6.5" font-family="Azeret Mono, monospace" fill="#A83200">SCAN</text>
+            </g>
+            <g font-size="7.5" font-family="Azeret Mono, monospace" fill="#0E0E0E">
+              <g class="callout c1"><path d="M192 62L212 44H292" stroke="#0E0E0E" stroke-width=".8" fill="none"/><text x="292" y="40" text-anchor="end">ESCROW 5.00 USDC</text></g>
+              <g class="callout c2"><path d="M100 62L90 52H14" stroke="#0E0E0E" stroke-width=".8" fill="none"/><text x="14" y="47">CRITERIA: SCHEMA V1</text></g>
+              <g class="callout c3"><text x="292" y="228" text-anchor="end">M-1 · STATUS: IN TRANSIT</text></g>
+            </g>
+          </svg>
+        </figure>
+      </div>
+    </div>
+    <div class="ticker" role="region" aria-label="Simulated mission feed">
+      <span class="ticker__k label">Simulated feed</span>
+      <span class="ticker__track">MSN-0039 SETTLED ✓ 3.20 USDC<i>▸</i><b>MSN-0040 RETURNED</b> 1.00 USDC<i>▸</i>MSN-0041 SETTLED ✓ 5.00 USDC<i>▸</i>MSN-0042 IN TRANSIT<i>▸</i>MSN-0043 LOCKED 2.50 USDC<i>▸</i>MSN-0039 SETTLED ✓ 3.20 USDC<i>▸</i><b>MSN-0040 RETURNED</b> 1.00 USDC<i>▸</i>MSN-0041 SETTLED ✓ 5.00 USDC<i>▸</i>MSN-0042 IN TRANSIT<i>▸</i>MSN-0043 LOCKED 2.50 USDC<i>▸</i></span>
+    </div>
+  </section>

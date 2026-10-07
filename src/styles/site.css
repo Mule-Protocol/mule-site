@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  src: url('@fontsource-variable/archivo/files/archivo-latin-standard-normal.woff2') format('woff2');
+}
+/* Small accessibility/layout fixes, retaining the reference's visual design. */
+:focus-visible { outline: 2px solid var(--signal); outline-offset: 4px; }
+html { scroll-padding-top: 72px; }
+button { font: inherit; }
+.skip-link { position: absolute; left: 16px; top: -100px; z-index: 100; background: var(--surface); color: var(--ink); padding: 14px; border: 2px solid var(--signal); }
+.skip-link:focus { top: 8px; }
+.nav__logo { display: flex; align-items: center; min-height: 44px; }
+.nav__logo img { display: block; width: 128px; height: auto; }
+.nav__controls { display: flex; align-items: center; gap: 8px; }
+.nav__links { align-items: center; gap: 24px; }
+.nav__links a, .foot a { display: inline-flex; align-items: center; min-height: 44px; }
+.nav__links [aria-disabled] { color: var(--ink-3); }
+.icon-button { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; background: transparent; border: 1px solid var(--line); color: var(--ink); border-radius: 0; cursor: pointer; }
+.icon-button:hover, .icon-button[aria-pressed="true"] { background: var(--raised); }
+.mobile-menu { width: 100%; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 16px; border: 0; background: var(--surface); color: var(--ink); }
+.mobile-menu::backdrop { background: var(--surface); }
+.menu-heading { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--ink); padding-bottom: 16px; }
+.mobile-menu nav { display: grid; gap: 16px; margin-top: 40px; }
+.mobile-menu nav a { display: block; padding: 20px 0; font-size: 22px; border-bottom: 1px solid var(--line); }
+.btn:disabled { cursor: default; }
+.btn:disabled:hover { background-size: 0% 100%; color: var(--ink); }
+.ca { align-items: flex-start; }
+.hero__fig svg { aspect-ratio: 300 / 240; }
+.lifecycle { height: auto; padding-top: 56px; }
+.lc-pin { position: static; height: auto; min-height: 0; }
+.lc-pin .lc-caption, .lc-pin .lc-stage { display: none; }
+.lc-head { margin-bottom: 0; }
+.lifecycle-static { list-style: none; margin: 0; padding: 0; }
+.lifecycle-static li { padding-block: 24px; border-bottom: 1px solid var(--line); display: grid; gap: 16px; align-items: center; }
+.static-caption { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; }
+.static-caption h3 { margin: 0; }
+.static-caption p { max-width: 45ch; margin: 12px 0 0; }
+.static-number { font-size: 40px; line-height: 1; color: var(--signal-text); }
+.lifecycle-static svg { width: 100%; max-width: 340px; height: auto; justify-self: center; }
+.static-outcomes { margin: 0; grid-column: 1 / -1; }
+.motion-ready .lifecycle { height: 520vh; padding-top: 0; }
+.motion-ready .lc-pin { position: sticky; top: 56px; height: calc(100svh - 56px); min-height: 440px; }
+.motion-ready .lc-pin .lc-caption { display: grid; }
+.motion-ready .lc-pin .lc-stage { display: block; }
+.motion-ready .lc-head { margin-bottom: 16px; }
+.motion-ready .lifecycle-static { display: none; }
+.stage .st-scan line, .stage .st-scan rect { animation-timing-function: steps(10); }
+.hero__fig .scan { animation-timing-function: steps(20); }
+.error-page { min-height: 80vh; display: grid; align-content: center; gap: 24px; }
+.error-page h1 { font-size: clamp(44px, 8vw, 96px); }
+.error-page .btn { justify-self: start; }
+.foot { margin-top: 56px; }
+@media (max-width: 420px) {
+  .nav__logo img { width: 96px; }
+  .nav__in { gap: 8px; }
+  .nav__controls { gap: 4px; }
+  .nav__status { font-size: 10px; gap: 5px; }
+  .ca { flex-direction: column; gap: 4px; }
+  .lc-rail { font-size: 9px; letter-spacing: 0; }
+}
+@media (min-width: 768px) { .lifecycle-static li { grid-template-columns: 1fr 340px; } }
+@media (min-width: 900px) { .menu-button { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .motion-ready .lifecycle { height: auto; padding-top: 56px; }
+  .motion-ready .lc-pin { position: static; height: auto; min-height: 0; }
+  .motion-ready .lc-pin .lc-caption, .motion-ready .lc-pin .lc-stage { display: none; }
+  .motion-ready .lifecycle-static { display: block; }
+}
+html[data-motion="off"] *, html[data-motion="off"] *::before, html[data-motion="off"] *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+html[data-motion="off"] .callout path { stroke-dashoffset: 0; }
+html[data-motion="off"] #trail { display: none; }

@@ -1,0 +1,10 @@
+{
+  "source": "MULE-prompts-Astra/01_mise-en-ligne-du-site",
+  "importedAt": "2026-10-07T00:18:45.221744Z",
+  "sha256": {
+    "MULE_site_prompt.md": "5af88bcc09efb8fef9e163398612cd42e47b0a07575bcfdd3fa304695afd2d8b",
+    "PROMPT_mise-en-ligne.md": "6b696407eaf77a738252260efcdb84127ac4368f898e948d5b0748e25935876f",
+    "mule-site.html": "6bf892eb82568d727c3b8a9f8ac0267947be0b23c539bcec12e021c01ec85e9b",
+    "mule-dossier.html": "fc40a531e6305ec9fa839696e7ab8f94c1c0094647a9f81d14be50f5d79b07bf"
+  }
+}

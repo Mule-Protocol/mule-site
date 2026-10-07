@@ -1,0 +1,35 @@
+{
+  "name": "mule-protocol-site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "check": "astro check",
+    "build": "astro check && astro build && node scripts/check-build.mjs",
+    "preview": "astro preview --host 127.0.0.1",
+    "test": "node --test tests/*.test.mjs",
+    "qa": "node scripts/browser-qa.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/archivo": "5.3.0",
+    "@fontsource/azeret-mono": "5.3.0",
+    "@fontsource/doto": "5.3.0",
+    "astro": "7.3.6",
+    "gsap": "3.15.0"
+  },
+  "overrides": {
+    "sharp": "$sharp"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@playwright/test": "1.63.0",
+    "lighthouse": "^13.0.0",
+    "sharp": "0.35.5",
+    "typescript": "~5.9.3",
+    "wrangler": "4.148.0"
+  }
+}

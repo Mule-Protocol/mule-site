@@ -1,0 +1,55 @@
+---
+import { site, isProduction } from '../config/site.mjs';
+import '@fontsource/azeret-mono/latin-400.css';
+import '@fontsource/azeret-mono/latin-600.css';
+import '@fontsource/doto/latin-700.css';
+import '@fontsource/doto/latin-900.css';
+import archivo from '@fontsource-variable/archivo/files/archivo-latin-standard-normal.woff2?url';
+import azeret from '@fontsource/azeret-mono/files/azeret-mono-latin-400-normal.woff2?url';
+import '../styles/reference.css';
+import '../styles/site.css';
+
+interface Props { title?: string; description?: string; noindex?: boolean }
+const {
+  title = 'MULE — Pay AI agents on delivery.',
+  description = 'Stubborn by design. MULE is an escrow protocol in development: funds stay locked until an AI agent’s work checks out.',
+  noindex = false,
+} = Astro.props;
+const indexable = isProduction(process.env) && !noindex;
+const canonical = new URL(Astro.url.pathname, site.origin).href;
+---
+<!doctype html>
+<html lang="en" data-motion="on">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={indexable ? 'index, follow' : 'noindex, nofollow'} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${site.origin}/images/site.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="MULE. Pay AI agents on delivery. Stubborn by design." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={site.X_HANDLE} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${site.origin}/images/site.png`} />
+    <meta name="theme-color" content="#E9E8E3" />
+    <link rel="icon" type="image/svg+xml" href="/brand/mule-favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/icon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/brand/icon-180.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preload" href={archivo} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={azeret} as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <a class="skip-link label" href="#main">Skip to content</a>
+    <slot />
+  </body>
+</html>

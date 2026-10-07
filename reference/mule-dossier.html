@@ -1,0 +1,438 @@
+<title>MULE Dossier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Azeret+Mono:wght@400;600&family=Doto:wght@700;900&display=swap">
+<style>
+/* Layout: a single-theme engineering dossier on the 24px grid; sticky contents rail on the left, one 64ch reading column, drawings in ink with one orange signal per section. */
+:root {
+  --surface: #E9E8E3;
+  --raised: #DEDDD7;
+  --ink: #0E0E0E;
+  --ink-2: #4A4A45;
+  --ink-3: #5F5E59;
+  --line: rgba(14, 14, 14, 0.16);
+  --grid: rgba(14, 14, 14, 0.06);
+  --signal: #FF4F00;
+  --signal-text: #A83200;
+  --font-display: "Archivo", "Arial Black", Arial, sans-serif;
+  --font-mono: "Azeret Mono", "IBM Plex Mono", ui-monospace, monospace;
+  --font-dot: "Doto", "Azeret Mono", ui-monospace, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .light { animation: none !important; } }
+body {
+  background-color: var(--surface);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0;
+}
+a { color: var(--ink); text-underline-offset: 3px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.label { font-family: var(--font-mono); font-weight: 600; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.3; }
+.display { font-family: var(--font-display); font-stretch: 125%; font-variation-settings: "wdth" 125; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; line-height: 0.95; text-wrap: balance; margin: 0; }
+.light { display: inline-block; width: 8px; height: 8px; background: var(--signal); animation: blink 1.2s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0.15; } }
+
+/* Top bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--ink); }
+.bar__in { max-width: 1200px; margin: 0 auto; padding-inline: 16px; height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.bar svg { height: 28px; width: auto; color: var(--ink); display: block; }
+.bar__meta { display: flex; align-items: center; gap: 16px; color: var(--ink-2); }
+.bar__meta .hide-sm { display: none; }
+@media (min-width: 640px) { .bar__meta .hide-sm { display: inline; } }
+
+/* Page frame */
+.wrap { max-width: 1200px; margin: 0 auto; padding-inline: 16px; }
+.hero { padding-block: 48px 40px; display: grid; gap: 32px; border-bottom: 2px solid var(--ink); }
+@media (min-width: 900px) { .hero { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: end; padding-block: 72px 48px; } }
+.hero__eyebrow { color: var(--signal-text); margin-bottom: 16px; }
+.hero h1 { font-size: clamp(40px, 8vw, 96px); }
+.hero__sub { margin: 20px 0 0; font-size: 16px; color: var(--ink-2); max-width: 44ch; }
+.hero__fig { position: relative; }
+.hero__fig svg { width: 100%; height: auto; display: block; }
+.specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--ink); margin-top: 32px; }
+@media (min-width: 640px) { .specs { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.specs div { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); }
+.specs dt { color: var(--ink-3); }
+.specs dd { margin: 4px 0 0; font-family: var(--font-dot); font-weight: 700; font-size: 18px; line-height: 1.1; }
+
+.layout { display: grid; gap: 0; padding-block: 32px 96px; }
+@media (min-width: 960px) { .layout { grid-template-columns: 240px minmax(0, 1fr); gap: 64px; } }
+
+/* Contents */
+.toc { margin-bottom: 32px; }
+.toc details { border: 1px solid var(--ink); background: var(--surface); }
+.toc summary { cursor: pointer; padding: 12px; list-style: none; display: flex; justify-content: space-between; }
+.toc summary::-webkit-details-marker { display: none; }
+.toc summary::after { content: "+"; }
+.toc details[open] summary::after { content: "−"; }
+.toc ol { list-style: none; margin: 0; padding: 0 12px 12px; }
+.toc li a { display: grid; grid-template-columns: 28px 1fr; gap: 8px; padding: 6px 0; text-decoration: none; color: var(--ink-2); font-size: 12px; line-height: 1.4; border-top: 1px solid var(--line); }
+.toc li a .n { color: var(--ink-3); }
+.toc li a.is-active { color: var(--ink); }
+.toc li a.is-active .n { color: var(--signal-text); }
+@media (min-width: 960px) {
+  .toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 76px); align-self: start; margin: 0; }
+  .toc details { border: none; background: transparent; }
+  .toc summary { padding: 0 0 10px; border-bottom: 2px solid var(--ink); pointer-events: none; }
+  .toc summary::after { content: ""; }
+  .toc ol { padding: 0; }
+}
+
+/* Sections */
+.doc { min-width: 0; max-width: 760px; }
+section { padding-block: 8px 56px; scroll-margin-top: 72px; }
+.sec-label { display: flex; gap: 12px; align-items: baseline; border-top: 2px solid var(--ink); padding-top: 8px; margin-bottom: 20px; }
+.sec-label .n { color: var(--signal-text); }
+section h2 { font-size: clamp(26px, 4.4vw, 40px); margin-bottom: 24px; }
+section p, section li { max-width: 64ch; }
+section p { margin: 0 0 16px; }
+section ul, section ol.plain { padding-left: 20px; margin: 0 0 16px; }
+section li { margin-bottom: 8px; }
+.lead { font-size: 17px; line-height: 1.6; color: var(--ink); }
+.muted { color: var(--ink-2); }
+strong { font-weight: 600; }
+code { font-family: var(--font-mono); font-size: 0.92em; background: var(--raised); padding: 1px 5px; }
+
+/* Tables */
+.table-wrap { overflow-x: auto; margin: 8px 0 24px; border-top: 2px solid var(--ink); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.5; min-width: 560px; }
+th { text-align: left; font-weight: 600; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--ink); vertical-align: bottom; }
+td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+td:first-child { font-weight: 600; }
+
+/* Mission track */
+.track { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 0; border-top: 2px solid var(--ink); }
+@media (min-width: 720px) { .track { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.track li { margin: 0; padding: 14px 12px 16px 0; border-bottom: 1px solid var(--line); position: relative; max-width: none; }
+@media (min-width: 720px) { .track li { border-bottom: none; border-right: 1px solid var(--line); padding: 14px 12px 16px 12px; } .track li:first-child { padding-left: 0; } .track li:last-child { border-right: none; } }
+.track .n { font-family: var(--font-dot); font-weight: 900; font-size: 26px; line-height: 1; display: block; margin-bottom: 8px; }
+.track .label { display: block; margin-bottom: 6px; }
+.track p { font-size: 13px; line-height: 1.5; margin: 0; color: var(--ink-2); }
+.track li.inspect .n { color: var(--signal-text); }
+.outcomes { display: grid; gap: 12px; margin: 16px 0 24px; }
+@media (min-width: 640px) { .outcomes { grid-template-columns: 1fr 1fr; } }
+.outcome { border: 1px solid var(--ink); padding: 14px; }
+.outcome--paid { background: var(--signal); }
+.outcome .label { display: block; margin-bottom: 6px; }
+.outcome p { margin: 0; font-size: 13px; line-height: 1.5; }
+.note { border-left: 2px solid var(--ink); padding: 2px 0 2px 14px; color: var(--ink-2); font-size: 13px; }
+
+/* Drawings */
+.figure { margin: 8px 0 24px; overflow-x: auto; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line); padding-block: 12px; }
+.figure svg { display: block; width: 100%; min-width: 640px; height: auto; }
+.figure svg text { font-family: var(--font-mono); fill: var(--ink); }
+figcaption { font-size: 12px; color: var(--ink-3); margin-top: -12px; margin-bottom: 24px; }
+
+/* Mission log */
+.log { list-style: none; padding: 0; margin: 8px 0 24px; border-top: 2px solid var(--ink); }
+.log li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); margin: 0; max-width: none; }
+@media (min-width: 640px) { .log li { grid-template-columns: 56px minmax(0, 1fr) 120px; } }
+.log .id { font-family: var(--font-dot); font-weight: 900; font-size: 18px; line-height: 1.2; }
+.log h3 { font-size: 14px; margin: 0 0 4px; font-weight: 600; }
+.log p { margin: 0; font-size: 13px; line-height: 1.5; color: var(--ink-2); }
+.log p b { color: var(--ink); font-weight: 600; }
+.tag { justify-self: start; align-self: start; display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--ink); padding: 5px 8px; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1; grid-column: 2; }
+@media (min-width: 640px) { .tag { grid-column: 3; justify-self: end; } }
+.tag--next::before { content: ""; width: 7px; height: 7px; background: var(--signal); }
+.tag--queued { border-style: dashed; color: var(--ink-3); border-color: var(--ink-3); }
+
+/* Footer */
+.foot { border-top: 2px solid var(--ink); padding-block: 32px 48px; display: grid; gap: 24px; font-size: 12px; color: var(--ink-2); }
+@media (min-width: 900px) { .foot { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.foot h4 { margin: 0 0 8px; color: var(--ink); }
+.foot p { margin: 0 0 8px; max-width: 48ch; }
+</style>
+
+<header class="bar">
+  <div class="bar__in">
+    <svg viewBox="0 0 344 70" role="img" aria-label="MULE"><g fill="none" stroke="currentColor" stroke-width="3.8" stroke-linecap="square"><line x1="18.6" y1="24.9" x2="12" y2="8.5"/><line x1="28.4" y1="26" x2="31.7" y2="7.4"/><polygon points="13.1,24.9 37.2,27.1 63.4,53.3 61.3,64.3 48.1,66.4 21.9,51.1"/><line x1="24.1" y1="26" x2="28.4" y2="53.3" stroke-width="1.6"/></g><g fill="currentColor"><circle cx="12" cy="7.4" r="3.5"/><circle cx="31.7" cy="6.3" r="3.5"/><rect x="54.7" y="57.7" width="2.7" height="2.7"/><circle cx="99" cy="5" r="3.8"/><circle cx="139" cy="5" r="3.8"/><circle cx="99" cy="15" r="3.8"/><circle cx="109" cy="15" r="3.8"/><circle cx="129" cy="15" r="3.8"/><circle cx="139" cy="15" r="3.8"/><circle cx="99" cy="25" r="3.8"/><circle cx="119" cy="25" r="3.8"/><circle cx="139" cy="25" r="3.8"/><circle cx="99" cy="35" r="3.8"/><circle cx="119" cy="35" r="3.8"/><circle cx="139" cy="35" r="3.8"/><circle cx="99" cy="45" r="3.8"/><circle cx="139" cy="45" r="3.8"/><circle cx="99" cy="55" r="3.8"/><circle cx="139" cy="55" r="3.8"/><circle cx="99" cy="65" r="3.8"/><circle cx="139" cy="65" r="3.8"/><circle cx="159" cy="5" r="3.8"/><circle cx="199" cy="5" r="3.8"/><circle cx="159" cy="15" r="3.8"/><circle cx="199" cy="15" r="3.8"/><circle cx="159" cy="25" r="3.8"/><circle cx="199" cy="25" r="3.8"/><circle cx="159" cy="35" r="3.8"/><circle cx="199" cy="35" r="3.8"/><circle cx="159" cy="45" r="3.8"/><circle cx="199" cy="45" r="3.8"/><circle cx="159" cy="55" r="3.8"/><circle cx="199" cy="55" r="3.8"/><circle cx="169" cy="65" r="3.8"/><circle cx="179" cy="65" r="3.8"/><circle cx="189" cy="65" r="3.8"/><circle cx="219" cy="5" r="3.8"/><circle cx="219" cy="15" r="3.8"/><circle cx="219" cy="25" r="3.8"/><circle cx="219" cy="35" r="3.8"/><circle cx="219" cy="45" r="3.8"/><circle cx="219" cy="55" r="3.8"/><circle cx="219" cy="65" r="3.8"/><circle cx="229" cy="65" r="3.8"/><circle cx="239" cy="65" r="3.8"/><circle cx="249" cy="65" r="3.8"/><circle cx="259" cy="65" r="3.8"/><circle cx="279" cy="5" r="3.8"/><circle cx="289" cy="5" r="3.8"/><circle cx="299" cy="5" r="3.8"/><circle cx="309" cy="5" r="3.8"/><circle cx="319" cy="5" r="3.8"/><circle cx="279" cy="15" r="3.8"/><circle cx="279" cy="25" r="3.8"/><circle cx="279" cy="35" r="3.8"/><circle cx="289" cy="35" r="3.8"/><circle cx="299" cy="35" r="3.8"/><circle cx="309" cy="35" r="3.8"/><circle cx="279" cy="45" r="3.8"/><circle cx="279" cy="55" r="3.8"/><circle cx="279" cy="65" r="3.8"/><circle cx="289" cy="65" r="3.8"/><circle cx="299" cy="65" r="3.8"/><circle cx="309" cy="65" r="3.8"/><circle cx="319" cy="65" r="3.8"/></g><circle cx="36.1" cy="36.9" r="3.9" fill="#FF4F00"/><circle cx="339" cy="65" r="3.8" fill="#FF4F00"/></svg>
+    <div class="bar__meta label"><span class="hide-sm">Dossier v0.1</span><span>Draft</span><span class="light" aria-hidden="true"></span></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <div class="hero__eyebrow label">Dossier / Litepaper v0.1</div>
+      <h1 class="display">Pay AI agents on delivery.</h1>
+      <p class="hero__sub">Stubborn by design. An escrow and settlement protocol on Solana that releases payment only when an agent's work passes criteria agreed upfront.</p>
+      <dl class="specs label">
+        <div><dt>Version</dt><dd>0.1</dd></div>
+        <div><dt>Date</dt><dd>2026-10-06</dd></div>
+        <div><dt>Status</dt><dd>Draft</dd></div>
+        <div><dt>Network</dt><dd>Solana</dd></div>
+      </dl>
+    </div>
+    <figure class="hero__fig" aria-label="Unit M-1, the MULE robot, carrying a locked payload">
+      <svg viewBox="0 0 300 240" role="img" aria-label="Robot mule carrying an orange crate marked locked">
+        <g fill="none" stroke="#0E0E0E" stroke-width="1"><path d="M8 18V8H18M282 8H292V18M292 222V232H282M18 232H8V222"/></g>
+        <line x1="20" y1="212" x2="290" y2="212" stroke="#0E0E0E" stroke-dasharray="2 4"/>
+        <g stroke="#0E0E0E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M92 140L82 174L94 207"/><path d="M106 140L100 176L112 207"/><path d="M198 140L208 175L198 207"/><path d="M212 140L224 174L214 207"/><path d="M70 104C54 112 50 126 58 140"/><path d="M216 100L236 74"/><path d="M246 58L238 20"/><path d="M256 58L264 22"/></g>
+        <g fill="#0E0E0E"><rect x="88" y="205" width="12" height="4"/><rect x="106" y="205" width="12" height="4"/><rect x="192" y="205" width="12" height="4"/><rect x="208" y="205" width="12" height="4"/><circle cx="82" cy="174" r="3.5"/><circle cx="100" cy="176" r="3.5"/><circle cx="208" cy="175" r="3.5"/><circle cx="224" cy="174" r="3.5"/><circle cx="238" cy="20" r="3"/><circle cx="264" cy="22" r="3"/></g>
+        <rect x="68" y="96" width="156" height="46" fill="#E9E8E3" stroke="#0E0E0E" stroke-width="2"/>
+        <path d="M80 128H140M150 128H212" stroke="#0E0E0E"/>
+        <path d="M236 58L284 66L280 88L240 86Z" fill="#E9E8E3" stroke="#0E0E0E" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="268" cy="74" r="3.5" fill="#FF4F00"/>
+        <rect x="96" y="58" width="96" height="38" fill="#FF4F00" stroke="#0E0E0E" stroke-width="2"/>
+        <path d="M144 58V96M96 77H192" stroke="#0E0E0E"/>
+        <text x="102" y="72" font-size="8" font-family="Azeret Mono, monospace" fill="#0E0E0E">PAYLOAD</text>
+        <text x="150" y="91" font-size="8" font-weight="600" font-family="Azeret Mono, monospace" fill="#0E0E0E">LOCKED</text>
+        <g font-size="7.5" font-family="Azeret Mono, monospace" fill="#0E0E0E"><path d="M192 62L212 44H290" stroke="#0E0E0E" stroke-width=".8" fill="none"/><text x="290" y="40" text-anchor="end">ESCROW 5.00 USDC</text><text x="18" y="48">CRITERIA: SCHEMA V1</text><path d="M18 52H90L100 62" stroke="#0E0E0E" stroke-width=".8" fill="none"/><text x="290" y="228" text-anchor="end">M-1 · STATUS: IN TRANSIT</text></g>
+      </svg>
+    </figure>
+  </div>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Contents">
+      <details id="toc-details" open>
+        <summary class="label">Contents</summary>
+        <ol>
+          <li><a href="#abstract"><span class="n">01</span><span>Abstract</span></a></li>
+          <li><a href="#problem"><span class="n">02</span><span>The problem</span></a></li>
+          <li><a href="#solution"><span class="n">03</span><span>The solution</span></a></li>
+          <li><a href="#mission"><span class="n">04</span><span>How a mission works</span></a></li>
+          <li><a href="#architecture"><span class="n">05</span><span>Architecture</span></a></li>
+          <li><a href="#category"><span class="n">06</span><span>First mission category</span></a></li>
+          <li><a href="#token"><span class="n">07</span><span>$MULE</span></a></li>
+          <li><a href="#funding"><span class="n">08</span><span>Funding and treasury</span></a></li>
+          <li><a href="#log"><span class="n">09</span><span>Mission log</span></a></li>
+          <li><a href="#risks"><span class="n">10</span><span>Limits and risks</span></a></li>
+          <li><a href="#legal"><span class="n">11</span><span>Legal notice</span></a></li>
+        </ol>
+      </details>
+    </nav>
+
+    <main class="doc">
+      <section id="abstract">
+        <div class="sec-label label"><span class="n">01</span><span>/ Abstract</span></div>
+        <h2 class="display">Nothing moves until the work checks out.</h2>
+        <p class="lead">MULE pays AI agents only when their work passes criteria agreed before the work starts. A client describes a mission and how it will be judged, then locks the payment in a Solana escrow program. A validator checks the delivery: if it passes, the agent is paid; if it fails, the client is refunded.</p>
+        <p>Agents can now research, extract, write and transact, but they still can't get paid by strangers without one side taking the other's word. MULE is the settlement layer that closes that gap.</p>
+        <p>$MULE launches before the product is finished. Creator fees from the launch fund development through a public multisig, spent against the milestones in this dossier. The first milestone is a devnet escrow program with a live mission console. The first mission category is structured data extraction, where code can decide whether a delivery passes.</p>
+      </section>
+
+      <section id="problem">
+        <div class="sec-label label"><span class="n">02</span><span>/ Problem</span></div>
+        <h2 class="display">Agents can do the work. Nobody can trust them with the money.</h2>
+        <div class="outcomes">
+          <div class="outcome"><span class="label">Pay upfront</span><p>The agent can deliver nothing, or junk, and keep the money.</p></div>
+          <div class="outcome"><span class="label">Pay after</span><p>The agent works for a client who may never pay.</p></div>
+        </div>
+        <p>Between people, platforms, reputations and contracts close this gap. Between agents that meet once, at machine speed, for a few dollars, none of them work. Nobody reads terms of service, a reputation takes months to build, and a dispute costs more than the job.</p>
+        <p>Payment rails for agents already exist on Solana, such as the x402 standard for paying per request. They answer how an agent pays. They don't answer what happens when the work is wrong. As agents take on longer and more valuable tasks, that gap grows with every dollar at stake.</p>
+      </section>
+
+      <section id="solution">
+        <div class="sec-label label"><span class="n">03</span><span>/ Solution</span></div>
+        <h2 class="display">Settlement on delivery.</h2>
+        <p>MULE replaces trust with three things fixed before work starts: a payment held by a program, acceptance criteria both sides accept, and a rule for who decides.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th></th><th>Without MULE</th><th>With MULE</th></tr></thead>
+            <tbody>
+              <tr><td>Payment</td><td>Client pays and hopes</td><td>Funds locked in escrow until the delivery passes</td></tr>
+              <tr><td>Quality</td><td>Argued after the fact</td><td>Criteria fixed before the work starts</td></tr>
+              <tr><td>Record</td><td>Nothing written down</td><td>Mission, criteria hash, delivery hash and outcome recorded on Solana</td></tr>
+              <tr><td>Bad delivery</td><td>Agent keeps the money</td><td>Client refunded automatically</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ol class="plain">
+          <li><strong>Deterministic first.</strong> Wherever code can check the work (a schema, a test suite, a checksum), code decides. AI can help explain a result, never decide a payment on its own.</li>
+          <li><strong>Narrow before broad.</strong> MULE starts with work machines can verify, and adds a category only once it has a reliable check.</li>
+          <li><strong>Honest about limits.</strong> The chain proves what was agreed and how it settled. It does not prove the work was good. The criteria do that, and only as well as they are written.</li>
+        </ol>
+      </section>
+
+      <section id="mission">
+        <div class="sec-label label"><span class="n">04</span><span>/ Lifecycle</span></div>
+        <h2 class="display">Every mission runs the same five stations.</h2>
+        <ol class="track">
+          <li><span class="n">01</span><span class="label">Load</span><p>Define the job and the acceptance criteria.</p></li>
+          <li><span class="n">02</span><span class="label">Lock</span><p>USDC goes into escrow. Nobody can touch it.</p></li>
+          <li><span class="n">03</span><span class="label">Transit</span><p>The agent does the work and submits the delivery.</p></li>
+          <li class="inspect"><span class="n">04</span><span class="label">Inspect</span><p>The validator checks it against the criteria. No vibes. Rules.</p></li>
+          <li><span class="n">05</span><span class="label">Settle</span><p>Pass: the agent is paid. Fail: the client is refunded.</p></li>
+        </ol>
+        <div class="outcomes">
+          <div class="outcome outcome--paid"><span class="label">Settled ✓</span><p>The delivery passes. Payment is released to the agent once the dispute window closes.</p></div>
+          <div class="outcome"><span class="label">Returned</span><p>The delivery fails, or no delivery arrives by the deadline. The client is refunded.</p></div>
+        </div>
+        <p class="note">Either side can contest a result before the dispute window closes. Until M-4 the team reviews disputes; from M-4, staked arbiters rule. The ruling pays the agent or refunds the client.</p>
+      </section>
+
+      <section id="architecture">
+        <div class="sec-label label"><span class="n">05</span><span>/ Architecture</span></div>
+        <h2 class="display">Only the escrow program touches the money.</h2>
+        <p>Everything else (the work, the files, the checks) happens off-chain and reaches the program as hashes and signed verdicts.</p>
+        <figure class="figure" aria-label="Architecture diagram">
+          <svg viewBox="0 0 760 470" role="img" aria-label="Client and agent send transactions to the escrow program on Solana; the agent uploads deliveries to storage; the validator reads criteria and delivery and sends a signed verdict to the escrow program">
+            <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0E0E0E"/></marker></defs>
+            <g fill="none" stroke="#0E0E0E" stroke-width="1.25">
+              <rect x="40" y="40" width="210" height="56"/><rect x="510" y="40" width="210" height="56"/>
+              <rect x="40" y="390" width="210" height="56"/><rect x="510" y="390" width="210" height="56"/>
+              <rect x="210" y="140" width="340" height="196" stroke-dasharray="4 4"/>
+              <rect x="230" y="176" width="300" height="88" stroke-width="2" fill="#DEDDD7"/>
+              <rect x="290" y="280" width="240" height="40" stroke-dasharray="4 4"/>
+              <path d="M240 96V176" marker-end="url(#ah)"/><path d="M520 96V176" marker-end="url(#ah)"/><path d="M700 96V390" marker-end="url(#ah)"/><path d="M510 418H250" marker-end="url(#ah)"/><path d="M240 390V264" marker-end="url(#ah)"/>
+            </g>
+            <rect x="514" y="182" width="9" height="9" fill="#FF4F00"/>
+            <g font-size="12" font-weight="600" letter-spacing="0.8">
+              <text x="56" y="64">CLIENT</text><text x="526" y="64">AGENT</text><text x="56" y="414">VALIDATOR</text><text x="526" y="414">DELIVERY STORAGE</text><text x="246" y="200">ESCROW PROGRAM</text><text x="226" y="160" font-size="10" fill="#5F5E59">SOLANA</text>
+            </g>
+            <g font-size="11" fill="#4A4A45">
+              <text x="56" y="84">Human or agent with USDC</text><text x="526" y="84">Does the work off-chain</text><text x="56" y="434">Runs checks, signs verdict</text><text x="526" y="434">Criteria and deliveries</text>
+              <text x="246" y="220">Holds USDC per mission until a verdict</text><text x="246" y="237">Records criteria hash, delivery hash</text><text x="246" y="254">Pays the agent or refunds the client</text>
+              <text x="306" y="305">Bond vault, $MULE · planned (M-4)</text>
+            </g>
+            <g font-size="10.5" fill="#0E0E0E" letter-spacing="0.4">
+              <text x="232" y="126" text-anchor="end">CREATE MISSION, LOCK USDC</text><text x="528" y="126">ACCEPT, SUBMIT HASH</text><text x="692" y="366" text-anchor="end">UPLOAD DELIVERY</text><text x="380" y="408" text-anchor="middle">CRITERIA + DELIVERY</text><text x="232" y="366" text-anchor="end">SIGNED VERDICT</text>
+            </g>
+          </svg>
+        </figure>
+        <figcaption>Fig. 1 · On-chain: one escrow program. Off-chain: the work, the files and the checks.</figcaption>
+        <ul>
+          <li><strong>Escrow program.</strong> Written in Anchor. One account per mission holds the parties, amount, deadline, criteria hash, delivery hash and status. Instructions: <code>create_mission</code>, <code>accept_mission</code>, <code>submit_delivery</code>, <code>settle</code>, <code>refund</code>, <code>open_dispute</code>, <code>resolve_dispute</code>.</li>
+          <li><strong>Criteria and deliveries.</strong> Stored off-chain. Only their hashes go on-chain, so nobody can change the rules or the delivery after the fact.</li>
+          <li><strong>Validator.</strong> Open-source code that fetches both, runs the checks and signs a verdict. In M-1 to M-3 the team operates it; staked validators take over in M-4.</li>
+          <li><strong>Payments.</strong> USDC throughout. A client agent can fund missions from the same wallet it already uses for x402 payments.</li>
+        </ul>
+      </section>
+
+      <section id="category">
+        <div class="sec-label label"><span class="n">06</span><span>/ First category</span></div>
+        <h2 class="display">Structured data extraction comes first.</h2>
+        <p>MULE's first missions turn messy input (an invoice, a contract, a web page) into data that must match a JSON schema the client provides. Code can decide the outcome: required fields present, types correct, values within stated rules. No judgement call means rare disputes and instant settlement.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Example mission</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>Input</td><td>A PDF invoice</td></tr>
+              <tr><td>Criteria</td><td>Schema <code>invoice.v1</code>: 6 required fields (supplier, date, number, currency, total_amount, line_items); the total must equal the sum of the line items</td></tr>
+              <tr><td>Payment</td><td>5 USDC locked in escrow</td></tr>
+              <tr><td>Pass</td><td>6 of 6 fields valid: the agent is paid</td></tr>
+              <tr><td>Fail</td><td><code>total_amount</code> missing: the client is refunded</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>A schema check proves format, not truth: a well-formed but wrong value can pass. Cross-checks (like totals against line items) and spot checks narrow that gap, and the dispute process covers the rest.</p>
+        <p class="muted">Later candidates, each added only once it has a reliable automated check: code that must pass a given test suite, data labelling verified by sampling, and web research returning sourced facts in a fixed format.</p>
+      </section>
+
+      <section id="token">
+        <div class="sec-label label"><span class="n">07</span><span>/ $MULE</span></div>
+        <h2 class="display">The protocol's collateral.</h2>
+        <p>$MULE is what participants put at stake. It is not the currency missions are paid in: clients and agents settle in USDC, because nobody wants a job's price to move while the work is being done.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Role</th><th>Who stakes</th><th>What it secures</th></tr></thead>
+            <tbody>
+              <tr><td>Bond</td><td>Agents</td><td>Agents bond $MULE to accept missions above a size threshold. A failed or fraudulent delivery can cost part of the bond.</td></tr>
+              <tr><td>Arbitration stake</td><td>Validators and arbiters</td><td>They stake $MULE to rule on disputes. Rulings shown to be dishonest are slashed.</td></tr>
+              <tr><td>Governance</td><td>Holders</td><td>Votes on mission categories, criteria standards, bond sizes and protocol fees.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Bonds make the token necessary to take part, not only to trade: an agent that wants larger missions must lock $MULE as collateral. All three roles are planned and none is live. Their parameters will be published and tested on devnet before mainnet.</p>
+        <p><strong>$MULE carries no claim on revenue, no yield and no promise of value.</strong></p>
+      </section>
+
+      <section id="funding">
+        <div class="sec-label label"><span class="n">08</span><span>/ Funding</span></div>
+        <h2 class="display">Funded by its launch. Spent in public.</h2>
+        <p>MULE is funded by its launch, not by a private round. $MULE launches on pump.fun with a fixed supply of 1 billion tokens and no reserved allocation. The creator fees the platform pays on trading volume fund development.</p>
+        <ul>
+          <li><strong>Public multisig.</strong> Creator fees are claimed into a Squads multisig whose address is published on the site. Every spend needs several signers.</li>
+          <li><strong>Milestone-gated spending.</strong> Funds are spent against the mission log. Each milestone gets a published budget and exit criteria before work starts.</li>
+          <li><strong>Monthly mission report.</strong> Fees received, spending by category (development, audit, infrastructure, design, legal), balance and progress.</li>
+          <li><strong>Team tokens locked.</strong> Any tokens the team buys at launch are disclosed and locked on-chain. Proposed: 2 to 3% of supply, unlocking linearly over 12 months.</li>
+          <li><strong>No price support.</strong> Creator fees fund building. They are not used for buybacks.</li>
+        </ul>
+        <p class="note">Creator-fee rates on pump.fun have changed several times, and the amount raised depends on trading volume. If fees fall short, milestones slow down. Scope changes are announced in the mission report, never made silently.</p>
+      </section>
+
+      <section id="log">
+        <div class="sec-label label"><span class="n">09</span><span>/ Mission log</span></div>
+        <h2 class="display">Each milestone unlocks the next.</h2>
+        <p>No dates: each milestone starts only when the previous one meets its exit criteria, and each gets a published budget first.</p>
+        <ol class="log">
+          <li><span class="id">M-0</span><div><h3>Brand, site and dossier</h3><p>Visual identity, website with simulated console, this dossier, tokenomics.</p><p><b>Exit:</b> site live, dossier published, multisig and team lock addresses public.</p></div><span class="tag">In progress</span></li>
+          <li><span class="id">M-1</span><div><h3>Devnet escrow and live console</h3><p>Anchor escrow on devnet, reference agent, schema validator, live console, open repository.</p><p><b>Exit:</b> 100 devnet missions settled or refunded in public; every dishonest delivery refunded.</p></div><span class="tag tag--next">Next</span></li>
+          <li><span class="id">M-2</span><div><h3>Security audit</h3><p>External audit of the escrow program, fixes, published report.</p><p><b>Exit:</b> no open critical or high findings.</p></div><span class="tag tag--queued">Queued</span></li>
+          <li><span class="id">M-3</span><div><h3>Mainnet beta</h3><p>Mainnet escrow for data extraction, low per-mission caps, SDK for agent builders.</p><p><b>Exit:</b> outside clients and agents settling real USDC; caps raised only after incident-free periods.</p></div><span class="tag tag--queued">Queued</span></li>
+          <li><span class="id">M-4</span><div><h3>Bonds and arbitration</h3><p>$MULE bonds for agents, staked validators and arbiters, category governance.</p><p><b>Exit:</b> parameters tested on devnet and audited before mainnet.</p></div><span class="tag tag--queued">Queued</span></li>
+        </ol>
+        <p class="muted">Progress against this log is reported every month.</p>
+      </section>
+
+      <section id="risks">
+        <div class="sec-label label"><span class="n">10</span><span>/ Risks</span></div>
+        <h2 class="display">What could go wrong.</h2>
+        <p>MULE proves what was agreed and how it settled, not that the work was good beyond its criteria. These are the risks we know about, and what we do about them.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Risk</th><th>What could happen</th><th>Mitigation</th></tr></thead>
+            <tbody>
+              <tr><td>Smart contract</td><td>A bug in the escrow program locks or loses funds</td><td>Devnet only until an external audit (M-2); mainnet beta with low mission caps</td></tr>
+              <tr><td>Validator trust</td><td>Until M-4 the validator is a service run by the team, so users trust its operator</td><td>Open-source validation code, published logs; staked arbitration in M-4</td></tr>
+              <tr><td>Weak criteria</td><td>A delivery passes a badly written schema while being wrong</td><td>Criteria templates, cross-checks, spot checks, disputes</td></tr>
+              <tr><td>Market</td><td>Agent commerce stays small, or a competing protocol wins the category</td><td>One category that works end to end; integrate existing agent payment standards</td></tr>
+              <tr><td>Funding</td><td>Trading volume, and so creator fees, drops after launch</td><td>Milestones sized to the treasury; slower delivery rather than hidden cuts</td></tr>
+              <tr><td>Token</td><td>$MULE can lose most or all of its value; planned utilities may change or never ship</td><td>No promises of value; utilities tested on devnet first</td></tr>
+              <tr><td>Regulatory</td><td>EU rules (MiCA) or French law require changes to $MULE or MULE's services</td><td>Legal review before launch; features adapted or restricted by jurisdiction if needed</td></tr>
+              <tr><td>Execution</td><td>A small team misses timelines</td><td>Public mission log and monthly reports, so delays are visible</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="legal">
+        <div class="sec-label label"><span class="n">11</span><span>/ Legal</span></div>
+        <h2 class="display">Legal notice.</h2>
+        <p>This dossier describes a protocol in development. It is not a prospectus, an offer to sell or a solicitation to buy any asset, and nothing in it is financial, legal or tax advice.</p>
+        <p>$MULE is intended as a utility token for the MULE protocol. It gives no ownership, no share of revenue or profits, no right to dividends and no claim on the team or its treasury. Its planned utilities are not live and may change or never be delivered.</p>
+        <p>Crypto-assets are highly volatile. You may lose everything you put in. Check the rules that apply where you live, and do not buy $MULE if it is restricted there.</p>
+        <p>Forward-looking statements in this dossier, including the mission log, reflect current plans and can change. The only official contract address is published on the MULE website and in the pinned post of the official X account.</p>
+        <p class="muted">Draft v0.1: this notice will be reviewed by counsel before publication.</p>
+      </section>
+    </main>
+  </div>
+
+  <footer class="foot">
+    <div><h4 class="label">Why a web page</h4><p>This dossier is a page, not a file. There is nothing to download or open. If someone sends you a "MULE whitepaper" as a PDF or an attachment, it is not from us.</p></div>
+    <div><h4 class="label">Versions</h4><p>v0.1 · 2026-10-06 · First draft.</p><p>Every change is listed here with its date.</p></div>
+    <div><h4 class="label">Verify</h4><p>Official links appear only on the MULE website and in the pinned post of the official X account. The team never DMs first.</p></div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var details = document.getElementById('toc-details');
+  var mq = window.matchMedia('(min-width: 960px)');
+  function syncToc() { if (!mq.matches) details.removeAttribute('open'); else details.setAttribute('open', ''); }
+  syncToc();
+  if (mq.addEventListener) mq.addEventListener('change', syncToc);
+
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  links.forEach(function (a) { a.addEventListener('click', function () { if (!mq.matches) details.removeAttribute('open'); }); });
+  if (!('IntersectionObserver' in window)) return;
+  var byId = {};
+  links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        links.forEach(function (a) { a.classList.remove('is-active'); });
+        var a = byId[e.target.id]; if (a) a.classList.add('is-active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  document.querySelectorAll('main section').forEach(function (s) { io.observe(s); });
+})();
+</script>

@@ -1,0 +1,772 @@
+<title>MULE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Azeret+Mono:wght@400;600&family=Doto:wght@700;900&display=swap">
+<style>
+/* Layout: Day ops only. A 24px engineering grid under everything; asymmetric hero, one pinned scroll sequence (lifecycle), square edges, ink lines, one orange signal per screen. */
+:root {
+  --surface: #E9E8E3;
+  --raised: #DEDDD7;
+  --ink: #0E0E0E;
+  --ink-2: #4A4A45;
+  --ink-3: #5F5E59;
+  --line: rgba(14, 14, 14, 0.16);
+  --grid: rgba(14, 14, 14, 0.065);
+  --signal: #FF4F00;
+  --signal-text: #A83200;
+  --font-display: "Archivo", "Arial Black", Arial, sans-serif;
+  --font-mono: "Azeret Mono", "IBM Plex Mono", ui-monospace, monospace;
+  --font-dot: "Doto", "Azeret Mono", ui-monospace, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background-color: var(--surface);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.wrap { max-width: 1248px; margin: 0 auto; padding-inline: 16px; }
+@media (min-width: 768px) { .wrap { padding-inline: 24px; } }
+.label { font-family: var(--font-mono); font-weight: 600; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.3; }
+@media (min-width: 768px) { .label { font-size: 12px; } }
+.display { font-family: var(--font-display); font-stretch: 125%; font-variation-settings: "wdth" 125; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; line-height: 0.95; margin: 0; text-wrap: balance; }
+.dot { font-family: var(--font-dot); font-weight: 900; }
+.light { display: inline-block; width: 8px; height: 8px; background: var(--signal); animation: blink 1.2s steps(1) infinite; flex: none; }
+@keyframes blink { 50% { opacity: 0.15; } }
+.muted { color: var(--ink-2); }
+
+/* Buttons */
+.btn {
+  font-family: var(--font-mono); font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+  min-height: 46px; padding: 0 18px; display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid var(--ink); border-radius: 0; color: var(--ink); text-decoration: none; cursor: pointer;
+  background: linear-gradient(var(--ink), var(--ink)) no-repeat left / 0% 100%, transparent;
+  transition: background-size 0.28s steps(6), color 0.1s steps(1) 0.14s;
+}
+.btn:hover { background-size: 100% 100%; color: var(--surface); }
+.btn--signal { background: linear-gradient(var(--ink), var(--ink)) no-repeat left / 0% 100%, var(--signal); color: var(--ink); }
+.btn--signal:hover { background-size: 100% 100%; color: var(--signal); }
+.btn--small { min-height: 34px; padding: 0 12px; font-size: 11px; }
+
+/* Nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: var(--surface); border-bottom: 1px solid var(--ink); }
+.nav__in { height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.nav__logo svg { height: 26px; width: auto; display: block; }
+.nav__links { display: none; gap: 28px; }
+.nav__links a { text-decoration: none; position: relative; }
+.nav__links a::after { content: ""; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0; background: var(--ink); transition: width 0.2s steps(4); }
+.nav__links a:hover::after { width: 100%; }
+@media (min-width: 900px) { .nav__links { display: flex; } }
+.nav__status { display: flex; align-items: center; gap: 8px; }
+.nav__progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; background: var(--signal); transform-origin: left; transform: scaleX(0); }
+
+/* Section scaffolding */
+.sec { padding-block: 72px; position: relative; }
+@media (min-width: 900px) { .sec { padding-block: 120px; } }
+.sec-label { display: flex; gap: 12px; align-items: baseline; border-top: 2px solid var(--ink); padding-top: 10px; margin-bottom: 32px; }
+.sec-label .n { color: var(--signal-text); font-family: var(--font-dot); font-weight: 900; font-size: 15px; letter-spacing: 0.02em; min-width: 2ch; }
+
+/* Hero */
+.hero { padding-block: 40px 0; }
+.hero__grid { display: grid; gap: 24px; align-items: end; }
+@media (min-width: 900px) { .hero__grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; padding-top: 40px; } }
+.hero__eyebrow { display: flex; align-items: center; gap: 10px; color: var(--signal-text); margin-bottom: 18px; }
+.hero h1 { font-size: clamp(44px, 7.2vw, 104px); }
+.hero__sub { font-size: 16px; max-width: 40ch; margin: 22px 0 0; color: var(--ink-2); }
+.hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.ca { margin-top: 24px; display: flex; gap: 12px; align-items: center; border: 1px solid var(--ink); padding: 10px 12px; max-width: 560px; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
+.ca__k { flex: none; color: var(--ink-3); font-weight: 600; }
+.hero__fig { order: -1; position: relative; }
+@media (min-width: 900px) { .hero__fig { order: 0; } }
+.hero__fig svg { width: 100%; height: auto; display: block; overflow: visible; }
+
+/* Mule drawing parts */
+.mule .leg { transform-box: view-box; }
+.mule.walking .leg-a { animation: stride 0.9s ease-in-out infinite; }
+.mule.walking .leg-b { animation: stride 0.9s ease-in-out infinite; animation-delay: -0.45s; }
+.mule.walking .upper { animation: bob 0.45s ease-in-out infinite; }
+@keyframes stride { 0%, 100% { transform: rotate(8deg); } 50% { transform: rotate(-8deg); } }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.6px); } }
+.mule .tip { animation: blink 1.6s steps(1) infinite; }
+.mule .tip + .tip { animation-delay: -0.8s; }
+.mule .eye { animation: eye 4s steps(1) infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes eye { 0%, 92%, 100% { transform: scaleY(1); } 94% { transform: scaleY(0.15); } }
+.scan { animation: scan 3.6s cubic-bezier(.45,0,.55,1) infinite; }
+@keyframes scan { 0% { transform: translateY(8px); } 50% { transform: translateY(206px); } 100% { transform: translateY(8px); } }
+.callout path { stroke-dasharray: 160; stroke-dashoffset: 160; animation: draw 0.7s steps(10) forwards; }
+.callout text { animation: blink 0.25s steps(1) 3; }
+.callout.c2 path, .callout.c2 text { animation-delay: 0.5s; }
+.callout.c3 path, .callout.c3 text { animation-delay: 1s; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+/* Ticker */
+.ticker { margin-top: 48px; display: flex; align-items: center; background: var(--ink); color: var(--surface); overflow: hidden; white-space: nowrap; padding: 9px 0; }
+.ticker__k { flex: none; position: relative; z-index: 1; background: var(--ink); padding: 0 14px; border-right: 1px solid var(--surface); margin-right: 14px; font-size: 10px; }
+.ticker__track { display: inline-block; font-family: var(--font-dot); font-weight: 700; font-size: 14px; animation: tick 34s linear infinite; }
+.ticker__track i { font-style: normal; padding: 0 14px; color: var(--signal); }
+.ticker__track b { font-weight: 700; color: var(--signal); }
+@keyframes tick { to { transform: translateX(-50%); } }
+
+/* Problem */
+.problem h2 { font-size: clamp(32px, 6vw, 76px); max-width: 15ch; }
+.split { display: grid; gap: 0; margin-top: 48px; border-top: 1px solid var(--ink); }
+@media (min-width: 768px) { .split { grid-template-columns: 1fr 1fr; } }
+.split > div { padding: 20px 0; border-bottom: 1px solid var(--line); }
+@media (min-width: 768px) { .split > div { padding: 24px 24px 24px 0; border-bottom: none; } .split > div + div { padding-left: 24px; border-left: 1px solid var(--line); } }
+.split p { margin: 8px 0 0; font-size: 18px; }
+.closing { margin-top: 48px; font-size: clamp(18px, 2.4vw, 26px); line-height: 1.4; }
+.strike { position: relative; display: inline-block; }
+.strike::after { content: ""; position: absolute; left: -4px; right: -4px; top: 55%; height: 3px; background: var(--signal); transform: scaleX(0); transform-origin: left; transition: transform 0.5s steps(8); }
+.strike.on::after { transform: scaleX(1); }
+
+/* Lifecycle (pinned) */
+.lifecycle { position: relative; height: 520vh; }
+.lc-pin { position: sticky; top: 56px; height: calc(100vh - 56px); min-height: 520px; display: flex; flex-direction: column; justify-content: center; }
+.lc-head { display: grid; gap: 16px; align-items: end; margin-bottom: 16px; }
+@media (min-width: 900px) { .lc-head { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.lc-head h2 { font-size: clamp(30px, 5vw, 64px); }
+.lc-caption { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; border-left: 2px solid var(--ink); padding-left: 16px; min-height: 92px; }
+.lc-caption .num { font-size: 56px; line-height: 0.9; color: var(--signal-text); }
+.lc-caption p { margin: 6px 0 0; font-size: 15px; max-width: 34ch; }
+.lc-stage svg { width: 100%; height: auto; display: block; overflow: visible; }
+.lc-rail { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--ink); margin-top: 8px; }
+.lc-rail span { padding-top: 8px; color: var(--ink-3); position: relative; }
+.lc-rail span.on { color: var(--ink); }
+.lc-rail span.on::before { content: ""; position: absolute; top: -2px; left: 0; height: 3px; width: 100%; background: var(--ink); }
+.lc-rail span.cur::before { background: var(--signal); }
+.stage .st-crate-lock, .stage .st-criteria, .stage .st-scan, .stage .st-check, .stage .st-out { opacity: 0; transition: opacity 0.2s steps(2); }
+.stage[data-step="1"] .st-criteria, .stage[data-step="2"] .st-criteria, .stage[data-step="3"] .st-criteria, .stage[data-step="4"] .st-criteria { opacity: 1; }
+.stage[data-step="2"] .st-crate-lock, .stage[data-step="3"] .st-crate-lock, .stage[data-step="4"] .st-crate-lock, .stage[data-step="5"] .st-crate-lock { opacity: 1; }
+.stage[data-step="4"] .st-scan, .stage[data-step="4"] .st-check { opacity: 1; }
+.stage[data-step="5"] .st-out { opacity: 1; }
+.stage .st-scan line, .stage .st-scan rect { animation: scanx 1.2s ease-in-out infinite alternate; transform-box: view-box; }
+@keyframes scanx { from { transform: translateX(0); } to { transform: translateX(96px); } }
+.stage .station { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
+.stage .station.on { fill: var(--ink); }
+.stage .station.cur { fill: var(--signal); }
+.stage .st-lockstamp { transform-box: fill-box; transform-origin: center; }
+.stage[data-step="2"] .st-lockstamp { animation: stamp 0.35s steps(4) both; }
+@keyframes stamp { from { transform: scale(1.8) rotate(-8deg); } to { transform: scale(1) rotate(-8deg); } }
+
+/* Console */
+.console { display: grid; gap: 24px; }
+@media (min-width: 960px) { .console { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 0; border: 1px solid var(--ink); } }
+.console h2 { font-size: clamp(30px, 5vw, 64px); }
+.con-form { display: grid; gap: 20px; align-content: start; }
+@media (min-width: 960px) { .con-form { padding: 28px; border-right: 1px solid var(--ink); } }
+.sim-note { display: flex; gap: 10px; align-items: center; color: var(--signal-text); }
+.field { display: grid; gap: 8px; }
+select {
+  appearance: none; -webkit-appearance: none; font: inherit; font-size: 13px; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--ink); border-radius: 0; padding: 12px 40px 12px 12px; min-height: 46px; width: 100%;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%), linear-gradient(-45deg, transparent 50%, var(--ink) 50%);
+  background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat;
+}
+.toggle { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--ink); }
+.toggle input { position: absolute; opacity: 0; pointer-events: none; }
+.toggle label { padding: 12px; text-align: center; cursor: pointer; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; }
+.toggle label + input + label, .toggle input + label + input + label { border-left: 1px solid var(--ink); }
+.toggle input:checked + label { background: var(--ink); color: var(--surface); }
+.toggle input:focus-visible + label { outline: 2px solid var(--ink); outline-offset: -5px; }
+.con-out { position: relative; background: var(--raised); min-height: 420px; display: grid; grid-template-rows: auto 1fr auto; border: 1px solid var(--ink); }
+@media (min-width: 960px) { .con-out { border: none; } }
+.con-out__head { display: flex; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--ink); }
+.log { list-style: none; margin: 0; padding: 16px; font-size: 13px; line-height: 1.6; display: grid; align-content: start; gap: 6px; position: relative; }
+.log li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 8px; }
+.log li .k { color: var(--ink-3); }
+.log li.bad .v { color: var(--signal-text); }
+.log li.new .v { animation: type 0.5s steps(14) both; overflow-wrap: anywhere; }
+@keyframes type { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+.log .idle { color: var(--ink-3); grid-template-columns: 1fr; }
+.log .cursor { display: inline-block; width: 8px; height: 14px; background: var(--ink); vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+.stampbox { position: absolute; right: 20px; bottom: 64px; pointer-events: none; }
+.stampbig { display: none; font-family: var(--font-display); font-stretch: 125%; font-weight: 800; font-size: clamp(26px, 4vw, 42px); letter-spacing: 0.02em; border: 4px double currentColor; padding: 4px 14px; transform: rotate(-8deg); }
+.stampbig.on { display: inline-block; animation: stamp2 0.32s steps(4) both; }
+.stampbig.ok { color: var(--ink); }
+.stampbig.ko { color: var(--signal-text); }
+@keyframes stamp2 { from { transform: scale(2) rotate(-8deg); } to { transform: scale(1) rotate(-8deg); } }
+.shake { animation: shake 0.24s steps(3); }
+@keyframes shake { 33% { transform: translate(2px, -1px); } 66% { transform: translate(-2px, 1px); } }
+.con-foot { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; padding: 12px 16px; border-top: 1px solid var(--ink); font-size: 11px; }
+
+/* Patch */
+.patch { display: grid; gap: 24px; margin-top: 32px; align-items: center; border-top: 1px solid var(--ink); padding-top: 24px; }
+@media (min-width: 768px) { .patch { grid-template-columns: 220px minmax(0, 1fr); } }
+.patch svg { width: 200px; height: auto; display: block; }
+.patch[hidden] { display: none !important; }
+.patch .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.patch-in { animation: patchin 0.5s steps(5) both; }
+@keyframes patchin { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+
+/* Token */
+.token h2 { font-size: clamp(30px, 5vw, 64px); }
+.rows { margin-top: 40px; border-top: 2px solid var(--ink); }
+.row { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 12px 16px; padding: 20px 0; border-bottom: 1px solid var(--line); position: relative; }
+@media (min-width: 768px) { .row { grid-template-columns: 64px 220px minmax(0, 1fr) 110px; align-items: baseline; } }
+.row .n { font-size: 22px; }
+.row h3 { margin: 0; font-family: var(--font-display); font-stretch: 125%; font-weight: 800; font-size: 22px; letter-spacing: -0.01em; }
+.row p { margin: 0; grid-column: 2; max-width: 52ch; }
+@media (min-width: 768px) { .row p { grid-column: 3; } }
+.row::before { content: ""; position: absolute; left: 0; top: -1px; height: 2px; width: 0; background: var(--signal); transition: width 0.3s steps(6); }
+.row:hover::before { width: 100%; }
+.tag { justify-self: start; display: inline-flex; align-items: center; gap: 6px; border: 1px dashed var(--ink-3); color: var(--ink-3); padding: 5px 8px; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; line-height: 1; text-transform: uppercase; grid-column: 2; }
+@media (min-width: 768px) { .tag { grid-column: 4; justify-self: end; } }
+.tag--done { border-style: solid; border-color: var(--ink); color: var(--ink); }
+.tag--go { border-style: solid; border-color: var(--ink); color: var(--ink); }
+.tag--go::before { content: ""; width: 7px; height: 7px; background: var(--signal); animation: blink 1.2s steps(1) infinite; }
+.funding { display: grid; gap: 24px; margin-top: 40px; }
+@media (min-width: 900px) { .funding { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.funding p { margin: 0; max-width: 56ch; }
+.notice { font-size: 12px; color: var(--ink-3); border-left: 2px solid var(--ink); padding-left: 12px; }
+
+/* Mission log */
+.mlog { list-style: none; padding: 0; margin: 40px 0 0; position: relative; }
+.mlog::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+.mlog__fill { position: absolute; left: 7px; top: 8px; width: 2px; height: 0; background: var(--ink); }
+.mlog li { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 20px; padding-bottom: 28px; position: relative; }
+.mlog .node { width: 16px; height: 16px; border: 2px solid var(--ink); background: var(--surface); margin-top: 4px; position: relative; z-index: 1; }
+.mlog li.done .node { background: var(--ink); }
+.mlog li.go .node { background: var(--signal); }
+.mlog .body { display: grid; gap: 6px; }
+@media (min-width: 768px) { .mlog .body { grid-template-columns: 80px minmax(0, 1fr) 150px; align-items: baseline; gap: 16px; } }
+.mlog .id { font-size: 20px; }
+.mlog h3 { margin: 0; font-size: 15px; font-weight: 600; }
+.mlog p { margin: 4px 0 0; color: var(--ink-2); font-size: 13px; max-width: 60ch; }
+.mlog .tag { grid-column: auto; }
+@media (min-width: 768px) { .mlog .tag { justify-self: end; } }
+
+/* Telemetry */
+.tele { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); border-top: 2px solid var(--ink); border-left: 1px solid var(--ink); margin-top: 40px; }
+.tile { border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 16px; min-height: 140px; display: grid; align-content: space-between; gap: 16px; min-width: 0; }
+.tile .k { color: var(--ink-3); }
+.tile .v { font-size: 34px; line-height: 1; overflow-wrap: anywhere; }
+.tile .v.pending { color: var(--ink-3); font-size: 22px; }
+.tile .s { font-size: 11px; color: var(--ink-2); }
+
+/* FAQ */
+.faq { margin-top: 40px; border-top: 2px solid var(--ink); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) 24px; gap: 16px; padding: 18px 0; font-weight: 600; font-size: 15px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--font-dot); font-size: 22px; line-height: 1; text-align: right; }
+.faq details[open] summary::after { content: "−"; color: var(--signal-text); }
+.faq details p { margin: 0 0 20px; max-width: 64ch; color: var(--ink-2); }
+
+/* Footer */
+.foot { border-top: 2px solid var(--ink); padding-block: 40px 56px; display: grid; gap: 32px; }
+@media (min-width: 900px) { .foot { grid-template-columns: 1fr 1fr 2fr; } }
+.foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.foot a { text-decoration: none; }
+.foot a:hover { text-decoration: underline; }
+.foot .legal { font-size: 11px; color: var(--ink-3); max-width: 70ch; margin: 0; }
+
+/* Cursor trail */
+#trail { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 60; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .callout path { stroke-dashoffset: 0; }
+  #trail { display: none; }
+}
+</style>
+
+<canvas id="trail" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="nav__logo" href="#top" aria-label="MULE home">
+      <svg viewBox="0 0 344 70" role="img" aria-label="MULE"><g fill="none" stroke="#0E0E0E" stroke-width="3.8" stroke-linecap="square"><line x1="18.6" y1="24.9" x2="12" y2="8.5"/><line x1="28.4" y1="26" x2="31.7" y2="7.4"/><polygon points="13.1,24.9 37.2,27.1 63.4,53.3 61.3,64.3 48.1,66.4 21.9,51.1"/><line x1="24.1" y1="26" x2="28.4" y2="53.3" stroke-width="1.6"/></g><g fill="#0E0E0E"><circle cx="12" cy="7.4" r="3.5"/><circle cx="31.7" cy="6.3" r="3.5"/><rect x="54.7" y="57.7" width="2.7" height="2.7"/><circle cx="99" cy="5" r="3.8"/><circle cx="139" cy="5" r="3.8"/><circle cx="99" cy="15" r="3.8"/><circle cx="109" cy="15" r="3.8"/><circle cx="129" cy="15" r="3.8"/><circle cx="139" cy="15" r="3.8"/><circle cx="99" cy="25" r="3.8"/><circle cx="119" cy="25" r="3.8"/><circle cx="139" cy="25" r="3.8"/><circle cx="99" cy="35" r="3.8"/><circle cx="119" cy="35" r="3.8"/><circle cx="139" cy="35" r="3.8"/><circle cx="99" cy="45" r="3.8"/><circle cx="139" cy="45" r="3.8"/><circle cx="99" cy="55" r="3.8"/><circle cx="139" cy="55" r="3.8"/><circle cx="99" cy="65" r="3.8"/><circle cx="139" cy="65" r="3.8"/><circle cx="159" cy="5" r="3.8"/><circle cx="199" cy="5" r="3.8"/><circle cx="159" cy="15" r="3.8"/><circle cx="199" cy="15" r="3.8"/><circle cx="159" cy="25" r="3.8"/><circle cx="199" cy="25" r="3.8"/><circle cx="159" cy="35" r="3.8"/><circle cx="199" cy="35" r="3.8"/><circle cx="159" cy="45" r="3.8"/><circle cx="199" cy="45" r="3.8"/><circle cx="159" cy="55" r="3.8"/><circle cx="199" cy="55" r="3.8"/><circle cx="169" cy="65" r="3.8"/><circle cx="179" cy="65" r="3.8"/><circle cx="189" cy="65" r="3.8"/><circle cx="219" cy="5" r="3.8"/><circle cx="219" cy="15" r="3.8"/><circle cx="219" cy="25" r="3.8"/><circle cx="219" cy="35" r="3.8"/><circle cx="219" cy="45" r="3.8"/><circle cx="219" cy="55" r="3.8"/><circle cx="219" cy="65" r="3.8"/><circle cx="229" cy="65" r="3.8"/><circle cx="239" cy="65" r="3.8"/><circle cx="249" cy="65" r="3.8"/><circle cx="259" cy="65" r="3.8"/><circle cx="279" cy="5" r="3.8"/><circle cx="289" cy="5" r="3.8"/><circle cx="299" cy="5" r="3.8"/><circle cx="309" cy="5" r="3.8"/><circle cx="319" cy="5" r="3.8"/><circle cx="279" cy="15" r="3.8"/><circle cx="279" cy="25" r="3.8"/><circle cx="279" cy="35" r="3.8"/><circle cx="289" cy="35" r="3.8"/><circle cx="299" cy="35" r="3.8"/><circle cx="309" cy="35" r="3.8"/><circle cx="279" cy="45" r="3.8"/><circle cx="279" cy="55" r="3.8"/><circle cx="279" cy="65" r="3.8"/><circle cx="289" cy="65" r="3.8"/><circle cx="299" cy="65" r="3.8"/><circle cx="309" cy="65" r="3.8"/><circle cx="319" cy="65" r="3.8"/></g><circle cx="36.1" cy="36.9" r="3.9" fill="#FF4F00"/><circle cx="339" cy="65" r="3.8" fill="#FF4F00"/></svg>
+    </a>
+    <nav class="nav__links label" aria-label="Sections">
+      <a href="#lifecycle">Mission</a><a href="#console">Console</a><a href="#token">$MULE</a><a href="https://claude.ai/artifact/P2DDN7pJW3M53oRRaHi5ud">Dossier</a>
+    </nav>
+    <div class="nav__status label"><span class="light" aria-hidden="true"></span><span>Devnet · Sim</span></div>
+  </div>
+  <div class="nav__progress" id="progress"></div>
+</header>
+
+<main id="top">
+  <!-- 01 HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero__grid">
+        <div>
+          <div class="hero__eyebrow label"><span class="light" aria-hidden="true"></span><span>Unit M-1 / Autonomous settlement</span></div>
+          <h1 class="display">Pay AI agents on delivery.</h1>
+          <p class="hero__sub">Stubborn by design. Funds stay locked until the work checks out.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--signal" href="#console">Run a mission <span aria-hidden="true">→</span></a>
+            <a class="btn" href="https://claude.ai/artifact/P2DDN7pJW3M53oRRaHi5ud">Read the dossier</a>
+          </div>
+          <div class="ca"><span class="ca__k">Contract address</span><span>Published at launch. Only trust this site and @mule_protocol.</span></div>
+        </div>
+        <figure class="hero__fig" style="margin:0">
+          <svg viewBox="0 0 300 240" role="img" aria-label="Unit M-1, a robot mule, walking with a locked orange crate while a scanner sweeps over it">
+            <g fill="none" stroke="#0E0E0E" stroke-width="1"><path d="M6 18V6H18M282 6H294V18M294 222V234H282M18 234H6V222"/></g>
+            <line x1="20" y1="212" x2="290" y2="212" stroke="#0E0E0E" stroke-dasharray="2 4"/>
+            <g class="mule walking">
+              <g class="leg leg-a" style="transform-origin:92px 140px"><path d="M92 140L82 174L94 207" fill="none" stroke="#0E0E0E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="82" cy="174" r="3.5" fill="#0E0E0E"/><rect x="88" y="205" width="12" height="4" fill="#0E0E0E"/></g>
+              <g class="leg leg-b" style="transform-origin:106px 140px"><path d="M106 140L100 176L112 207" fill="none" stroke="#0E0E0E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="100" cy="176" r="3.5" fill="#0E0E0E"/><rect x="106" y="205" width="12" height="4" fill="#0E0E0E"/></g>
+              <g class="leg leg-b" style="transform-origin:198px 140px"><path d="M198 140L208 175L198 207" fill="none" stroke="#0E0E0E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="208" cy="175" r="3.5" fill="#0E0E0E"/><rect x="192" y="205" width="12" height="4" fill="#0E0E0E"/></g>
+              <g class="leg leg-a" style="transform-origin:212px 140px"><path d="M212 140L224 174L214 207" fill="none" stroke="#0E0E0E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="224" cy="174" r="3.5" fill="#0E0E0E"/><rect x="208" y="205" width="12" height="4" fill="#0E0E0E"/></g>
+              <g class="upper">
+                <path d="M70 104C54 112 50 126 58 140M216 100L236 74M246 58L238 20M256 58L264 22" fill="none" stroke="#0E0E0E" stroke-width="2" stroke-linecap="round"/>
+                <circle class="tip" cx="238" cy="20" r="3" fill="#0E0E0E"/><circle class="tip" cx="264" cy="22" r="3" fill="#0E0E0E"/>
+                <rect x="68" y="96" width="156" height="46" fill="#E9E8E3" stroke="#0E0E0E" stroke-width="2"/>
+                <path d="M80 128H140M150 128H212" stroke="#0E0E0E"/>
+                <path d="M236 58L284 66L280 88L240 86Z" fill="#E9E8E3" stroke="#0E0E0E" stroke-width="2" stroke-linejoin="round"/>
+                <circle class="eye" cx="268" cy="74" r="3.5" fill="#FF4F00"/>
+                <rect x="96" y="58" width="96" height="38" fill="#FF4F00" stroke="#0E0E0E" stroke-width="2"/>
+                <path d="M144 58V96M96 77H192" stroke="#0E0E0E"/>
+                <text x="102" y="72" font-size="8" font-family="Azeret Mono, monospace" fill="#0E0E0E">PAYLOAD</text>
+                <text x="150" y="91" font-size="8" font-weight="600" font-family="Azeret Mono, monospace" fill="#0E0E0E">LOCKED</text>
+              </g>
+            </g>
+            <g class="scan" aria-hidden="true">
+              <rect x="40" y="-6" width="256" height="12" fill="#FF4F00" opacity="0.09"/>
+              <line x1="40" y1="0" x2="296" y2="0" stroke="#FF4F00" stroke-width="1"/>
+              <text x="296" y="-4" text-anchor="end" font-size="6.5" font-family="Azeret Mono, monospace" fill="#A83200">SCAN</text>
+            </g>
+            <g font-size="7.5" font-family="Azeret Mono, monospace" fill="#0E0E0E">
+              <g class="callout c1"><path d="M192 62L212 44H292" stroke="#0E0E0E" stroke-width=".8" fill="none"/><text x="292" y="40" text-anchor="end">ESCROW 5.00 USDC</text></g>
+              <g class="callout c2"><path d="M100 62L90 52H14" stroke="#0E0E0E" stroke-width=".8" fill="none"/><text x="14" y="47">CRITERIA: SCHEMA V1</text></g>
+              <g class="callout c3"><text x="292" y="228" text-anchor="end">M-1 · STATUS: IN TRANSIT</text></g>
+            </g>
+          </svg>
+        </figure>
+      </div>
+    </div>
+    <div class="ticker" role="marquee" aria-label="Simulated mission feed">
+      <span class="ticker__k label">Simulated feed</span>
+      <span class="ticker__track">MSN-0039 SETTLED ✓ 3.20 USDC<i>▸</i><b>MSN-0040 RETURNED</b> 1.00 USDC<i>▸</i>MSN-0041 SETTLED ✓ 5.00 USDC<i>▸</i>MSN-0042 IN TRANSIT<i>▸</i>MSN-0043 LOCKED 2.50 USDC<i>▸</i>MSN-0039 SETTLED ✓ 3.20 USDC<i>▸</i><b>MSN-0040 RETURNED</b> 1.00 USDC<i>▸</i>MSN-0041 SETTLED ✓ 5.00 USDC<i>▸</i>MSN-0042 IN TRANSIT<i>▸</i>MSN-0043 LOCKED 2.50 USDC<i>▸</i></span>
+    </div>
+  </section>
+
+  <!-- 02 PROBLEM -->
+  <section class="sec problem">
+    <div class="wrap">
+      <div class="sec-label label"><span class="n" data-flip>02</span><span>/ Problem</span></div>
+      <h2 class="display">Agents can do the work. Nobody can trust them with the money.</h2>
+      <div class="split">
+        <div><span class="label">Pay upfront</span><p>The agent can walk away with it.</p></div>
+        <div><span class="label">Pay after</span><p>The agent has to trust you.</p></div>
+      </div>
+      <p class="closing">Today, agent commerce runs on <span class="strike" id="strike">hope</span>. MULE runs on rules.</p>
+    </div>
+  </section>
+
+  <!-- 03 LIFECYCLE -->
+  <section class="lifecycle" id="lifecycle" aria-label="Mission lifecycle">
+    <div class="lc-pin">
+      <div class="wrap" style="width:100%">
+        <div class="sec-label label"><span class="n" data-flip>03</span><span>/ Lifecycle</span></div>
+        <div class="lc-head">
+          <h2 class="display">Five stations. No shortcuts.</h2>
+          <div class="lc-caption" aria-live="polite">
+            <span class="num dot" id="lcNum">01</span>
+            <div><span class="label" id="lcLabel">Load</span><p id="lcText">Define the job and the acceptance criteria.</p></div>
+          </div>
+        </div>
+        <div class="lc-stage">
+          <svg class="stage" id="stage" data-step="1" viewBox="0 0 960 300" role="img" aria-label="Unit M-1 carrying a crate along a track through five stations">
+            <line x1="60" y1="252" x2="900" y2="252" stroke="#0E0E0E" stroke-width="1.5"/>
+            <g id="stations">
+              <rect class="station" x="94" y="246" width="12" height="12" transform="rotate(45 100 252)"/>
+              <rect class="station" x="274" y="246" width="12" height="12" transform="rotate(45 280 252)"/>
+              <rect class="station" x="454" y="246" width="12" height="12" transform="rotate(45 460 252)"/>
+              <rect class="station" x="634" y="246" width="12" height="12" transform="rotate(45 640 252)"/>
+              <rect class="station" x="814" y="246" width="12" height="12" transform="rotate(45 820 252)"/>
+            </g>
+            <g font-family="Azeret Mono, monospace" font-size="11" font-weight="600" fill="#0E0E0E" letter-spacing="0.8" text-anchor="middle">
+              <text x="100" y="284">01 LOAD</text><text x="280" y="284">02 LOCK</text><text x="460" y="284">03 TRANSIT</text><text x="640" y="284">04 INSPECT</text><text x="820" y="284">05 SETTLE</text>
+            </g>
+            <g class="st-out" font-family="Azeret Mono, monospace" font-weight="600">
+              <g transform="rotate(-6 860 24)"><rect x="770" y="4" width="170" height="36" fill="none" stroke="#0E0E0E" stroke-width="3"/><text x="855" y="28" text-anchor="middle" font-size="15" fill="#0E0E0E">PASS: SETTLED ✓</text></g>
+              <g transform="rotate(5 860 70)"><rect x="770" y="50" width="170" height="36" fill="none" stroke="#A83200" stroke-width="3" stroke-dasharray="6 3"/><text x="855" y="74" text-anchor="middle" font-size="15" fill="#A83200">FAIL: RETURNED</text></g>
+            </g>
+            <g id="lcMule" transform="translate(-12 95) scale(0.75)">
+              <g class="mule" id="lcMuleInner">
+                <g class="leg leg-a" style="transform-origin:92px 140px"><path d="M92 140L82 174L94 207" fill="none" stroke="#0E0E0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="82" cy="174" r="4.5" fill="#0E0E0E"/><rect x="88" y="205" width="12" height="5" fill="#0E0E0E"/></g>
+                <g class="leg leg-b" style="transform-origin:106px 140px"><path d="M106 140L100 176L112 207" fill="none" stroke="#0E0E0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="100" cy="176" r="4.5" fill="#0E0E0E"/><rect x="106" y="205" width="12" height="5" fill="#0E0E0E"/></g>
+                <g class="leg leg-b" style="transform-origin:198px 140px"><path d="M198 140L208 175L198 207" fill="none" stroke="#0E0E0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="208" cy="175" r="4.5" fill="#0E0E0E"/><rect x="192" y="205" width="12" height="5" fill="#0E0E0E"/></g>
+                <g class="leg leg-a" style="transform-origin:212px 140px"><path d="M212 140L224 174L214 207" fill="none" stroke="#0E0E0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="224" cy="174" r="4.5" fill="#0E0E0E"/><rect x="208" y="205" width="12" height="5" fill="#0E0E0E"/></g>
+                <g class="upper">
+                  <path d="M70 104C54 112 50 126 58 140M216 100L236 74M246 58L238 20M256 58L264 22" fill="none" stroke="#0E0E0E" stroke-width="3" stroke-linecap="round"/>
+                  <circle class="tip" cx="238" cy="20" r="4" fill="#0E0E0E"/><circle class="tip" cx="264" cy="22" r="4" fill="#0E0E0E"/>
+                  <rect x="68" y="96" width="156" height="46" fill="#E9E8E3" stroke="#0E0E0E" stroke-width="3"/>
+                  <path d="M236 58L284 66L280 88L240 86Z" fill="#E9E8E3" stroke="#0E0E0E" stroke-width="3" stroke-linejoin="round"/>
+                  <circle class="eye" cx="268" cy="74" r="4.5" fill="#FF4F00"/>
+                  <rect x="96" y="58" width="96" height="38" fill="#FF4F00" stroke="#0E0E0E" stroke-width="3"/>
+                  <g class="st-crate-lock"><path d="M96 77H192M144 58V96" stroke="#0E0E0E" stroke-width="2"/><g class="st-lockstamp"><rect x="112" y="64" width="64" height="24" fill="#E9E8E3" stroke="#0E0E0E" stroke-width="2"/><text x="144" y="81" text-anchor="middle" font-family="Azeret Mono, monospace" font-size="12" font-weight="600" fill="#0E0E0E">LOCKED</text></g></g>
+                  <g class="st-scan"><rect x="90" y="52" width="8" height="50" fill="#FF4F00" opacity="0.18"/><line x1="94" y1="48" x2="94" y2="106" stroke="#FF4F00" stroke-width="2"/></g>
+                </g>
+              </g>
+              <g class="st-criteria" font-family="Azeret Mono, monospace" font-size="15" fill="#0E0E0E"><path d="M100 60L80 30H20" stroke="#0E0E0E" stroke-width="1.5" fill="none"/><text x="20" y="22">CRITERIA: SCHEMA V1</text></g>
+              <g class="st-check" font-family="Azeret Mono, monospace" font-size="15" font-weight="600" fill="#0E0E0E"><path d="M192 60L222 18H360" stroke="#0E0E0E" stroke-width="1.5" fill="none"/><text x="226" y="10" id="lcCheck">6/6 FIELDS ✓</text></g>
+            </g>
+          </svg>
+          <div class="lc-rail label" id="lcRail"><span>Load</span><span>Lock</span><span>Transit</span><span>Inspect</span><span>Settle</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 CONSOLE -->
+  <section class="sec" id="console">
+    <div class="wrap">
+      <div class="sec-label label"><span class="n" data-flip>04</span><span>/ Console</span></div>
+      <div class="console">
+        <form class="con-form" id="conForm">
+          <h2 class="display">Mission console.</h2>
+          <div class="sim-note label"><span class="light" aria-hidden="true"></span><span>Simulation · no real funds · devnet version in development</span></div>
+          <div class="field">
+            <label class="label" for="tpl">Mission template</label>
+            <select id="tpl">
+              <option value="invoice">Extract an invoice to JSON</option>
+              <option value="contract">Summarize a contract into 5 fields</option>
+              <option value="address">Normalize a list of addresses</option>
+            </select>
+          </div>
+          <div class="field">
+            <span class="label" id="behLabel">Agent behavior</span>
+            <div class="toggle label" role="radiogroup" aria-labelledby="behLabel">
+              <input type="radio" name="beh" id="behHonest" value="honest" checked><label for="behHonest">Honest</label>
+              <input type="radio" name="beh" id="behBad" value="dishonest"><label for="behBad">Dishonest</label>
+            </div>
+          </div>
+          <button class="btn btn--signal" type="submit" id="launch">Launch mission · 5.00 dUSDC <span aria-hidden="true">→</span></button>
+        </form>
+        <div class="con-out" id="conOut">
+          <div class="con-out__head label"><span id="msnId">MSN-0044</span><span id="msnState">Idle</span></div>
+          <ol class="log" id="log" aria-live="polite">
+            <li class="idle">Waiting for a mission. Pick a template and an agent, then launch. <span class="cursor" aria-hidden="true"></span></li>
+          </ol>
+          <div class="stampbox"><span class="stampbig" id="stamp"></span></div>
+          <div class="con-foot label"><span>Transaction hashes are simulated</span><span id="runs">0 missions run on this page</span></div>
+        </div>
+      </div>
+
+      <div class="patch" id="patch" hidden>
+        <div id="patchSvg"></div>
+        <div>
+          <span class="label">Mission patch</span>
+          <h3 class="display" style="font-size:clamp(24px,3vw,36px);margin-top:8px" id="patchTitle">Mission settled.</h3>
+          <p class="muted" id="patchText" style="margin:12px 0 0;max-width:52ch"></p>
+          <div class="ctas"><a class="btn" id="shareX" href="#" target="_blank" rel="noopener">Share on X <span aria-hidden="true">→</span></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 TOKEN -->
+  <section class="sec token" id="token">
+    <div class="wrap">
+      <div class="sec-label label"><span class="n" data-flip>05</span><span>/ $MULE</span></div>
+      <h2 class="display">The protocol's collateral.</h2>
+      <div class="rows">
+        <div class="row"><span class="n dot">01</span><h3>Bond</h3><p>Agents stake $MULE to take on larger missions. Bad deliveries cost them.</p><span class="tag">Planned</span></div>
+        <div class="row"><span class="n dot">02</span><h3>Arbitrate</h3><p>Validators stake $MULE to resolve disputes. Dishonest rulings get slashed.</p><span class="tag">Planned</span></div>
+        <div class="row"><span class="n dot">03</span><h3>Govern</h3><p>Holders vote on mission categories and protocol parameters.</p><span class="tag">Planned</span></div>
+      </div>
+      <div class="funding">
+        <p>MULE launched on pump.fun. Creator fees go to a public multisig and are spent against published milestones. Every spend is reported. <a href="#telemetry">See telemetry</a>.</p>
+        <p class="notice">$MULE has no promised value, yield or return. These utilities are planned and not live. Missions are paid in USDC, not in $MULE.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 MISSION LOG -->
+  <section class="sec" id="log-sec">
+    <div class="wrap">
+      <div class="sec-label label"><span class="n" data-flip>06</span><span>/ Mission log</span></div>
+      <h2 class="display" style="font-size:clamp(30px,5vw,64px)">Each milestone unlocks the next.</h2>
+      <ol class="mlog" id="mlog">
+        <div class="mlog__fill" id="mlogFill"></div>
+        <li class="done"><span class="node"></span><div class="body"><span class="id dot">M-0</span><div><h3>Brand, site and dossier</h3><p>Identity, this website, the dossier, tokenomics.</p></div><span class="tag tag--done">Delivered ✓</span></div></li>
+        <li class="go"><span class="node"></span><div class="body"><span class="id dot">M-1</span><div><h3>Devnet escrow and live console</h3><p>Anchor escrow on devnet, reference agent, schema validator, open repository.</p></div><span class="tag tag--go">In transit</span></div></li>
+        <li><span class="node"></span><div class="body"><span class="id dot">M-2</span><div><h3>Security audit</h3><p>External audit of the escrow program, published report.</p></div><span class="tag">Queued</span></div></li>
+        <li><span class="node"></span><div class="body"><span class="id dot">M-3</span><div><h3>Mainnet beta</h3><p>One mission category, low per-mission caps, SDK for agent builders.</p></div><span class="tag">Queued</span></div></li>
+        <li><span class="node"></span><div class="body"><span class="id dot">M-4</span><div><h3>Bonds and arbitration</h3><p>$MULE bonds, staked validators and arbiters, governance.</p></div><span class="tag">Queued</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 07 TELEMETRY -->
+  <section class="sec" id="telemetry">
+    <div class="wrap">
+      <div class="sec-label label"><span class="n" data-flip>07</span><span>/ Telemetry</span></div>
+      <h2 class="display" style="font-size:clamp(30px,5vw,64px)">Every coin, in public.</h2>
+      <div class="tele">
+        <div class="tile"><span class="k label">Treasury multisig</span><span class="v pending dot" data-scramble>PENDING LAUNCH</span><span class="s">Squads, 3 of 5 signers</span></div>
+        <div class="tile"><span class="k label">Creator fees received</span><span class="v pending dot" data-scramble>PENDING LAUNCH</span><span class="s">Claimed weekly</span></div>
+        <div class="tile"><span class="k label">Spent</span><span class="v pending dot" data-scramble>PENDING LAUNCH</span><span class="s">By milestone, with transactions</span></div>
+        <div class="tile"><span class="k label">Team tokens locked</span><span class="v pending dot" data-scramble>PENDING LAUNCH</span><span class="s">12-month linear unlock</span></div>
+        <div class="tile"><span class="k label">Missions run on this page</span><span class="v dot" id="teleRuns">0000</span><span class="s">Simulated, in your browser only</span></div>
+        <div class="tile"><span class="k label">Source code</span><span class="v pending dot">GITHUB</span><span class="s">Published with M-1</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 FAQ -->
+  <section class="sec" id="faq">
+    <div class="wrap">
+      <div class="sec-label label"><span class="n" data-flip>08</span><span>/ FAQ</span></div>
+      <h2 class="display" style="font-size:clamp(30px,5vw,64px)">Questions, answered.</h2>
+      <div class="faq">
+        <details><summary>Is MULE live?</summary><p>Not yet. The console on this site is a simulation. The devnet version is in development and will be announced on X.</p></details>
+        <details><summary>What does MULE actually do?</summary><p>It holds payment in escrow until an AI agent's delivery passes criteria agreed upfront, then pays the agent or refunds the client.</p></details>
+        <details><summary>Can it judge any kind of work?</summary><p>No. MULE starts with work that can be checked automatically, like structured data extraction. Disputes go to human review at first.</p></details>
+        <details><summary>What is $MULE for?</summary><p>Bonds for agents, stakes for validators, and governance. These are planned, not live.</p></details>
+        <details><summary>Is $MULE an investment?</summary><p>No. It's a utility token for a protocol in development, with no promised value or returns. Only buy what you can afford to lose.</p></details>
+        <details><summary>Where do the creator fees go?</summary><p>To a public multisig, spent against the mission log milestones. See telemetry.</p></details>
+        <details><summary>Will this site ask me to connect a wallet?</summary><p>No. Nothing on this site needs a wallet, and we will never ask you to connect one or sign anything to claim tokens. If a page does, it isn't us.</p></details>
+        <details><summary>How do I avoid scams?</summary><p>The only official contract address is on this site and in the pinned post of our X account. We will never DM you first, and we never send files: the dossier is a web page.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <div><span class="label">MULE</span><p class="muted" style="margin:8px 0 0">Pay AI agents on delivery.<br>Stubborn by design.</p></div>
+  <ul class="label"><li><a href="https://claude.ai/artifact/P2DDN7pJW3M53oRRaHi5ud">Dossier</a></li><li><a href="https://x.com/mule_protocol">X · @mule_protocol</a></li><li><a href="#">GitHub</a></li></ul>
+  <p class="legal">$MULE is a utility token for the MULE protocol, currently in development. Nothing on this site is financial advice, an offer, or a promise of value or returns. The console is a simulation. Crypto-assets are volatile and you may lose everything you put in.</p>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function $(id) { return document.getElementById(id); }
+
+  /* Scroll progress bar in the nav */
+  var bar = $('progress');
+  function onScrollBar() {
+    var h = document.documentElement.scrollHeight - innerHeight;
+    var p = h > 0 ? scrollY / h : 0;
+    bar.style.transform = 'scaleX(' + Math.round(p * 40) / 40 + ')';
+  }
+
+  /* Section numbers flip like a split-flap board when they enter */
+  function flip(el) {
+    var target = el.textContent, n = 0;
+    var t = setInterval(function () {
+      n++;
+      if (n > 6) { el.textContent = target; clearInterval(t); return; }
+      el.textContent = String(Math.floor(Math.random() * 90) + 10);
+    }, 45);
+  }
+  /* Pending telemetry values scramble once, dot-matrix style */
+  var glyphs = '█▓▒░#*+=-';
+  function scramble(el) {
+    var target = el.textContent, i = 0;
+    var t = setInterval(function () {
+      i++;
+      var out = '';
+      for (var k = 0; k < target.length; k++) out += k < i ? target[k] : (target[k] === ' ' ? ' ' : glyphs[Math.floor(Math.random() * glyphs.length)]);
+      el.textContent = out;
+      if (i >= target.length) { el.textContent = target; clearInterval(t); }
+    }, 35);
+  }
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        if (el.hasAttribute('data-flip')) flip(el);
+        if (el.hasAttribute('data-scramble')) scramble(el);
+        if (el.id === 'strike') setTimeout(function () { el.classList.add('on'); }, 300);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('[data-flip],[data-scramble],#strike').forEach(function (el) { io.observe(el); });
+  } else {
+    $('strike').classList.add('on');
+  }
+
+  /* Lifecycle: pinned scroll sequence */
+  var lc = $('lifecycle'), stage = $('stage'), mule = $('lcMule'), inner = $('lcMuleInner');
+  var stations = [100, 280, 460, 640, 820];
+  var steps = [
+    ['Load', 'Define the job and the acceptance criteria.'],
+    ['Lock', 'Funds go into escrow. Nobody can touch them.'],
+    ['Transit', 'The agent does the work and submits the delivery.'],
+    ['Inspect', 'The validator checks it against the criteria. No vibes. Rules.'],
+    ['Settle', 'Pass: the agent gets paid. Fail: you get refunded.']
+  ];
+  var railSpans = $('lcRail').children, stationEls = $('stations').children;
+  var lastStep = 0, walkTimer;
+  function onScrollLc() {
+    var r = lc.getBoundingClientRect();
+    var span = r.height - innerHeight;
+    var p = Math.min(1, Math.max(0, -r.top / span));
+    var step = Math.min(5, Math.floor(p * 5) + 1);
+    var local = p * 5 - (step - 1);
+    var from = stations[step - 1], to = stations[Math.min(4, step)];
+    var move = step < 5 ? Math.max(0, (local - 0.55) / 0.45) : 0;
+    var x = from + (to - from) * move - 112;
+    mule.setAttribute('transform', 'translate(' + x.toFixed(1) + ' 95) scale(0.75)');
+    if (move > 0 && move < 1 && !reduce) {
+      inner.classList.add('walking');
+      clearTimeout(walkTimer);
+      walkTimer = setTimeout(function () { inner.classList.remove('walking'); }, 180);
+    }
+    if (step !== lastStep) {
+      lastStep = step;
+      stage.setAttribute('data-step', step);
+      $('lcNum').textContent = '0' + step;
+      $('lcLabel').textContent = steps[step - 1][0];
+      $('lcText').textContent = steps[step - 1][1];
+      for (var i = 0; i < 5; i++) {
+        railSpans[i].className = i < step ? (i === step - 1 ? 'on cur' : 'on') : '';
+        stationEls[i].setAttribute('class', 'station' + (i < step ? (i === step - 1 ? ' cur' : ' on') : ''));
+      }
+      if (step === 3 && !reduce) inner.classList.add('walking');
+    }
+    if (step === 3 && !reduce) inner.classList.add('walking');
+  }
+
+  /* Mission log rail fills as you scroll */
+  var mlog = $('mlog'), fill = $('mlogFill');
+  function onScrollLog() {
+    var r = mlog.getBoundingClientRect();
+    var p = Math.min(1, Math.max(0, (innerHeight * 0.7 - r.top) / r.height));
+    fill.style.height = Math.round(p * (r.height - 16)) + 'px';
+  }
+
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { onScrollBar(); onScrollLc(); onScrollLog(); ticking = false; });
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  onScroll();
+
+  /* Console simulation */
+  var TEMPLATES = {
+    invoice: { name: 'Invoice to JSON', ok: '6/6 FIELDS VALID', ko: '5/6 · MISSING: total_amount' },
+    contract: { name: 'Contract summary', ok: '5/5 FIELDS VALID', ko: '4/5 · MISSING: governing_law' },
+    address: { name: 'Address normalization', ok: '12/12 ROWS VALID', ko: '11/12 · INVALID POSTCODE, ROW 7' }
+  };
+  var B58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+  function rnd(n, set) { var s = ''; for (var i = 0; i < n; i++) s += set[Math.floor(Math.random() * set.length)]; return s; }
+  function tx() { return rnd(4, B58) + '…' + rnd(4, B58); }
+  var runs = 0, msn = 44, busy = false;
+  var log = $('log'), stamp = $('stamp');
+  function pad(n) { return ('0000' + n).slice(-4); }
+  function addLine(k, v, bad) {
+    var li = document.createElement('li');
+    li.className = 'new' + (bad ? ' bad' : '');
+    li.innerHTML = '<span class="k"></span><span class="v"></span>';
+    li.firstChild.textContent = k; li.lastChild.textContent = v;
+    log.appendChild(li);
+  }
+  $('conForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (busy) return;
+    busy = true;
+    var t = TEMPLATES[$('tpl').value];
+    var honest = document.querySelector('input[name="beh"]:checked').value === 'honest';
+    var id = 'MSN-' + pad(msn);
+    Array.prototype.slice.call(log.querySelectorAll('li')).forEach(function (li) { li.remove(); });
+    stamp.className = 'stampbig'; stamp.textContent = '';
+    $('patch').hidden = true;
+    $('msnId').textContent = id; $('msnState').textContent = 'Running';
+    var lines = [
+      ['[01]', 'ESCROW LOCKED · 5.00 dUSDC · tx ' + tx()],
+      ['[02]', 'MISSION ACCEPTED · AGENT MULE-01 · ' + t.name.toUpperCase()],
+      ['[03]', 'DELIVERY SUBMITTED · hash 0x' + rnd(4, '0123456789abcdef') + '…' + rnd(4, '0123456789abcdef')],
+      ['[04]', 'INSPECTION · ' + (honest ? t.ok : t.ko), !honest],
+      ['[05]', honest ? 'SETTLED · 5.00 dUSDC PAID TO AGENT · tx ' + tx() : 'RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · tx ' + tx(), !honest]
+    ];
+    var i = 0, delay = reduce ? 60 : 800;
+    (function next() {
+      if (i < lines.length) { addLine(lines[i][0], lines[i][1], lines[i][2]); i++; setTimeout(next, delay); return; }
+      stamp.textContent = honest ? 'SETTLED ✓' : 'RETURNED';
+      stamp.className = 'stampbig on ' + (honest ? 'ok' : 'ko');
+      var out = $('conOut'); out.classList.remove('shake'); void out.offsetWidth; out.classList.add('shake');
+      $('msnState').textContent = honest ? 'Settled' : 'Returned';
+      runs++; msn++;
+      $('runs').textContent = runs + (runs === 1 ? ' mission' : ' missions') + ' run on this page';
+      $('teleRuns').textContent = pad(runs);
+      makePatch(id, honest, t.name);
+      busy = false;
+    })();
+  });
+
+  function makePatch(id, honest, name) {
+    var d = new Date(), date = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+    var border = honest ? '#FF4F00' : '#5F5E59';
+    var dash = honest ? '' : ' stroke-dasharray="8 5"';
+    var svg = '<svg viewBox="0 0 200 220" role="img" aria-label="Mission patch ' + id + ' ' + (honest ? 'settled' : 'returned') + '">' +
+      '<polygon points="100,6 192,58 192,162 100,214 8,162 8,58" fill="#E9E8E3" stroke="' + border + '" stroke-width="8"' + dash + '/>' +
+      '<polygon points="100,22 178,66 178,154 100,198 22,154 22,66" fill="none" stroke="#0E0E0E" stroke-width="1.5" stroke-dasharray="3 3"/>' +
+      '<g transform="translate(70 46) scale(0.95)" fill="none" stroke="#0E0E0E" stroke-width="3.5" stroke-linecap="square"><line x1="17" y1="20" x2="11" y2="5"/><line x1="26" y1="21" x2="29" y2="4"/><polygon points="12,20 34,22 58,46 56,56 44,58 20,44"/></g>' +
+      '<circle cx="80.5" cy="49.8" r="3" fill="#0E0E0E"/><circle cx="97.5" cy="48.8" r="3" fill="#0E0E0E"/><circle cx="101.4" cy="75.5" r="3.4" fill="#FF4F00"/>' +
+      '<text x="100" y="138" text-anchor="middle" font-family="Doto, monospace" font-weight="900" font-size="24" fill="#0E0E0E">' + id + '</text>' +
+      '<text x="100" y="160" text-anchor="middle" font-family="Azeret Mono, monospace" font-weight="600" font-size="11" letter-spacing="1.5" fill="' + (honest ? '#0E0E0E' : '#A83200') + '">' + (honest ? 'SETTLED ✓' : 'RETURNED') + '</text>' +
+      '<text x="100" y="178" text-anchor="middle" font-family="Azeret Mono, monospace" font-size="8" letter-spacing="1" fill="#5F5E59">' + date + ' · DEVNET SIM</text>' +
+      '</svg>';
+    $('patchSvg').innerHTML = svg;
+    $('patchTitle').textContent = honest ? 'Mission settled.' : 'Mission returned.';
+    $('patchText').textContent = honest
+      ? id + ': the delivery passed every check, so the agent got paid. Your patch is unique to this run.'
+      : id + ': the delivery failed inspection, so the client got a refund. The agent got nothing. Stubborn by design.';
+    var msg = honest
+      ? 'My agent got paid on delivery. Mission ' + id + ' settled. Stubborn by design. $MULE'
+      : 'My dishonest agent got nothing. Mission ' + id + ' returned. Stubborn by design. $MULE';
+    $('shareX').href = 'https://x.com/intent/post?text=' + encodeURIComponent(msg);
+    var p = $('patch'); p.hidden = false; p.classList.remove('patch-in'); void p.offsetWidth; p.classList.add('patch-in');
+  }
+
+  /* Cursor trail: grid intersections light up like a dot-matrix display and fade in steps */
+  var canvas = $('trail');
+  var fine = window.matchMedia('(pointer: fine)').matches;
+  if (!fine || reduce || !canvas.getContext) { canvas.style.display = 'none'; return; }
+  var ctx = canvas.getContext('2d'), dpr = Math.min(2, window.devicePixelRatio || 1);
+  var PITCH = 24, LIFE = 650, dots = new Map(), head = null, last = null, raf = 0;
+  function size() { canvas.width = innerWidth * dpr; canvas.height = innerHeight * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  size(); addEventListener('resize', size);
+  function key(gx, gy) { return gx + ',' + gy; }
+  function light(gx, gy, now) { dots.set(key(gx, gy), { gx: gx, gy: gy, t: now }); }
+  addEventListener('pointermove', function (e) {
+    var now = performance.now();
+    var gx = Math.round((e.clientX + scrollX) / PITCH), gy = Math.round((e.clientY + scrollY) / PITCH);
+    if (last) {
+      var dx = gx - last.gx, dy = gy - last.gy, n = Math.max(Math.abs(dx), Math.abs(dy));
+      for (var s = 1; s <= n; s++) light(last.gx + Math.round(dx * s / n), last.gy + Math.round(dy * s / n), now);
+    } else light(gx, gy, now);
+    last = { gx: gx, gy: gy }; head = { gx: gx, gy: gy, t: now };
+    if (!raf) raf = requestAnimationFrame(draw);
+  }, { passive: true });
+  document.documentElement.addEventListener('pointerleave', function () { last = null; head = null; });
+  addEventListener('scroll', function () { last = null; }, { passive: true });
+  function draw(now) {
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    var ox = scrollX, oy = scrollY;
+    dots.forEach(function (d, k) {
+      var age = (now - d.t) / LIFE;
+      if (age >= 1) { dots.delete(k); return; }
+      var level = Math.ceil((1 - age) * 4) / 4;
+      ctx.globalAlpha = 0.6 * level;
+      ctx.fillStyle = '#0E0E0E';
+      ctx.beginPath(); ctx.arc(d.gx * PITCH - ox, d.gy * PITCH - oy, 1.6 + level * 1.2, 0, Math.PI * 2); ctx.fill();
+    });
+    if (head && now - head.t < LIFE) {
+      ctx.globalAlpha = 1; ctx.fillStyle = '#FF4F00';
+      ctx.fillRect(head.gx * PITCH - ox - 3.5, head.gy * PITCH - oy - 3.5, 7, 7);
+    }
+    ctx.globalAlpha = 1;
+    raf = (dots.size || (head && now - head.t < LIFE)) ? requestAnimationFrame(draw) : 0;
+    if (!raf) ctx.clearRect(0, 0, innerWidth, innerHeight);
+  }
+})();
+</script>
