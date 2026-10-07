@@ -12,9 +12,11 @@ Base : main à [cd57efa](https://github.com/Mule-Protocol/mule-site/commit/cd57e
 | Description par défaut | Stubborn by design. MULE is an escrow protocol in development: funds stay locked until an AI agent’s work checks out. | Stubborn by design. MULE is an escrow protocol in development on Solana: funds stay locked until an AI agent’s work checks out. |
 | FAQ — après « What does MULE actually do? » | Question absente ; 8 questions | **Why Solana?** — Because the agents are already there: they trade, pay for data and hire each other on Solana today. Fees are small enough for a two-dollar job, settlement takes seconds, and the escrow program is public, so anyone can read the rules it enforces. |
 
-Le nouveau paragraphe réutilise la classe globale existante muted. Aucun ajout CSS. Le titre, les deux blocs de paiement et la conclusion du problème restent identiques. La FAQ utilise la même structure details/summary/p et passe de 8 à 9 questions.
+Le paragraphe utilise les classes muted problem__lead. La règle demandée (62ch, marge haute de 24px, taille de 18px, interligne de 1.6) est identique dans pass-2.css et reference.css, toutes deux chargées. Le titre, les deux blocs de paiement et la conclusion du problème restent identiques. La FAQ utilise la même structure details/summary/p et passe de 8 à 9 questions.
 
 ## Validation
+
+Les sorties et JSON ci-dessous décrivent le commit initial ea2e83a, avant le correctif CSS. Les empreintes et le décompte de fichiers de scope-check.json restent donc historiques.
 
 - npm test : **39/39 tests réussis** — [sortie complète](tests.txt).
 - npm run build : **réussi**, 0 erreur, 0 avertissement Astro ; contrôle CSP du HTML généré réussi — [sortie complète](build.txt).
@@ -25,6 +27,8 @@ Le nouveau paragraphe réutilise la classe globale existante muted. Aucun ajout 
 
 ## Lighthouse mobile
 
+Mesures antérieures au correctif CSS ; les trois JSON de synthèse sont conservés sans modification.
+
 Lighthouse 13.5.0, Chromium 153, simulation mobile, mêmes paramètres et machine. Builds statiques locaux avec l’environnement d’indexation de main et la politique d’en-têtes de production. Seule la directive upgrade-insecure-requests est omise par le serveur QA pour HTTP localhost ; le code du site et ses en-têtes déployés ne sont pas modifiés. Les ports 4321/4322 servent respectivement les builds avant/après. Aucune mesure n’est un déploiement de production ou un test sur téléphone physique.
 
 | Série | Scores médians P / A / BP / SEO | Performances individuelles | LCP médian (ms) | CLS médian |
@@ -34,15 +38,17 @@ Lighthouse 13.5.0, Chromium 153, simulation mobile, mêmes paramètres et machin
 | Alternée — main | 100 / 100 / 100 / 100 | 37, 100, 100 | 1376.3 | 0.01506 |
 | Alternée — retouche | 100 / 100 / 100 / 100 | 86, 100, 100 | 1366.7 | 0.01506 |
 
-La première série avait baissé de 100 à 91 en médiane. Une seule série alternée, bornée à trois mesures par version, a donc été exécutée sans autre changement de code. Elle donne 100 → 100 en médiane ; main lui-même varie de 37 à 100 dans cette série. Il n’y a pas de baisse de médiane sur cette comparaison alternée, mais ces mesures locales sont variables et ne garantissent pas un score en production. Tous les relevés, y compris les moins favorables, sont conservés.
+La première série avait baissé de 100 à 91 en médiane. Une seule série alternée, bornée à trois mesures par version, a donc été exécutée sans autre changement de code. Elle donne 100 → 100 en médiane ; main lui-même varie de 37 à 100 dans cette série. Il n’y a pas de baisse de médiane sur cette comparaison alternée, mais ces mesures locales sont variables et ne garantissent pas un score en production. Les résultats synthétiques des douze relevés, y compris les moins favorables, restent conservés dans les trois JSON.
 
 Le titre h1 est bien l’élément LCP dans les rapports ; sa géométrie mobile est identique. LCP médian de la série alternée : **1376.3 → 1366.7 ms**. Accessibilité, bonnes pratiques et SEO : 100 dans les douze relevés.
 
-[Première série avant](lighthouse-before.json) · [Première série après](lighthouse-after.json) · [Comparaison alternée](lighthouse-paired.json) · [Les douze rapports complets HTML/JSON](lighthouse-reports.zip).
+[Première série avant](lighthouse-before.json) · [Première série après](lighthouse-after.json) · [Comparaison alternée](lighthouse-paired.json).
 
 Le précédent relevé réseau annoncé à 99/100/100/100 n’est pas directement comparable à cette mesure locale ; la comparaison repose sur le main exact reconstruit dans le même environnement.
 
 ## Captures
+
+Les trois captures after/problem-375.png, after/problem-768.png et after/problem-1440.png ont été régénérées après le correctif CSS. Les autres captures restent celles du commit initial.
 
 Captures natives du navigateur par section, viewport de 375/768/1440 × 900, mouvement réduit pour stabiliser l’animation. Aucune retouche d’image. FAQ ouverte avant : « What does MULE actually do? », la nouvelle question étant absente de main. FAQ ouverte après : « Why Solana? ».
 
