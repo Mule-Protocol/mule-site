@@ -482,3 +482,101 @@ Le LCP réseau confirme l'ordre de grandeur de 2,3 s relevé par la review. La c
 - Aucun test n'est déclaré réussi sans exécution ; l'écart LCP ci-dessus reste explicite.
 
 Les preuves et le présent complément sont ajoutés dans le commit documentaire suivant le commit de code a7fa873, sur la même PR en brouillon.
+
+
+## Correction LCP
+
+### Résultat et commits
+
+La réserve LCP est levée sur les mesures de cette passe : médiane **1,718 s sur l'accueil** et **1,638 s sur /dossier/**. Les six passages après correction obtiennent **99/100 en performance et 100/100 en accessibilité**. L'instance statique suffit : aucune séparation ni suppression supplémentaire de CSS n'a été nécessaire.
+
+- Avant : [déploiement immuable 6a8a3baf](https://6a8a3baf.mule-site.pages.dev/), code a7fa8731346b34e550656ff7f90912220ad08a1a. La branche partait du commit documentaire 3ed3617a0333915e175e176f388ce496d3f6a476.
+- Correctif : [43db0561dde3f1d69e41712287e1baf279f4dd2e](https://github.com/Mule-Protocol/mule-site/commit/43db0561dde3f1d69e41712287e1baf279f4dd2e), `perf: subset static Archivo titles to reduce mobile LCP`.
+- Après : **[https://6e6ff294.mule-site.pages.dev/](https://6e6ff294.mule-site.pages.dev/)** et **[son dossier](https://6e6ff294.mule-site.pages.dev/dossier/)**. Toutes les mesures « après » et captures ci-dessous utilisent cette URL immuable.
+- [CI du commit et déploiement — 37633702519](https://github.com/Mule-Protocol/mule-site/actions/runs/37633702519) : Validate et Deploy Pages réussis. [CI PR — 37633706510](https://github.com/Mule-Protocol/mule-site/actions/runs/37633706510) : réussie. [Preuve JSON des jobs](qa-lcp/ci-code.json).
+- Le présent rapport et ses preuves constituent le commit documentaire suivant, intitulé `docs: record immutable LCP measurements and visual comparisons`. Ce commit ne modifie pas le site exécuté. Les deux commits sont ajoutés à `codex/pass-2`, sans réécriture d'historique. PR #2 conservée en brouillon, sans fusion, production, DNS ou M-1.
+
+Les résultats antérieurs à 2,3 s ci-dessus restent des mesures historiques ; ils ne décrivent pas le correctif 43db056.
+
+### Police et fichiers
+
+| Caractéristique | Avant | Après |
+| --- | --- | --- |
+| WOFF2 | Archivo latin variable Fontsource 5.3.0 | Instance statique wdth=125, wght=800 |
+| Taille exacte | 90 104 octets | **8 184 octets**, sous 25 Ko |
+| Réduction | — | **81 920 octets, soit 90,92 %** |
+| Axes variables | wght, wdth | Aucun : tables fvar/gvar absentes |
+| Auto-hébergement / preload | Oui | Oui, font-display: swap conservé |
+
+Source verrouillée par la dépendance existante `@fontsource-variable/archivo@5.3.0`. Génération reproductible dans [scripts/build-title-font.py](../scripts/build-title-font.py), avec les contours existants et le hinting conservé. Les API officielles [FontTools instancer](https://fonttools.readthedocs.io/en/latest/varLib/instancer.html) et [FontTools subset](https://fonttools.readthedocs.io/en/latest/subset/index.html) servent à produire l'instance puis le sous-ensemble. Versions utilisées : FontTools 4.66.1, Brotli 1.2.0, Zopfli 0.4.3. Le build/CI utilise le binaire commité, sans Python ni téléchargement de police.
+
+- [WOFF2 statique](../public/brand/fonts/archivo-125-800-latin.woff2) : 104 caractères Unicode / 148 glyphes ; ASCII imprimable (lettres, chiffres, ponctuation, $), espace insécable, ·, –/—, apostrophes et citations typographiques, ….
+- [OFL.txt](../public/brand/fonts/OFL.txt) : licence SIL OFL 1.1 du paquet original, à côté du fichier.
+- `✓` est absent de l'Archivo d'origine et n'apparaît dans aucun des 46 titres Archivo capturés. Son fallback existant ailleurs est conservé ; aucun glyphe de remplacement n'est inventé.
+- [Base.astro](../src/layouts/Base.astro) : nouvelle cible de preload, suppression de l'import variable.
+- [site.css](../src/styles/site.css) : même famille Archivo, déclaration fixe 800 / 125 %, URL locale. Aucune autre règle de rendu modifiée.
+- [lighthouse.mjs](../scripts/lighthouse.mjs) : attendre la fermeture du navigateur entre mesures, sans modifier les paramètres Lighthouse.
+- [lcp-series.mjs](../scripts/lcp-series.mjs), [lcp-visual.mjs](../scripts/lcp-visual.mjs), [lcp-compare.mjs](../scripts/lcp-compare.mjs) : séries de mesures et comparaisons reproductibles.
+
+[Tailles, axes et SHA-256](qa-lcp/font.json). Le fichier téléchargé en préproduction répond 200, pèse 8 184 octets et possède le même SHA-256 que le fichier commité : `8aa4a2cc0df5861def922e3c403ef71e31eaa81962eadb8aac1472ab2da2f729`.
+
+### Lighthouse : trois passages par page avant et après
+
+Mesures le 7 octobre 2026 : avant de 13:50 à 13:52 UTC, après de 14:08 à 14:11 UTC. Lighthouse **13.5.0**, Chromium **153**, mobile émulé 412 × 823, throttling simulé identique : RTT 150 ms, débit 1 638,4 kbit/s, CPU ×4. Un navigateur neuf à chaque passage, séries séquentielles sans autre test de navigateur ni build en parallèle. Ressources chargées sur le réseau réel depuis Cloudflare ; ce ne sont pas des mesures sur téléphone physique.
+
+| Version | Page | Passage | LCP (ms) | Performance /100 | Accessibilité /100 |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Avant | / | 1 | 2298.167 | 88 | 100 |
+| Avant | / | 2 | 2334.917 | 95 | 100 |
+| Avant | / | 3 | 2346.425 | 95 | 100 |
+| **Avant** | **/** | **Médiane** | **2334.917** | **95** | **100** |
+| Avant | /dossier/ | 1 | 2290.906 | 98 | 100 |
+| Avant | /dossier/ | 2 | 2345.882 | 97 | 100 |
+| Avant | /dossier/ | 3 | 2296.708 | 97 | 100 |
+| **Avant** | **/dossier/** | **Médiane** | **2296.708** | **97** | **100** |
+| Après | / | 1 | 1714.398 | 99 | 100 |
+| Après | / | 2 | 1718.003 | 99 | 100 |
+| Après | / | 3 | 1755.723 | 99 | 100 |
+| **Après** | **/** | **Médiane** | **1718.003** | **99** | **100** |
+| Après | /dossier/ | 1 | 1614.993 | 99 | 100 |
+| Après | /dossier/ | 2 | 1716.261 | 99 | 100 |
+| Après | /dossier/ | 3 | 1638.315 | 99 | 100 |
+| **Après** | **/dossier/** | **Médiane** | **1638.315** | **99** | **100** |
+
+Médiane calculée séparément pour chaque métrique, sans exclure de passage. Le premier score accueil avant (88) est conservé. **Les six passages après satisfont individuellement LCP <2 000 ms, performance ≥90 et accessibilité 100.** CLS après : au plus 0,01518 sur l'accueil et 0,000374 sur le dossier, sous le plafond 0,05. L'échec SEO d'indexabilité est attendu sur une préproduction noindex.
+
+[Mesures et paramètres avant](qa-lcp/lighthouse-before.json) · [après](qa-lcp/lighthouse-after.json). Rapports complets JSON + HTML de chaque passage : [archive avant](qa-lcp/lighthouse-before-reports.zip) · [archive après](qa-lcp/lighthouse-after-reports.zip).
+
+### Captures avant / après et fidélité visuelle
+
+Captures Chromium de chaque version immuable à hauteur 900 px, polices chargées, mouvements réduits pour figer les animations. Quatre vues de page et **46 captures de titres par version** sont conservées. Égalité exacte vérifiée des boîtes des titres, propriétés typographiques, textes des pages et URL/type/ordre des scripts. Aucun débordement ni erreur JavaScript lors de ces captures.
+
+| Page et largeur | Avant | Après |
+| --- | --- | --- |
+| Accueil 375 px | [PNG](qa-lcp/visual-before/home-375.png) | [PNG](qa-lcp/visual-after/home-375.png) |
+| Accueil 1440 px | [PNG](qa-lcp/visual-before/home-1440.png) | [PNG](qa-lcp/visual-after/home-1440.png) |
+| Dossier 375 px | [PNG](qa-lcp/visual-before/dossier-375.png) | [PNG](qa-lcp/visual-after/dossier-375.png) |
+| Dossier 1440 px | [PNG](qa-lcp/visual-before/dossier-1440.png) | [PNG](qa-lcp/visual-after/dossier-1440.png) |
+
+Inspection visuelle : aucune différence visible de mise en page, d'épaisseur ou de retours à la ligne. **Les pixels ne sont pas strictement identiques** : de petites variations d'anticrénelage des contours apparaissent après l'instanciation statique. Sur les vues complètes : 49 pixels changent pour l'accueil 375, 455 pour l'accueil 1440, 16 pour le dossier 375 et 475 pour le dossier 1440 (au plus 0,037 % des pixels). Ne pas présenter cela comme une identité binaire. Les 50 captures après en ligne sont identiques octet par octet aux 50 captures locales inspectées.
+
+[Métriques et texte avant](qa-lcp/visual-before/visual.json) · [après](qa-lcp/visual-after/visual.json) · [comparaison complète de chaque titre](qa-lcp/visual-comparison.json). Les fichiers `*-title-N.png` dans ces deux dossiers couvrent également les titres sous le premier écran.
+
+### Vérifications et limites
+
+- **14 tests unitaires réussis** ; build Astro et contrôles de sortie réussis. Dernier build local : 0 erreur, 0 avertissement, 0 hint. CI du commit réussie.
+- Aucun texte modifié ; bundles JavaScript et ordre identiques dans les quatre comparaisons. Aucun style ni script inline ajouté au HTML. Les écritures CSSOM existantes pendant les animations sont inchangées.
+- [En-têtes accueil](qa-lcp/headers-home.txt) et [dossier](qa-lcp/headers-dossier.txt) : HTTP 200, CSP inchangée avec `style-src 'self'` sans `unsafe-inline`, polices locales et noindex de préproduction.
+- `LAUNCHED=false`, `CONTRACT_ADDRESS=null` ; aucun changement à la console, aux Functions, au workflow, aux domaines ou à la production.
+- Chromium automatisé ; Safari/iOS et Android physiques non revérifiés. Ces mesures datées ne garantissent pas le résultat sur tous les réseaux.
+- La suite fonctionnelle intégrale de la passe précédente n'est pas réexécutée pour cette modification de police : tests unitaires, build, comparaisons visuelles/textes/scripts et Lighthouse couvrent le changement actuel.
+
+Reproduction :
+
+```sh
+node scripts/lcp-series.mjs https://6a8a3baf.mule-site.pages.dev artifacts/lcp/before
+node scripts/lcp-series.mjs https://6e6ff294.mule-site.pages.dev artifacts/lcp/after
+node scripts/lcp-visual.mjs https://6a8a3baf.mule-site.pages.dev artifacts/lcp/visual-before
+node scripts/lcp-visual.mjs https://6e6ff294.mule-site.pages.dev artifacts/lcp/visual-after
+node scripts/lcp-compare.mjs artifacts/lcp/visual-before artifacts/lcp/visual-after artifacts/lcp/visual-comparison.json
+```

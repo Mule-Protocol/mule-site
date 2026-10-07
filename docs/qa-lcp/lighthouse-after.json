@@ -1,0 +1,352 @@
+{
+  "base": "https://6e6ff294.mule-site.pages.dev",
+  "measuredAt": "2026-10-07T14:08:24.496Z",
+  "pages": [
+    {
+      "name": "home",
+      "url": "https://6e6ff294.mule-site.pages.dev/",
+      "runs": [
+        {
+          "measuredAt": "2026-10-07T14:08:55.218Z",
+          "url": "https://6e6ff294.mule-site.pages.dev/",
+          "environment": "Live Cloudflare Pages preview over the network, simulated mobile throttling; not a physical phone.",
+          "performance": 99,
+          "accessibility": 100,
+          "lcpMs": 1714.3980000000001,
+          "cls": 0.01517461432864143,
+          "transferredBytes": 72966,
+          "throttling": {
+            "rttMs": 150,
+            "throughputKbps": 1638.4,
+            "requestLatencyMs": 562.5,
+            "downloadThroughputKbps": 1474.5600000000002,
+            "uploadThroughputKbps": 675,
+            "cpuSlowdownMultiplier": 4
+          },
+          "failedAudits": [
+            {
+              "id": "first-contentful-paint",
+              "score": 0.92,
+              "title": "First Contentful Paint",
+              "displayValue": "1.7 s"
+            },
+            {
+              "id": "largest-contentful-paint",
+              "score": 0.99,
+              "title": "Largest Contentful Paint",
+              "displayValue": "1.7 s"
+            },
+            {
+              "id": "speed-index",
+              "score": 0.99,
+              "title": "Speed Index",
+              "displayValue": "2.3 s"
+            },
+            {
+              "id": "mainthread-work-breakdown",
+              "score": 0.5,
+              "title": "Minimize main-thread work",
+              "displayValue": "3.1 s"
+            },
+            {
+              "id": "is-crawlable",
+              "score": 0,
+              "title": "Page is blocked from indexing"
+            },
+            {
+              "id": "network-dependency-tree-insight",
+              "score": 0,
+              "title": "Network dependency tree"
+            },
+            {
+              "id": "render-blocking-insight",
+              "score": 0,
+              "title": "Render-blocking requests",
+              "displayValue": "Est savings of 260 ms"
+            }
+          ]
+        },
+        {
+          "measuredAt": "2026-10-07T14:09:11.489Z",
+          "url": "https://6e6ff294.mule-site.pages.dev/",
+          "environment": "Live Cloudflare Pages preview over the network, simulated mobile throttling; not a physical phone.",
+          "performance": 99,
+          "accessibility": 100,
+          "lcpMs": 1718.0025,
+          "cls": 0.01505876315912688,
+          "transferredBytes": 72941,
+          "throttling": {
+            "rttMs": 150,
+            "throughputKbps": 1638.4,
+            "requestLatencyMs": 562.5,
+            "downloadThroughputKbps": 1474.5600000000002,
+            "uploadThroughputKbps": 675,
+            "cpuSlowdownMultiplier": 4
+          },
+          "failedAudits": [
+            {
+              "id": "first-contentful-paint",
+              "score": 0.95,
+              "title": "First Contentful Paint",
+              "displayValue": "1.6 s"
+            },
+            {
+              "id": "largest-contentful-paint",
+              "score": 0.99,
+              "title": "Largest Contentful Paint",
+              "displayValue": "1.7 s"
+            },
+            {
+              "id": "speed-index",
+              "score": 0.96,
+              "title": "Speed Index",
+              "displayValue": "2.8 s"
+            },
+            {
+              "id": "mainthread-work-breakdown",
+              "score": 0.5,
+              "title": "Minimize main-thread work",
+              "displayValue": "2.8 s"
+            },
+            {
+              "id": "is-crawlable",
+              "score": 0,
+              "title": "Page is blocked from indexing"
+            },
+            {
+              "id": "network-dependency-tree-insight",
+              "score": 0,
+              "title": "Network dependency tree"
+            },
+            {
+              "id": "render-blocking-insight",
+              "score": 0,
+              "title": "Render-blocking requests",
+              "displayValue": "Est savings of 280 ms"
+            }
+          ]
+        },
+        {
+          "measuredAt": "2026-10-07T14:09:27.824Z",
+          "url": "https://6e6ff294.mule-site.pages.dev/",
+          "environment": "Live Cloudflare Pages preview over the network, simulated mobile throttling; not a physical phone.",
+          "performance": 99,
+          "accessibility": 100,
+          "lcpMs": 1755.723,
+          "cls": 0.01514565153626279,
+          "transferredBytes": 72923,
+          "throttling": {
+            "rttMs": 150,
+            "throughputKbps": 1638.4,
+            "requestLatencyMs": 562.5,
+            "downloadThroughputKbps": 1474.5600000000002,
+            "uploadThroughputKbps": 675,
+            "cpuSlowdownMultiplier": 4
+          },
+          "failedAudits": [
+            {
+              "id": "first-contentful-paint",
+              "score": 0.94,
+              "title": "First Contentful Paint",
+              "displayValue": "1.6 s"
+            },
+            {
+              "id": "largest-contentful-paint",
+              "score": 0.99,
+              "title": "Largest Contentful Paint",
+              "displayValue": "1.8 s"
+            },
+            {
+              "id": "mainthread-work-breakdown",
+              "score": 0.5,
+              "title": "Minimize main-thread work",
+              "displayValue": "2.5 s"
+            },
+            {
+              "id": "is-crawlable",
+              "score": 0,
+              "title": "Page is blocked from indexing"
+            },
+            {
+              "id": "network-dependency-tree-insight",
+              "score": 0,
+              "title": "Network dependency tree"
+            },
+            {
+              "id": "render-blocking-insight",
+              "score": 0,
+              "title": "Render-blocking requests",
+              "displayValue": "Est savings of 90 ms"
+            }
+          ]
+        }
+      ],
+      "median": {
+        "lcpMs": 1718.0025,
+        "performance": 99,
+        "accessibility": 100
+      }
+    },
+    {
+      "name": "dossier",
+      "url": "https://6e6ff294.mule-site.pages.dev/dossier/",
+      "runs": [
+        {
+          "measuredAt": "2026-10-07T14:09:43.193Z",
+          "url": "https://6e6ff294.mule-site.pages.dev/dossier/",
+          "environment": "Live Cloudflare Pages preview over the network, simulated mobile throttling; not a physical phone.",
+          "performance": 99,
+          "accessibility": 100,
+          "lcpMs": 1614.9930000000004,
+          "cls": 0.0003737083204907936,
+          "transferredBytes": 70871,
+          "throttling": {
+            "rttMs": 150,
+            "throughputKbps": 1638.4,
+            "requestLatencyMs": 562.5,
+            "downloadThroughputKbps": 1474.5600000000002,
+            "uploadThroughputKbps": 675,
+            "cpuSlowdownMultiplier": 4
+          },
+          "failedAudits": [
+            {
+              "id": "first-contentful-paint",
+              "score": 0.94,
+              "title": "First Contentful Paint",
+              "displayValue": "1.6 s"
+            },
+            {
+              "id": "largest-contentful-paint",
+              "score": 0.99,
+              "title": "Largest Contentful Paint",
+              "displayValue": "1.6 s"
+            },
+            {
+              "id": "is-crawlable",
+              "score": 0,
+              "title": "Page is blocked from indexing"
+            },
+            {
+              "id": "network-dependency-tree-insight",
+              "score": 0,
+              "title": "Network dependency tree"
+            },
+            {
+              "id": "render-blocking-insight",
+              "score": 0,
+              "title": "Render-blocking requests",
+              "displayValue": "Est savings of 290 ms"
+            }
+          ]
+        },
+        {
+          "measuredAt": "2026-10-07T14:09:58.210Z",
+          "url": "https://6e6ff294.mule-site.pages.dev/dossier/",
+          "environment": "Live Cloudflare Pages preview over the network, simulated mobile throttling; not a physical phone.",
+          "performance": 99,
+          "accessibility": 100,
+          "lcpMs": 1716.261,
+          "cls": 0.0003737083204907936,
+          "transferredBytes": 70819,
+          "throttling": {
+            "rttMs": 150,
+            "throughputKbps": 1638.4,
+            "requestLatencyMs": 562.5,
+            "downloadThroughputKbps": 1474.5600000000002,
+            "uploadThroughputKbps": 675,
+            "cpuSlowdownMultiplier": 4
+          },
+          "failedAudits": [
+            {
+              "id": "first-contentful-paint",
+              "score": 0.95,
+              "title": "First Contentful Paint",
+              "displayValue": "1.6 s"
+            },
+            {
+              "id": "largest-contentful-paint",
+              "score": 0.99,
+              "title": "Largest Contentful Paint",
+              "displayValue": "1.7 s"
+            },
+            {
+              "id": "is-crawlable",
+              "score": 0,
+              "title": "Page is blocked from indexing"
+            },
+            {
+              "id": "network-dependency-tree-insight",
+              "score": 0,
+              "title": "Network dependency tree"
+            },
+            {
+              "id": "render-blocking-insight",
+              "score": 0,
+              "title": "Render-blocking requests",
+              "displayValue": "Est savings of 320 ms"
+            }
+          ]
+        },
+        {
+          "measuredAt": "2026-10-07T14:10:13.853Z",
+          "url": "https://6e6ff294.mule-site.pages.dev/dossier/",
+          "environment": "Live Cloudflare Pages preview over the network, simulated mobile throttling; not a physical phone.",
+          "performance": 99,
+          "accessibility": 100,
+          "lcpMs": 1638.315,
+          "cls": 0.0003737083204907936,
+          "transferredBytes": 70998,
+          "throttling": {
+            "rttMs": 150,
+            "throughputKbps": 1638.4,
+            "requestLatencyMs": 562.5,
+            "downloadThroughputKbps": 1474.5600000000002,
+            "uploadThroughputKbps": 675,
+            "cpuSlowdownMultiplier": 4
+          },
+          "failedAudits": [
+            {
+              "id": "first-contentful-paint",
+              "score": 0.95,
+              "title": "First Contentful Paint",
+              "displayValue": "1.6 s"
+            },
+            {
+              "id": "largest-contentful-paint",
+              "score": 0.99,
+              "title": "Largest Contentful Paint",
+              "displayValue": "1.6 s"
+            },
+            {
+              "id": "speed-index",
+              "score": 0.97,
+              "title": "Speed Index",
+              "displayValue": "2.6 s"
+            },
+            {
+              "id": "is-crawlable",
+              "score": 0,
+              "title": "Page is blocked from indexing"
+            },
+            {
+              "id": "network-dependency-tree-insight",
+              "score": 0,
+              "title": "Network dependency tree"
+            },
+            {
+              "id": "render-blocking-insight",
+              "score": 0,
+              "title": "Render-blocking requests",
+              "displayValue": "Est savings of 280 ms"
+            }
+          ]
+        }
+      ],
+      "median": {
+        "lcpMs": 1638.315,
+        "performance": 99,
+        "accessibility": 100
+      }
+    }
+  ]
+}
