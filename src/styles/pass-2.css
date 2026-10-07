@@ -1,5 +1,6 @@
 /* Problem */
 .problem h2 { font-size: clamp(32px, 6vw, 76px); max-width: 15ch; }
+.problem__lead { max-width: 62ch; margin: 24px 0 0; font-size: 18px; line-height: 1.6; }
 .split { display: grid; gap: 0; margin-top: 48px; border-top: 1px solid var(--ink); }
 @media (min-width: 768px) { .split { grid-template-columns: 1fr 1fr; } }
 .split > div { padding: 20px 0; border-bottom: 1px solid var(--line); }
@@ -99,8 +100,12 @@ select {
 @media (min-width: 768px) { .mlog .tag { justify-self: end; } }
 
 /* Telemetry */
-.tele { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); border-top: 2px solid var(--ink); border-left: 1px solid var(--ink); margin-top: 40px; }
-.tile { border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 16px; min-height: 140px; display: grid; align-content: space-between; gap: 16px; min-width: 0; }
+/* Eight tiles: a full 4 × 2 grid on desktop, 2 columns on tablet, 1 on phones. */
+.tele { display: grid; grid-template-columns: minmax(0, 1fr); border-top: 2px solid var(--ink); border-left: 1px solid var(--ink); margin-top: 40px; }
+@media (min-width: 560px) { .tele { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .tele { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.tile { border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 16px; min-height: 140px; display: grid; grid-template-rows: auto 1fr auto; gap: 16px; min-width: 0; }
+.tile .v { align-self: center; }
 .tile .k { color: var(--ink-3); }
 .tile .v { font-size: 34px; line-height: 1; overflow-wrap: anywhere; }
 .tile .v.pending { color: var(--ink-3); font-size: 22px; }
@@ -122,13 +127,15 @@ select {
 .foot a { text-decoration: none; }
 .foot a:hover { text-decoration: underline; }
 .foot .legal { font-size: 11px; color: var(--ink-3); max-width: 70ch; margin: 0; }
+.foot__logo { display: block; width: 128px; height: auto; margin-bottom: 12px; }
+
+.patch-title { font-size: clamp(24px, 3vw, 36px); margin-top: 8px; }
+.patch-text { margin: 12px 0 0; max-width: 52ch; }
+.sec-title { font-size: clamp(30px, 5vw, 64px); }
+/* Hero callouts would render below 7 px on phones; the lifecycle carries them legibly there. */
+@media (max-width: 559px) { .hero__fig .callout, .hero__fig .hero-crate-label { display: none; } }
 
 
-.ported-1{font-size:clamp(24px,3vw,36px);margin-top:8px}
-.ported-2{margin:12px 0 0;max-width:52ch}
-.ported-3{font-size:clamp(30px,5vw,64px)}
-.ported-4{font-size:clamp(30px,5vw,64px)}
-.ported-5{font-size:clamp(30px,5vw,64px)}
 fieldset { margin: 0; padding: 0; border: 0; min-width: 0; display: grid; gap: 20px; }
 .con-form .btn { width: 100%; white-space: normal; text-align: left; }
 .toggle input:focus-visible + label { outline: 3px solid var(--signal); outline-offset: -5px; }
