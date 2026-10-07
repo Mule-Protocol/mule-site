@@ -87,3 +87,45 @@ alt-svc: h3=":443"; ma=86400
 `LAUNCHED=false`, `CONTRACT_ADDRESS=null` ; CSP inchangée, sans `unsafe-inline`. Aucun contenu juridique ni autre texte du site modifié. Aucun changement aux styles, aux pages, au contenu du dossier, aux dépendances, au workflow ou aux réglages Cloudflare. Aucun wallet, analytics ou post X ajouté. Le travail de mascotte déjà présent dans le checkout principal est resté hors de cette branche.
 
 Le propriétaire peut relire la PR et les captures, puis fusionner lui-même. **Attendre sa confirmation avant toute étape de la partie B.** Le rapport de domaine et la branche `codex/domain` ne sont pas créés à ce stade.
+
+
+## Correction après review — variantes de chemins légaux
+
+Correction du **7 octobre 2026**, sur la même PR #3, toujours en brouillon. Le filtre initial était trop strict : les variantes telles que `/legal//` n'étaient pas reconnues. La seule ligne de code du site modifiée remplace ce filtre par `^\/(legal|privacy|risks)(\/.*)?$`. La variable `legalPath` reste utilisée à la fois pour le masquage et pour `X-Robots-Tag` ; aucun autre comportement ni texte du site n'est modifié.
+
+- Commit correctif : [`94cf59ba4426a5d3a8a86b742e3e81ef35390246`](https://github.com/Mule-Protocol/mule-site/commit/94cf59ba4426a5d3a8a86b742e3e81ef35390246), `fix: cover legal draft path variants`.
+- [CI et déploiement de préproduction 37653971386](https://github.com/Mule-Protocol/mule-site/actions/runs/37653971386) : **réussis** sur ce commit. [CI de PR 37653979308](https://github.com/Mule-Protocol/mule-site/actions/runs/37653979308) : **réussie**.
+- **Nouvelle préproduction immuable vérifiée : [https://b6d59114.mule-site.pages.dev/](https://b6d59114.mule-site.pages.dev/)**. Déploiement GitHub `6915526344`, environnement `preview`, statut `success`, associé au commit correctif. Les URL et résultats précédents documentent la version avant cette correction.
+- **36 tests réussis**, build de préproduction réussi. Les cinq nouveaux cas vérifient GET et HEAD sur le domaine principal avec `LEGAL_PUBLISHED: false` : `/legal//`, `/legal/x`, `/privacy//`, `/risks/index.html`, `/legal/?a=1` donnent 404, `noindex, nofollow`, `no-store`, les en-têtes de sécurité et le contenu 404 attendu (corps vide pour HEAD). Le contrôle des routes voisines couvre désormais `/legalese` : il passe à la réponse suivante sans interception ni ajout de `noindex`.
+- Vérification de régression : avant modification du filtre, quatre nouveaux cas échouaient ; celui avec le paramètre `?a=1` passait déjà. Après correction, toute la suite passe.
+
+Commande exécutée avec `curl.exe` sous Windows, sur cette nouvelle préproduction :
+
+```sh
+curl -I https://b6d59114.mule-site.pages.dev/legal//
+```
+
+Sortie brute :
+
+```text
+HTTP/1.1 200 OK
+Date: Wed, 07 Oct 2026 16:43:06 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Cache-Control: public, max-age=0, must-revalidate
+ETag: "6f1a6f5efcde828bc5f6c6bd3342f054"
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+content-security-policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+permissions-policy: camera=(), microphone=(), geolocation=(), payment=()
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-robots-tag: noindex, nofollow
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=8O5P7m0ZQE4Z38cg2uR47zv2LpF%2FaEaw79b2ium6%2FPZU1%2BnCvau3zVQWafBLvmxEuaN8wDT3s7mK75ssrQhxTllX9z%2Bt%2FSNb%2FpNzulSZ%2B1jSlJoohUQaW6XZnep%2BKhqXJseMux7wCjb5U6BK6obJHdN9j1iECOsPMC4f"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Server: cloudflare
+CF-RAY: a46e5ce5fa5fbb2d-CDG
+alt-svc: h3=":443"; ma=86400
+```
+
+**Résultat : 200 avec `X-Robots-Tag: noindex, nofollow`**, conforme à l'accès de relecture conservé sur Pages. Les tests sur le domaine principal restent des tests unitaires ; aucune activation du domaine n'est effectuée ici. La PR n'est pas fusionnée, aucune production n'est déployée et la partie B attend toujours la confirmation de fusion par le propriétaire.
