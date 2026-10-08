@@ -150,3 +150,13 @@ if: github.event_name != 'pull_request' && !startsWith(github.ref, 'refs/heads/c
 Les PR restent exclues. Les pushes sur `main` et les autres branches hors `codex/*` conservent leur condition de déploiement antérieure ; aucun paramètre, secret ou workflow de déploiement supplémentaire n'est changé.
 
 CI de ces corrections : [run push 37705759394](https://github.com/Mule-Protocol/mule-site/actions/runs/37705759394), commit `c57deeef113c3e1c4b0f79b12bbe224bf236263e`. **Run vert : `Validate` a réussi et `Deploy Pages` est `skipped` sur le push de cette branche.** Le [run de PR 37705764187](https://github.com/Mule-Protocol/mule-site/actions/runs/37705764187) est également vert. Ces résultats confirment les 50 tests, le build et les contrôles Chromium exécutés en CI.
+
+### État de la CI d'intégration avec le nouveau main
+
+Le [run push final 37706034728](https://github.com/Mule-Protocol/mule-site/actions/runs/37706034728), au commit `4acba5004a5fc5b94f463e17be68673ad12147da`, est également **vert**, avec `Deploy Pages = skipped`.
+
+En revanche, le [run de PR 37706039519](https://github.com/Mule-Protocol/mule-site/actions/runs/37706039519) échoue sur le test d'absence de réseau. Entre les deux vérifications, [la PR #10](https://github.com/Mule-Protocol/mule-site/pull/10) a ajouté le compteur partagé à `main`, commit de fusion `16626187998495ee4eca0a5a49f6d4d62daf04c5`. Le journal GitHub confirme que le run de PR utilise le commit de test `beaf3c902b9713873db21fa3e1f728bccffa582e`, qui combine ce nouveau main avec notre branche.
+
+La combinaison appelle `POST /api/mission-counter` après le premier état du journal, avant la fin de la mission. Le test échoue avec `No request attempts after journal [01], including failed requests`, et relève une réponse 404 du serveur QA statique. L'appel provient de `sharedCounter.recordMission()` ajouté à `src/scripts/console.ts` par la PR #10 ; il est absent de notre branche. Le simple remplacement du serveur QA ne résoudrait pas la violation de la règle « aucun réseau pendant une mission ».
+
+Les deux corrections demandées sont terminées et vérifiées. Le compteur partagé, les Pages Functions et le test d'absence de réseau n'ont pas été modifiés pour masquer ce conflit d'intégration. **La CI de branche est verte ; la CI de la combinaison avec le nouveau main reste en échec.** Aucun merge ni rebase de main n'est effectué dans cette tâche.
