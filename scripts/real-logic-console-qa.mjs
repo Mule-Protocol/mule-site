@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { securityHeaders } from '../src/server/response-policy.mjs';
+import { isCounterRequest, isCounterResource, classifyBrowserErrors } from './console-network-policy.mjs';
 
 const baseline = process.argv.includes('--baseline');
 const base = new URL(process.env.QA_BASE_URL || 'http://127.0.0.1:4321/');
@@ -18,11 +19,15 @@ const cases = [
   { template: 'address', behavior: 'dishonest', message: '11/12 · INVALID POSTCODE, ROW 7', hash: '16f88af6d2436ddf1d3bc6dafb51d4fb43f82dd8a3ef5bb3fb430c5d1227cdbe' },
 ];
 const evidence = {
-  schemaVersion: 1, capturedAt: new Date().toISOString(), mode: baseline ? 'baseline' : 'real-logic',
+  schemaVersion: 2, capturedAt: new Date().toISOString(), mode: baseline ? 'baseline' : 'real-logic',
   url: base.href, passed: false,
   expectedReportsSource: 'Mule-Protocol/mule ecfb8350e6ede380eb2ad83174576ef6580562e1, docs/testing/CONSOLE-5a/console-differential/summary.json',
   method: {
     requests: 'Chrome DevTools Protocol Network.requestWillBeSent, including cache and failures; wallTime mapped to performance.timeOrigin',
+    websockets: 'CDP Network.webSocketCreated; every creation attempt is forbidden, without a counter exception',
+    counterException: 'Only exact same-origin /api/mission-counter GET/POST, without query, suffix or alternate method; counter requests/resources listed separately',
+    errorException: 'Only native offline ERR_INTERNET_DISCONNECTED at the counter endpoint, confirmed by CDP Log.entryAdded networkRequestId and the failed offline request; no pageerror exception',
+    trailingSync: 'The original completion bound is retained; observation extends until all requests finish plus 250 ms network/error quiet, bounded to 10 seconds',
     successfulResources: 'PerformanceResourceTiming startTime/responseEnd and encodedBodySize/transferSize',
     boundaries: 'Capture-phase Launch click; cold computation lower bound = core chunk ResourceTiming responseEnd, before module execution; MutationObserver journal [01] for presentation only; terminal state + visible patch + enabled controls',
     application: 'Native form clicks run the original application; no replacement of its code, network APIs, clock or CSP',
@@ -61,12 +66,20 @@ async function openSession(width, reducedMotion = 'reduce') {
   const context = await browser.newContext({ viewport: { width, height: width < 768 ? 812 : 960 }, reducedMotion, deviceScaleFactor: 1 });
   const page = await context.newPage();
   page.setDefaultTimeout(20000);
-  const summary = { width, height: width < 768 ? 812 : 960, reducedMotion, csp: null, initialCoreRequests: [], initialCorePreloads: [], errors: [], cspViolations: [], runs: [] };
+  const summary = { width, height: width < 768 ? 812 : 960, reducedMotion, csp: null, initialCoreRequests: [], initialCorePreloads: [], webSockets: [], observedErrors: [], errors: [], allowedCounterErrors: [], cspViolations: [], runs: [] };
   evidence.pages.push(summary);
-  const state = { context, page, summary, requests: [], byId: new Map(), timeOrigin: null };
+  const state = { context, page, summary, requests: [], byId: new Map(), networkLogs: [],
+    timeOrigin: null, offline: false, lastNetworkActivity: Date.now() };
   sessions.push(state);
-  page.on('pageerror', error => summary.errors.push({ kind: 'pageerror', message: error.message }));
-  page.on('console', message => { if (message.type() === 'error') summary.errors.push({ kind: 'console', message: message.text() }); });
+  const recordError = error => {
+    summary.observedErrors.push(error);
+    state.lastNetworkActivity = Date.now();
+  };
+  page.on('pageerror', error => recordError({ kind: 'pageerror', message: error.message, observedAt: Date.now() }));
+  page.on('console', message => {
+    if (message.type() === 'error') recordError({ kind: 'console', message: message.text(),
+      url: message.location().url, observedAt: Date.now() });
+  });
   await page.addInitScript(() => {
     performance.setResourceTimingBufferSize(2000);
     const qa = { violations: [], runs: [], active: null, launchClickAt: null };
@@ -108,20 +121,50 @@ async function openSession(width, reducedMotion = 'reduce') {
   });
   const cdp = await context.newCDPSession(page);
   await cdp.send('Network.enable');
+  await cdp.send('Log.enable');
+  cdp.on('Network.webSocketCreated', event => {
+    summary.webSockets.push({ requestId: event.requestId, url: event.url, observedAt: Date.now() });
+    state.lastNetworkActivity = Date.now();
+  });
   cdp.on('Network.requestWillBeSent', event => {
+    const previous = state.byId.get(event.requestId);
+    if (previous && event.redirectResponse) {
+      previous.completed = true;
+      previous.status = event.redirectResponse.status;
+    }
     const item = { id: event.requestId, url: event.request.url, method: event.request.method,
-      type: event.type, epochMs: event.wallTime * 1000, failed: false, fromCache: false };
+      type: event.type, epochMs: event.wallTime * 1000,
+      epochOffsetMs: (event.wallTime - event.timestamp) * 1000,
+      offline: state.offline, completed: false, failed: false, fromCache: false };
     state.requests.push(item);
     state.byId.set(event.requestId, item);
+    state.lastNetworkActivity = Date.now();
   });
   cdp.on('Network.requestServedFromCache', event => { const item = state.byId.get(event.requestId); if (item) item.fromCache = true; });
   cdp.on('Network.responseReceived', event => {
     const item = state.byId.get(event.requestId);
     if (item) { item.status = event.response.status; item.fromCache ||= Boolean(event.response.fromDiskCache || event.response.fromPrefetchCache); }
+    state.lastNetworkActivity = Date.now();
+  });
+  cdp.on('Network.loadingFinished', event => {
+    const item = state.byId.get(event.requestId);
+    if (item) { item.completed = true; item.completedEpochMs = event.timestamp * 1000 + item.epochOffsetMs; }
+    state.lastNetworkActivity = Date.now();
   });
   cdp.on('Network.loadingFailed', event => {
     const item = state.byId.get(event.requestId);
-    if (item) { item.failed = true; item.failure = event.errorText; item.canceled = event.canceled || false; }
+    if (item) {
+      item.completed = true; item.completedEpochMs = event.timestamp * 1000 + item.epochOffsetMs;
+      item.failed = true; item.failure = event.errorText; item.canceled = event.canceled || false;
+    }
+    state.lastNetworkActivity = Date.now();
+  });
+  cdp.on('Log.entryAdded', ({ entry }) => {
+    if (entry.source === 'network' && entry.level === 'error') {
+      const { source, level, text, timestamp, url, networkRequestId } = entry;
+      state.networkLogs.push({ source, level, text, timestamp, url, networkRequestId });
+      state.lastNetworkActivity = Date.now();
+    }
   });
   const response = await page.goto(base.href, { waitUntil: 'networkidle' });
   assert.ok(response?.ok(), 'QA home page responds successfully');
@@ -136,20 +179,74 @@ async function openSession(width, reducedMotion = 'reduce') {
     elements.map(element => element.href).filter(url => url.includes('console-core')));
   assert.deepEqual(summary.initialCoreRequests, [], 'Core is not requested at initial page load');
   assert.deepEqual(summary.initialCorePreloads, [], 'Core is not preloaded');
-  if (!baseline) assert.equal(await page.locator('#inspectionReport').isVisible(), false, 'Inspection is initially hidden');
+  if (!baseline) {
+    assert.equal(await page.locator('#inspectionReport').isVisible(), false, 'Inspection is initially hidden');
+    assert.equal(await page.locator('#console > .wrap > p.console-explanation').innerText(),
+      "Runs MULE's actual validator and escrow rules in your browser. No blockchain, no wallet, no real funds.");
+  }
+  await settleNetwork(state);
+  await collectSession(state);
+  healthy(state);
   return state;
+}
+
+function requestFacts(state) {
+  return state.requests.map(item => ({ id: item.id, url: item.url, method: item.method, type: item.type,
+    startTime: item.epochMs - state.timeOrigin,
+    completedAt: item.completedEpochMs === undefined ? null : item.completedEpochMs - state.timeOrigin,
+    completed: item.completed, offline: item.offline, status: item.status,
+    failed: item.failed, failure: item.failure, fromCache: item.fromCache,
+    counterAllowed: isCounterRequest(item, base.origin) }));
+}
+const publicRequest = item => ({ ...item, url: relativeUrl(item.url) });
+
+// The real counter chains POST then GET after the patch is complete. Wait for
+// actual requests and native errors to settle; keep the original mission end,
+// and EXTEND the observed window so no late non-counter request escapes it.
+async function settleNetwork(state) {
+  const started = Date.now(), quietMs = 250, timeoutMs = 10000;
+  await state.page.evaluate(() => performance.now());
+  while (Date.now() - started < timeoutMs) {
+    const pending = [...state.byId.values()].filter(item => !item.completed);
+    if (pending.length === 0 && Date.now() - Math.max(started, state.lastNetworkActivity) >= quietMs) {
+      return { endAt: await state.page.evaluate(() => performance.now()), quietMs, timeoutMs,
+        waitedMs: Date.now() - started, pendingRequests: 0 };
+    }
+    await new Promise(resolve => setTimeout(resolve, 25));
+  }
+  throw new Error('Network did not settle within 10 seconds: ' + [...state.byId.values()]
+    .filter(item => !item.completed).map(item => item.method + ' ' + relativeUrl(item.url)).join(', '));
 }
 
 async function collectSession(state) {
   if (state.page.isClosed()) return;
   state.summary.cspViolations = await state.page.evaluate(() => globalThis.__muleConsoleQa.violations);
-  state.summary.allRequests = state.requests.map(item => ({ url: relativeUrl(item.url), method: item.method, type: item.type,
-    startTime: item.epochMs - state.timeOrigin, status: item.status, failed: item.failed, failure: item.failure, fromCache: item.fromCache }));
+  const classified = classifyBrowserErrors(state.summary.observedErrors, state.networkLogs, state.requests, base.origin);
+  state.summary.errors = classified.unexpected;
+  state.summary.allowedCounterErrors = classified.allowedCounterErrors;
+  state.summary.unexpectedNetworkErrors = classified.unexpectedNetworkErrors;
+  state.summary.nativeNetworkErrors = state.networkLogs;
+  state.summary.allRequests = requestFacts(state).map(publicRequest);
+  state.summary.counterRequests = state.summary.allRequests.filter(item => item.counterAllowed);
+  state.summary.counterRequestCount = state.summary.counterRequests.length;
+  state.summary.otherRequests = state.summary.allRequests.filter(item => !item.counterAllowed);
 }
 function healthy(state) {
-  assert.deepEqual(state.summary.errors, [], 'No browser or console errors');
+  assert.deepEqual(state.summary.webSockets, [], 'No WebSocket creation attempt; the counter exception is HTTP only');
+  assert.deepEqual(state.summary.errors, [], 'No unapproved browser or console errors; pageerror is never exempt');
+  assert.deepEqual(state.summary.unexpectedNetworkErrors, [], 'Only attributed offline counter network errors are exempt');
   assert.deepEqual(state.summary.cspViolations, [], 'No CSP violations');
   assert.equal(state.requests.filter(item => !item.url.startsWith(base.origin + '/')).length, 0, 'No external requests');
+  for (const request of state.requests.filter(item => isCounterRequest(item, base.origin))) {
+    assert.equal(request.completed, true, 'Counter request has settled');
+    if (request.offline) {
+      assert.equal(request.failed, true, 'Offline counter availability is reported separately');
+      assert.equal(request.failure, 'net::ERR_INTERNET_DISCONNECTED', 'Only the browser offline failure is expected');
+    } else {
+      assert.equal(request.failed, false, 'Online counter request succeeds against the real local API');
+      assert.equal(request.status, 200, 'Online counter API is available');
+    }
+  }
 }
 
 async function runCase(state, scenario, { warm = false, offline = false } = {}) {
@@ -158,13 +255,15 @@ async function runCase(state, scenario, { warm = false, offline = false } = {}) 
   const behaviorId = scenario.behavior === 'honest' ? 'behHonest' : 'behBad';
   await page.locator('label[for=' + behaviorId + ']').click();
   assert.equal(await page.locator('#' + behaviorId).isChecked(), true);
+  await settleNetwork(state);
   const previousCount = await page.evaluate(() => globalThis.__muleConsoleQa.runs.length);
   await page.locator('#launch').click();
   await page.waitForFunction(count => {
     const run = globalThis.__muleConsoleQa.runs[count];
     return run?.completedAt !== null && run?.completedAt !== undefined || document.querySelector('#msnState')?.textContent === 'Simulation unavailable';
   }, previousCount);
-  assert.notEqual(await page.locator('#msnState').innerText(), 'Simulation unavailable', 'Mission completes');
+  assert.notEqual(await page.locator('#msnState').innerText(), 'Simulation unavailable', 'Mission completes even if the counter is unavailable');
+  const networkObservation = await settleNetwork(state);
   const snapshot = await page.evaluate(index => ({
     timing: globalThis.__muleConsoleQa.runs[index],
     journal: [...document.querySelectorAll('#log li')].map(item => ({ station: item.querySelector('.k')?.textContent, text: item.querySelector('.v')?.textContent })),
@@ -181,48 +280,66 @@ async function runCase(state, scenario, { warm = false, offline = false } = {}) 
   assert.equal(journal[3].text, 'INSPECTION · ' + scenario.message);
   assert.equal(snapshot.status, scenario.behavior === 'honest' ? 'Settled' : 'Returned');
   assert.equal(snapshot.patchVisible && snapshot.controlsEnabled, true);
-  const attempts = state.requests.filter(item => item.epochMs - state.timeOrigin >= timing.startedAt && item.epochMs - state.timeOrigin <= timing.completedAt)
-    .map(item => ({ url: relativeUrl(item.url), method: item.method, type: item.type, startTime: item.epochMs - state.timeOrigin,
-      status: item.status, failed: item.failed, failure: item.failure, fromCache: item.fromCache }));
-  const resources = snapshot.resources.filter(item => item.startTime >= timing.startedAt && item.startTime <= timing.completedAt)
-    .map(item => ({ ...item, name: relativeUrl(item.name) }));
+  const facts = requestFacts(state);
+  const attempts = facts.filter(item => item.startTime >= timing.startedAt && item.startTime <= networkObservation.endAt).map(publicRequest);
+  const counterAttempts = attempts.filter(item => item.counterAllowed);
+  const otherAttempts = attempts.filter(item => !item.counterAllowed);
+  const resources = snapshot.resources.filter(item => item.startTime >= timing.startedAt && item.startTime <= networkObservation.endAt)
+    .map(item => ({ ...item, name: relativeUrl(item.name), counterAllowed: isCounterResource(item, facts, base.origin) }));
+  const counterResources = resources.filter(item => item.counterAllowed);
+  const otherResources = resources.filter(item => !item.counterAllowed);
   const duringInstructions = attempts.filter(item => item.startTime >= timing.firstStationAt);
   const resourcesDuringInstructions = resources.filter(item => item.startTime >= timing.firstStationAt);
   const result = { template: scenario.template, behavior: scenario.behavior, warm, offline, status: snapshot.status,
     validatorMessage: scenario.message, timing, durationMs: timing.completedAt - timing.startedAt,
-    requestAttempts: attempts, requestsAfterFirstStation: duringInstructions, resources, resourcesAfterFirstStation: resourcesDuringInstructions,
-    preparationResources: resources.filter(item => item.startTime < timing.firstStationAt), journal, inspection: null };
+    networkObservation: { ...networkObservation, missionCompletedAt: timing.completedAt },
+    requestAttempts: attempts, counterRequests: counterAttempts, counterRequestCount: counterAttempts.length,
+    otherRequests: otherAttempts, otherRequestCount: otherAttempts.length,
+    requestsAfterFirstStation: duringInstructions,
+    otherRequestsAfterFirstStation: duringInstructions.filter(item => !item.counterAllowed),
+    resources, counterResources, resourcesAfterFirstStation: resourcesDuringInstructions,
+    preparationResources: otherResources.filter(item => item.startTime < timing.firstStationAt),
+    trailingCounterRequests: counterAttempts.filter(item => item.startTime > timing.completedAt),
+    journal, inspection: null };
   state.summary.runs.push(result);
   if (baseline) {
     assert.equal(snapshot.inspection, null);
     assert.match(journal[0].text, /FAKE_TX_SIM_/);
   } else {
-    assert.deepEqual(duringInstructions, [], 'No request attempts after journal [01], including failed requests');
+    assert.deepEqual(result.otherRequestsAfterFirstStation, [], 'No non-counter request after journal [01], including failed and trailing requests');
     assert.equal(timing.reportResetObserved, true, 'Report is hidden and closed again before the next mission');
-    assert.deepEqual(resourcesDuringInstructions, [], 'No ResourceTiming entries start after journal [01]');
+    assert.deepEqual(resourcesDuringInstructions.filter(item => !item.counterAllowed), [], 'No non-counter resource starts after journal [01]');
     if (warm || offline) {
-      assert.deepEqual(attempts, [], 'Warm/offline run makes no request attempts from Launch click');
-      assert.deepEqual(resources, [], 'Warm/offline run has no resource loads from Launch click');
+      assert.deepEqual(otherAttempts, [], 'Warm/offline run makes no request except exact counter GET/POST from Launch click');
+      assert.deepEqual(otherResources, [], 'Warm/offline run loads no resource except attributed counter fetches');
       result.computationBoundary = { kind: 'Launch click (warm/offline)', at: timing.startedAt };
-      result.requestsDuringComputation = attempts;
     } else {
-      const core = attempts.filter(item => coreUrl(item.url));
+      const core = otherAttempts.filter(item => coreUrl(item.url));
       assert.equal(core.length, 1, 'Exactly one lazy core chunk is first requested after Launch');
-      const coreResources = resources.filter(item => coreUrl(item.name));
+      const coreResources = otherResources.filter(item => coreUrl(item.name));
       assert.equal(coreResources.length, 1, 'Lazy core has one completed ResourceTiming entry');
       const computationAt = coreResources[0].responseEnd;
       assert.ok(computationAt <= timing.firstStationAt, 'Core is downloaded before the first journal station');
       result.computationBoundary = { kind: 'Core chunk responseEnd, before module execution and prepareMission', at: computationAt };
-      result.requestsDuringComputation = attempts.filter(item => item.startTime >= computationAt);
-      assert.deepEqual(result.requestsDuringComputation, [], 'No request attempt after core download, including calculation before [01]');
-      assert.deepEqual(resources.filter(item => item.startTime >= computationAt), [], 'No resource starts while core executes');
-      for (const resource of resources) assert.ok(resource.responseEnd <= computationAt, 'Images/fonts finish before core can execute: ' + resource.name);
-      for (const request of attempts) {
+      assert.deepEqual(otherAttempts.filter(item => item.startTime >= computationAt), [], 'No non-counter request after core download, including calculation before [01] and trailing sync');
+      assert.deepEqual(otherResources.filter(item => item.startTime >= computationAt), [], 'No non-counter resource starts while core executes');
+      for (const resource of otherResources) assert.ok(resource.responseEnd <= computationAt, 'Images/fonts finish before core can execute: ' + resource.name);
+      for (const request of otherAttempts) {
         assert.equal(request.failed, false);
         assert.equal(request.method, 'GET');
         assert.ok(['Script', 'Image', 'Font'].includes(request.type), 'Preparation loads only local scripts/images/fonts');
       }
     }
+    result.requestsDuringComputation = attempts.filter(item => item.startTime >= result.computationBoundary.at);
+    result.counterRequestsDuringComputation = result.requestsDuringComputation.filter(item => item.counterAllowed);
+    result.otherRequestsDuringComputation = result.requestsDuringComputation.filter(item => !item.counterAllowed);
+    result.computationNetworkCounts = { counter: result.counterRequestsDuringComputation.length, other: result.otherRequestsDuringComputation.length };
+    result.preparationDownloads = { requestCount: otherAttempts.filter(item => item.startTime < result.computationBoundary.at).length,
+      resourceCount: result.preparationResources.length,
+      encodedBodyBytes: result.preparationResources.reduce((total, item) => total + item.encodedBodySize, 0),
+      transferBytes: result.preparationResources.reduce((total, item) => total + item.transferSize, 0),
+      urls: result.preparationResources.map(item => item.name) };
+    assert.deepEqual(result.otherRequestsDuringComputation, [], 'All non-counter request boundaries stay strict');
     assert.ok(!journal.some(item => /FAKE_/.test(item.text)));
     assert.match(journal[0].text, /SIM-TX-LOCK-[a-f0-9]{8}$/);
     assert.match(journal[4].text, /SIM-TX-CLOSE-[a-f0-9]{8}$/);
@@ -244,6 +361,7 @@ async function runCase(state, scenario, { warm = false, offline = false } = {}) 
     result.inspection = inspection;
   }
   await collectSession(state);
+  result.allowedCounterErrors = state.summary.allowedCounterErrors.filter(error => attempts.some(request => request.id === error.requestId));
   healthy(state);
   console.log((baseline ? 'before' : 'after') + ' ' + state.summary.width + 'px ' + scenario.template + '/' + scenario.behavior + (offline ? ' offline' : warm ? ' warm' : ' cold') + ': passed');
   return result;
@@ -358,12 +476,21 @@ try {
   if (!baseline) {
     await checkReportLayouts(mobile);
     await mobile.page.setViewportSize({ width: 375, height: 812 });
+    await settleNetwork(mobile);
+    mobile.offline = true;
     await mobile.context.setOffline(true);
     const offlineRuns = [];
     for (const scenario of cases) offlineRuns.push(await runCase(mobile, scenario, { warm: true, offline: true }));
     evidence.offline = { passed: true, prepared: 'Both outcome images and the core were cached through normal online Launch; no reload after switching the browser context offline',
-      scenarios: offlineRuns.map(run => ({ template: run.template, behavior: run.behavior, status: run.status, requestAttempts: run.requestAttempts.length, reportHash: run.inspection.hashes.report })) };
+      scenarios: offlineRuns.map(run => ({ template: run.template, behavior: run.behavior, status: run.status,
+        requestAttempts: run.requestAttempts.length, counterRequests: run.counterRequests,
+        otherRequestCount: run.otherRequestCount, allowedCounterErrors: run.allowedCounterErrors,
+        reportHash: run.inspection.hashes.report })) };
     await mobile.context.setOffline(false);
+    mobile.offline = false;
+    await settleNetwork(mobile);
+    await collectSession(mobile);
+    healthy(mobile);
   }
   const desktop = await openSession(1440);
   for (const [index, scenario] of cases.slice(0, 2).entries()) {
@@ -376,13 +503,29 @@ try {
   assert.ok(intervals.every(interval => interval >= 650), 'Normal motion preserves the approximately 800 ms journal rhythm');
   assert.ok(normal.timing.completedAt - normal.timing.firstStationAt >= 3800, 'Five normal station delays remain visible');
   evidence.normalMotion = { passed: true, stationIntervalsMs: intervals, firstStationToCompletionMs: normal.timing.completedAt - normal.timing.firstStationAt };
+  for (const state of sessions) { await settleNetwork(state); await collectSession(state); healthy(state); }
   evidence.passed = true;
 } catch (error) {
   evidence.failure = { name: error.name, message: error.message, stack: error.stack };
   process.exitCode = 1;
 } finally {
-  for (const state of sessions) await collectSession(state).catch(error => { state.summary.collectionError = error.message; });
+  for (const state of sessions) {
+    try {
+      await settleNetwork(state);
+      await collectSession(state);
+      healthy(state);
+    } catch (error) {
+      state.summary.collectionError = error.message;
+      evidence.passed = false;
+      evidence.failure ??= { name: error.name, message: error.message, stack: error.stack };
+      process.exitCode = 1;
+    }
+  }
   await browser?.close();
+  evidence.computationNetworkCounts = baseline ? null : evidence.pages.flatMap(page => page.runs).reduce((totals, run) => ({
+    counter: totals.counter + (run.computationNetworkCounts?.counter || 0),
+    other: totals.other + (run.computationNetworkCounts?.other || 0),
+  }), { counter: 0, other: 0 });
   await writeFile(path.join(output, 'browser.json'), JSON.stringify(evidence, null, 2) + '\n');
 }
 console.log(JSON.stringify({ mode: evidence.mode, passed: evidence.passed, pages: evidence.pages.length,

@@ -40,12 +40,14 @@ jobs:
       - name: Six real console missions under the existing CSP
         env:
           QA_PORT: '4332'
+          QA_COUNTER: '1'
           QA_BASE_URL: http://127.0.0.1:4332
           QA_OUTPUT: artifacts/real-logic-console/ci
         run: |
           node scripts/qa-server.mjs > /tmp/mule-console-qa.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
+          node scripts/console-core-browser-qa.mjs
           node scripts/real-logic-console-qa.mjs
       - name: Publish browser evidence
         if: always()

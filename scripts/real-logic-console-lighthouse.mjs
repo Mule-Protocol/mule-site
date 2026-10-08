@@ -1,7 +1,7 @@
 import { spawn } from 'node:child_process';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 const [phase, url] = process.argv.slice(2);
-if (!['before', 'after'].includes(phase) || !/^http:\/\/127\.0\.0\.1:\d+\/$/.test(url || '')) throw new Error('Usage: node scripts/real-logic-console-lighthouse.mjs before|after http://127.0.0.1:PORT/');
+if (!['before', 'after', 'integration'].includes(phase) || !/^http:\/\/127\.0\.0\.1:\d+\/$/.test(url || '')) throw new Error('Usage: node scripts/real-logic-console-lighthouse.mjs before|after|integration http://127.0.0.1:PORT/');
 const runs = [];
 const out = 'docs/qa-real-logic-console';
 await mkdir(out, { recursive: true });
