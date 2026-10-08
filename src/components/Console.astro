@@ -29,11 +29,16 @@
           <ol class="log" id="log" aria-live="polite" aria-relevant="additions" aria-label="Mission journal">
             <li class="idle">Waiting for a mission. Pick a template and an agent, then launch. <span class="cursor" aria-hidden="true"></span></li>
           </ol>
+          <details class="inspection-report" id="inspectionReport" hidden>
+            <summary>Inspection report</summary>
+            <pre id="inspectionJson" tabindex="0" aria-label="Validator report and complete SHA-256 hashes"></pre>
+          </details>
           <div class="stampbox"><span class="stampbig" id="stamp"></span></div>
           <a class="btn get-patch" id="getPatch" href="#patch" hidden>Get your mission patch →</a>
-          <div class="con-foot label"><span>FAKE HASHES · NO ON-CHAIN TRANSACTIONS</span><span id="runs">0 missions run on this page</span></div>
+          <div class="con-foot label"><span>REAL SHA-256 · SIMULATED TRANSACTIONS · NO REAL FUNDS</span><span id="runs">0 missions run on this page</span></div>
         </div>
       </div>
+      <p class="console-explanation">Runs MULE's actual validator and escrow rules in your browser. No blockchain, no wallet, no real funds.</p>
 
       <div class="patch" id="patch" hidden aria-labelledby="patchTitle">
         <canvas id="patchCanvas" width="600" height="660" role="img" aria-label="Your simulated mission patch"></canvas>

@@ -1,0 +1,51 @@
+{
+  "measuredAt": "2026-10-07T23:46:10.246Z",
+  "baselineCommit": "b49a4cf207e5140c2770d169a85ce97aa065d1ba",
+  "sourceCommit": "ecfb8350e6ede380eb2ad83174576ef6580562e1",
+  "protectedPaths": [
+    "src/data/mission.mjs",
+    "functions",
+    "src/config/site.mjs",
+    "src/server/response-policy.mjs",
+    "public/_headers",
+    "wrangler.jsonc",
+    "src/content/dossier.html",
+    "src/layouts/Base.astro",
+    "src/pages",
+    "src/assets/mascot",
+    "package-lock.json",
+    ".node-version"
+  ],
+  "changedProtected": [],
+  "config": {
+    "LAUNCHED": false,
+    "CONTRACT_ADDRESS": null,
+    "LEGAL_PUBLISHED": false
+  },
+  "productionCsp": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests",
+  "gitAttributes": [
+    "src/vendor/mule-console-core/console-core.mjs: text: unset",
+    "src/vendor/mule-console-core/console-core.mjs.sha256: text: unset",
+    "src/vendor/mule-console-core/SOURCE.md: text: unset"
+  ],
+  "bundle": {
+    "bytes": 72364,
+    "crBytes": 0,
+    "sha256": "11fd73a2ee21035ff8fe07f696e0c13ef979bed055f8ce4bb33c58ffc368f47c"
+  },
+  "reviewBranchDeployExcluded": true,
+  "localUnitTests": {
+    "passed": 50,
+    "failed": 0
+  },
+  "localOfflineBuild": {
+    "passed": true,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 1
+  },
+  "baselineUnitTests": {
+    "passed": 39,
+    "failed": 0
+  }
+}

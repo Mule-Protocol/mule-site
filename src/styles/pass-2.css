@@ -53,6 +53,13 @@ select {
 @keyframes shake { 33% { transform: translate(2px, -1px); } 66% { transform: translate(-2px, 1px); } }
 .con-foot { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; padding: 12px 16px; border-top: 1px solid var(--ink); font-size: 11px; }
 
+.inspection-report { min-width: 0; margin: 0 16px; border: 1px solid var(--line); }
+.inspection-report summary { cursor: pointer; padding: 12px; font-size: 12px; font-weight: 600; }
+.inspection-report[open] summary { border-bottom: 1px solid var(--line); }
+.inspection-report pre { margin: 0; max-width: 100%; max-height: 28rem; overflow: auto; padding: 12px; font: 11px/1.6 var(--font-mono); white-space: pre; }
+.inspection-report pre:focus-visible { outline-offset: -3px; }
+.console + .console-explanation { margin: 16px 0 0; max-width: 76ch; color: var(--ink-2); font-size: 12px; line-height: 1.6; }
+
 /* Patch */
 .patch { display: grid; gap: 24px; margin-top: 32px; align-items: center; border-top: 1px solid var(--ink); padding-top: 24px; }
 @media (min-width: 768px) { .patch { grid-template-columns: 220px minmax(0, 1fr); } }
@@ -139,7 +146,7 @@ select {
 fieldset { margin: 0; padding: 0; border: 0; min-width: 0; display: grid; gap: 20px; }
 .con-form .btn { width: 100%; white-space: normal; text-align: left; }
 .toggle input:focus-visible + label { outline: 3px solid var(--signal); outline-offset: -5px; }
-.con-out { grid-template-rows: auto 1fr auto auto auto; min-width: 0; }
+.con-out { grid-template-rows: auto 1fr auto auto auto auto; min-width: 0; }
 .get-patch { margin:0 16px 24px; justify-self:start; }
 .stampbox { position: static; justify-self: end; padding: 24px 20px 30px; min-height: 112px; }
 .log { min-height: 218px; }

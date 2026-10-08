@@ -1,0 +1,283 @@
+{
+  "phase": "before",
+  "url": "http://127.0.0.1:4331/",
+  "environment": "Local immutable build with production-equivalent apex headers; HTTP loopback, simulated mobile. No live deployment.",
+  "runs": [
+    {
+      "index": 1,
+      "measuredAt": "2026-10-07T23:39:26.230Z",
+      "lighthouseVersion": "13.5.0",
+      "scores": {
+        "performance": 81,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1807.23,
+        "largest-contentful-paint": 2051.73,
+        "cumulative-layout-shift": 0.01505876315912688,
+        "total-blocking-time": 668.5,
+        "speed-index": 2603.9030845423877,
+        "total-byte-weight": 77935
+      },
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "benchmarkIndex": 1189.5,
+        "credits": {
+          "axe-core": "4.14.0"
+        }
+      },
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      },
+      "failedAudits": [
+        {
+          "id": "first-contentful-paint",
+          "score": 0.89,
+          "title": "First Contentful Paint",
+          "displayValue": "1.8 s"
+        },
+        {
+          "id": "largest-contentful-paint",
+          "score": 0.96,
+          "title": "Largest Contentful Paint",
+          "displayValue": "2.1 s"
+        },
+        {
+          "id": "speed-index",
+          "score": 0.97,
+          "title": "Speed Index",
+          "displayValue": "2.6 s"
+        },
+        {
+          "id": "total-blocking-time",
+          "score": 0.44,
+          "title": "Total Blocking Time",
+          "displayValue": "670 ms"
+        },
+        {
+          "id": "max-potential-fid",
+          "score": 0.02,
+          "title": "Max Potential First Input Delay",
+          "displayValue": "650 ms"
+        },
+        {
+          "id": "interactive",
+          "score": 0.97,
+          "title": "Time to Interactive",
+          "displayValue": "2.7 s"
+        },
+        {
+          "id": "mainthread-work-breakdown",
+          "score": 0,
+          "title": "Minimize main-thread work",
+          "displayValue": "4.6 s"
+        },
+        {
+          "id": "cache-insight",
+          "score": 0.5,
+          "title": "Use efficient cache lifetimes",
+          "displayValue": "Est savings of 1 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "score": 0,
+          "title": "Network dependency tree"
+        },
+        {
+          "id": "render-blocking-insight",
+          "score": 0.5,
+          "title": "Render-blocking requests"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "measuredAt": "2026-10-07T23:39:49.467Z",
+      "lighthouseVersion": "13.5.0",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1317.10445,
+        "largest-contentful-paint": 1392.288525,
+        "cumulative-layout-shift": 0.01505876315912688,
+        "total-blocking-time": 82.5,
+        "speed-index": 1605.2631284240697,
+        "total-byte-weight": 77935
+      },
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "benchmarkIndex": 1615,
+        "credits": {
+          "axe-core": "4.14.0"
+        }
+      },
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      },
+      "failedAudits": [
+        {
+          "id": "first-contentful-paint",
+          "score": 0.98,
+          "title": "First Contentful Paint",
+          "displayValue": "1.3 s"
+        },
+        {
+          "id": "total-blocking-time",
+          "score": 0.99,
+          "title": "Total Blocking Time",
+          "displayValue": "80 ms"
+        },
+        {
+          "id": "max-potential-fid",
+          "score": 0.2,
+          "title": "Max Potential First Input Delay",
+          "displayValue": "380 ms"
+        },
+        {
+          "id": "mainthread-work-breakdown",
+          "score": 0,
+          "title": "Minimize main-thread work",
+          "displayValue": "2.7 s"
+        },
+        {
+          "id": "cache-insight",
+          "score": 0.5,
+          "title": "Use efficient cache lifetimes",
+          "displayValue": "Est savings of 1 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "score": 0,
+          "title": "Network dependency tree"
+        },
+        {
+          "id": "render-blocking-insight",
+          "score": 0.5,
+          "title": "Render-blocking requests"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "measuredAt": "2026-10-07T23:40:11.941Z",
+      "lighthouseVersion": "13.5.0",
+      "scores": {
+        "performance": 88,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": 1229.2335,
+        "largest-contentful-paint": 1359.6057500000002,
+        "cumulative-layout-shift": 0.01505876315912688,
+        "total-blocking-time": 481.9999999999999,
+        "speed-index": 1683.1431245755184,
+        "total-byte-weight": 77935
+      },
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "benchmarkIndex": 1970.5,
+        "credits": {
+          "axe-core": "4.14.0"
+        }
+      },
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      },
+      "failedAudits": [
+        {
+          "id": "first-contentful-paint",
+          "score": 0.99,
+          "title": "First Contentful Paint",
+          "displayValue": "1.2 s"
+        },
+        {
+          "id": "total-blocking-time",
+          "score": 0.6,
+          "title": "Total Blocking Time",
+          "displayValue": "480 ms"
+        },
+        {
+          "id": "max-potential-fid",
+          "score": 0.2,
+          "title": "Max Potential First Input Delay",
+          "displayValue": "380 ms"
+        },
+        {
+          "id": "interactive",
+          "score": 0.99,
+          "title": "Time to Interactive",
+          "displayValue": "2.0 s"
+        },
+        {
+          "id": "mainthread-work-breakdown",
+          "score": 0,
+          "title": "Minimize main-thread work",
+          "displayValue": "3.1 s"
+        },
+        {
+          "id": "cache-insight",
+          "score": 0.5,
+          "title": "Use efficient cache lifetimes",
+          "displayValue": "Est savings of 1 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "score": 0,
+          "title": "Network dependency tree"
+        },
+        {
+          "id": "render-blocking-insight",
+          "score": 0.5,
+          "title": "Render-blocking requests",
+          "displayValue": "Est savings of 10 ms"
+        }
+      ]
+    }
+  ],
+  "medianScores": {
+    "performance": 88,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "medianMetrics": {
+    "first-contentful-paint": 1317.10445,
+    "largest-contentful-paint": 1392.288525,
+    "cumulative-layout-shift": 0.01505876315912688,
+    "total-blocking-time": 481.9999999999999,
+    "speed-index": 1683.1431245755184,
+    "total-byte-weight": 77935
+  }
+}

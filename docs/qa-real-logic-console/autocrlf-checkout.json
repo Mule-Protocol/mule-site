@@ -1,0 +1,38 @@
+{
+  "measuredAt": "2026-10-07T23:50:29.1446482Z",
+  "commit": "bcbe501238fe039dbec7975eee43a55d5ab72fa8",
+  "coreAutocrlf": true,
+  "method": "Fresh local checkout with core.autocrlf=true; original files untouched",
+  "files": [
+    {
+      "file": "console-core.mjs",
+      "bytes": 72364,
+      "sha256": "11fd73a2ee21035ff8fe07f696e0c13ef979bed055f8ce4bb33c58ffc368f47c",
+      "equal": true,
+      "crBytes": 0
+    },
+    {
+      "file": "console-core.mjs.sha256",
+      "bytes": 83,
+      "sha256": "a2ec62494d11643253e584ae625499a5c970713731568a09c081511298642379",
+      "equal": true,
+      "crBytes": 0
+    },
+    {
+      "file": "SOURCE.md",
+      "bytes": 677,
+      "sha256": "70f82cf3b14132971100390be4ec29be66cb1c0cbd441079ca39c73370505605",
+      "equal": true,
+      "crBytes": 0
+    },
+    {
+      "file": "console-core.d.mts",
+      "bytes": 977,
+      "sha256": "4e63058d65565bc586327628fc815b89fdfbe95f3cc71c75637100d7f6120186",
+      "equal": true,
+      "crBytes": 0
+    }
+  ],
+  "attributes": "src/vendor/mule-console-core/console-core.mjs: text: unset",
+  "passed": true
+}

@@ -1,0 +1,93 @@
+{
+  "measuredAt": "2026-10-07T23:44:02.151Z",
+  "sourceCommit": "ecfb8350e6ede380eb2ad83174576ef6580562e1",
+  "baselineCommit": "b49a4cf207e5140c2770d169a85ce97aa065d1ba",
+  "upstream": {
+    "path": "console-core.mjs",
+    "bytes": 72364,
+    "gzip9Bytes": 13134,
+    "sha256": "11fd73a2ee21035ff8fe07f696e0c13ef979bed055f8ce4bb33c58ffc368f47c"
+  },
+  "emitted": {
+    "path": "_astro/console-core.CoTJnQS5.js",
+    "bytes": 69500,
+    "gzip9Bytes": 11579,
+    "sha256": "1775789e6ad2b8484842ea8dca8ced43091fa2ea7fa45c925669e5b947a9c728"
+  },
+  "initialHtmlContainsCore": false,
+  "otherPages": [
+    {
+      "path": "404.html",
+      "identicalExceptGeneratedCssAndJsFilenames": true
+    },
+    {
+      "path": "dossier/index.html",
+      "identicalExceptGeneratedCssAndJsFilenames": true
+    },
+    {
+      "path": "legal/index.html",
+      "identicalExceptGeneratedCssAndJsFilenames": true
+    },
+    {
+      "path": "privacy/index.html",
+      "identicalExceptGeneratedCssAndJsFilenames": true
+    },
+    {
+      "path": "risks/index.html",
+      "identicalExceptGeneratedCssAndJsFilenames": true
+    }
+  ],
+  "firstLaunch": {
+    "before": {
+      "resources": [
+        {
+          "name": "/_astro/patch-delivered.COvbNfuh.png",
+          "initiatorType": "img",
+          "startTime": 1800.7999999970198,
+          "responseEnd": 1805.6000000014901,
+          "transferSize": 18140,
+          "encodedBodySize": 17840,
+          "decodedBodySize": 19173
+        }
+      ],
+      "encodedBodies": 17840,
+      "transferSize": 18140
+    },
+    "after": {
+      "resources": [
+        {
+          "name": "/_astro/patch-delivered.COvbNfuh.png",
+          "initiatorType": "img",
+          "startTime": 995.0999999940395,
+          "responseEnd": 999.1999999955297,
+          "transferSize": 18140,
+          "encodedBodySize": 17840,
+          "decodedBodySize": 19173
+        },
+        {
+          "name": "/_astro/patch-refuse.OST8lJl6.png",
+          "initiatorType": "img",
+          "startTime": 995.0999999940395,
+          "responseEnd": 1000.3999999985099,
+          "transferSize": 27486,
+          "encodedBodySize": 27186,
+          "decodedBodySize": 27928
+        },
+        {
+          "name": "/_astro/console-core.CoTJnQS5.js",
+          "initiatorType": "script",
+          "startTime": 1022.5999999940395,
+          "responseEnd": 1027.0999999940395,
+          "transferSize": 11908,
+          "encodedBodySize": 11608,
+          "decodedBodySize": 69500
+        }
+      ],
+      "encodedBodies": 56634,
+      "transferSize": 57534
+    },
+    "addedEncodedBodyBytes": 38794,
+    "addedTransferSize": 39394,
+    "note": "Only first launch preparation downloads in the new console: core plus both existing patch images. All finish before core execution. Chrome transferSize estimates response headers as 300 bytes per resource; actual body byte counts are encodedBodySize."
+  }
+}

@@ -1,0 +1,2995 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-07T23:45:35.232Z",
+  "mode": "real-logic",
+  "url": "http://127.0.0.1:4332/",
+  "passed": true,
+  "expectedReportsSource": "Mule-Protocol/mule ecfb8350e6ede380eb2ad83174576ef6580562e1, docs/testing/CONSOLE-5a/console-differential/summary.json",
+  "method": {
+    "requests": "Chrome DevTools Protocol Network.requestWillBeSent, including cache and failures; wallTime mapped to performance.timeOrigin",
+    "successfulResources": "PerformanceResourceTiming startTime/responseEnd and encodedBodySize/transferSize",
+    "boundaries": "Capture-phase Launch click; cold computation lower bound = core chunk ResourceTiming responseEnd, before module execution; MutationObserver journal [01] for presentation only; terminal state + visible patch + enabled controls",
+    "application": "Native form clicks run the original application; no replacement of its code, network APIs, clock or CSP",
+    "localCspDifference": "Only upgrade-insecure-requests is removed by the loopback HTTP QA server"
+  },
+  "pages": [
+    {
+      "width": 375,
+      "height": 812,
+      "reducedMotion": "reduce",
+      "csp": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+      "initialCoreRequests": [],
+      "initialCorePreloads": [],
+      "errors": [],
+      "cspViolations": [],
+      "runs": [
+        {
+          "template": "invoice",
+          "behavior": "honest",
+          "warm": false,
+          "offline": false,
+          "status": "Settled",
+          "validatorMessage": "6/6 FIELDS VALID",
+          "timing": {
+            "startedAt": 979.1999999955297,
+            "submittedAt": 985,
+            "firstStationAt": 1091,
+            "completedAt": 1132.0999999940395,
+            "reportResetObserved": true,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 1091,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6cd24534"
+              },
+              {
+                "station": "[02]",
+                "at": 1091.8999999985099,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+              },
+              {
+                "station": "[03]",
+                "at": 1092,
+                "text": "DELIVERY SUBMITTED · sha256:4b8d…3335"
+              },
+              {
+                "station": "[04]",
+                "at": 1093.5999999940395,
+                "text": "INSPECTION · 6/6 FIELDS VALID"
+              },
+              {
+                "station": "[05]",
+                "at": 1093.5999999940395,
+                "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · SIM-TX-CLOSE-24bebc6d"
+              }
+            ]
+          },
+          "durationMs": 152.89999999850988,
+          "requestAttempts": [
+            {
+              "url": "/_astro/patch-delivered.COvbNfuh.png",
+              "method": "GET",
+              "type": "Image",
+              "startTime": 995.090087890625,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            },
+            {
+              "url": "/_astro/patch-refuse.OST8lJl6.png",
+              "method": "GET",
+              "type": "Image",
+              "startTime": 995.18701171875,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            },
+            {
+              "url": "/_astro/console-core.CoTJnQS5.js",
+              "method": "GET",
+              "type": "Script",
+              "startTime": 1022.72021484375,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            }
+          ],
+          "requestsAfterFirstStation": [],
+          "resources": [
+            {
+              "name": "/_astro/patch-delivered.COvbNfuh.png",
+              "initiatorType": "img",
+              "startTime": 995.0999999940395,
+              "responseEnd": 999.1999999955297,
+              "transferSize": 18140,
+              "encodedBodySize": 17840,
+              "decodedBodySize": 19173
+            },
+            {
+              "name": "/_astro/patch-refuse.OST8lJl6.png",
+              "initiatorType": "img",
+              "startTime": 995.0999999940395,
+              "responseEnd": 1000.3999999985099,
+              "transferSize": 27486,
+              "encodedBodySize": 27186,
+              "decodedBodySize": 27928
+            },
+            {
+              "name": "/_astro/console-core.CoTJnQS5.js",
+              "initiatorType": "script",
+              "startTime": 1022.5999999940395,
+              "responseEnd": 1027.0999999940395,
+              "transferSize": 11908,
+              "encodedBodySize": 11608,
+              "decodedBodySize": 69500
+            }
+          ],
+          "resourcesAfterFirstStation": [],
+          "preparationResources": [
+            {
+              "name": "/_astro/patch-delivered.COvbNfuh.png",
+              "initiatorType": "img",
+              "startTime": 995.0999999940395,
+              "responseEnd": 999.1999999955297,
+              "transferSize": 18140,
+              "encodedBodySize": 17840,
+              "decodedBodySize": 19173
+            },
+            {
+              "name": "/_astro/patch-refuse.OST8lJl6.png",
+              "initiatorType": "img",
+              "startTime": 995.0999999940395,
+              "responseEnd": 1000.3999999985099,
+              "transferSize": 27486,
+              "encodedBodySize": 27186,
+              "decodedBodySize": 27928
+            },
+            {
+              "name": "/_astro/console-core.CoTJnQS5.js",
+              "initiatorType": "script",
+              "startTime": 1022.5999999940395,
+              "responseEnd": 1027.0999999940395,
+              "transferSize": 11908,
+              "encodedBodySize": 11608,
+              "decodedBodySize": 69500
+            }
+          ],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6cd24534"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · sha256:4b8d…3335"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 6/6 FIELDS VALID"
+            },
+            {
+              "station": "[05]",
+              "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · SIM-TX-CLOSE-24bebc6d"
+            }
+          ],
+          "inspection": {
+            "report": {
+              "mission": "SIM-MISSION-invoice-honest",
+              "schema": "invoice.v1",
+              "results": [
+                {
+                  "check": "json-schema.2020-12",
+                  "pass": true,
+                  "detail": "All JSON Schema constraints passed"
+                },
+                {
+                  "check": "field.supplier",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.date",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.number",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.currency",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.total_amount",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.line_items",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "invoice.total_matches_lines",
+                  "pass": true,
+                  "detail": "total_cents=12345; line_sum_cents=12345"
+                }
+              ],
+              "pass": true,
+              "message": "6/6 FIELDS VALID",
+              "agent": "agent de référence scripté",
+              "criteria_hash": "6cd24534940273abb71902f23eef17e7dd4fd7a4ed632641e951200935d082dc",
+              "delivery_hash": "4b8d8320b71af526db9cb17730d14d9275cd7d975df3819b45d42bae7be73335"
+            },
+            "hashes": {
+              "criteria": "6cd24534940273abb71902f23eef17e7dd4fd7a4ed632641e951200935d082dc",
+              "delivery": "4b8d8320b71af526db9cb17730d14d9275cd7d975df3819b45d42bae7be73335",
+              "report": "24bebc6d6cf244296d79d550a5a0103d2ad5b5da6fe843f75a3ad90dc21230b7"
+            }
+          },
+          "computationBoundary": {
+            "kind": "Core chunk responseEnd, before module execution and prepareMission",
+            "at": 1027.0999999940395
+          },
+          "requestsDuringComputation": []
+        },
+        {
+          "template": "invoice",
+          "behavior": "dishonest",
+          "warm": true,
+          "offline": false,
+          "status": "Returned",
+          "validatorMessage": "5/6 · MISSING: total_amount",
+          "timing": {
+            "startedAt": 1624.1999999955297,
+            "submittedAt": 1624.2999999970198,
+            "firstStationAt": 1643,
+            "completedAt": 1644.2999999970198,
+            "reportResetObserved": true,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 1643,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6cd24534"
+              },
+              {
+                "station": "[02]",
+                "at": 1643.0999999940395,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+              },
+              {
+                "station": "[03]",
+                "at": 1643.0999999940395,
+                "text": "DELIVERY SUBMITTED · sha256:eb9d…95a0"
+              },
+              {
+                "station": "[04]",
+                "at": 1643.1999999955297,
+                "text": "INSPECTION · 5/6 · MISSING: total_amount"
+              },
+              {
+                "station": "[05]",
+                "at": 1643.1999999955297,
+                "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · SIM-TX-CLOSE-d0916655"
+              }
+            ]
+          },
+          "durationMs": 20.100000001490116,
+          "requestAttempts": [],
+          "requestsAfterFirstStation": [],
+          "resources": [],
+          "resourcesAfterFirstStation": [],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6cd24534"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · sha256:eb9d…95a0"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 5/6 · MISSING: total_amount"
+            },
+            {
+              "station": "[05]",
+              "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · SIM-TX-CLOSE-d0916655"
+            }
+          ],
+          "inspection": {
+            "report": {
+              "mission": "SIM-MISSION-invoice-dishonest",
+              "schema": "invoice.v1",
+              "results": [
+                {
+                  "check": "json-schema.2020-12",
+                  "pass": false,
+                  "detail": "[{\"instancePath\":\"\",\"keyword\":\"required\",\"message\":\"must have required property 'total_amount'\",\"params\":{\"missingProperty\":\"total_amount\"},\"schemaPath\":\"#/required\"}]"
+                },
+                {
+                  "check": "field.supplier",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.date",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.number",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.currency",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.total_amount",
+                  "pass": false,
+                  "detail": "Missing required field"
+                },
+                {
+                  "check": "field.line_items",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "invoice.total_matches_lines",
+                  "pass": false,
+                  "detail": "Invalid monetary fields prevent exact decimal comparison"
+                }
+              ],
+              "pass": false,
+              "message": "5/6 · MISSING: total_amount",
+              "agent": "agent de référence scripté",
+              "criteria_hash": "6cd24534940273abb71902f23eef17e7dd4fd7a4ed632641e951200935d082dc",
+              "delivery_hash": "eb9d8f14c70ccb8ade733c5f31e99cc5fe455f7fcba1944128718918fc3d95a0"
+            },
+            "hashes": {
+              "criteria": "6cd24534940273abb71902f23eef17e7dd4fd7a4ed632641e951200935d082dc",
+              "delivery": "eb9d8f14c70ccb8ade733c5f31e99cc5fe455f7fcba1944128718918fc3d95a0",
+              "report": "d0916655daaa815b0bb0283eb44e3f688898c18ef74c5c3a0dcf568489919710"
+            }
+          },
+          "computationBoundary": {
+            "kind": "Launch click (warm/offline)",
+            "at": 1624.1999999955297
+          },
+          "requestsDuringComputation": []
+        },
+        {
+          "template": "contract",
+          "behavior": "honest",
+          "warm": true,
+          "offline": false,
+          "status": "Settled",
+          "validatorMessage": "5/5 FIELDS VALID",
+          "timing": {
+            "startedAt": 1957.5,
+            "submittedAt": 1957.5999999940395,
+            "firstStationAt": 1974.0999999940395,
+            "completedAt": 1975.5999999940395,
+            "reportResetObserved": true,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 1974.0999999940395,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-dc19ca94"
+              },
+              {
+                "station": "[02]",
+                "at": 1974.0999999940395,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · CONTRACT SUMMARY"
+              },
+              {
+                "station": "[03]",
+                "at": 1974.1999999955297,
+                "text": "DELIVERY SUBMITTED · sha256:449d…ceb1"
+              },
+              {
+                "station": "[04]",
+                "at": 1974.2999999970198,
+                "text": "INSPECTION · 5/5 FIELDS VALID"
+              },
+              {
+                "station": "[05]",
+                "at": 1974.2999999970198,
+                "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · SIM-TX-CLOSE-23a95be0"
+              }
+            ]
+          },
+          "durationMs": 18.099999994039536,
+          "requestAttempts": [],
+          "requestsAfterFirstStation": [],
+          "resources": [],
+          "resourcesAfterFirstStation": [],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-dc19ca94"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · CONTRACT SUMMARY"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · sha256:449d…ceb1"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 5/5 FIELDS VALID"
+            },
+            {
+              "station": "[05]",
+              "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · SIM-TX-CLOSE-23a95be0"
+            }
+          ],
+          "inspection": {
+            "report": {
+              "mission": "SIM-MISSION-contract-honest",
+              "schema": "contract.v1",
+              "results": [
+                {
+                  "check": "json-schema.2020-12",
+                  "pass": true,
+                  "detail": "All JSON Schema constraints passed"
+                },
+                {
+                  "check": "field.title",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.parties",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.effective_date",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.termination",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.governing_law",
+                  "pass": true,
+                  "detail": "Field valid"
+                }
+              ],
+              "pass": true,
+              "message": "5/5 FIELDS VALID",
+              "agent": "agent de référence scripté",
+              "criteria_hash": "dc19ca94f8a0d925f52ed97fac7708e46a6c305c00e74ea719630c328b254e37",
+              "delivery_hash": "449d2e0926be3f39a91cf65b91f9644ed7a502f082d2026cb9d450bc0990ceb1"
+            },
+            "hashes": {
+              "criteria": "dc19ca94f8a0d925f52ed97fac7708e46a6c305c00e74ea719630c328b254e37",
+              "delivery": "449d2e0926be3f39a91cf65b91f9644ed7a502f082d2026cb9d450bc0990ceb1",
+              "report": "23a95be05289196b66ae237cf8fff9a834a0c0fa2880e64b3c99a032b0813886"
+            }
+          },
+          "computationBoundary": {
+            "kind": "Launch click (warm/offline)",
+            "at": 1957.5
+          },
+          "requestsDuringComputation": []
+        },
+        {
+          "template": "contract",
+          "behavior": "dishonest",
+          "warm": true,
+          "offline": false,
+          "status": "Returned",
+          "validatorMessage": "4/5 · MISSING: governing_law",
+          "timing": {
+            "startedAt": 2074.39999999851,
+            "submittedAt": 2074.5,
+            "firstStationAt": 2088.6999999955297,
+            "completedAt": 2089.89999999851,
+            "reportResetObserved": true,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 2088.6999999955297,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-dc19ca94"
+              },
+              {
+                "station": "[02]",
+                "at": 2088.6999999955297,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · CONTRACT SUMMARY"
+              },
+              {
+                "station": "[03]",
+                "at": 2088.7999999970198,
+                "text": "DELIVERY SUBMITTED · sha256:7f71…c90f"
+              },
+              {
+                "station": "[04]",
+                "at": 2088.7999999970198,
+                "text": "INSPECTION · 4/5 · MISSING: governing_law"
+              },
+              {
+                "station": "[05]",
+                "at": 2088.89999999851,
+                "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · SIM-TX-CLOSE-ea5c5420"
+              }
+            ]
+          },
+          "durationMs": 15.5,
+          "requestAttempts": [],
+          "requestsAfterFirstStation": [],
+          "resources": [],
+          "resourcesAfterFirstStation": [],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-dc19ca94"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · CONTRACT SUMMARY"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · sha256:7f71…c90f"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 4/5 · MISSING: governing_law"
+            },
+            {
+              "station": "[05]",
+              "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · SIM-TX-CLOSE-ea5c5420"
+            }
+          ],
+          "inspection": {
+            "report": {
+              "mission": "SIM-MISSION-contract-dishonest",
+              "schema": "contract.v1",
+              "results": [
+                {
+                  "check": "json-schema.2020-12",
+                  "pass": false,
+                  "detail": "[{\"instancePath\":\"\",\"keyword\":\"required\",\"message\":\"must have required property 'governing_law'\",\"params\":{\"missingProperty\":\"governing_law\"},\"schemaPath\":\"#/required\"}]"
+                },
+                {
+                  "check": "field.title",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.parties",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.effective_date",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.termination",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.governing_law",
+                  "pass": false,
+                  "detail": "Missing required field"
+                }
+              ],
+              "pass": false,
+              "message": "4/5 · MISSING: governing_law",
+              "agent": "agent de référence scripté",
+              "criteria_hash": "dc19ca94f8a0d925f52ed97fac7708e46a6c305c00e74ea719630c328b254e37",
+              "delivery_hash": "7f7121ad9377dd1837ae30512e8803196928dd80c71de47f7da8292f7ce0c90f"
+            },
+            "hashes": {
+              "criteria": "dc19ca94f8a0d925f52ed97fac7708e46a6c305c00e74ea719630c328b254e37",
+              "delivery": "7f7121ad9377dd1837ae30512e8803196928dd80c71de47f7da8292f7ce0c90f",
+              "report": "ea5c542098cabc13e6d87cd0c46cc709208319390db5ebc57ebc031ff21850da"
+            }
+          },
+          "computationBoundary": {
+            "kind": "Launch click (warm/offline)",
+            "at": 2074.39999999851
+          },
+          "requestsDuringComputation": []
+        },
+        {
+          "template": "address",
+          "behavior": "honest",
+          "warm": true,
+          "offline": false,
+          "status": "Settled",
+          "validatorMessage": "12/12 ROWS VALID",
+          "timing": {
+            "startedAt": 2191.89999999851,
+            "submittedAt": 2192,
+            "firstStationAt": 2207.5,
+            "completedAt": 2208.6999999955297,
+            "reportResetObserved": true,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 2207.5,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6a1653a0"
+              },
+              {
+                "station": "[02]",
+                "at": 2207.5,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · ADDRESS NORMALIZATION"
+              },
+              {
+                "station": "[03]",
+                "at": 2207.5,
+                "text": "DELIVERY SUBMITTED · sha256:7fcc…e784"
+              },
+              {
+                "station": "[04]",
+                "at": 2207.5999999940395,
+                "text": "INSPECTION · 12/12 ROWS VALID"
+              },
+              {
+                "station": "[05]",
+                "at": 2207.6999999955297,
+                "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · SIM-TX-CLOSE-0430753b"
+              }
+            ]
+          },
+          "durationMs": 16.799999997019768,
+          "requestAttempts": [],
+          "requestsAfterFirstStation": [],
+          "resources": [],
+          "resourcesAfterFirstStation": [],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6a1653a0"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · ADDRESS NORMALIZATION"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · sha256:7fcc…e784"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 12/12 ROWS VALID"
+            },
+            {
+              "station": "[05]",
+              "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · SIM-TX-CLOSE-0430753b"
+            }
+          ],
+          "inspection": {
+            "report": {
+              "mission": "SIM-MISSION-address-honest",
+              "schema": "address.v1",
+              "results": [
+                {
+                  "check": "json-schema.2020-12",
+                  "pass": true,
+                  "detail": "All JSON Schema constraints passed"
+                },
+                {
+                  "check": "row.1",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.2",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.3",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.4",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.5",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.6",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.7",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.8",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.9",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.10",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.11",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.12",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "address.normalized_postcodes",
+                  "pass": true,
+                  "detail": "12 French postcodes normalized to five ASCII digits"
+                }
+              ],
+              "pass": true,
+              "message": "12/12 ROWS VALID",
+              "agent": "agent de référence scripté",
+              "criteria_hash": "6a1653a0cc6939f8eac886ba4e23c9e0b4a746c6f5167d48888bdaef21b1a2f4",
+              "delivery_hash": "7fccb5ee6bda7ee3344c57b9739c04991a62532c09cc3f5400683a7e2e0ce784"
+            },
+            "hashes": {
+              "criteria": "6a1653a0cc6939f8eac886ba4e23c9e0b4a746c6f5167d48888bdaef21b1a2f4",
+              "delivery": "7fccb5ee6bda7ee3344c57b9739c04991a62532c09cc3f5400683a7e2e0ce784",
+              "report": "0430753bc25ae77fc674d0b6c8d0c9bf8a16ae43f1de4b753853f326e65eaddf"
+            }
+          },
+          "computationBoundary": {
+            "kind": "Launch click (warm/offline)",
+            "at": 2191.89999999851
+          },
+          "requestsDuringComputation": []
+        },
+        {
+          "template": "address",
+          "behavior": "dishonest",
+          "warm": true,
+          "offline": false,
+          "status": "Returned",
+          "validatorMessage": "11/12 · INVALID POSTCODE, ROW 7",
+          "timing": {
+            "startedAt": 2307.89999999851,
+            "submittedAt": 2308,
+            "firstStationAt": 2322.2999999970198,
+            "completedAt": 2323.39999999851,
+            "reportResetObserved": true,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 2322.2999999970198,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6a1653a0"
+              },
+              {
+                "station": "[02]",
+                "at": 2322.2999999970198,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · ADDRESS NORMALIZATION"
+              },
+              {
+                "station": "[03]",
+                "at": 2322.2999999970198,
+                "text": "DELIVERY SUBMITTED · sha256:c9f3…3f30"
+              },
+              {
+                "station": "[04]",
+                "at": 2322.2999999970198,
+                "text": "INSPECTION · 11/12 · INVALID POSTCODE, ROW 7"
+              },
+              {
+                "station": "[05]",
+                "at": 2322.39999999851,
+                "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · SIM-TX-CLOSE-16f88af6"
+              }
+            ]
+          },
+          "durationMs": 15.5,
+          "requestAttempts": [],
+          "requestsAfterFirstStation": [],
+          "resources": [],
+          "resourcesAfterFirstStation": [],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6a1653a0"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · ADDRESS NORMALIZATION"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · sha256:c9f3…3f30"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 11/12 · INVALID POSTCODE, ROW 7"
+            },
+            {
+              "station": "[05]",
+              "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · SIM-TX-CLOSE-16f88af6"
+            }
+          ],
+          "inspection": {
+            "report": {
+              "mission": "SIM-MISSION-address-dishonest",
+              "schema": "address.v1",
+              "results": [
+                {
+                  "check": "json-schema.2020-12",
+                  "pass": false,
+                  "detail": "[{\"instancePath\":\"/rows/6/postcode\",\"keyword\":\"pattern\",\"message\":\"must match pattern \\\"^[0-9]{5}$\\\"\",\"params\":{\"pattern\":\"^[0-9]{5}$\"},\"schemaPath\":\"#/properties/rows/items/properties/postcode/pattern\"}]"
+                },
+                {
+                  "check": "row.1",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.2",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.3",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.4",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.5",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.6",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.7",
+                  "pass": false,
+                  "detail": "Row violates address.v1 schema"
+                },
+                {
+                  "check": "row.8",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.9",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.10",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.11",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.12",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "address.normalized_postcodes",
+                  "pass": false,
+                  "detail": "Expected exactly 12 normalized French postcodes"
+                }
+              ],
+              "pass": false,
+              "message": "11/12 · INVALID POSTCODE, ROW 7",
+              "agent": "agent de référence scripté",
+              "criteria_hash": "6a1653a0cc6939f8eac886ba4e23c9e0b4a746c6f5167d48888bdaef21b1a2f4",
+              "delivery_hash": "c9f32b9c1d5a105afd20373a7db6c94caa6944300915eb2379193f6376393f30"
+            },
+            "hashes": {
+              "criteria": "6a1653a0cc6939f8eac886ba4e23c9e0b4a746c6f5167d48888bdaef21b1a2f4",
+              "delivery": "c9f32b9c1d5a105afd20373a7db6c94caa6944300915eb2379193f6376393f30",
+              "report": "16f88af6d2436ddf1d3bc6dafb51d4fb43f82dd8a3ef5bb3fb430c5d1227cdbe"
+            }
+          },
+          "computationBoundary": {
+            "kind": "Launch click (warm/offline)",
+            "at": 2307.89999999851
+          },
+          "requestsDuringComputation": []
+        },
+        {
+          "template": "invoice",
+          "behavior": "honest",
+          "warm": true,
+          "offline": true,
+          "status": "Settled",
+          "validatorMessage": "6/6 FIELDS VALID",
+          "timing": {
+            "startedAt": 2590.7999999970198,
+            "submittedAt": 2590.89999999851,
+            "firstStationAt": 2605,
+            "completedAt": 2606.2999999970198,
+            "reportResetObserved": true,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 2605,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6cd24534"
+              },
+              {
+                "station": "[02]",
+                "at": 2605.0999999940395,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+              },
+              {
+                "station": "[03]",
+                "at": 2605.0999999940395,
+                "text": "DELIVERY SUBMITTED · sha256:4b8d…3335"
+              },
+              {
+                "station": "[04]",
+                "at": 2605.1999999955297,
+                "text": "INSPECTION · 6/6 FIELDS VALID"
+              },
+              {
+                "station": "[05]",
+                "at": 2605.1999999955297,
+                "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · SIM-TX-CLOSE-24bebc6d"
+              }
+            ]
+          },
+          "durationMs": 15.5,
+          "requestAttempts": [],
+          "requestsAfterFirstStation": [],
+          "resources": [],
+          "resourcesAfterFirstStation": [],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6cd24534"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · sha256:4b8d…3335"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 6/6 FIELDS VALID"
+            },
+            {
+              "station": "[05]",
+              "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · SIM-TX-CLOSE-24bebc6d"
+            }
+          ],
+          "inspection": {
+            "report": {
+              "mission": "SIM-MISSION-invoice-honest",
+              "schema": "invoice.v1",
+              "results": [
+                {
+                  "check": "json-schema.2020-12",
+                  "pass": true,
+                  "detail": "All JSON Schema constraints passed"
+                },
+                {
+                  "check": "field.supplier",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.date",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.number",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.currency",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.total_amount",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.line_items",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "invoice.total_matches_lines",
+                  "pass": true,
+                  "detail": "total_cents=12345; line_sum_cents=12345"
+                }
+              ],
+              "pass": true,
+              "message": "6/6 FIELDS VALID",
+              "agent": "agent de référence scripté",
+              "criteria_hash": "6cd24534940273abb71902f23eef17e7dd4fd7a4ed632641e951200935d082dc",
+              "delivery_hash": "4b8d8320b71af526db9cb17730d14d9275cd7d975df3819b45d42bae7be73335"
+            },
+            "hashes": {
+              "criteria": "6cd24534940273abb71902f23eef17e7dd4fd7a4ed632641e951200935d082dc",
+              "delivery": "4b8d8320b71af526db9cb17730d14d9275cd7d975df3819b45d42bae7be73335",
+              "report": "24bebc6d6cf244296d79d550a5a0103d2ad5b5da6fe843f75a3ad90dc21230b7"
+            }
+          },
+          "computationBoundary": {
+            "kind": "Launch click (warm/offline)",
+            "at": 2590.7999999970198
+          },
+          "requestsDuringComputation": []
+        },
+        {
+          "template": "invoice",
+          "behavior": "dishonest",
+          "warm": true,
+          "offline": true,
+          "status": "Returned",
+          "validatorMessage": "5/6 · MISSING: total_amount",
+          "timing": {
+            "startedAt": 2707,
+            "submittedAt": 2707,
+            "firstStationAt": 2721.5,
+            "completedAt": 2722.6999999955297,
+            "reportResetObserved": true,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 2721.5,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6cd24534"
+              },
+              {
+                "station": "[02]",
+                "at": 2721.5,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+              },
+              {
+                "station": "[03]",
+                "at": 2721.5,
+                "text": "DELIVERY SUBMITTED · sha256:eb9d…95a0"
+              },
+              {
+                "station": "[04]",
+                "at": 2721.5999999940395,
+                "text": "INSPECTION · 5/6 · MISSING: total_amount"
+              },
+              {
+                "station": "[05]",
+                "at": 2721.5999999940395,
+                "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · SIM-TX-CLOSE-d0916655"
+              }
+            ]
+          },
+          "durationMs": 15.699999995529652,
+          "requestAttempts": [],
+          "requestsAfterFirstStation": [],
+          "resources": [],
+          "resourcesAfterFirstStation": [],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6cd24534"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · sha256:eb9d…95a0"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 5/6 · MISSING: total_amount"
+            },
+            {
+              "station": "[05]",
+              "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · SIM-TX-CLOSE-d0916655"
+            }
+          ],
+          "inspection": {
+            "report": {
+              "mission": "SIM-MISSION-invoice-dishonest",
+              "schema": "invoice.v1",
+              "results": [
+                {
+                  "check": "json-schema.2020-12",
+                  "pass": false,
+                  "detail": "[{\"instancePath\":\"\",\"keyword\":\"required\",\"message\":\"must have required property 'total_amount'\",\"params\":{\"missingProperty\":\"total_amount\"},\"schemaPath\":\"#/required\"}]"
+                },
+                {
+                  "check": "field.supplier",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.date",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.number",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.currency",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.total_amount",
+                  "pass": false,
+                  "detail": "Missing required field"
+                },
+                {
+                  "check": "field.line_items",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "invoice.total_matches_lines",
+                  "pass": false,
+                  "detail": "Invalid monetary fields prevent exact decimal comparison"
+                }
+              ],
+              "pass": false,
+              "message": "5/6 · MISSING: total_amount",
+              "agent": "agent de référence scripté",
+              "criteria_hash": "6cd24534940273abb71902f23eef17e7dd4fd7a4ed632641e951200935d082dc",
+              "delivery_hash": "eb9d8f14c70ccb8ade733c5f31e99cc5fe455f7fcba1944128718918fc3d95a0"
+            },
+            "hashes": {
+              "criteria": "6cd24534940273abb71902f23eef17e7dd4fd7a4ed632641e951200935d082dc",
+              "delivery": "eb9d8f14c70ccb8ade733c5f31e99cc5fe455f7fcba1944128718918fc3d95a0",
+              "report": "d0916655daaa815b0bb0283eb44e3f688898c18ef74c5c3a0dcf568489919710"
+            }
+          },
+          "computationBoundary": {
+            "kind": "Launch click (warm/offline)",
+            "at": 2707
+          },
+          "requestsDuringComputation": []
+        },
+        {
+          "template": "contract",
+          "behavior": "honest",
+          "warm": true,
+          "offline": true,
+          "status": "Settled",
+          "validatorMessage": "5/5 FIELDS VALID",
+          "timing": {
+            "startedAt": 2823.2999999970198,
+            "submittedAt": 2823.2999999970198,
+            "firstStationAt": 2838.5,
+            "completedAt": 2839.6999999955297,
+            "reportResetObserved": true,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 2838.5,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-dc19ca94"
+              },
+              {
+                "station": "[02]",
+                "at": 2838.5999999940395,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · CONTRACT SUMMARY"
+              },
+              {
+                "station": "[03]",
+                "at": 2838.5999999940395,
+                "text": "DELIVERY SUBMITTED · sha256:449d…ceb1"
+              },
+              {
+                "station": "[04]",
+                "at": 2838.5999999940395,
+                "text": "INSPECTION · 5/5 FIELDS VALID"
+              },
+              {
+                "station": "[05]",
+                "at": 2838.5999999940395,
+                "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · SIM-TX-CLOSE-23a95be0"
+              }
+            ]
+          },
+          "durationMs": 16.399999998509884,
+          "requestAttempts": [],
+          "requestsAfterFirstStation": [],
+          "resources": [],
+          "resourcesAfterFirstStation": [],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-dc19ca94"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · CONTRACT SUMMARY"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · sha256:449d…ceb1"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 5/5 FIELDS VALID"
+            },
+            {
+              "station": "[05]",
+              "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · SIM-TX-CLOSE-23a95be0"
+            }
+          ],
+          "inspection": {
+            "report": {
+              "mission": "SIM-MISSION-contract-honest",
+              "schema": "contract.v1",
+              "results": [
+                {
+                  "check": "json-schema.2020-12",
+                  "pass": true,
+                  "detail": "All JSON Schema constraints passed"
+                },
+                {
+                  "check": "field.title",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.parties",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.effective_date",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.termination",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.governing_law",
+                  "pass": true,
+                  "detail": "Field valid"
+                }
+              ],
+              "pass": true,
+              "message": "5/5 FIELDS VALID",
+              "agent": "agent de référence scripté",
+              "criteria_hash": "dc19ca94f8a0d925f52ed97fac7708e46a6c305c00e74ea719630c328b254e37",
+              "delivery_hash": "449d2e0926be3f39a91cf65b91f9644ed7a502f082d2026cb9d450bc0990ceb1"
+            },
+            "hashes": {
+              "criteria": "dc19ca94f8a0d925f52ed97fac7708e46a6c305c00e74ea719630c328b254e37",
+              "delivery": "449d2e0926be3f39a91cf65b91f9644ed7a502f082d2026cb9d450bc0990ceb1",
+              "report": "23a95be05289196b66ae237cf8fff9a834a0c0fa2880e64b3c99a032b0813886"
+            }
+          },
+          "computationBoundary": {
+            "kind": "Launch click (warm/offline)",
+            "at": 2823.2999999970198
+          },
+          "requestsDuringComputation": []
+        },
+        {
+          "template": "contract",
+          "behavior": "dishonest",
+          "warm": true,
+          "offline": true,
+          "status": "Returned",
+          "validatorMessage": "4/5 · MISSING: governing_law",
+          "timing": {
+            "startedAt": 2941.2999999970198,
+            "submittedAt": 2941.2999999970198,
+            "firstStationAt": 2955.5999999940395,
+            "completedAt": 2956.7999999970198,
+            "reportResetObserved": true,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 2955.5999999940395,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-dc19ca94"
+              },
+              {
+                "station": "[02]",
+                "at": 2955.5999999940395,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · CONTRACT SUMMARY"
+              },
+              {
+                "station": "[03]",
+                "at": 2955.5999999940395,
+                "text": "DELIVERY SUBMITTED · sha256:7f71…c90f"
+              },
+              {
+                "station": "[04]",
+                "at": 2955.6999999955297,
+                "text": "INSPECTION · 4/5 · MISSING: governing_law"
+              },
+              {
+                "station": "[05]",
+                "at": 2955.6999999955297,
+                "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · SIM-TX-CLOSE-ea5c5420"
+              }
+            ]
+          },
+          "durationMs": 15.5,
+          "requestAttempts": [],
+          "requestsAfterFirstStation": [],
+          "resources": [],
+          "resourcesAfterFirstStation": [],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-dc19ca94"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · CONTRACT SUMMARY"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · sha256:7f71…c90f"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 4/5 · MISSING: governing_law"
+            },
+            {
+              "station": "[05]",
+              "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · SIM-TX-CLOSE-ea5c5420"
+            }
+          ],
+          "inspection": {
+            "report": {
+              "mission": "SIM-MISSION-contract-dishonest",
+              "schema": "contract.v1",
+              "results": [
+                {
+                  "check": "json-schema.2020-12",
+                  "pass": false,
+                  "detail": "[{\"instancePath\":\"\",\"keyword\":\"required\",\"message\":\"must have required property 'governing_law'\",\"params\":{\"missingProperty\":\"governing_law\"},\"schemaPath\":\"#/required\"}]"
+                },
+                {
+                  "check": "field.title",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.parties",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.effective_date",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.termination",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.governing_law",
+                  "pass": false,
+                  "detail": "Missing required field"
+                }
+              ],
+              "pass": false,
+              "message": "4/5 · MISSING: governing_law",
+              "agent": "agent de référence scripté",
+              "criteria_hash": "dc19ca94f8a0d925f52ed97fac7708e46a6c305c00e74ea719630c328b254e37",
+              "delivery_hash": "7f7121ad9377dd1837ae30512e8803196928dd80c71de47f7da8292f7ce0c90f"
+            },
+            "hashes": {
+              "criteria": "dc19ca94f8a0d925f52ed97fac7708e46a6c305c00e74ea719630c328b254e37",
+              "delivery": "7f7121ad9377dd1837ae30512e8803196928dd80c71de47f7da8292f7ce0c90f",
+              "report": "ea5c542098cabc13e6d87cd0c46cc709208319390db5ebc57ebc031ff21850da"
+            }
+          },
+          "computationBoundary": {
+            "kind": "Launch click (warm/offline)",
+            "at": 2941.2999999970198
+          },
+          "requestsDuringComputation": []
+        },
+        {
+          "template": "address",
+          "behavior": "honest",
+          "warm": true,
+          "offline": true,
+          "status": "Settled",
+          "validatorMessage": "12/12 ROWS VALID",
+          "timing": {
+            "startedAt": 3057.6999999955297,
+            "submittedAt": 3057.7999999970198,
+            "firstStationAt": 3072.39999999851,
+            "completedAt": 3073.39999999851,
+            "reportResetObserved": true,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 3072.39999999851,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6a1653a0"
+              },
+              {
+                "station": "[02]",
+                "at": 3072.39999999851,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · ADDRESS NORMALIZATION"
+              },
+              {
+                "station": "[03]",
+                "at": 3072.39999999851,
+                "text": "DELIVERY SUBMITTED · sha256:7fcc…e784"
+              },
+              {
+                "station": "[04]",
+                "at": 3072.39999999851,
+                "text": "INSPECTION · 12/12 ROWS VALID"
+              },
+              {
+                "station": "[05]",
+                "at": 3072.39999999851,
+                "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · SIM-TX-CLOSE-0430753b"
+              }
+            ]
+          },
+          "durationMs": 15.700000002980232,
+          "requestAttempts": [],
+          "requestsAfterFirstStation": [],
+          "resources": [],
+          "resourcesAfterFirstStation": [],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6a1653a0"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · ADDRESS NORMALIZATION"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · sha256:7fcc…e784"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 12/12 ROWS VALID"
+            },
+            {
+              "station": "[05]",
+              "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · SIM-TX-CLOSE-0430753b"
+            }
+          ],
+          "inspection": {
+            "report": {
+              "mission": "SIM-MISSION-address-honest",
+              "schema": "address.v1",
+              "results": [
+                {
+                  "check": "json-schema.2020-12",
+                  "pass": true,
+                  "detail": "All JSON Schema constraints passed"
+                },
+                {
+                  "check": "row.1",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.2",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.3",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.4",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.5",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.6",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.7",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.8",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.9",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.10",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.11",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.12",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "address.normalized_postcodes",
+                  "pass": true,
+                  "detail": "12 French postcodes normalized to five ASCII digits"
+                }
+              ],
+              "pass": true,
+              "message": "12/12 ROWS VALID",
+              "agent": "agent de référence scripté",
+              "criteria_hash": "6a1653a0cc6939f8eac886ba4e23c9e0b4a746c6f5167d48888bdaef21b1a2f4",
+              "delivery_hash": "7fccb5ee6bda7ee3344c57b9739c04991a62532c09cc3f5400683a7e2e0ce784"
+            },
+            "hashes": {
+              "criteria": "6a1653a0cc6939f8eac886ba4e23c9e0b4a746c6f5167d48888bdaef21b1a2f4",
+              "delivery": "7fccb5ee6bda7ee3344c57b9739c04991a62532c09cc3f5400683a7e2e0ce784",
+              "report": "0430753bc25ae77fc674d0b6c8d0c9bf8a16ae43f1de4b753853f326e65eaddf"
+            }
+          },
+          "computationBoundary": {
+            "kind": "Launch click (warm/offline)",
+            "at": 3057.6999999955297
+          },
+          "requestsDuringComputation": []
+        },
+        {
+          "template": "address",
+          "behavior": "dishonest",
+          "warm": true,
+          "offline": true,
+          "status": "Returned",
+          "validatorMessage": "11/12 · INVALID POSTCODE, ROW 7",
+          "timing": {
+            "startedAt": 3174,
+            "submittedAt": 3174,
+            "firstStationAt": 3188.6999999955297,
+            "completedAt": 3189.7999999970198,
+            "reportResetObserved": true,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 3188.6999999955297,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6a1653a0"
+              },
+              {
+                "station": "[02]",
+                "at": 3188.7999999970198,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · ADDRESS NORMALIZATION"
+              },
+              {
+                "station": "[03]",
+                "at": 3188.7999999970198,
+                "text": "DELIVERY SUBMITTED · sha256:c9f3…3f30"
+              },
+              {
+                "station": "[04]",
+                "at": 3188.89999999851,
+                "text": "INSPECTION · 11/12 · INVALID POSTCODE, ROW 7"
+              },
+              {
+                "station": "[05]",
+                "at": 3188.89999999851,
+                "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · SIM-TX-CLOSE-16f88af6"
+              }
+            ]
+          },
+          "durationMs": 15.799999997019768,
+          "requestAttempts": [],
+          "requestsAfterFirstStation": [],
+          "resources": [],
+          "resourcesAfterFirstStation": [],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6a1653a0"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · ADDRESS NORMALIZATION"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · sha256:c9f3…3f30"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 11/12 · INVALID POSTCODE, ROW 7"
+            },
+            {
+              "station": "[05]",
+              "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · SIM-TX-CLOSE-16f88af6"
+            }
+          ],
+          "inspection": {
+            "report": {
+              "mission": "SIM-MISSION-address-dishonest",
+              "schema": "address.v1",
+              "results": [
+                {
+                  "check": "json-schema.2020-12",
+                  "pass": false,
+                  "detail": "[{\"instancePath\":\"/rows/6/postcode\",\"keyword\":\"pattern\",\"message\":\"must match pattern \\\"^[0-9]{5}$\\\"\",\"params\":{\"pattern\":\"^[0-9]{5}$\"},\"schemaPath\":\"#/properties/rows/items/properties/postcode/pattern\"}]"
+                },
+                {
+                  "check": "row.1",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.2",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.3",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.4",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.5",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.6",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.7",
+                  "pass": false,
+                  "detail": "Row violates address.v1 schema"
+                },
+                {
+                  "check": "row.8",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.9",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.10",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.11",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "row.12",
+                  "pass": true,
+                  "detail": "Row valid"
+                },
+                {
+                  "check": "address.normalized_postcodes",
+                  "pass": false,
+                  "detail": "Expected exactly 12 normalized French postcodes"
+                }
+              ],
+              "pass": false,
+              "message": "11/12 · INVALID POSTCODE, ROW 7",
+              "agent": "agent de référence scripté",
+              "criteria_hash": "6a1653a0cc6939f8eac886ba4e23c9e0b4a746c6f5167d48888bdaef21b1a2f4",
+              "delivery_hash": "c9f32b9c1d5a105afd20373a7db6c94caa6944300915eb2379193f6376393f30"
+            },
+            "hashes": {
+              "criteria": "6a1653a0cc6939f8eac886ba4e23c9e0b4a746c6f5167d48888bdaef21b1a2f4",
+              "delivery": "c9f32b9c1d5a105afd20373a7db6c94caa6944300915eb2379193f6376393f30",
+              "report": "16f88af6d2436ddf1d3bc6dafb51d4fb43f82dd8a3ef5bb3fb430c5d1227cdbe"
+            }
+          },
+          "computationBoundary": {
+            "kind": "Launch click (warm/offline)",
+            "at": 3174
+          },
+          "requestsDuringComputation": []
+        }
+      ],
+      "allRequests": [
+        {
+          "url": "/",
+          "method": "GET",
+          "type": "Document",
+          "startTime": 0.782958984375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 15.35302734375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/azeret-mono-latin-400-normal.BqmUdsta.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 15.615966796875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/style.CEt6poen.css",
+          "method": "GET",
+          "type": "Stylesheet",
+          "startTime": 15.7080078125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/brand/mule-lockup-ink.svg",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 15.80908203125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_0_lang.BimW9XI5.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 15.89794921875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_1_lang.BRbfpxf3.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 15.98193359375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_2_lang.BjdcgzbZ.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 16.052978515625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/site.BZgNIa-1.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 42.255859375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/preload-helper.oCYlU9a4.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 42.4111328125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/doto-latin-900-normal.4WJMlB6x.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 59.89404296875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/azeret-mono-latin-600-normal.CqVsP0JD.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 67.998046875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/doto-latin-700-normal.5ZNn4yVk.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 68.283203125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/patch-delivered.COvbNfuh.png",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 995.090087890625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/patch-refuse.OST8lJl6.png",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 995.18701171875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/console-core.CoTJnQS5.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 1022.72021484375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 960,
+      "reducedMotion": "reduce",
+      "csp": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+      "initialCoreRequests": [],
+      "initialCorePreloads": [],
+      "errors": [],
+      "cspViolations": [],
+      "runs": [
+        {
+          "template": "invoice",
+          "behavior": "honest",
+          "warm": false,
+          "offline": false,
+          "status": "Settled",
+          "validatorMessage": "6/6 FIELDS VALID",
+          "timing": {
+            "startedAt": 739.5999999940395,
+            "submittedAt": 739.6999999955297,
+            "firstStationAt": 766.3999999985099,
+            "completedAt": 771.6999999955297,
+            "reportResetObserved": true,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 766.3999999985099,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6cd24534"
+              },
+              {
+                "station": "[02]",
+                "at": 766.3999999985099,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+              },
+              {
+                "station": "[03]",
+                "at": 766.5,
+                "text": "DELIVERY SUBMITTED · sha256:4b8d…3335"
+              },
+              {
+                "station": "[04]",
+                "at": 766.5,
+                "text": "INSPECTION · 6/6 FIELDS VALID"
+              },
+              {
+                "station": "[05]",
+                "at": 766.6999999955297,
+                "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · SIM-TX-CLOSE-24bebc6d"
+              }
+            ]
+          },
+          "durationMs": 32.100000001490116,
+          "requestAttempts": [
+            {
+              "url": "/_astro/patch-delivered.COvbNfuh.png",
+              "method": "GET",
+              "type": "Image",
+              "startTime": 740.77685546875,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            },
+            {
+              "url": "/_astro/patch-refuse.OST8lJl6.png",
+              "method": "GET",
+              "type": "Image",
+              "startTime": 740.836181640625,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            },
+            {
+              "url": "/_astro/console-core.CoTJnQS5.js",
+              "method": "GET",
+              "type": "Script",
+              "startTime": 756.779052734375,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            }
+          ],
+          "requestsAfterFirstStation": [],
+          "resources": [
+            {
+              "name": "/_astro/patch-delivered.COvbNfuh.png",
+              "initiatorType": "img",
+              "startTime": 740.6999999955297,
+              "responseEnd": 743.8999999985099,
+              "transferSize": 18140,
+              "encodedBodySize": 17840,
+              "decodedBodySize": 19173
+            },
+            {
+              "name": "/_astro/patch-refuse.OST8lJl6.png",
+              "initiatorType": "img",
+              "startTime": 740.7999999970198,
+              "responseEnd": 745,
+              "transferSize": 27486,
+              "encodedBodySize": 27186,
+              "decodedBodySize": 27928
+            },
+            {
+              "name": "/_astro/console-core.CoTJnQS5.js",
+              "initiatorType": "script",
+              "startTime": 756.7999999970198,
+              "responseEnd": 760.5999999940395,
+              "transferSize": 11908,
+              "encodedBodySize": 11608,
+              "decodedBodySize": 69500
+            }
+          ],
+          "resourcesAfterFirstStation": [],
+          "preparationResources": [
+            {
+              "name": "/_astro/patch-delivered.COvbNfuh.png",
+              "initiatorType": "img",
+              "startTime": 740.6999999955297,
+              "responseEnd": 743.8999999985099,
+              "transferSize": 18140,
+              "encodedBodySize": 17840,
+              "decodedBodySize": 19173
+            },
+            {
+              "name": "/_astro/patch-refuse.OST8lJl6.png",
+              "initiatorType": "img",
+              "startTime": 740.7999999970198,
+              "responseEnd": 745,
+              "transferSize": 27486,
+              "encodedBodySize": 27186,
+              "decodedBodySize": 27928
+            },
+            {
+              "name": "/_astro/console-core.CoTJnQS5.js",
+              "initiatorType": "script",
+              "startTime": 756.7999999970198,
+              "responseEnd": 760.5999999940395,
+              "transferSize": 11908,
+              "encodedBodySize": 11608,
+              "decodedBodySize": 69500
+            }
+          ],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6cd24534"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · sha256:4b8d…3335"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 6/6 FIELDS VALID"
+            },
+            {
+              "station": "[05]",
+              "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · SIM-TX-CLOSE-24bebc6d"
+            }
+          ],
+          "inspection": {
+            "report": {
+              "mission": "SIM-MISSION-invoice-honest",
+              "schema": "invoice.v1",
+              "results": [
+                {
+                  "check": "json-schema.2020-12",
+                  "pass": true,
+                  "detail": "All JSON Schema constraints passed"
+                },
+                {
+                  "check": "field.supplier",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.date",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.number",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.currency",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.total_amount",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.line_items",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "invoice.total_matches_lines",
+                  "pass": true,
+                  "detail": "total_cents=12345; line_sum_cents=12345"
+                }
+              ],
+              "pass": true,
+              "message": "6/6 FIELDS VALID",
+              "agent": "agent de référence scripté",
+              "criteria_hash": "6cd24534940273abb71902f23eef17e7dd4fd7a4ed632641e951200935d082dc",
+              "delivery_hash": "4b8d8320b71af526db9cb17730d14d9275cd7d975df3819b45d42bae7be73335"
+            },
+            "hashes": {
+              "criteria": "6cd24534940273abb71902f23eef17e7dd4fd7a4ed632641e951200935d082dc",
+              "delivery": "4b8d8320b71af526db9cb17730d14d9275cd7d975df3819b45d42bae7be73335",
+              "report": "24bebc6d6cf244296d79d550a5a0103d2ad5b5da6fe843f75a3ad90dc21230b7"
+            }
+          },
+          "computationBoundary": {
+            "kind": "Core chunk responseEnd, before module execution and prepareMission",
+            "at": 760.5999999940395
+          },
+          "requestsDuringComputation": []
+        },
+        {
+          "template": "invoice",
+          "behavior": "dishonest",
+          "warm": true,
+          "offline": false,
+          "status": "Returned",
+          "validatorMessage": "5/6 · MISSING: total_amount",
+          "timing": {
+            "startedAt": 1172.5999999940395,
+            "submittedAt": 1172.6999999955297,
+            "firstStationAt": 1188.3999999985099,
+            "completedAt": 1190,
+            "reportResetObserved": true,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 1188.3999999985099,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6cd24534"
+              },
+              {
+                "station": "[02]",
+                "at": 1188.5,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+              },
+              {
+                "station": "[03]",
+                "at": 1188.5999999940395,
+                "text": "DELIVERY SUBMITTED · sha256:eb9d…95a0"
+              },
+              {
+                "station": "[04]",
+                "at": 1188.5999999940395,
+                "text": "INSPECTION · 5/6 · MISSING: total_amount"
+              },
+              {
+                "station": "[05]",
+                "at": 1188.5999999940395,
+                "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · SIM-TX-CLOSE-d0916655"
+              }
+            ]
+          },
+          "durationMs": 17.400000005960464,
+          "requestAttempts": [],
+          "requestsAfterFirstStation": [],
+          "resources": [],
+          "resourcesAfterFirstStation": [],
+          "preparationResources": [],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6cd24534"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · sha256:eb9d…95a0"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 5/6 · MISSING: total_amount"
+            },
+            {
+              "station": "[05]",
+              "text": "RETURNED · 5.00 dUSDC REFUNDED TO CLIENT · SIM-TX-CLOSE-d0916655"
+            }
+          ],
+          "inspection": {
+            "report": {
+              "mission": "SIM-MISSION-invoice-dishonest",
+              "schema": "invoice.v1",
+              "results": [
+                {
+                  "check": "json-schema.2020-12",
+                  "pass": false,
+                  "detail": "[{\"instancePath\":\"\",\"keyword\":\"required\",\"message\":\"must have required property 'total_amount'\",\"params\":{\"missingProperty\":\"total_amount\"},\"schemaPath\":\"#/required\"}]"
+                },
+                {
+                  "check": "field.supplier",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.date",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.number",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.currency",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.total_amount",
+                  "pass": false,
+                  "detail": "Missing required field"
+                },
+                {
+                  "check": "field.line_items",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "invoice.total_matches_lines",
+                  "pass": false,
+                  "detail": "Invalid monetary fields prevent exact decimal comparison"
+                }
+              ],
+              "pass": false,
+              "message": "5/6 · MISSING: total_amount",
+              "agent": "agent de référence scripté",
+              "criteria_hash": "6cd24534940273abb71902f23eef17e7dd4fd7a4ed632641e951200935d082dc",
+              "delivery_hash": "eb9d8f14c70ccb8ade733c5f31e99cc5fe455f7fcba1944128718918fc3d95a0"
+            },
+            "hashes": {
+              "criteria": "6cd24534940273abb71902f23eef17e7dd4fd7a4ed632641e951200935d082dc",
+              "delivery": "eb9d8f14c70ccb8ade733c5f31e99cc5fe455f7fcba1944128718918fc3d95a0",
+              "report": "d0916655daaa815b0bb0283eb44e3f688898c18ef74c5c3a0dcf568489919710"
+            }
+          },
+          "computationBoundary": {
+            "kind": "Launch click (warm/offline)",
+            "at": 1172.5999999940395
+          },
+          "requestsDuringComputation": []
+        }
+      ],
+      "allRequests": [
+        {
+          "url": "/",
+          "method": "GET",
+          "type": "Document",
+          "startTime": 0.18310546875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 10.381103515625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/azeret-mono-latin-400-normal.BqmUdsta.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 10.5419921875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/style.CEt6poen.css",
+          "method": "GET",
+          "type": "Stylesheet",
+          "startTime": 10.62109375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/brand/mule-lockup-ink.svg",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 10.68505859375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_0_lang.BimW9XI5.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 10.815185546875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_1_lang.BRbfpxf3.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 10.9130859375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_2_lang.BjdcgzbZ.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 11.004150390625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/site.BZgNIa-1.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 25.427001953125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/preload-helper.oCYlU9a4.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 25.552978515625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/doto-latin-900-normal.4WJMlB6x.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 32.176025390625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/azeret-mono-latin-600-normal.CqVsP0JD.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 38.68994140625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/doto-latin-700-normal.5ZNn4yVk.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 39.02099609375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/patch-delivered.COvbNfuh.png",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 740.77685546875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/patch-refuse.OST8lJl6.png",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 740.836181640625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/console-core.CoTJnQS5.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 756.779052734375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        }
+      ]
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "reducedMotion": "no-preference",
+      "csp": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+      "initialCoreRequests": [],
+      "initialCorePreloads": [],
+      "errors": [],
+      "cspViolations": [],
+      "runs": [
+        {
+          "template": "invoice",
+          "behavior": "honest",
+          "warm": false,
+          "offline": false,
+          "status": "Settled",
+          "validatorMessage": "6/6 FIELDS VALID",
+          "timing": {
+            "startedAt": 828.6999999955297,
+            "submittedAt": 828.7999999970198,
+            "firstStationAt": 848.6999999955297,
+            "completedAt": 4877.79999999702,
+            "reportResetObserved": true,
+            "stations": [
+              {
+                "station": "[01]",
+                "at": 848.6999999955297,
+                "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6cd24534"
+              },
+              {
+                "station": "[02]",
+                "at": 1649,
+                "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+              },
+              {
+                "station": "[03]",
+                "at": 2450.60000000149,
+                "text": "DELIVERY SUBMITTED · sha256:4b8d…3335"
+              },
+              {
+                "station": "[04]",
+                "at": 3262.89999999851,
+                "text": "INSPECTION · 6/6 FIELDS VALID"
+              },
+              {
+                "station": "[05]",
+                "at": 4066.10000000149,
+                "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · SIM-TX-CLOSE-24bebc6d"
+              }
+            ]
+          },
+          "durationMs": 4049.10000000149,
+          "requestAttempts": [
+            {
+              "url": "/_astro/patch-delivered.COvbNfuh.png",
+              "method": "GET",
+              "type": "Image",
+              "startTime": 832.865966796875,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            },
+            {
+              "url": "/_astro/patch-refuse.OST8lJl6.png",
+              "method": "GET",
+              "type": "Image",
+              "startTime": 832.970947265625,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            },
+            {
+              "url": "/_astro/console-core.CoTJnQS5.js",
+              "method": "GET",
+              "type": "Script",
+              "startTime": 840.14990234375,
+              "status": 200,
+              "failed": false,
+              "fromCache": false
+            }
+          ],
+          "requestsAfterFirstStation": [],
+          "resources": [
+            {
+              "name": "/_astro/patch-delivered.COvbNfuh.png",
+              "initiatorType": "img",
+              "startTime": 832.7999999970198,
+              "responseEnd": 836.8999999985099,
+              "transferSize": 18140,
+              "encodedBodySize": 17840,
+              "decodedBodySize": 19173
+            },
+            {
+              "name": "/_astro/patch-refuse.OST8lJl6.png",
+              "initiatorType": "img",
+              "startTime": 833,
+              "responseEnd": 838.2999999970198,
+              "transferSize": 27486,
+              "encodedBodySize": 27186,
+              "decodedBodySize": 27928
+            },
+            {
+              "name": "/_astro/console-core.CoTJnQS5.js",
+              "initiatorType": "script",
+              "startTime": 840.1000000014901,
+              "responseEnd": 843.5,
+              "transferSize": 11908,
+              "encodedBodySize": 11608,
+              "decodedBodySize": 69500
+            }
+          ],
+          "resourcesAfterFirstStation": [],
+          "preparationResources": [
+            {
+              "name": "/_astro/patch-delivered.COvbNfuh.png",
+              "initiatorType": "img",
+              "startTime": 832.7999999970198,
+              "responseEnd": 836.8999999985099,
+              "transferSize": 18140,
+              "encodedBodySize": 17840,
+              "decodedBodySize": 19173
+            },
+            {
+              "name": "/_astro/patch-refuse.OST8lJl6.png",
+              "initiatorType": "img",
+              "startTime": 833,
+              "responseEnd": 838.2999999970198,
+              "transferSize": 27486,
+              "encodedBodySize": 27186,
+              "decodedBodySize": 27928
+            },
+            {
+              "name": "/_astro/console-core.CoTJnQS5.js",
+              "initiatorType": "script",
+              "startTime": 840.1000000014901,
+              "responseEnd": 843.5,
+              "transferSize": 11908,
+              "encodedBodySize": 11608,
+              "decodedBodySize": 69500
+            }
+          ],
+          "journal": [
+            {
+              "station": "[01]",
+              "text": "ESCROW LOCKED · 5.00 dUSDC · SIM-TX-LOCK-6cd24534"
+            },
+            {
+              "station": "[02]",
+              "text": "MISSION ACCEPTED · AGENT MULE-01 · INVOICE TO JSON"
+            },
+            {
+              "station": "[03]",
+              "text": "DELIVERY SUBMITTED · sha256:4b8d…3335"
+            },
+            {
+              "station": "[04]",
+              "text": "INSPECTION · 6/6 FIELDS VALID"
+            },
+            {
+              "station": "[05]",
+              "text": "SETTLED · 5.00 dUSDC PAID TO AGENT · SIM-TX-CLOSE-24bebc6d"
+            }
+          ],
+          "inspection": {
+            "report": {
+              "mission": "SIM-MISSION-invoice-honest",
+              "schema": "invoice.v1",
+              "results": [
+                {
+                  "check": "json-schema.2020-12",
+                  "pass": true,
+                  "detail": "All JSON Schema constraints passed"
+                },
+                {
+                  "check": "field.supplier",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.date",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.number",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.currency",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.total_amount",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "field.line_items",
+                  "pass": true,
+                  "detail": "Field valid"
+                },
+                {
+                  "check": "invoice.total_matches_lines",
+                  "pass": true,
+                  "detail": "total_cents=12345; line_sum_cents=12345"
+                }
+              ],
+              "pass": true,
+              "message": "6/6 FIELDS VALID",
+              "agent": "agent de référence scripté",
+              "criteria_hash": "6cd24534940273abb71902f23eef17e7dd4fd7a4ed632641e951200935d082dc",
+              "delivery_hash": "4b8d8320b71af526db9cb17730d14d9275cd7d975df3819b45d42bae7be73335"
+            },
+            "hashes": {
+              "criteria": "6cd24534940273abb71902f23eef17e7dd4fd7a4ed632641e951200935d082dc",
+              "delivery": "4b8d8320b71af526db9cb17730d14d9275cd7d975df3819b45d42bae7be73335",
+              "report": "24bebc6d6cf244296d79d550a5a0103d2ad5b5da6fe843f75a3ad90dc21230b7"
+            }
+          },
+          "computationBoundary": {
+            "kind": "Core chunk responseEnd, before module execution and prepareMission",
+            "at": 843.5
+          },
+          "requestsDuringComputation": []
+        }
+      ],
+      "allRequests": [
+        {
+          "url": "/",
+          "method": "GET",
+          "type": "Document",
+          "startTime": 0.180908203125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/archivo-125-800-latin.C9uAnT0s.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 7.847900390625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/azeret-mono-latin-400-normal.BqmUdsta.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 8.03369140625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/style.CEt6poen.css",
+          "method": "GET",
+          "type": "Stylesheet",
+          "startTime": 8.095703125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/brand/mule-lockup-ink.svg",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 8.159912109375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_0_lang.BimW9XI5.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 8.289794921875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_1_lang.BRbfpxf3.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 8.367919921875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/index.astro_astro_type_script_index_2_lang.BjdcgzbZ.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 8.44482421875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/site.BZgNIa-1.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 24.61572265625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/preload-helper.oCYlU9a4.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 24.824951171875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/doto-latin-900-normal.4WJMlB6x.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 41.413818359375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/azeret-mono-latin-600-normal.CqVsP0JD.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 46.7470703125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/doto-latin-700-normal.5ZNn4yVk.woff2",
+          "method": "GET",
+          "type": "Font",
+          "startTime": 47.0029296875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/gsap.DLHyXJrb.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 771.764892578125,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/ScrollTrigger.CIzi40EK.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 771.909912109375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/patch-delivered.COvbNfuh.png",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 832.865966796875,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/patch-refuse.OST8lJl6.png",
+          "method": "GET",
+          "type": "Image",
+          "startTime": 832.970947265625,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        },
+        {
+          "url": "/_astro/console-core.CoTJnQS5.js",
+          "method": "GET",
+          "type": "Script",
+          "startTime": 840.14990234375,
+          "status": 200,
+          "failed": false,
+          "fromCache": false
+        }
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "width": 375,
+      "height": 812,
+      "template": "invoice",
+      "behavior": "honest",
+      "journal": "invoice-honest-375-journal.png",
+      "inspection": "invoice-honest-375-inspection.png",
+      "inspectionAbsent": false
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "template": "invoice",
+      "behavior": "dishonest",
+      "journal": "invoice-dishonest-375-journal.png",
+      "inspection": "invoice-dishonest-375-inspection.png",
+      "inspectionAbsent": false
+    },
+    {
+      "width": 1440,
+      "height": 960,
+      "template": "invoice",
+      "behavior": "honest",
+      "journal": "invoice-honest-1440-journal.png",
+      "inspection": "invoice-honest-1440-inspection.png",
+      "inspectionAbsent": false
+    },
+    {
+      "width": 1440,
+      "height": 960,
+      "template": "invoice",
+      "behavior": "dishonest",
+      "journal": "invoice-dishonest-1440-journal.png",
+      "inspection": "invoice-dishonest-1440-inspection.png",
+      "inspectionAbsent": false
+    }
+  ],
+  "reportLayout": [
+    {
+      "width": 360,
+      "passed": true,
+      "viewport": 360,
+      "pageWidth": 360,
+      "left": 34,
+      "right": 326,
+      "clientWidth": 292,
+      "scrollWidth": 1812,
+      "overflowX": "auto",
+      "whiteSpace": "pre",
+      "tabindex": 0,
+      "initialScrollLeft": 0,
+      "finalScrollLeft": 1520
+    },
+    {
+      "width": 375,
+      "passed": true,
+      "viewport": 375,
+      "pageWidth": 375,
+      "left": 34,
+      "right": 341,
+      "clientWidth": 307,
+      "scrollWidth": 1812,
+      "overflowX": "auto",
+      "whiteSpace": "pre",
+      "tabindex": 0,
+      "initialScrollLeft": 0,
+      "finalScrollLeft": 1505
+    },
+    {
+      "width": 768,
+      "passed": true,
+      "viewport": 768,
+      "pageWidth": 768,
+      "left": 42,
+      "right": 726,
+      "clientWidth": 684,
+      "scrollWidth": 1812,
+      "overflowX": "auto",
+      "whiteSpace": "pre",
+      "tabindex": 0,
+      "initialScrollLeft": 0,
+      "finalScrollLeft": 1128
+    },
+    {
+      "width": 1440,
+      "passed": true,
+      "viewport": 1440,
+      "pageWidth": 1440,
+      "left": 637.15625,
+      "right": 1302,
+      "clientWidth": 665,
+      "scrollWidth": 1812,
+      "overflowX": "auto",
+      "whiteSpace": "pre",
+      "tabindex": 0,
+      "initialScrollLeft": 0,
+      "finalScrollLeft": 1147
+    }
+  ],
+  "offline": {
+    "passed": true,
+    "prepared": "Both outcome images and the core were cached through normal online Launch; no reload after switching the browser context offline",
+    "scenarios": [
+      {
+        "template": "invoice",
+        "behavior": "honest",
+        "status": "Settled",
+        "requestAttempts": 0,
+        "reportHash": "24bebc6d6cf244296d79d550a5a0103d2ad5b5da6fe843f75a3ad90dc21230b7"
+      },
+      {
+        "template": "invoice",
+        "behavior": "dishonest",
+        "status": "Returned",
+        "requestAttempts": 0,
+        "reportHash": "d0916655daaa815b0bb0283eb44e3f688898c18ef74c5c3a0dcf568489919710"
+      },
+      {
+        "template": "contract",
+        "behavior": "honest",
+        "status": "Settled",
+        "requestAttempts": 0,
+        "reportHash": "23a95be05289196b66ae237cf8fff9a834a0c0fa2880e64b3c99a032b0813886"
+      },
+      {
+        "template": "contract",
+        "behavior": "dishonest",
+        "status": "Returned",
+        "requestAttempts": 0,
+        "reportHash": "ea5c542098cabc13e6d87cd0c46cc709208319390db5ebc57ebc031ff21850da"
+      },
+      {
+        "template": "address",
+        "behavior": "honest",
+        "status": "Settled",
+        "requestAttempts": 0,
+        "reportHash": "0430753bc25ae77fc674d0b6c8d0c9bf8a16ae43f1de4b753853f326e65eaddf"
+      },
+      {
+        "template": "address",
+        "behavior": "dishonest",
+        "status": "Returned",
+        "requestAttempts": 0,
+        "reportHash": "16f88af6d2436ddf1d3bc6dafb51d4fb43f82dd8a3ef5bb3fb430c5d1227cdbe"
+      }
+    ]
+  },
+  "normalMotion": {
+    "passed": true,
+    "stationIntervalsMs": [
+      800.3000000044703,
+      801.6000000014901,
+      812.2999999970198,
+      803.2000000029802
+    ],
+    "firstStationToCompletionMs": 4029.10000000149
+  },
+  "engine": "Chromium 153.0.8010.12 headless; desktop emulation, not physical devices"
+}

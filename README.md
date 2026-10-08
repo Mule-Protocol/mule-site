@@ -62,3 +62,26 @@ The `sharp` override keeps the direct package and Wrangler's local simulator on 
 After pass 1 approval: `/dossier`, console simulation, `functions/m/[id].ts` and dynamic share image, remaining landing sections, legal/privacy/risk pages, full browser QA and deployment evidence. Future M-1 APIs belong in `functions/api/`; they are not part of this marketing-site pass.
 
 References: [Astro static deployment](https://docs.astro.build/en/guides/deploy/), [Pages local development](https://developers.cloudflare.com/pages/functions/local-development/), [Pages headers](https://developers.cloudflare.com/pages/configuration/headers/), [Wrangler Action](https://github.com/cloudflare/wrangler-action).
+
+## Real-logic mission console (M-1.2 B)
+
+The console loads the pinned `@mule/console-core` module only on the first mission launch. It runs the shared fixtures, scripted agent, validator, WebCrypto hashes and tested escrow model locally in the browser. It does not connect a wallet or execute a blockchain transaction.
+
+Provenance and exact upstream hash: [SOURCE.md](src/vendor/mule-console-core/SOURCE.md). The vendored files are marked `-text` in `.gitattributes`; their bytes must not be converted to CRLF.
+
+```sh
+# Explicit maintenance only: fetch a reviewed immutable 40-character commit.
+node scripts/update-console-core.mjs ecfb8350e6ede380eb2ad83174576ef6580562e1
+# Offline checks used by tests and every build.
+npm run check:console-core
+npm test
+npm run build
+# Start the local QA server, then run the six-mission browser checks.
+node scripts/qa-server.mjs
+# In a second terminal:
+npm run test:console-browser
+```
+
+The review branch `codex/real-logic-console` is excluded from the existing Pages deploy job. No Cloudflare preview or production deployment is part of this change. The validation job includes an offline Node build and real Chromium mission tests.
+
+Before/after captures, Lighthouse measurements, browser results and scope checks are kept in [docs/qa-real-logic-console](docs/qa-real-logic-console/README.md).

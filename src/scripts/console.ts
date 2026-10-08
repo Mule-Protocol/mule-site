@@ -25,12 +25,20 @@ function stepDelay() {
   });
 }
 
-async function drawPatch(id: string) {
+let patchArtwork: Promise<{ delivered: HTMLImageElement; refused: HTMLImageElement }> | undefined;
+function preparePatchArtwork() {
+  // Both outcomes are decoded on the first launch, before station 01. Later
+  // launches reuse these same images instead of starting a request at closure.
+  return patchArtwork ??= Promise.all([deliveredPatch, refusedPatch].map(async source => {
+    const image = new Image(); image.src = source; await image.decode(); return image;
+  })).then(async ([delivered, refused]) => {
+    await document.fonts.ready;
+    return { delivered, refused };
+  });
+}
+
+async function drawPatch(id: string, mascot: HTMLImageElement) {
   const mission = parseMissionId(id)!;
-  await document.fonts.ready;
-  const mascot = new Image();
-  mascot.src = mission.settled ? deliveredPatch : refusedPatch;
-  await mascot.decode();
   const ctx = canvas.getContext('2d'); if (!ctx) throw new Error('Canvas unavailable');
   ctx.clearRect(0, 0, 600, 660); ctx.save(); ctx.scale(3, 3);
   const polygon = (points: number[][], fill: string | null, stroke: string, width: number) => {
@@ -56,15 +64,21 @@ form.addEventListener('submit', async event => {
   event.preventDefault(); if (busy || runs >= 9999) return;
   busy=true;controls.disabled=true;patchId='';$('patch').hidden=true;$('getPatch').hidden=true;
   const log=$('log');log.replaceChildren();$('stamp').textContent='';$('stamp').className='stampbig';
+  const inspection=$<HTMLDetailsElement>('inspectionReport');inspection.hidden=true;inspection.open=false;$('inspectionJson').textContent='';
   $('conOut').classList.remove('shake');$('msnId').textContent=`MSN-${pad(runs+1)}`;$('msnState').textContent='Running';
   const template=$<HTMLSelectElement>('tpl').value as Template;
   const behavior=form.querySelector<HTMLInputElement>('input[name="beh"]:checked')!.value as Behavior;
   try {
+    const artwork=await preparePatchArtwork();
     let settled=false;
     for await (const step of runMission(template,behavior)) {
       const li=document.createElement('li');li.className=`new${step.failed?' bad':''}`;
       const key=document.createElement('span');key.className='k';key.textContent=`[0${step.station}]`;
       const value=document.createElement('span');value.className='v';value.textContent=step.text;li.append(key,value);log.append(li);
+      if (step.report && step.hashes) {
+        $('inspectionJson').textContent=JSON.stringify({ report: step.report, hashes: step.hashes }, null, 2);
+        inspection.hidden=false;
+      }
       settled=step.outcome==='settled'; await stepDelay();li.classList.remove('new');
     }
     runs++;patchId=missionId(runs,settled,template);sharedCounter.recordMission();
@@ -78,7 +92,7 @@ form.addEventListener('submit', async event => {
     const text=settled?`My agent got paid on delivery. Mission ${mission.mission} settled.`:'My dishonest agent got nothing. Stubborn by design.';
     $<HTMLAnchorElement>('shareX').href=`https://x.com/intent/post?${new URLSearchParams({text:`${text} ${url} ${site.X_HANDLE}`})}`;
     $<HTMLAnchorElement>('patchPage').href=`/m/${patchId}`;
-    await drawPatch(patchId);$('patch').hidden=false;$('getPatch').hidden=false;$('patch').classList.remove('patch-in');
+    await drawPatch(patchId,settled?artwork.delivered:artwork.refused);$('patch').hidden=false;$('getPatch').hidden=false;$('patch').classList.remove('patch-in');
     if(!motionOff()) requestAnimationFrame(()=>$('patch').classList.add('patch-in'));
   } catch { $('msnState').textContent='Simulation unavailable';$('patchText').textContent='Please reload the page to try again.'; }
   finally { busy=false;controls.disabled=runs>=9999; }
