@@ -23,20 +23,20 @@ Le navigateur conserve chaque reçu non acquitté dans une clé `localStorage` s
 
 Sans D1 ou pendant une panne initiale, la tuile affiche `—`. Après une synchronisation réussie, une panne conserve le dernier total manuel connu ; les minutes continuent de progresser. La console reste utilisable. Il s'agit d'un compteur de simulations déclarées par le navigateur, pas d'une preuve de travaux exécutés sur Solana : des requêtes directes avec de nouveaux reçus peuvent l'incrémenter.
 
-## État et activation nécessaire
+## Liaison des bases et activation
 
-Implémentation et recette locales terminées. Aucune base distante créée, aucune migration distante exécutée et aucun déploiement de production effectué pour ce changement. La configuration Pages consultée ne contient aucune liaison D1 en production ou en préproduction.
+Le propriétaire a créé les bases et fourni leurs identifiants le 8 octobre 2026. La liaison `MULE_COUNTER` est maintenant déclarée dans `wrangler.jsonc` :
 
-Le jeton autorisé possède Pages Edit et DNS Edit, pas D1 Write. La création d'une base exige [D1 Write dans l'API Cloudflare](https://developers.cloudflare.com/api/resources/d1/subresources/database/methods/create/). Aucun droit supplémentaire n'est demandé.
+| Environnement | Identifiant D1 |
+| --- | --- |
+| Local et préproduction (`env.preview`) | `3f30d002-7ef7-4c93-81e4-518b2fd4d59c` |
+| Production (`env.production`) | `39adea8c-6526-4601-a03b-395fba01b503` |
 
-Avant fusion, le propriétaire doit :
+Les noms des bases ne sont pas nécessaires à cette liaison : les identifiants fournis sont utilisés directement. Les essais de préproduction utilisent une base distincte de la production.
 
-1. Dans **Cloudflare → Storage & databases → D1 SQL database → Create Database**, créer `mule-counter-production` et `mule-counter-preview`. Deux bases isolent les essais du total public. Voir la [création D1 officielle](https://developers.cloudflare.com/d1/get-started/#2-create-a-database).
-2. Dans chaque base, ouvrir **Console** et exécuter une seule fois les trois instructions de [`migrations/0001_mission_counter.sql`](../migrations/0001_mission_counter.sql), puis vérifier `SELECT * FROM mission_counter;` : une ligne `id=1`, `manual_total=0`.
-3. Transmettre uniquement les deux identifiants de base et leurs noms, sans jeton. La branche pourra alors recevoir la liaison `MULE_COUNTER` dans `wrangler.jsonc`, avec la base de préproduction dans `env.preview.d1_databases` et la base publique dans `env.production.d1_databases` ; la configuration locale utilisera la base de préproduction. Aucun identifiant factice n'est ajouté au fichier de déploiement.
-4. Valider la préproduction avec sa propre base, puis fusionner la PR pour le déploiement habituel de `main`.
+Le propriétaire confirme avoir initialisé les deux bases avec [`migrations/0001_mission_counter.sql`](../migrations/0001_mission_counter.sql), via l'onglet **Console** de D1. Le jeton autorisé n'a pas D1 Write. Après initialisation, `SELECT * FROM mission_counter;` renvoie une ligne `id=1`, `manual_total=0` avant les premiers essais. Ne pas réexécuter l'initialisation ni remettre le total à zéro sur une base déjà utilisée.
 
-Le projet déploie déjà avec `wrangler.jsonc` : ce fichier est la [source de configuration Pages](https://developers.cloudflare.com/pages/functions/wrangler-configuration/). Une simple liaison ajoutée au tableau de bord ne remplace donc pas l'étape 3. **Ne pas fusionner tant que les bases ne sont pas initialisées et liées** : le compteur resterait indisponible.
+Le projet utilise la [configuration Wrangler de Pages](https://developers.cloudflare.com/pages/functions/wrangler-configuration/) : la préproduction reçoit `env.preview` et le déploiement de `main` reçoit `env.production`. La PR reste en brouillon jusqu'au déploiement de cette liaison, à la vérification de lecture/écriture en préproduction ; l'initialisation de la base de production a été confirmée par le propriétaire. Aucun déploiement de production ni fusion n'est effectué par l'agent.
 
 ## Vérifications locales du 8 octobre 2026
 
