@@ -111,3 +111,42 @@ Les chemins protégés ont un diff nul : `src/data/mission.mjs`, identifiants de
 - Aucun déploiement, service payant, API d'IA, réseau Solana, wallet, fonds réels, opération $MULE, modification Anchor, force-push ou fusion.
 
 **Arrêt après ouverture de la PR de partie B.**
+
+## Corrections après review
+
+Les deux réserves de la review de la PR #11 sont corrigées. Cette section remplace les constats historiques ci-dessus sur « FAKE HASHES » et l'exclusion d'une branche nommée ; le reste de la livraison validée demeure inchangé.
+
+| Commit | Correction |
+| --- | --- |
+| [`d60c0a81f63f450b5df13dc06146782f60e9ebbe`](https://github.com/Mule-Protocol/mule-site/commit/d60c0a81f63f450b5df13dc06146782f60e9ebbe) | Règle générale : aucune branche `codex/*` ne déclenche le job Deploy Pages. |
+| [`c57deeef113c3e1c4b0f79b12bbe224bf236263e`](https://github.com/Mule-Protocol/mule-site/commit/c57deeef113c3e1c4b0f79b12bbe224bf236263e) | Texte exact du pied de console et contrôle Chromium du texte, du compteur et de leur géométrie aux quatre largeurs. |
+
+Le commit de documentation suivant publie cette section et les nouvelles preuves ; il figure dans l'[historique de la même PR](https://github.com/Mule-Protocol/mule-site/pull/11/commits). Aucun amend, rebase, force-push ou fusion.
+
+Texte affiché exactement : **`REAL SHA-256 · SIMULATED TRANSACTIONS · NO REAL FUNDS`**. Aucun autre texte du site, style, module vendored, adaptateur ou comportement de mission n'est modifié.
+
+| Largeur | Pied de console et compteur |
+| --- | --- |
+| 360 px | Texte intégral, compteur lisible, aucun débordement ni chevauchement |
+| 375 px | Texte intégral, compteur lisible, aucun débordement ni chevauchement |
+| 768 px | Texte intégral, compteur lisible, aucun débordement ni chevauchement |
+| 1440 px | Texte intégral, compteur lisible, aucun débordement ni chevauchement |
+
+Les assertions contrôlent les boîtes des éléments **et les fragments du texte rendu**, dans le pied et le viewport, après défilement vers celui-ci. Le compteur est recoupé avec l'identifiant de mission courant : `6 missions run on this page`. [Résultats Chromium complets et mesures](review-corrections/browser.json), section `footerLayout` : quatre résultats réussis. Le harnais existant passe également ses 15 lancements, dont les six hors ligne, sans erreur navigateur ni CSP.
+
+| Pied à 375 px | Pied à 1440 px |
+| --- | --- |
+| ![Pied de console corrigé à 375 px](review-corrections/footer-375.png) | ![Pied de console corrigé à 1440 px](review-corrections/footer-1440.png) |
+
+Les nouvelles captures du journal et du rapport sont également conservées dans [review-corrections](review-corrections/) ; les captures initiales restent les preuves historiques de la première livraison. Lighthouse n'est pas relancé : il était explicitement validé et aucun style, chargement ou code de mission n'a changé.
+
+La condition du job `deploy` est maintenant :
+
+```yaml
+# Codex branches are for review only and must never deploy to Cloudflare.
+if: github.event_name != 'pull_request' && !startsWith(github.ref, 'refs/heads/codex/')
+```
+
+Les PR restent exclues. Les pushes sur `main` et les autres branches hors `codex/*` conservent leur condition de déploiement antérieure ; aucun paramètre, secret ou workflow de déploiement supplémentaire n'est changé.
+
+CI de ces corrections : [run push 37705759394](https://github.com/Mule-Protocol/mule-site/actions/runs/37705759394), commit `c57deeef113c3e1c4b0f79b12bbe224bf236263e`. **Run vert : `Validate` a réussi et `Deploy Pages` est `skipped` sur le push de cette branche.** Le [run de PR 37705764187](https://github.com/Mule-Protocol/mule-site/actions/runs/37705764187) est également vert. Ces résultats confirment les 50 tests, le build et les contrôles Chromium exécutés en CI.
