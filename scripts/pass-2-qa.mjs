@@ -2,10 +2,18 @@ import { chromium } from '@playwright/test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import sharp from 'sharp';
+import { SIMULATED_COUNTER_START } from '../src/lib/mission-counter.ts';
 const base=process.env.QA_BASE_URL||'http://127.0.0.1:8788';
 const out=process.env.QA_OUTPUT||'artifacts/pass-2/browser';await fs.mkdir(out,{recursive:true});
 const browser=await chromium.launch({headless:true});const report={base,measuredAt:new Date().toISOString(),widths:[],errors:[],imageViewerCspWarnings:[],checks:[]};
 const source=await fs.readFile('reference/mule-dossier.html','utf8');
+async function mockCounter(page){
+  const receipts=new Set();
+  await page.route('**/api/mission-counter',async route=>{
+    if(route.request().method()==='POST')receipts.add(route.request().postDataJSON().id);
+    await route.fulfill({json:{manualTotal:receipts.size,serverTime:SIMULATED_COUNTER_START+120_000}});
+  });
+}
 async function overflow(page){assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,`Overflow: ${page.url()}`);}
 try{
   for(const width of [360,375,768,1440]){
@@ -16,6 +24,7 @@ try{
       if(page.url().endsWith('/og.png') && m.text().startsWith('Applying inline style violates'))report.imageViewerCspWarnings.push({url:page.url(),message:m.text()});
       else report.errors.push(m.text());
     }});
+    await mockCounter(page);
     await page.goto(base);await page.locator('#missionControls').waitFor();await page.waitForFunction(()=>!document.getElementById('missionControls').disabled);await overflow(page);
     assert.equal(await page.locator('#motionToggle').getAttribute('aria-pressed'),'true');
     let count=0;
@@ -23,7 +32,7 @@ try{
       await page.locator('#tpl').selectOption(template);await page.locator(`#${behavior==='honest'?'behHonest':'behBad'}`).press('Space');
       await page.locator('#launch').press('Enter');await page.waitForFunction(()=>!document.getElementById('patch').hidden);count++;
       assert.equal(await page.locator('#log li').count(),5);assert.equal(await page.locator('#stamp').textContent(),behavior==='honest'?'SETTLED ✓':'RETURNED');
-      assert.match(await page.locator('#log').innerText(),/FAKE_TX/);assert.equal(await page.locator('#log a').count(),0);assert.equal(await page.locator('#teleRuns').textContent(),String(count).padStart(4,'0'));
+      assert.match(await page.locator('#log').innerText(),/FAKE_TX/);assert.equal(await page.locator('#log a').count(),0);await page.waitForFunction(expected=>document.getElementById('teleRuns').textContent===String(expected).padStart(4,'0'),count+2);assert.equal(await page.locator('#runs').textContent(),`${count} mission${count===1?'':'s'} run on this page`);
       const share=new URL(await page.locator('#shareX').getAttribute('href'));assert.equal(share.origin,'https://x.com');assert.match(share.searchParams.get('text'),/@mule_protocol/);assert.match(share.searchParams.get('text'),/\/m\/\d{4}-[sr]-(inv|con|adr)-\d{8}/);
       if([375,1440].includes(width)&&template==='invoice'){
         await page.locator('#console').scrollIntoViewIfNeeded();await page.locator('.console').screenshot({path:`${out}/console-${behavior}-${width}.png`});
@@ -48,7 +57,7 @@ try{
   }
   const nojs=await browser.newContext({javaScriptEnabled:false,viewport:{width:375,height:900}});const page=await nojs.newPage();await page.goto(base);
   assert.equal(await page.locator('#launch').isDisabled(),true);assert.ok(await page.getByText('JavaScript is required to run this simulation. No wallet or funds are needed.',{exact:true}).isVisible());assert.equal(await page.locator('.lifecycle-static li').count(),5);await overflow(page);await page.goto(`${base}/dossier`);await overflow(page);await nojs.close();report.checks.push('No JavaScript: readable homepage/dossier, disabled console and explanation');
-  const motion=await browser.newContext({viewport:{width:375,height:900}});const m=await motion.newPage();m.on('pageerror',e=>report.errors.push(e.message));await m.goto(base);await m.locator('#console').scrollIntoViewIfNeeded();await m.locator('#launch').click();await m.waitForFunction(()=>document.querySelectorAll('#log li').length>=2);assert.ok(await m.locator('#log li').count()<5);await m.locator('#motionToggle').click();await m.waitForFunction(()=>!document.getElementById('patch').hidden);assert.equal(await m.locator('#log li').count(),5);assert.equal(await m.locator('#stamp').evaluate(el=>getComputedStyle(el).animationName),'none');report.checks.push('Animated console writes incrementally; pause flushes waits and removes motion');await motion.close();
+  const motion=await browser.newContext({viewport:{width:375,height:900}});const m=await motion.newPage();await mockCounter(m);m.on('pageerror',e=>report.errors.push(e.message));await m.goto(base);await m.locator('#console').scrollIntoViewIfNeeded();await m.locator('#launch').click();await m.waitForFunction(()=>document.querySelectorAll('#log li').length>=2);assert.ok(await m.locator('#log li').count()<5);await m.locator('#motionToggle').click();await m.waitForFunction(()=>!document.getElementById('patch').hidden);assert.equal(await m.locator('#log li').count(),5);assert.equal(await m.locator('#stamp').evaluate(el=>getComputedStyle(el).animationName),'none');report.checks.push('Animated console writes incrementally; pause flushes waits and removes motion');await motion.close();
   assert.deepEqual(report.errors,[]);
 }finally{await fs.writeFile(`${out}/report.json`,JSON.stringify(report,null,2));await browser.close();}
 console.log(JSON.stringify(report,null,2));
