@@ -1,0 +1,41 @@
+{
+  "capturedAt": "2026-10-08T00:23:33.265Z",
+  "mergeCommit": "90af18af8057bb93518e475a4157414dabd8d03c",
+  "mergeParents": [
+    "1f20cda2c0f5b94104d683f88f646c1850f8dedf",
+    "16626187998495ee4eca0a5a49f6d4d62daf04c5"
+  ],
+  "integratedMain": "16626187998495ee4eca0a5a49f6d4d62daf04c5",
+  "protectedCounterPaths": [
+    "src/lib/shared-counter.ts",
+    "src/lib/mission-counter.ts",
+    "src/server/mission-counter.ts",
+    "functions/",
+    "migrations/",
+    "wrangler.jsonc",
+    "tests/mission-counter.test.mjs",
+    "tests/mission-counter-api.test.mjs"
+  ],
+  "protectedCounterDiff": [],
+  "approvedPartBPaths": [
+    "src/vendor/mule-console-core/",
+    "src/lib/run-mission.ts",
+    "src/assets/",
+    "src/data/mission.mjs",
+    "src/config/",
+    "src/styles/",
+    "src/server/response-policy.mjs"
+  ],
+  "approvedPartBDiff": [],
+  "resolution": "Automatic textual merge; verified real dynamic core, prepared images and inspection retained. Counter initialization/call and local counter removal match main.",
+  "counterCall": "runs++;patchId=missionId(runs,settled,template);sharedCounter.recordMission();",
+  "counterTiming": "After all five mission steps and delays, before terminal status and patch drawing, as on main.",
+  "pageTextChange": {
+    "file": "src/components/Console.astro",
+    "before": "Runs MULE's actual validator and escrow rules in your browser. No network, no wallet, no real funds.",
+    "after": "Runs MULE's actual validator and escrow rules in your browser. No blockchain, no wallet, no real funds."
+  },
+  "qaDatabase": ":memory: SQLite with unchanged API and migration; no Wrangler/D1 configuration loaded",
+  "deployment": "No deployment; Deploy Pages excludes pull_request and codex/* pushes",
+  "implementationCommit": "237658491e768a913fb080d68a5ad1b692025444"
+}

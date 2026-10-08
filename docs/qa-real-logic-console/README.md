@@ -160,3 +160,81 @@ En revanche, le [run de PR 37706039519](https://github.com/Mule-Protocol/mule-si
 La combinaison appelle `POST /api/mission-counter` après le premier état du journal, avant la fin de la mission. Le test échoue avec `No request attempts after journal [01], including failed requests`, et relève une réponse 404 du serveur QA statique. L'appel provient de `sharedCounter.recordMission()` ajouté à `src/scripts/console.ts` par la PR #10 ; il est absent de notre branche. Le simple remplacement du serveur QA ne résoudrait pas la violation de la règle « aucun réseau pendant une mission ».
 
 Les deux corrections demandées sont terminées et vérifiées. Le compteur partagé, les Pages Functions et le test d'absence de réseau n'ont pas été modifiés pour masquer ce conflit d'intégration. **La CI de branche est verte ; la CI de la combinaison avec le nouveau main reste en échec.** Aucun merge ni rebase de main n'est effectué dans cette tâche.
+
+## Intégration avec main
+
+Cette section remplace le constat d'échec d'intégration ci-dessus et précise la règle réseau applicable à la page avec son compteur partagé. Les mesures et captures antérieures restent des preuves historiques.
+
+| Commit | Objet |
+| --- | --- |
+| [`90af18af8057bb93518e475a4157414dabd8d03c`](https://github.com/Mule-Protocol/mule-site/commit/90af18af8057bb93518e475a4157414dabd8d03c) | Commit de merge de `origin/main` : second parent exact `16626187998495ee4eca0a5a49f6d4d62daf04c5`, fusion de la PR #10. Premier parent : `1f20cda2c0f5b94104d683f88f646c1850f8dedf`. |
+| [`237658491e768a913fb080d68a5ad1b692025444`](https://github.com/Mule-Protocol/mule-site/commit/237658491e768a913fb080d68a5ad1b692025444) | Phrase exacte, exception réseau du compteur strictement bornée, preuve autonome conservée et raccord QA en mémoire. |
+
+**Résolution de l'intégration :** Git a fusionné `src/scripts/console.ts` automatiquement, sans marqueur de conflit textuel. La vérification manuelle et indépendante confirme les deux comportements. L'import dynamique, les deux images préparées, le journal et le rapport d'inspection restent ceux de la partie B. L'initialisation du compteur est celle de main ; `sharedCounter.recordMission()` reste sur la même ligne logique que dans main, après les cinq étapes et leurs délais, avant l'affichage du verdict final et le dessin du patch. Le compteur local sous la console reste distinct du total partagé.
+
+[Preuve de périmètre et parents du merge](main-integration/scope.json) : diff nul contre main pour `shared-counter.ts`, `mission-counter.ts`, le serveur/API, toutes les Pages Functions, les migrations, `wrangler.jsonc` et les tests du compteur. Le module vendored, l'adaptateur, les identifiants, images, styles, réglages et CSP validés sont également inchangés. Aucune connexion ou écriture vers D1 : le serveur QA appelle l'implémentation API inchangée avec la migration existante sur SQLite **`:memory:`**, sans lire la configuration Wrangler.
+
+### Réseau de la page et résultat hors ligne
+
+Le test autorise uniquement l'URL absolue exacte de même origine **`/api/mission-counter`**, méthodes **GET et POST**, utilisées par main. Autre origine, chemin, query, fragment, suffixe ou méthode : refus. Les entrées ResourceTiming doivent être reliées à une requête CDP autorisée ; toute création WebSocket est refusée.
+
+Les bornes existantes sont conservées : au premier lancement, fin de réception du chunk core, avant son exécution ; ensuite et hors ligne, clic Launch. Le test conserve l'instant de clôture puis **prolonge** l'observation jusqu'à la fin des requêtes et 250 ms de silence, avec une limite de 10 s. Cela inclut les GET du compteur qui suivent les POST après l'affichage du patch ; aucune requête tardive d'une autre nature n'est exemptée.
+
+| Fenêtre mesurée | Missions terminées | Requêtes compteur | Autres requêtes |
+| --- | ---: | ---: | ---: |
+| Six cas mobiles en ligne | 6/6 | 12 : 6 POST + 6 GET | **0** |
+| Six mêmes cas hors ligne | 6/6 | 6 tentatives POST échouées | **0** |
+| Deux cas desktop | 2/2 | 4 : 2 POST + 2 GET | **0** |
+| Contrôle du rythme normal | 1/1 | 2 : 1 POST + 1 GET | **0** |
+| **Total pendant les fenêtres contrôlées** | **15/15** | **24** | **0** |
+
+[Résultats Chromium complets](main-integration/browser.json), champs `computationNetworkCounts`, `counterRequestsDuringComputation` et `otherRequestsDuringComputation`. Neuf GET tardifs sont inclus dans ces 24 requêtes. Trois GET initiaux, avant les missions, portent le total des sessions à 27 appels compteur. Les trois téléchargements préparatoires du premier lancement froid de chaque session (chunk et deux images existantes, 56 634 octets de corps gzip) sont consignés séparément ; ils finissent avant la borne de calcul et ne sont pas cachés dans l'exception compteur.
+
+Hors ligne, les six cas invoice/contract/address, honnête et malhonnête, atteignent leur journal complet, verdict attendu, rapport d'inspection et patch. Les empreintes sont identiques aux vecteurs de la partie A. Les **six seules erreurs tolérées**, une par mission, sont :
+
+| Mission hors ligne | Erreur autorisée | URL et méthode |
+| --- | --- | --- |
+| invoice / honest | `Failed to load resource: net::ERR_INTERNET_DISCONNECTED` | `POST http://127.0.0.1:4332/api/mission-counter` |
+| invoice / dishonest | Même erreur native | Même endpoint exact, POST |
+| contract / honest | Même erreur native | Même endpoint exact, POST |
+| contract / dishonest | Même erreur native | Même endpoint exact, POST |
+| address / honest | Même erreur native | Même endpoint exact, POST |
+| address / dishonest | Même erreur native | Même endpoint exact, POST |
+
+Chaque erreur est listée dans le JSON avec son `requestId` CDP, sa méthode, son URL et son échec réseau. Le harnais exige le message natif `Log.entryAdded` de source réseau et la requête hors ligne correspondante ; il n'exempte ni `pageerror`, ni un `console.error` générique. **Zéro autre erreur, zéro violation CSP et zéro WebSocket.** Le compteur n'a pas cassé l'affichage d'une mission et n'a pas été modifié.
+
+### Preuve autonome de la partie A
+
+[Harnais isolé](../../scripts/console-core-browser-qa.mjs), repris de la [preuve A épinglée](https://github.com/Mule-Protocol/mule/blob/ecfb8350e6ede380eb2ad83174576ef6580562e1/scripts/test-console-browser.mjs), et [résultat autonome](main-integration/standalone-core.json) : **7/7 scénarios** (six publics et agent désigné), module seul, sans la page ni compteur. Les octets exacts du vendor sont vérifiés : **`11fd73a2ee21035ff8fe07f696e0c13ef979bed055f8ce4bb33c58ffc368f47c`**, 72 364 octets.
+
+Après chargement initial et contrôle négatif CSP réel, le contexte passe hors ligne **avant** toute invocation de mission. `connect-src 'none'`, zéro exception : **0 requête, 0 WebSocket, 0 erreur et 0 violation CSP** pendant les calculs. Les trois empreintes, messages, transitions et soldes finaux sont comparés aux vecteurs approuvés. Cette preuve autonome est désormais réexécutée dans la CI du site, avant le test de la page.
+
+### Phrase, affichage et Lighthouse
+
+La seule modification éditoriale de cette intégration est exactement :
+
+> Runs MULE's actual validator and escrow rules in your browser. No blockchain, no wallet, no real funds.
+
+Aucun autre texte du site ne change. Le pied et le rapport restent vérifiés à 360, 375, 768 et 1440 px ; [capture 375 px](main-integration/invoice-honest-375-journal.png), [rapport 1440 px](main-integration/invoice-dishonest-1440-inspection.png), [pied 375 px](main-integration/footer-375.png) et [pied 1440 px](main-integration/footer-1440.png).
+
+[Lighthouse mobile après intégration](lighthouse-integration.json) : trois passages séquentiels conservés, Lighthouse 13.5.0 / Chromium 153, build local avec en-têtes apex, mobile simulé. Aucun autre test navigateur pendant ces mesures.
+
+| Passage | Performance | Accessibilité | Bonnes pratiques | SEO |
+| --- | ---: | ---: | ---: | ---: |
+| 1 | 81 | 100 | 100 | 100 |
+| 2 | 99 | 100 | 100 | 100 |
+| 3 | 82 | 100 | 100 | 100 |
+| **Médiane** | **82** | **100** | **100** | **100** |
+
+LCP médian : **2 206 ms** ; CLS : **0,0151** ; TBT : **636 ms**. La médiane performance est inférieure au précédent relevé après partie B (100) ; les trois valeurs sont publiées sans sélectionner le meilleur passage. Ces mesures locales variables ne permettent pas d'attribuer seules la différence au compteur et ne constituent pas une mesure de production.
+
+### Validation et CI de la combinaison
+
+**68/68 tests** locaux réussis : les tests existants, ceux du compteur intégrés depuis main et quatre tests négatifs supplémentaires sur les URL/méthodes, l'attribution ResourceTiming et les erreurs. Build sous garde réseau Node réussi. Les preuves Chromium et autonomes sont publiées comme artefact de CI.
+
+[Run **pull_request 37707837884 vert**](https://github.com/Mule-Protocol/mule-site/actions/runs/37707837884), au commit de branche `237658491e768a913fb080d68a5ad1b692025444`. Le checkout du journal GitHub est **`7d6bf190d02d3e8dd614697838bc66cb707e4224`**, avec les deux parents vérifiés **`16626187998495ee4eca0a5a49f6d4d62daf04c5` (main)** et **`237658491e768a913fb080d68a5ad1b692025444` (branche)**. Il s'agit donc du run de la combinaison avec main, pas seulement du push.
+
+**Validate = success ; Deploy Pages = skipped.** Les artefacts Linux confirment 15 missions de page, compteur **24 / autres 0**, six missions hors ligne et leurs six seules erreurs du compteur, ainsi que les sept scénarios autonomes sans réseau. [Synthèse CI et artefact](main-integration/ci.json).
+
+Nouveaux commits uniquement sur `codex/real-logic-console`, sans rebase ni force-push. Aucun déploiement, accès D1 distant ou fusion de PR. **Arrêt après cette intégration et son rapport ; PR #11 maintenue en brouillon.**
+

@@ -1,0 +1,45 @@
+{
+  "run": "https://github.com/Mule-Protocol/mule-site/actions/runs/37707837884",
+  "event": "pull_request",
+  "conclusion": "success",
+  "headCommit": "237658491e768a913fb080d68a5ad1b692025444",
+  "testedMergeCommit": "7d6bf190d02d3e8dd614697838bc66cb707e4224",
+  "testedMergeParents": [
+    "16626187998495ee4eca0a5a49f6d4d62daf04c5",
+    "237658491e768a913fb080d68a5ad1b692025444"
+  ],
+  "jobs": {
+    "Validate": "success",
+    "Deploy Pages": "skipped"
+  },
+  "tests": {
+    "passed": 68,
+    "failed": 0
+  },
+  "artifact": {
+    "id": 11519878715,
+    "url": "https://github.com/Mule-Protocol/mule-site/actions/runs/37707837884/artifacts/11519878715"
+  },
+  "page": {
+    "passed": true,
+    "missions": 15,
+    "computationNetworkCounts": {
+      "counter": 24,
+      "other": 0
+    },
+    "offlineMissions": 6,
+    "allowedOfflineCounterErrors": 6,
+    "otherErrors": 0,
+    "cspViolations": 0,
+    "webSockets": 0
+  },
+  "standalone": {
+    "passed": true,
+    "scenarios": 7,
+    "offline": true,
+    "requests": 0,
+    "webSockets": 0,
+    "browserErrors": 0,
+    "bundleSha256": "11fd73a2ee21035ff8fe07f696e0c13ef979bed055f8ce4bb33c58ffc368f47c"
+  }
+}
