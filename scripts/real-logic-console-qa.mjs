@@ -28,7 +28,7 @@ const evidence = {
     application: 'Native form clicks run the original application; no replacement of its code, network APIs, clock or CSP',
     localCspDifference: 'Only upgrade-insecure-requests is removed by the loopback HTTP QA server',
   },
-  pages: [], captures: [], reportLayout: [], offline: null, normalMotion: null,
+  pages: [], captures: [], reportLayout: [], footerLayout: [], offline: null, normalMotion: null,
 };
 await mkdir(output, { recursive: true });
 let browser;
@@ -291,6 +291,58 @@ async function checkReportLayouts(state) {
     assert.equal(measurement.tabindex, 0);
     if (measurement.scrollWidth > measurement.clientWidth) assert.ok(measurement.finalScrollLeft > 0, 'Report can scroll horizontally at ' + width);
     evidence.reportLayout.push({ width, passed: true, ...measurement });
+    const footer = state.page.locator('#conOut .con-foot');
+    await footer.scrollIntoViewIfNeeded();
+    const footerMeasurement = await footer.evaluate(element => {
+      const rect = box => ({ left: box.left, top: box.top, right: box.right, bottom: box.bottom, width: box.width, height: box.height });
+      const text = span => {
+        const range = document.createRange();
+        range.selectNodeContents(span);
+        const style = getComputedStyle(span);
+        return { text: span.textContent.trim(), box: rect(span.getBoundingClientRect()),
+          textRects: [...range.getClientRects()].map(rect), fontSize: style.fontSize,
+          visible: style.visibility === 'visible' && style.display !== 'none' && Number(style.opacity) > 0 };
+      };
+      const style = getComputedStyle(element);
+      return { viewport: { left: 0, top: 0, right: innerWidth, bottom: innerHeight },
+        pageWidth: document.documentElement.scrollWidth, box: rect(element.getBoundingClientRect()),
+        visible: style.visibility === 'visible' && style.display !== 'none' && Number(style.opacity) > 0,
+        missionId: document.querySelector('#msnId').textContent.trim(),
+        notice: text(element.querySelector('span:first-child')), counter: text(element.querySelector('#runs')) };
+    });
+    const inside = (inner, outer) => inner.left >= outer.left - 1 && inner.top >= outer.top - 1
+      && inner.right <= outer.right + 1 && inner.bottom <= outer.bottom + 1;
+    const overlaps = (a, b) => Math.min(a.right, b.right) - Math.max(a.left, b.left) > 0.5
+      && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > 0.5;
+    assert.equal(footerMeasurement.notice.text, 'REAL SHA-256 · SIMULATED TRANSACTIONS · NO REAL FUNDS');
+    const missionMatch = /^MSN-(\d{4})$/.exec(footerMeasurement.missionId);
+    assert.ok(missionMatch, 'Current mission ID is readable');
+    const missionCount = Number(missionMatch[1]);
+    assert.equal(footerMeasurement.counter.text, missionCount + ' mission' + (missionCount === 1 ? '' : 's') + ' run on this page');
+    assert.equal(footerMeasurement.visible, true, 'Footer is visible at ' + width);
+    assert.ok(footerMeasurement.pageWidth <= width + 1, 'Footer does not cause page overflow at ' + width);
+    assert.ok(inside(footerMeasurement.box, footerMeasurement.viewport), 'Footer fits the viewport at ' + width);
+    for (const part of [footerMeasurement.notice, footerMeasurement.counter]) {
+      assert.equal(part.visible, true, 'Footer text is visible at ' + width);
+      assert.ok(part.box.width > 0 && part.box.height > 0 && part.textRects.length > 0, 'Footer text has rendered bounds');
+      assert.ok(inside(part.box, footerMeasurement.box) && inside(part.box, footerMeasurement.viewport), 'Footer text box fits at ' + width);
+      for (const textRect of part.textRects) {
+        assert.ok(inside(textRect, part.box) && inside(textRect, footerMeasurement.box) && inside(textRect, footerMeasurement.viewport),
+          'Actual footer text is not clipped at ' + width);
+      }
+    }
+    assert.equal(overlaps(footerMeasurement.notice.box, footerMeasurement.counter.box), false, 'Footer text boxes do not overlap at ' + width);
+    for (const noticeRect of footerMeasurement.notice.textRects) {
+      for (const counterRect of footerMeasurement.counter.textRects) {
+        assert.equal(overlaps(noticeRect, counterRect), false, 'Actual footer text does not overlap at ' + width);
+      }
+    }
+    const footerResult = { width, passed: true, missionCount, ...footerMeasurement };
+    if (width === 375 || width === 1440) {
+      footerResult.capture = 'footer-' + width + '.png';
+      await footer.screenshot({ path: path.join(output, footerResult.capture), animations: 'disabled' });
+    }
+    evidence.footerLayout.push(footerResult);
   }
 }
 
