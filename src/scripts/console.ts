@@ -3,6 +3,7 @@ import refusedPatch from '../assets/mascot/patch-refuse.png?url';
 import { runMission, type Template, type Behavior } from '../lib/run-mission';
 import { missionId, parseMissionId } from '../data/mission.mjs';
 import { site } from '../config/site.mjs';
+import { startSharedMissionCounter } from '../lib/shared-counter';
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const form = $<HTMLFormElement>('conForm');
@@ -10,6 +11,7 @@ const controls = $<HTMLFieldSetElement>('missionControls');
 const canvas = $<HTMLCanvasElement>('patchCanvas');
 let runs = 0, busy = false, patchId = '';
 const pad = (n: number) => String(n).padStart(4, '0');
+const sharedCounter = startSharedMissionCounter($('teleRuns'));
 const motionOff = () => document.documentElement.dataset.motion === 'off' || matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Turning off motion flushes the current wait immediately, even midway through a run.
@@ -79,10 +81,10 @@ form.addEventListener('submit', async event => {
       }
       settled=step.outcome==='settled'; await stepDelay();li.classList.remove('new');
     }
-    runs++;patchId=missionId(runs,settled,template);
+    runs++;patchId=missionId(runs,settled,template);sharedCounter.recordMission();
     $('stamp').textContent=settled?'SETTLED ✓':'RETURNED';$('stamp').className=`stampbig on ${settled?'ok':'ko'}`;
     $('conOut').classList.add('shake');$('msnState').textContent=settled?'Settled':'Returned';
-    $('runs').textContent=`${runs} mission${runs===1?'':'s'} run on this page`;$('teleRuns').textContent=pad(runs);
+    $('runs').textContent=`${runs} mission${runs===1?'':'s'} run on this page`;
     const mission=parseMissionId(patchId)!;
     $('patchTitle').textContent=settled?'Mission settled.':'Mission returned.';
     $('patchText').textContent=settled?`${mission.mission}: the delivery passed every check, so the agent got paid. ${mission.template} · ${mission.date}.`:`${mission.mission}: the delivery failed inspection, so the client got a refund. The agent got nothing. Stubborn by design. ${mission.template} · ${mission.date}.`;
