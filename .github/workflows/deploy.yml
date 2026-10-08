@@ -60,8 +60,8 @@ jobs:
 
   deploy:
     name: Deploy Pages
-    # This review branch must never create a Cloudflare deployment.
-    if: github.event_name != 'pull_request' && github.ref != 'refs/heads/codex/real-logic-console'
+    # Codex branches are for review only and must never deploy to Cloudflare.
+    if: github.event_name != 'pull_request' && !startsWith(github.ref, 'refs/heads/codex/')
     needs: validate
     runs-on: ubuntu-latest
     permissions:
